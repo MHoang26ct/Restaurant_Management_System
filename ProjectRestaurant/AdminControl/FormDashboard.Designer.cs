@@ -1266,7 +1266,7 @@
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
-            ClientSize = new Size(3000, 1500);
+            ClientSize = new Size(3000, 2000);
             Controls.Add(BlurryEmployeePanel);
             Controls.Add(BlurryReportPanel);
             Controls.Add(BlurryCustomerPanel);
@@ -1299,7 +1299,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormDashboard";
             StartPosition = FormStartPosition.CenterParent;
-            Load += FormDashboard_Load;
             GrandientPanel1.ResumeLayout(false);
             GrandientPanel1.PerformLayout();
             TimeGradientPanel.ResumeLayout(false);

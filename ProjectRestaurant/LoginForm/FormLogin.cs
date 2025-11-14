@@ -10,10 +10,6 @@ namespace ProjectRestaurant
         {
             InitializeComponent();
         }
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
         //PlaceholderText Username
         private void TextUsername_Enter(object sender, EventArgs e)
         {

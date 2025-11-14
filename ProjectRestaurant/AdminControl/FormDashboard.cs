@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace ProjectRestaurant.AdminControl
 {
-    public partial class FormDashboard : Form 
+    public partial class FormDashboard : Form
     {
         // Lưu lại toàn bộ control với địa chỉ của chúng ban đầu
         private Dictionary<Control, Point> DiOriginalLocations = new Dictionary<Control, Point>();
@@ -29,7 +29,7 @@ namespace ProjectRestaurant.AdminControl
             MenuGradient.Location = new Point(150, 150); // Đặt vị trí mới so với cha 
             MenuLabel.Location = new Point(110, 270);   // Đặt vị trí mới so với cha 
 
-           
+
             //
             //OrderPicture
             //
@@ -131,47 +131,57 @@ namespace ProjectRestaurant.AdminControl
                 }
             }
         }
+        //
+        // Lấy thời gian đồng hồ
+        //
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateLabel.Text = DateTime.Now.ToString("dddd dd/MM/yyyy");
             TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss");
         }
-
-        private void FormDashboard_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //
+        // Sự kiện click Ảnh Menu
+        //
         private void MenuPicture_Click(object sender, EventArgs e)
         {
             FormMenu frmMenu = new FormMenu();
             frmMain.instance.MenuButton.PerformClick(); // Chỉnh modifiers của Menubutton thành public rồi gọi 
         }
-
+        //
+        // Sự kiện click Ảnh Order
+        //
         private void OrderPicture_Click(object sender, EventArgs e)
         {
             FormOrder frmOrder = new FormOrder();
             frmMain.instance.OrderButton.PerformClick();
         }
-
+        //
+        // Sự kiện click Ảnh Table
+        //
         private void TablePicture_Click(object sender, EventArgs e)
         {
             FormTable frmTable = new FormTable();
             frmMain.instance.TableButton.PerformClick();
         }
-
+        //
+        // Sự kiện click Ảnh Customer
+        //
         private void CustomerPicture_Click(object sender, EventArgs e)
         {
             FormCustomer frmCustomer = new FormCustomer();
             frmMain.instance.CustomerButton.PerformClick();
         }
-
+        //
+        // Sự kiện click Ảnh Report
+        //
         private void ReportPicture_Click(object sender, EventArgs e)
         {
             FormReport frmReport = new FormReport();
             frmMain.instance.ReportsButton.PerformClick();
         }
-
+        //
+        // Sự kiện click Ảnh Employee
+        //
         private void EmployeePicture_Click(object sender, EventArgs e)
         {
             FormEmployee frmEmployee = new FormEmployee();

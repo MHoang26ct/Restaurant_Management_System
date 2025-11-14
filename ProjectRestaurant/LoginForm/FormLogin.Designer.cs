@@ -122,7 +122,6 @@
             UsernameTextbox.PlaceholderText = "Username";
             UsernameTextbox.SelectedText = "";
             UsernameTextbox.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            UsernameTextbox.TextChanged += FormLogin_Load;
             UsernameTextbox.Enter += TextUsername_Enter;
             UsernameTextbox.KeyPress += UsernameTextbox_KeyPress;
             UsernameTextbox.Leave += TextUsername_Leave;
@@ -217,7 +216,6 @@
             Controls.Add(PictureBoxLogin1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "FormLogin";
-            Load += FormLogin_Load;
             ((System.ComponentModel.ISupportInitialize)PictureBoxLogin1).EndInit();
             GradientPanelLogin.ResumeLayout(false);
             GradientPanelLogin.PerformLayout();
