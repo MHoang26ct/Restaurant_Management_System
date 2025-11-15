@@ -10,6 +10,21 @@ namespace ProjectRestaurant
         {
             InitializeComponent();
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void IconPanel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
         //PlaceholderText Username
         private void TextUsername_Enter(object sender, EventArgs e)
         {
@@ -44,21 +59,11 @@ namespace ProjectRestaurant
 
             }
         }
-        //Đảo trạng thái ẩn /hiện mật khẩu 
-        private void EyeButton_Click(object sender, EventArgs e)
+
+        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
         {
-            if (PasswordTextbox.PasswordChar == '\0')
-            {
-                PasswordTextbox.PasswordChar = '*';
-                EyeButton.Image = Properties.Resources.eye_closed; // ẩn
-            }
-            else
-            {
-                PasswordTextbox.PasswordChar = '\0';
-                EyeButton.Image = Properties.Resources.eye_open; // hiển thị
-            }
+
         }
-        //Chặn chữ có dấu 
         private void UsernameTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -86,9 +91,22 @@ namespace ProjectRestaurant
             this.Hide();
         }
 
-        private void PictureBoxLogin1_Click(object sender, EventArgs e)
+        private void tableLayoutPanel11_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void ShowPWBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (PasswordTextbox.PasswordChar == '*')
+            {
+                PasswordTextbox.PasswordChar = '\0';
+            }
+            else
+            {
+                PasswordTextbox.PasswordChar = '*';
+            }
+                
         }
     }
 }

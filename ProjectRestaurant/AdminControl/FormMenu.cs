@@ -42,7 +42,6 @@ namespace ProjectRestaurant.AdminControl
                 "Tráng miệng",
                 "Thức Uống" ,
             };
-            FoodCategories.Sec
             FoodCategories.Items.AddRange(catagories);
         }
     }

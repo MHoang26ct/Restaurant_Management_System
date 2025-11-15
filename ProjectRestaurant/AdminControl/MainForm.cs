@@ -144,7 +144,14 @@ namespace ProjectRestaurant
                 ClickedButton.Image = Properties.Resources.EmployeesWhite;
                 OpenChildForm(new FormEmployee());// Mở FormEmployees
             }
-            
+
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FormLogin formLogin = new FormLogin();
+            formLogin.Show();
         }
     }
 }
