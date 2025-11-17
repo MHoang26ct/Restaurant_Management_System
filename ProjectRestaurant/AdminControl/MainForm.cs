@@ -11,24 +11,20 @@ using System.Windows.Forms;
 
 namespace ProjectRestaurant
 {
-    public partial class frmMain : Form
-    {
+    public partial class frmMain : Form {
         public static frmMain instance { get; private set; }
         private Form CurrentChildForm;
-        public frmMain()
-        {
+        public frmMain() {
             InitializeComponent();
             instance = this;
         }
-        private void frmMain_Load(object sender, EventArgs e)
-        {
+        private void frmMain_Load(object sender, EventArgs e) {
             DashboardButton.PerformClick();// Bắt đầu vào giao diện nút Dasdboard được hiện lên
         }
 
         public void OpenChildForm(Form ChilForm) // Mở Form con trên MainPanel
         {
-            if (CurrentChildForm != null)
-            {
+            if (CurrentChildForm != null) {
                 CurrentChildForm.Close(); // Đóng form con đang mở 
             }
             CurrentChildForm = ChilForm; // Gán form con đang mở = form con vừa thao tác
@@ -42,8 +38,7 @@ namespace ProjectRestaurant
             ChilForm.BringToFront(); // MainPanel chứa nhiều control con, đảm bảo ChillForm này được đưa lên đầu
             ChilForm.Show(); // Hiển thị ChillForm
         }
-        public void ResetAllButton()
-        {
+        public void ResetAllButton() {
             //
             // DashBoardButton
             //
@@ -95,63 +90,58 @@ namespace ProjectRestaurant
             EmployeesButton.ForeColor = Color.Black;
             EmployeesButton.Image = Properties.Resources.EmployeesBlack; // Icon lúc chưa click
         }
-        public void NavigationButton_Click(object sender, EventArgs e)
-        {
+        public void NavigationButton_Click(object sender, EventArgs e) {
             ResetAllButton(); // Đặt lại toàn bộ trạng thái của các nút
 
             Guna.UI2.WinForms.Guna2Button ClickedButton = (Guna.UI2.WinForms.Guna2Button)sender;
             ClickedButton.FillColor = Color.FromArgb(226, 160, 90);
             ClickedButton.ForeColor = Color.White;
             //Dashboard
-            if (ClickedButton.Name == "DashboardButton")
-            {
+            if (ClickedButton.Name == "DashboardButton") {
                 ClickedButton.Image = Properties.Resources.DashboardWhite;
                 OpenChildForm(new FormDashboard()); // Mở FormDashBoard
             }
             //Menu
-            else if (ClickedButton.Name == "MenuButton")
-            {
+            else if (ClickedButton.Name == "MenuButton") {
                 ClickedButton.Image = Properties.Resources.Menuwhite;
                 OpenChildForm(new FormMenu()); // Mở FormMenu
             }
             //Order
-            else if (ClickedButton.Name == "OrderButton")
-            {
+            else if (ClickedButton.Name == "OrderButton") {
                 ClickedButton.Image = Properties.Resources.OrderWhite;
                 OpenChildForm(new FormOrder()); // Mở FormOrder
             }
             //Table
-            else if (ClickedButton.Name == "TableButton")
-            {
+            else if (ClickedButton.Name == "TableButton") {
                 ClickedButton.Image = Properties.Resources.TableWhite;
                 OpenChildForm(new FormTable()); // Mở FormTable
             }
             //Customer
-            else if (ClickedButton.Name == "CustomerButton")
-            {
+            else if (ClickedButton.Name == "CustomerButton") {
                 ClickedButton.Image = Properties.Resources.CustomerWhite;
                 OpenChildForm(new FormCustomer());// Mở FormCustomer
             }
             //Reports 
-            else if (ClickedButton.Name == "ReportsButton")
-            {
+            else if (ClickedButton.Name == "ReportsButton") {
                 ClickedButton.Image = Properties.Resources.ReportWhite;
                 OpenChildForm(new FormReport());// Mở FormReports
             }
             //Employees
-            else if (ClickedButton.Name == "EmployeesButton")
-            {
+            else if (ClickedButton.Name == "EmployeesButton") {
                 ClickedButton.Image = Properties.Resources.EmployeesWhite;
                 OpenChildForm(new FormEmployee());// Mở FormEmployees
             }
 
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
+        private void ExitButton_Click(object sender, EventArgs e) {
             this.Close();
             FormLogin formLogin = new FormLogin();
             formLogin.Show();
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e) {
+            Application.Exit();
         }
     }
 }

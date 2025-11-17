@@ -26,8 +26,7 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
@@ -227,8 +226,8 @@
             // 
             // PasswordLabel
             // 
-            resources.ApplyResources(PasswordLabel, "PasswordLabel");
             PasswordLabel.BackColor = Color.Transparent;
+            resources.ApplyResources(PasswordLabel, "PasswordLabel");
             PasswordLabel.ForeColor = Color.White;
             PasswordLabel.Name = "PasswordLabel";
             // 
@@ -268,8 +267,8 @@
             // 
             // UsernameLabel
             // 
-            resources.ApplyResources(UsernameLabel, "UsernameLabel");
             UsernameLabel.BackColor = Color.Transparent;
+            resources.ApplyResources(UsernameLabel, "UsernameLabel");
             UsernameLabel.ForeColor = Color.White;
             UsernameLabel.Name = "UsernameLabel";
             // 
@@ -344,6 +343,7 @@
             Controls.Add(BackgroundPanel);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "FormLogin";
+            FormClosed += FormLogin_FormClosed;
             BackgroundPanel.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
