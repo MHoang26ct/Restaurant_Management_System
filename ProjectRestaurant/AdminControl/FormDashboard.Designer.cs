@@ -29,97 +29,97 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges91 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges92 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges93 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges94 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges95 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges96 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges97 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges98 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges99 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges100 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges101 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges102 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges103 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges104 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges105 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges106 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges107 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges108 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges109 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges110 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges111 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges112 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges113 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges114 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges115 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges116 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges117 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges118 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges119 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges120 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges121 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges122 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges123 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges124 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges125 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges126 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges127 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges128 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges129 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges130 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges131 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges132 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges133 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges134 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges135 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges136 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges137 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges138 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges139 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges140 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges141 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges142 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges143 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges144 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges145 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges146 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges147 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges148 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges149 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges150 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges151 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges152 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges153 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges154 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges155 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges156 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges157 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges158 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges159 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges160 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges161 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges162 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges163 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges47 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges48 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges45 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges46 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges53 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges54 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges51 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges52 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges49 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges50 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges59 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges60 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges57 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges58 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges55 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges56 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges65 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges66 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges63 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges64 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges61 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges62 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges67 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges68 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges69 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges70 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges71 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges72 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges73 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDashboard));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges164 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges165 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges166 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges167 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges168 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges169 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges170 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges171 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges172 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges173 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges174 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges175 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges176 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges177 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges178 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges179 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges180 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges74 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges75 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges76 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges77 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges78 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges83 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges84 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges81 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges82 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges79 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges80 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges85 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges86 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges87 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges88 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges89 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges90 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             timer1 = new System.Windows.Forms.Timer(components);
             TableGradientPanel = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             doubleBufferedtlp16 = new DoubleBufferedTLP();
@@ -340,12 +340,12 @@
             TableGradientPanel.BackColor = Color.Transparent;
             TableGradientPanel.BorderRadius = 20;
             TableGradientPanel.Controls.Add(doubleBufferedtlp16);
-            TableGradientPanel.CustomizableEdges = customizableEdges91;
+            TableGradientPanel.CustomizableEdges = customizableEdges7;
             TableGradientPanel.FillColor3 = Color.Fuchsia;
             TableGradientPanel.Location = new Point(745, 56);
             TableGradientPanel.Margin = new Padding(1);
             TableGradientPanel.Name = "TableGradientPanel";
-            TableGradientPanel.ShadowDecoration.CustomizableEdges = customizableEdges92;
+            TableGradientPanel.ShadowDecoration.CustomizableEdges = customizableEdges8;
             TableGradientPanel.Size = new Size(277, 140);
             TableGradientPanel.TabIndex = 3;
             TableGradientPanel.Tag = "HoverContainer";
@@ -390,14 +390,14 @@
             // 
             // TableIcon2
             // 
-            TableIcon2.CustomizableEdges = customizableEdges93;
+            TableIcon2.CustomizableEdges = customizableEdges1;
             TableIcon2.FillColor = Color.Transparent;
             TableIcon2.Image = Properties.Resources.increase;
             TableIcon2.ImageRotate = 0F;
             TableIcon2.Location = new Point(1, 1);
             TableIcon2.Margin = new Padding(1);
             TableIcon2.Name = "TableIcon2";
-            TableIcon2.ShadowDecoration.CustomizableEdges = customizableEdges94;
+            TableIcon2.ShadowDecoration.CustomizableEdges = customizableEdges2;
             TableIcon2.Size = new Size(22, 19);
             TableIcon2.SizeMode = PictureBoxSizeMode.StretchImage;
             TableIcon2.TabIndex = 5;
@@ -437,7 +437,7 @@
             guna2CustomGradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2CustomGradientPanel2.BorderRadius = 10;
             guna2CustomGradientPanel2.Controls.Add(doubleBufferedtlp19);
-            guna2CustomGradientPanel2.CustomizableEdges = customizableEdges95;
+            guna2CustomGradientPanel2.CustomizableEdges = customizableEdges5;
             guna2CustomGradientPanel2.FillColor = Color.DarkViolet;
             guna2CustomGradientPanel2.FillColor2 = Color.Fuchsia;
             guna2CustomGradientPanel2.FillColor3 = Color.Fuchsia;
@@ -446,7 +446,7 @@
             guna2CustomGradientPanel2.Location = new Point(202, 1);
             guna2CustomGradientPanel2.Margin = new Padding(1);
             guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
-            guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges96;
+            guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2CustomGradientPanel2.Size = new Size(40, 34);
             guna2CustomGradientPanel2.TabIndex = 1;
             // 
@@ -469,14 +469,14 @@
             // 
             // TableIcon1
             // 
-            TableIcon1.CustomizableEdges = customizableEdges97;
+            TableIcon1.CustomizableEdges = customizableEdges3;
             TableIcon1.FillColor = Color.Transparent;
             TableIcon1.Image = Properties.Resources.TableWhite;
             TableIcon1.ImageRotate = 0F;
             TableIcon1.Location = new Point(5, 4);
             TableIcon1.Margin = new Padding(1);
             TableIcon1.Name = "TableIcon1";
-            TableIcon1.ShadowDecoration.CustomizableEdges = customizableEdges98;
+            TableIcon1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             TableIcon1.Size = new Size(30, 25);
             TableIcon1.SizeMode = PictureBoxSizeMode.StretchImage;
             TableIcon1.TabIndex = 5;
@@ -528,12 +528,12 @@
             OrderGradientPanel.BackColor = Color.Transparent;
             OrderGradientPanel.BorderRadius = 20;
             OrderGradientPanel.Controls.Add(doubleBufferedtlp8);
-            OrderGradientPanel.CustomizableEdges = customizableEdges99;
+            OrderGradientPanel.CustomizableEdges = customizableEdges15;
             OrderGradientPanel.FillColor3 = Color.Gold;
             OrderGradientPanel.Location = new Point(125, 56);
             OrderGradientPanel.Margin = new Padding(1);
             OrderGradientPanel.Name = "OrderGradientPanel";
-            OrderGradientPanel.ShadowDecoration.CustomizableEdges = customizableEdges100;
+            OrderGradientPanel.ShadowDecoration.CustomizableEdges = customizableEdges16;
             OrderGradientPanel.Size = new Size(277, 141);
             OrderGradientPanel.TabIndex = 6;
             OrderGradientPanel.Tag = "HoverContainer";
@@ -592,14 +592,14 @@
             // 
             // OrderIcon2
             // 
-            OrderIcon2.CustomizableEdges = customizableEdges101;
+            OrderIcon2.CustomizableEdges = customizableEdges9;
             OrderIcon2.FillColor = Color.Transparent;
             OrderIcon2.Image = Properties.Resources.increase;
             OrderIcon2.ImageRotate = 0F;
             OrderIcon2.Location = new Point(1, 1);
             OrderIcon2.Margin = new Padding(1);
             OrderIcon2.Name = "OrderIcon2";
-            OrderIcon2.ShadowDecoration.CustomizableEdges = customizableEdges102;
+            OrderIcon2.ShadowDecoration.CustomizableEdges = customizableEdges10;
             OrderIcon2.Size = new Size(22, 19);
             OrderIcon2.SizeMode = PictureBoxSizeMode.StretchImage;
             OrderIcon2.TabIndex = 4;
@@ -628,7 +628,7 @@
             GradientPanelOfOrder.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             GradientPanelOfOrder.BorderRadius = 10;
             GradientPanelOfOrder.Controls.Add(doubleBufferedtlp11);
-            GradientPanelOfOrder.CustomizableEdges = customizableEdges103;
+            GradientPanelOfOrder.CustomizableEdges = customizableEdges13;
             GradientPanelOfOrder.FillColor = Color.Gold;
             GradientPanelOfOrder.FillColor2 = Color.Gold;
             GradientPanelOfOrder.FillColor3 = Color.Gold;
@@ -636,7 +636,7 @@
             GradientPanelOfOrder.Location = new Point(202, 1);
             GradientPanelOfOrder.Margin = new Padding(1);
             GradientPanelOfOrder.Name = "GradientPanelOfOrder";
-            GradientPanelOfOrder.ShadowDecoration.CustomizableEdges = customizableEdges104;
+            GradientPanelOfOrder.ShadowDecoration.CustomizableEdges = customizableEdges14;
             GradientPanelOfOrder.Size = new Size(40, 34);
             GradientPanelOfOrder.TabIndex = 1;
             GradientPanelOfOrder.MouseEnter += Control_MouseEnter;
@@ -661,14 +661,14 @@
             // 
             // OrderIcon1
             // 
-            OrderIcon1.CustomizableEdges = customizableEdges105;
+            OrderIcon1.CustomizableEdges = customizableEdges11;
             OrderIcon1.FillColor = Color.Transparent;
             OrderIcon1.Image = Properties.Resources.OrderWhite;
             OrderIcon1.ImageRotate = 0F;
             OrderIcon1.Location = new Point(5, 4);
             OrderIcon1.Margin = new Padding(1);
             OrderIcon1.Name = "OrderIcon1";
-            OrderIcon1.ShadowDecoration.CustomizableEdges = customizableEdges106;
+            OrderIcon1.ShadowDecoration.CustomizableEdges = customizableEdges12;
             OrderIcon1.Size = new Size(30, 25);
             OrderIcon1.SizeMode = PictureBoxSizeMode.StretchImage;
             OrderIcon1.TabIndex = 5;
@@ -711,13 +711,13 @@
             LabelOfCusstomer2.BackColor = Color.Transparent;
             LabelOfCusstomer2.BorderRadius = 20;
             LabelOfCusstomer2.Controls.Add(doubleBufferedtlp20);
-            LabelOfCusstomer2.CustomizableEdges = customizableEdges107;
+            LabelOfCusstomer2.CustomizableEdges = customizableEdges23;
             LabelOfCusstomer2.FillColor2 = Color.SeaShell;
             LabelOfCusstomer2.FillColor3 = Color.DarkOrange;
             LabelOfCusstomer2.Location = new Point(1055, 56);
             LabelOfCusstomer2.Margin = new Padding(1);
             LabelOfCusstomer2.Name = "LabelOfCusstomer2";
-            LabelOfCusstomer2.ShadowDecoration.CustomizableEdges = customizableEdges108;
+            LabelOfCusstomer2.ShadowDecoration.CustomizableEdges = customizableEdges24;
             LabelOfCusstomer2.Size = new Size(277, 140);
             LabelOfCusstomer2.TabIndex = 5;
             LabelOfCusstomer2.Tag = "HoverContainer";
@@ -762,14 +762,14 @@
             // 
             // CustomerIcon2
             // 
-            CustomerIcon2.CustomizableEdges = customizableEdges109;
+            CustomerIcon2.CustomizableEdges = customizableEdges17;
             CustomerIcon2.FillColor = Color.Transparent;
             CustomerIcon2.Image = Properties.Resources.increase;
             CustomerIcon2.ImageRotate = 0F;
             CustomerIcon2.Location = new Point(1, 1);
             CustomerIcon2.Margin = new Padding(1);
             CustomerIcon2.Name = "CustomerIcon2";
-            CustomerIcon2.ShadowDecoration.CustomizableEdges = customizableEdges110;
+            CustomerIcon2.ShadowDecoration.CustomizableEdges = customizableEdges18;
             CustomerIcon2.Size = new Size(22, 19);
             CustomerIcon2.SizeMode = PictureBoxSizeMode.StretchImage;
             CustomerIcon2.TabIndex = 5;
@@ -809,7 +809,7 @@
             guna2CustomGradientPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2CustomGradientPanel3.BorderRadius = 10;
             guna2CustomGradientPanel3.Controls.Add(doubleBufferedtlp23);
-            guna2CustomGradientPanel3.CustomizableEdges = customizableEdges111;
+            guna2CustomGradientPanel3.CustomizableEdges = customizableEdges21;
             guna2CustomGradientPanel3.FillColor = Color.Red;
             guna2CustomGradientPanel3.FillColor2 = Color.Red;
             guna2CustomGradientPanel3.FillColor3 = Color.FromArgb(255, 128, 0);
@@ -818,7 +818,7 @@
             guna2CustomGradientPanel3.Location = new Point(202, 1);
             guna2CustomGradientPanel3.Margin = new Padding(1);
             guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
-            guna2CustomGradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges112;
+            guna2CustomGradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges22;
             guna2CustomGradientPanel3.Size = new Size(40, 34);
             guna2CustomGradientPanel3.TabIndex = 1;
             // 
@@ -841,14 +841,14 @@
             // 
             // CustomerIcon1
             // 
-            CustomerIcon1.CustomizableEdges = customizableEdges113;
+            CustomerIcon1.CustomizableEdges = customizableEdges19;
             CustomerIcon1.FillColor = Color.Transparent;
             CustomerIcon1.Image = Properties.Resources.CustomerWhite;
             CustomerIcon1.ImageRotate = 0F;
             CustomerIcon1.Location = new Point(5, 4);
             CustomerIcon1.Margin = new Padding(1);
             CustomerIcon1.Name = "CustomerIcon1";
-            CustomerIcon1.ShadowDecoration.CustomizableEdges = customizableEdges114;
+            CustomerIcon1.ShadowDecoration.CustomizableEdges = customizableEdges20;
             CustomerIcon1.Size = new Size(30, 25);
             CustomerIcon1.SizeMode = PictureBoxSizeMode.StretchImage;
             CustomerIcon1.TabIndex = 5;
@@ -887,12 +887,12 @@
             ReportsGradientPanel.BackColor = Color.Transparent;
             ReportsGradientPanel.BorderRadius = 20;
             ReportsGradientPanel.Controls.Add(doubleBufferedtlp12);
-            ReportsGradientPanel.CustomizableEdges = customizableEdges115;
+            ReportsGradientPanel.CustomizableEdges = customizableEdges31;
             ReportsGradientPanel.FillColor3 = Color.LimeGreen;
             ReportsGradientPanel.Location = new Point(435, 56);
             ReportsGradientPanel.Margin = new Padding(1);
             ReportsGradientPanel.Name = "ReportsGradientPanel";
-            ReportsGradientPanel.ShadowDecoration.CustomizableEdges = customizableEdges116;
+            ReportsGradientPanel.ShadowDecoration.CustomizableEdges = customizableEdges32;
             ReportsGradientPanel.Size = new Size(277, 141);
             ReportsGradientPanel.TabIndex = 7;
             ReportsGradientPanel.Tag = "HoverContainer";
@@ -950,14 +950,14 @@
             // 
             // ReportIcon2
             // 
-            ReportIcon2.CustomizableEdges = customizableEdges117;
+            ReportIcon2.CustomizableEdges = customizableEdges25;
             ReportIcon2.FillColor = Color.Transparent;
             ReportIcon2.Image = Properties.Resources.increase;
             ReportIcon2.ImageRotate = 0F;
             ReportIcon2.Location = new Point(1, 1);
             ReportIcon2.Margin = new Padding(1);
             ReportIcon2.Name = "ReportIcon2";
-            ReportIcon2.ShadowDecoration.CustomizableEdges = customizableEdges118;
+            ReportIcon2.ShadowDecoration.CustomizableEdges = customizableEdges26;
             ReportIcon2.Size = new Size(22, 19);
             ReportIcon2.SizeMode = PictureBoxSizeMode.StretchImage;
             ReportIcon2.TabIndex = 5;
@@ -984,7 +984,7 @@
             GradientOfReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             GradientOfReport.BorderRadius = 10;
             GradientOfReport.Controls.Add(doubleBufferedtlp15);
-            GradientOfReport.CustomizableEdges = customizableEdges119;
+            GradientOfReport.CustomizableEdges = customizableEdges29;
             GradientOfReport.FillColor = Color.FromArgb(0, 192, 0);
             GradientOfReport.FillColor2 = Color.FromArgb(0, 192, 0);
             GradientOfReport.FillColor3 = Color.FromArgb(0, 192, 0);
@@ -993,7 +993,7 @@
             GradientOfReport.Location = new Point(202, 1);
             GradientOfReport.Margin = new Padding(1);
             GradientOfReport.Name = "GradientOfReport";
-            GradientOfReport.ShadowDecoration.CustomizableEdges = customizableEdges120;
+            GradientOfReport.ShadowDecoration.CustomizableEdges = customizableEdges30;
             GradientOfReport.Size = new Size(40, 34);
             GradientOfReport.TabIndex = 1;
             // 
@@ -1016,14 +1016,14 @@
             // 
             // ReportIcon1
             // 
-            ReportIcon1.CustomizableEdges = customizableEdges121;
+            ReportIcon1.CustomizableEdges = customizableEdges27;
             ReportIcon1.FillColor = Color.Transparent;
             ReportIcon1.Image = Properties.Resources.ReportWhite;
             ReportIcon1.ImageRotate = 0F;
             ReportIcon1.Location = new Point(5, 4);
             ReportIcon1.Margin = new Padding(1);
             ReportIcon1.Name = "ReportIcon1";
-            ReportIcon1.ShadowDecoration.CustomizableEdges = customizableEdges122;
+            ReportIcon1.ShadowDecoration.CustomizableEdges = customizableEdges28;
             ReportIcon1.Size = new Size(30, 25);
             ReportIcon1.SizeMode = PictureBoxSizeMode.StretchImage;
             ReportIcon1.TabIndex = 5;
@@ -1082,7 +1082,7 @@
             // 
             GrandientPanel1.BorderRadius = 50;
             GrandientPanel1.Controls.Add(doubleBufferedtlp3);
-            GrandientPanel1.CustomizableEdges = customizableEdges123;
+            GrandientPanel1.CustomizableEdges = customizableEdges35;
             GrandientPanel1.Dock = DockStyle.Fill;
             GrandientPanel1.FillColor = Color.DarkOrange;
             GrandientPanel1.FillColor2 = Color.FromArgb(255, 189, 70);
@@ -1092,7 +1092,7 @@
             GrandientPanel1.Location = new Point(94, 26);
             GrandientPanel1.Margin = new Padding(1);
             GrandientPanel1.Name = "GrandientPanel1";
-            GrandientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges124;
+            GrandientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges36;
             GrandientPanel1.Size = new Size(1300, 189);
             GrandientPanel1.TabIndex = 15;
             // 
@@ -1176,12 +1176,12 @@
             TimeGradientPanel.BorderColor = Color.Transparent;
             TimeGradientPanel.BorderRadius = 30;
             TimeGradientPanel.Controls.Add(doubleBufferedtlp6);
-            TimeGradientPanel.CustomizableEdges = customizableEdges125;
+            TimeGradientPanel.CustomizableEdges = customizableEdges33;
             TimeGradientPanel.Dock = DockStyle.Fill;
             TimeGradientPanel.ForeColor = Color.Transparent;
             TimeGradientPanel.Location = new Point(389, 21);
             TimeGradientPanel.Name = "TimeGradientPanel";
-            TimeGradientPanel.ShadowDecoration.CustomizableEdges = customizableEdges126;
+            TimeGradientPanel.ShadowDecoration.CustomizableEdges = customizableEdges34;
             TimeGradientPanel.Size = new Size(187, 140);
             TimeGradientPanel.TabIndex = 0;
             // 
@@ -1293,14 +1293,14 @@
             BlurryEmployeePanel.BackColor = Color.Transparent;
             BlurryEmployeePanel.BorderRadius = 50;
             BlurryEmployeePanel.Controls.Add(doubleBufferedtlp35);
-            BlurryEmployeePanel.CustomizableEdges = customizableEdges127;
+            BlurryEmployeePanel.CustomizableEdges = customizableEdges41;
             BlurryEmployeePanel.Dock = DockStyle.Fill;
             BlurryEmployeePanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryEmployeePanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
             BlurryEmployeePanel.Location = new Point(1189, 213);
             BlurryEmployeePanel.Margin = new Padding(1);
             BlurryEmployeePanel.Name = "BlurryEmployeePanel";
-            BlurryEmployeePanel.ShadowDecoration.CustomizableEdges = customizableEdges128;
+            BlurryEmployeePanel.ShadowDecoration.CustomizableEdges = customizableEdges42;
             BlurryEmployeePanel.Size = new Size(199, 90);
             BlurryEmployeePanel.TabIndex = 53;
             // 
@@ -1326,7 +1326,7 @@
             EmloyeeGradient.BackColor = Color.Transparent;
             EmloyeeGradient.BorderRadius = 15;
             EmloyeeGradient.Controls.Add(doubleBufferedtlp47);
-            EmloyeeGradient.CustomizableEdges = customizableEdges129;
+            EmloyeeGradient.CustomizableEdges = customizableEdges39;
             EmloyeeGradient.FillColor = Color.Blue;
             EmloyeeGradient.FillColor2 = Color.Blue;
             EmloyeeGradient.FillColor3 = Color.FromArgb(128, 128, 255);
@@ -1334,7 +1334,7 @@
             EmloyeeGradient.Location = new Point(74, 8);
             EmloyeeGradient.Margin = new Padding(1);
             EmloyeeGradient.Name = "EmloyeeGradient";
-            EmloyeeGradient.ShadowDecoration.CustomizableEdges = customizableEdges130;
+            EmloyeeGradient.ShadowDecoration.CustomizableEdges = customizableEdges40;
             EmloyeeGradient.Size = new Size(50, 45);
             EmloyeeGradient.TabIndex = 9;
             EmloyeeGradient.Click += EmployeePicture_Click;
@@ -1361,14 +1361,14 @@
             // 
             EmployeeIcon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             EmployeeIcon.BackColor = Color.Transparent;
-            EmployeeIcon.CustomizableEdges = customizableEdges131;
+            EmployeeIcon.CustomizableEdges = customizableEdges37;
             EmployeeIcon.FillColor = Color.Transparent;
             EmployeeIcon.Image = Properties.Resources.EmployeesWhite;
             EmployeeIcon.ImageRotate = 0F;
             EmployeeIcon.Location = new Point(6, 5);
             EmployeeIcon.Margin = new Padding(1);
             EmployeeIcon.Name = "EmployeeIcon";
-            EmployeeIcon.ShadowDecoration.CustomizableEdges = customizableEdges132;
+            EmployeeIcon.ShadowDecoration.CustomizableEdges = customizableEdges38;
             EmployeeIcon.Size = new Size(38, 34);
             EmployeeIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             EmployeeIcon.TabIndex = 18;
@@ -1408,14 +1408,14 @@
             BlurryReportPanel.BackColor = Color.Transparent;
             BlurryReportPanel.BorderRadius = 50;
             BlurryReportPanel.Controls.Add(doubleBufferedtlp33);
-            BlurryReportPanel.CustomizableEdges = customizableEdges133;
+            BlurryReportPanel.CustomizableEdges = customizableEdges47;
             BlurryReportPanel.Dock = DockStyle.Fill;
             BlurryReportPanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryReportPanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
             BlurryReportPanel.Location = new Point(970, 213);
             BlurryReportPanel.Margin = new Padding(1);
             BlurryReportPanel.Name = "BlurryReportPanel";
-            BlurryReportPanel.ShadowDecoration.CustomizableEdges = customizableEdges134;
+            BlurryReportPanel.ShadowDecoration.CustomizableEdges = customizableEdges48;
             BlurryReportPanel.Size = new Size(199, 90);
             BlurryReportPanel.TabIndex = 51;
             // 
@@ -1441,7 +1441,7 @@
             ReportGradient.BackColor = Color.Transparent;
             ReportGradient.BorderRadius = 15;
             ReportGradient.Controls.Add(doubleBufferedtlp46);
-            ReportGradient.CustomizableEdges = customizableEdges135;
+            ReportGradient.CustomizableEdges = customizableEdges45;
             ReportGradient.FillColor = Color.Red;
             ReportGradient.FillColor2 = Color.DarkOrange;
             ReportGradient.FillColor3 = Color.Fuchsia;
@@ -1449,7 +1449,7 @@
             ReportGradient.Location = new Point(74, 8);
             ReportGradient.Margin = new Padding(1);
             ReportGradient.Name = "ReportGradient";
-            ReportGradient.ShadowDecoration.CustomizableEdges = customizableEdges136;
+            ReportGradient.ShadowDecoration.CustomizableEdges = customizableEdges46;
             ReportGradient.Size = new Size(50, 45);
             ReportGradient.TabIndex = 8;
             ReportGradient.Click += ReportPicture_Click;
@@ -1476,14 +1476,14 @@
             // 
             ReportIcon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ReportIcon.BackColor = Color.Transparent;
-            ReportIcon.CustomizableEdges = customizableEdges137;
+            ReportIcon.CustomizableEdges = customizableEdges43;
             ReportIcon.FillColor = Color.Transparent;
             ReportIcon.Image = Properties.Resources.ReportWhite;
             ReportIcon.ImageRotate = 0F;
             ReportIcon.Location = new Point(6, 5);
             ReportIcon.Margin = new Padding(1);
             ReportIcon.Name = "ReportIcon";
-            ReportIcon.ShadowDecoration.CustomizableEdges = customizableEdges138;
+            ReportIcon.ShadowDecoration.CustomizableEdges = customizableEdges44;
             ReportIcon.Size = new Size(38, 34);
             ReportIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             ReportIcon.TabIndex = 18;
@@ -1523,14 +1523,14 @@
             BlurryCustomerPanel.BackColor = Color.Transparent;
             BlurryCustomerPanel.BorderRadius = 50;
             BlurryCustomerPanel.Controls.Add(doubleBufferedtlp31);
-            BlurryCustomerPanel.CustomizableEdges = customizableEdges139;
+            BlurryCustomerPanel.CustomizableEdges = customizableEdges53;
             BlurryCustomerPanel.Dock = DockStyle.Fill;
             BlurryCustomerPanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryCustomerPanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
             BlurryCustomerPanel.Location = new Point(751, 213);
             BlurryCustomerPanel.Margin = new Padding(1);
             BlurryCustomerPanel.Name = "BlurryCustomerPanel";
-            BlurryCustomerPanel.ShadowDecoration.CustomizableEdges = customizableEdges140;
+            BlurryCustomerPanel.ShadowDecoration.CustomizableEdges = customizableEdges54;
             BlurryCustomerPanel.Size = new Size(199, 90);
             BlurryCustomerPanel.TabIndex = 49;
             // 
@@ -1584,7 +1584,7 @@
             CustomerGradient.BackColor = Color.Transparent;
             CustomerGradient.BorderRadius = 15;
             CustomerGradient.Controls.Add(doubleBufferedtlp38);
-            CustomerGradient.CustomizableEdges = customizableEdges141;
+            CustomerGradient.CustomizableEdges = customizableEdges51;
             CustomerGradient.FillColor = Color.Red;
             CustomerGradient.FillColor2 = Color.Red;
             CustomerGradient.FillColor3 = Color.DarkOrange;
@@ -1592,7 +1592,7 @@
             CustomerGradient.Location = new Point(74, 8);
             CustomerGradient.Margin = new Padding(1);
             CustomerGradient.Name = "CustomerGradient";
-            CustomerGradient.ShadowDecoration.CustomizableEdges = customizableEdges142;
+            CustomerGradient.ShadowDecoration.CustomizableEdges = customizableEdges52;
             CustomerGradient.Size = new Size(50, 45);
             CustomerGradient.TabIndex = 4;
             CustomerGradient.Click += CustomerPicture_Click;
@@ -1619,14 +1619,14 @@
             // 
             CustomerIcon4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             CustomerIcon4.BackColor = Color.Transparent;
-            CustomerIcon4.CustomizableEdges = customizableEdges143;
+            CustomerIcon4.CustomizableEdges = customizableEdges49;
             CustomerIcon4.FillColor = Color.Transparent;
             CustomerIcon4.Image = Properties.Resources.CustomerWhite;
             CustomerIcon4.ImageRotate = 0F;
             CustomerIcon4.Location = new Point(6, 5);
             CustomerIcon4.Margin = new Padding(1);
             CustomerIcon4.Name = "CustomerIcon4";
-            CustomerIcon4.ShadowDecoration.CustomizableEdges = customizableEdges144;
+            CustomerIcon4.ShadowDecoration.CustomizableEdges = customizableEdges50;
             CustomerIcon4.Size = new Size(38, 34);
             CustomerIcon4.SizeMode = PictureBoxSizeMode.StretchImage;
             CustomerIcon4.TabIndex = 18;
@@ -1638,14 +1638,14 @@
             BlurryTablePanel.BackColor = Color.Transparent;
             BlurryTablePanel.BorderRadius = 50;
             BlurryTablePanel.Controls.Add(doubleBufferedtlp29);
-            BlurryTablePanel.CustomizableEdges = customizableEdges145;
+            BlurryTablePanel.CustomizableEdges = customizableEdges59;
             BlurryTablePanel.Dock = DockStyle.Fill;
             BlurryTablePanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryTablePanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
             BlurryTablePanel.Location = new Point(532, 213);
             BlurryTablePanel.Margin = new Padding(1);
             BlurryTablePanel.Name = "BlurryTablePanel";
-            BlurryTablePanel.ShadowDecoration.CustomizableEdges = customizableEdges146;
+            BlurryTablePanel.ShadowDecoration.CustomizableEdges = customizableEdges60;
             BlurryTablePanel.Size = new Size(199, 90);
             BlurryTablePanel.TabIndex = 47;
             // 
@@ -1699,7 +1699,7 @@
             TableGradient.BackColor = Color.Transparent;
             TableGradient.BorderRadius = 15;
             TableGradient.Controls.Add(doubleBufferedtlp30);
-            TableGradient.CustomizableEdges = customizableEdges147;
+            TableGradient.CustomizableEdges = customizableEdges57;
             TableGradient.FillColor = Color.DarkViolet;
             TableGradient.FillColor2 = Color.Fuchsia;
             TableGradient.FillColor3 = Color.Fuchsia;
@@ -1707,7 +1707,7 @@
             TableGradient.Location = new Point(74, 8);
             TableGradient.Margin = new Padding(1);
             TableGradient.Name = "TableGradient";
-            TableGradient.ShadowDecoration.CustomizableEdges = customizableEdges148;
+            TableGradient.ShadowDecoration.CustomizableEdges = customizableEdges58;
             TableGradient.Size = new Size(50, 45);
             TableGradient.TabIndex = 3;
             TableGradient.Click += TablePicture_Click;
@@ -1734,14 +1734,14 @@
             // 
             TableIcon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TableIcon.BackColor = Color.Transparent;
-            TableIcon.CustomizableEdges = customizableEdges149;
+            TableIcon.CustomizableEdges = customizableEdges55;
             TableIcon.FillColor = Color.Transparent;
             TableIcon.Image = Properties.Resources.TableWhite;
             TableIcon.ImageRotate = 0F;
             TableIcon.Location = new Point(6, 5);
             TableIcon.Margin = new Padding(1);
             TableIcon.Name = "TableIcon";
-            TableIcon.ShadowDecoration.CustomizableEdges = customizableEdges150;
+            TableIcon.ShadowDecoration.CustomizableEdges = customizableEdges56;
             TableIcon.Size = new Size(38, 34);
             TableIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             TableIcon.TabIndex = 18;
@@ -1753,14 +1753,14 @@
             BlurryMenuPanel.BackColor = Color.Transparent;
             BlurryMenuPanel.BorderRadius = 50;
             BlurryMenuPanel.Controls.Add(doubleBufferedtlp25);
-            BlurryMenuPanel.CustomizableEdges = customizableEdges151;
+            BlurryMenuPanel.CustomizableEdges = customizableEdges65;
             BlurryMenuPanel.Dock = DockStyle.Fill;
             BlurryMenuPanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryMenuPanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
             BlurryMenuPanel.Location = new Point(94, 213);
             BlurryMenuPanel.Margin = new Padding(1);
             BlurryMenuPanel.Name = "BlurryMenuPanel";
-            BlurryMenuPanel.ShadowDecoration.CustomizableEdges = customizableEdges152;
+            BlurryMenuPanel.ShadowDecoration.CustomizableEdges = customizableEdges66;
             BlurryMenuPanel.Size = new Size(199, 90);
             BlurryMenuPanel.TabIndex = 44;
             // 
@@ -1788,7 +1788,7 @@
             MenuGradient.BackColor = Color.Transparent;
             MenuGradient.BorderRadius = 15;
             MenuGradient.Controls.Add(doubleBufferedtlp26);
-            MenuGradient.CustomizableEdges = customizableEdges153;
+            MenuGradient.CustomizableEdges = customizableEdges63;
             MenuGradient.FillColor = Color.FromArgb(0, 192, 0);
             MenuGradient.FillColor2 = Color.FromArgb(0, 192, 0);
             MenuGradient.FillColor3 = Color.FromArgb(102, 188, 157);
@@ -1796,7 +1796,7 @@
             MenuGradient.Location = new Point(74, 7);
             MenuGradient.Margin = new Padding(1);
             MenuGradient.Name = "MenuGradient";
-            MenuGradient.ShadowDecoration.CustomizableEdges = customizableEdges154;
+            MenuGradient.ShadowDecoration.CustomizableEdges = customizableEdges64;
             MenuGradient.Size = new Size(50, 45);
             MenuGradient.TabIndex = 3;
             MenuGradient.Click += MenuPicture_Click;
@@ -1822,7 +1822,7 @@
             // MenuIcon1
             // 
             MenuIcon1.BackColor = Color.Transparent;
-            MenuIcon1.CustomizableEdges = customizableEdges155;
+            MenuIcon1.CustomizableEdges = customizableEdges61;
             MenuIcon1.Dock = DockStyle.Fill;
             MenuIcon1.FillColor = Color.Transparent;
             MenuIcon1.Image = Properties.Resources.Menuwhite;
@@ -1830,7 +1830,7 @@
             MenuIcon1.Location = new Point(8, 5);
             MenuIcon1.Margin = new Padding(1);
             MenuIcon1.Name = "MenuIcon1";
-            MenuIcon1.ShadowDecoration.CustomizableEdges = customizableEdges156;
+            MenuIcon1.ShadowDecoration.CustomizableEdges = customizableEdges62;
             MenuIcon1.Size = new Size(35, 34);
             MenuIcon1.SizeMode = PictureBoxSizeMode.StretchImage;
             MenuIcon1.TabIndex = 18;
@@ -1869,7 +1869,7 @@
             // 
             MenuPicture.BackColor = Color.Transparent;
             MenuPicture.BorderRadius = 50;
-            MenuPicture.CustomizableEdges = customizableEdges157;
+            MenuPicture.CustomizableEdges = customizableEdges67;
             MenuPicture.Dock = DockStyle.Fill;
             MenuPicture.ErrorImage = null;
             MenuPicture.Image = Properties.Resources.MenuPicture__2_;
@@ -1877,7 +1877,7 @@
             MenuPicture.Location = new Point(94, 31);
             MenuPicture.Margin = new Padding(1);
             MenuPicture.Name = "MenuPicture";
-            MenuPicture.ShadowDecoration.CustomizableEdges = customizableEdges158;
+            MenuPicture.ShadowDecoration.CustomizableEdges = customizableEdges68;
             MenuPicture.Size = new Size(199, 180);
             MenuPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             MenuPicture.TabIndex = 33;
@@ -1889,7 +1889,7 @@
             // 
             OrderPicture.BackColor = Color.Transparent;
             OrderPicture.BorderRadius = 50;
-            OrderPicture.CustomizableEdges = customizableEdges159;
+            OrderPicture.CustomizableEdges = customizableEdges69;
             OrderPicture.Dock = DockStyle.Fill;
             OrderPicture.ErrorImage = null;
             OrderPicture.Image = Properties.Resources.OrderPicture11;
@@ -1897,7 +1897,7 @@
             OrderPicture.Location = new Point(313, 31);
             OrderPicture.Margin = new Padding(1);
             OrderPicture.Name = "OrderPicture";
-            OrderPicture.ShadowDecoration.CustomizableEdges = customizableEdges160;
+            OrderPicture.ShadowDecoration.CustomizableEdges = customizableEdges70;
             OrderPicture.Size = new Size(199, 180);
             OrderPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             OrderPicture.TabIndex = 19;
@@ -1909,7 +1909,7 @@
             // 
             CustomerPicture.BackColor = Color.Transparent;
             CustomerPicture.BorderRadius = 50;
-            CustomerPicture.CustomizableEdges = customizableEdges161;
+            CustomerPicture.CustomizableEdges = customizableEdges71;
             CustomerPicture.Dock = DockStyle.Fill;
             CustomerPicture.ErrorImage = null;
             CustomerPicture.Image = Properties.Resources.CustomerPicture;
@@ -1917,7 +1917,7 @@
             CustomerPicture.Location = new Point(751, 31);
             CustomerPicture.Margin = new Padding(1);
             CustomerPicture.Name = "CustomerPicture";
-            CustomerPicture.ShadowDecoration.CustomizableEdges = customizableEdges162;
+            CustomerPicture.ShadowDecoration.CustomizableEdges = customizableEdges72;
             CustomerPicture.Size = new Size(199, 180);
             CustomerPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             CustomerPicture.TabIndex = 23;
@@ -1929,7 +1929,7 @@
             // 
             TablePicture.BackColor = Color.Transparent;
             TablePicture.BorderRadius = 50;
-            TablePicture.CustomizableEdges = customizableEdges163;
+            TablePicture.CustomizableEdges = customizableEdges73;
             TablePicture.Dock = DockStyle.Fill;
             TablePicture.ErrorImage = null;
             TablePicture.Image = (Image)resources.GetObject("TablePicture.Image");
@@ -1937,7 +1937,7 @@
             TablePicture.Location = new Point(532, 31);
             TablePicture.Margin = new Padding(1);
             TablePicture.Name = "TablePicture";
-            TablePicture.ShadowDecoration.CustomizableEdges = customizableEdges164;
+            TablePicture.ShadowDecoration.CustomizableEdges = customizableEdges74;
             TablePicture.Size = new Size(199, 180);
             TablePicture.SizeMode = PictureBoxSizeMode.StretchImage;
             TablePicture.TabIndex = 21;
@@ -1949,7 +1949,7 @@
             // 
             ReportPicture.BackColor = Color.Transparent;
             ReportPicture.BorderRadius = 50;
-            ReportPicture.CustomizableEdges = customizableEdges165;
+            ReportPicture.CustomizableEdges = customizableEdges75;
             ReportPicture.Dock = DockStyle.Fill;
             ReportPicture.ErrorImage = null;
             ReportPicture.Image = Properties.Resources.ReportPictute;
@@ -1957,7 +1957,7 @@
             ReportPicture.Location = new Point(970, 31);
             ReportPicture.Margin = new Padding(1);
             ReportPicture.Name = "ReportPicture";
-            ReportPicture.ShadowDecoration.CustomizableEdges = customizableEdges166;
+            ReportPicture.ShadowDecoration.CustomizableEdges = customizableEdges76;
             ReportPicture.Size = new Size(199, 180);
             ReportPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             ReportPicture.TabIndex = 28;
@@ -1969,7 +1969,7 @@
             // 
             EmployeePicture.BackColor = Color.Transparent;
             EmployeePicture.BorderRadius = 50;
-            EmployeePicture.CustomizableEdges = customizableEdges167;
+            EmployeePicture.CustomizableEdges = customizableEdges77;
             EmployeePicture.Dock = DockStyle.Fill;
             EmployeePicture.ErrorImage = null;
             EmployeePicture.Image = Properties.Resources.EmployeePicture;
@@ -1977,7 +1977,7 @@
             EmployeePicture.Location = new Point(1189, 31);
             EmployeePicture.Margin = new Padding(1);
             EmployeePicture.Name = "EmployeePicture";
-            EmployeePicture.ShadowDecoration.CustomizableEdges = customizableEdges168;
+            EmployeePicture.ShadowDecoration.CustomizableEdges = customizableEdges78;
             EmployeePicture.Size = new Size(199, 180);
             EmployeePicture.SizeMode = PictureBoxSizeMode.StretchImage;
             EmployeePicture.TabIndex = 30;
@@ -1990,14 +1990,14 @@
             BlurryOrderPanel.BackColor = Color.Transparent;
             BlurryOrderPanel.BorderRadius = 50;
             BlurryOrderPanel.Controls.Add(doubleBufferedtlp27);
-            BlurryOrderPanel.CustomizableEdges = customizableEdges169;
+            BlurryOrderPanel.CustomizableEdges = customizableEdges83;
             BlurryOrderPanel.Dock = DockStyle.Fill;
             BlurryOrderPanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryOrderPanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
             BlurryOrderPanel.Location = new Point(313, 213);
             BlurryOrderPanel.Margin = new Padding(1);
             BlurryOrderPanel.Name = "BlurryOrderPanel";
-            BlurryOrderPanel.ShadowDecoration.CustomizableEdges = customizableEdges170;
+            BlurryOrderPanel.ShadowDecoration.CustomizableEdges = customizableEdges84;
             BlurryOrderPanel.Size = new Size(199, 90);
             BlurryOrderPanel.TabIndex = 31;
             BlurryOrderPanel.Click += OrderPicture_Click;
@@ -2052,7 +2052,7 @@
             OrderGradient.BackColor = Color.Transparent;
             OrderGradient.BorderRadius = 15;
             OrderGradient.Controls.Add(doubleBufferedtlp28);
-            OrderGradient.CustomizableEdges = customizableEdges171;
+            OrderGradient.CustomizableEdges = customizableEdges81;
             OrderGradient.FillColor = Color.Gold;
             OrderGradient.FillColor2 = Color.Gold;
             OrderGradient.FillColor3 = Color.Khaki;
@@ -2060,7 +2060,7 @@
             OrderGradient.Location = new Point(74, 8);
             OrderGradient.Margin = new Padding(1);
             OrderGradient.Name = "OrderGradient";
-            OrderGradient.ShadowDecoration.CustomizableEdges = customizableEdges172;
+            OrderGradient.ShadowDecoration.CustomizableEdges = customizableEdges82;
             OrderGradient.Size = new Size(50, 45);
             OrderGradient.TabIndex = 3;
             OrderGradient.Click += OrderPicture_Click;
@@ -2087,14 +2087,14 @@
             // 
             OrderIcon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             OrderIcon.BackColor = Color.Transparent;
-            OrderIcon.CustomizableEdges = customizableEdges173;
+            OrderIcon.CustomizableEdges = customizableEdges79;
             OrderIcon.FillColor = Color.Transparent;
             OrderIcon.Image = Properties.Resources.OrderWhite;
             OrderIcon.ImageRotate = 0F;
             OrderIcon.Location = new Point(6, 5);
             OrderIcon.Margin = new Padding(1);
             OrderIcon.Name = "OrderIcon";
-            OrderIcon.ShadowDecoration.CustomizableEdges = customizableEdges174;
+            OrderIcon.ShadowDecoration.CustomizableEdges = customizableEdges80;
             OrderIcon.Size = new Size(38, 34);
             OrderIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             OrderIcon.TabIndex = 18;
@@ -2122,14 +2122,14 @@
             // 
             EmployeeIcon1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             EmployeeIcon1.BackColor = Color.Transparent;
-            EmployeeIcon1.CustomizableEdges = customizableEdges175;
+            EmployeeIcon1.CustomizableEdges = customizableEdges85;
             EmployeeIcon1.FillColor = Color.Transparent;
             EmployeeIcon1.Image = Properties.Resources.EmployeesWhite;
             EmployeeIcon1.ImageRotate = 0F;
             EmployeeIcon1.Location = new Point(6, 5);
             EmployeeIcon1.Margin = new Padding(1);
             EmployeeIcon1.Name = "EmployeeIcon1";
-            EmployeeIcon1.ShadowDecoration.CustomizableEdges = customizableEdges176;
+            EmployeeIcon1.ShadowDecoration.CustomizableEdges = customizableEdges86;
             EmployeeIcon1.Size = new Size(38, 34);
             EmployeeIcon1.SizeMode = PictureBoxSizeMode.StretchImage;
             EmployeeIcon1.TabIndex = 18;
@@ -2156,14 +2156,14 @@
             // 
             ReportIcon4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ReportIcon4.BackColor = Color.Transparent;
-            ReportIcon4.CustomizableEdges = customizableEdges177;
+            ReportIcon4.CustomizableEdges = customizableEdges87;
             ReportIcon4.FillColor = Color.Transparent;
             ReportIcon4.Image = Properties.Resources.ReportWhite;
             ReportIcon4.ImageRotate = 0F;
             ReportIcon4.Location = new Point(6, 5);
             ReportIcon4.Margin = new Padding(1);
             ReportIcon4.Name = "ReportIcon4";
-            ReportIcon4.ShadowDecoration.CustomizableEdges = customizableEdges178;
+            ReportIcon4.ShadowDecoration.CustomizableEdges = customizableEdges88;
             ReportIcon4.Size = new Size(38, 34);
             ReportIcon4.SizeMode = PictureBoxSizeMode.StretchImage;
             ReportIcon4.TabIndex = 18;
@@ -2203,14 +2203,14 @@
             // 
             CustomerIcon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             CustomerIcon.BackColor = Color.Transparent;
-            CustomerIcon.CustomizableEdges = customizableEdges179;
+            CustomerIcon.CustomizableEdges = customizableEdges89;
             CustomerIcon.FillColor = Color.Transparent;
             CustomerIcon.Image = Properties.Resources.CustomerWhite;
             CustomerIcon.ImageRotate = 0F;
             CustomerIcon.Location = new Point(6, 5);
             CustomerIcon.Margin = new Padding(1);
             CustomerIcon.Name = "CustomerIcon";
-            CustomerIcon.ShadowDecoration.CustomizableEdges = customizableEdges180;
+            CustomerIcon.ShadowDecoration.CustomizableEdges = customizableEdges90;
             CustomerIcon.Size = new Size(38, 34);
             CustomerIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             CustomerIcon.TabIndex = 18;
