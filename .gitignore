@@ -416,3 +416,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Ngăn chặn các file chứa mật khẩu thật
+App.Release.config
+App.Development.config
+*.Local.config
