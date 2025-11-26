@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectRestaurant.FoodOrderManagement.UI.Forms.MenuManagement;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -145,7 +146,7 @@ namespace ProjectRestaurant.AdminControl
         //
         private void MenuPicture_Click(object sender, EventArgs e)
         {
-            FormMenu frmMenu = new FormMenu();
+            FrmMenu frmMenu = new FrmMenu();
             frmMain.instance.MenuButton.PerformClick(); // Chỉnh modifiers của Menubutton thành public rồi gọi 
         }
         //

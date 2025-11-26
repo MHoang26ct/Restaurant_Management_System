@@ -118,7 +118,7 @@ namespace ProjectRestaurant
             else if (ClickedButton.Name == "MenuButton")
             {
                 ClickedButton.Image = Properties.Resources.Menuwhite;
-                OpenChildForm(new FormMenu()); // Mở FormMenu
+                OpenChildForm(new FoodOrderManagement.UI.Forms.MenuManagement.FrmMenu()); // Mở FormMenu
             }
             //Order
             else if (ClickedButton.Name == "OrderButton")

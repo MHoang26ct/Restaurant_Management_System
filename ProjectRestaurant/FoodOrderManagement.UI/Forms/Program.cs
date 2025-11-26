@@ -1,6 +1,7 @@
 using Autofac;
 using ProjectRestaurant.DAL.Repositories.Implementations;
 using ProjectRestaurant.DAL.Repositories.Interfaces;
+using ProjectRestaurant.FoodOrderManagement.UI.Forms.MenuManagement;
 
 namespace ProjectRestaurant.AdminControl {
     internal static class Program {
@@ -29,7 +30,7 @@ namespace ProjectRestaurant.AdminControl {
             builder.RegisterType<FormLogin>();
             builder.RegisterType<frmMain>();
             builder.RegisterType<FormDashboard>();
-            builder.RegisterType<FormMenu>();
+            builder.RegisterType<FrmMenu>();
             builder.RegisterType<FormOrder>();
             builder.RegisterType<FormTable>();
             builder.RegisterType<FormCustomer>();
