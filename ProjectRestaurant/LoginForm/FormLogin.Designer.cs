@@ -346,6 +346,7 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "FormLogin";
             FormClosed += FormLogin_FormClosed;
+            Load += FormLogin_FormLoad;
             BackgroundPanel.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);

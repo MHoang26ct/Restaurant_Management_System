@@ -1,0 +1,79 @@
+﻿using ProjectRestaurant.DAL.Repositories.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ProjectRestaurant.DAL.Models.Entities;
+using Microsoft.Data.SqlClient;
+using System.Configuration;
+
+namespace ProjectRestaurant.DAL.Repositories.Implementations {
+    public class CustomersRepository : ICustomersRepository {
+        private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+        // Lấy thông tin khách theo ID
+        public async Task<Customers?> GetCustomerByIdAsync(int id) {
+            using (var connection = new SqlConnection(_connectionString)) {
+                await connection.OpenAsync();
+                var command = new SqlCommand("SELECT customerId, FullName, Email, PhoneNumber FROM custumers WHERE customerId = @Id", connection);
+                command.Parameters.AddWithValue("@Id", id);
+                using (var reader = await command.ExecuteReaderAsync()) {
+                    if (await reader.ReadAsync()) {
+                        return new Customers {
+                            Id = reader.GetInt32(0),
+                            FullName = reader.GetString(1),
+                            Email = reader.GetString(2),
+                            PhoneNumber = reader.GetString(3)
+                        };
+                    }
+                    else {
+                        return null;
+                    }
+                }
+            }
+        }
+
+        // Thêm khách hàng mới và trả về ID khách hàng mới tạo (dùng cho đặt bàn)
+        public async Task<int> AddCustomerAsync(Customers customer) {
+            using (var connection = new SqlConnection(_connectionString)) {
+                await connection.OpenAsync();
+                using (var command = new SqlCommand("AddCustomer", connection)) {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@FullName", customer.FullName);
+                    command.Parameters.AddWithValue("@Email", customer.Email);
+                    command.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
+                    var outputIdParam = new SqlParameter("@NewCustomerID", System.Data.SqlDbType.Int) {
+                        Direction = System.Data.ParameterDirection.Output
+                    };
+                    command.Parameters.Add(outputIdParam);
+                    await command.ExecuteNonQueryAsync();
+                    return (int)outputIdParam.Value;
+                }
+            }
+        }
+
+        // Lấy thông tin khách hàng theo tên và số điện thoại
+        public async Task<Customers?> GetCustomerByNameAndPhoneAsync(string fullName, string phoneNumber) {
+            using (var connection = new SqlConnection(_connectionString)) {
+                await connection.OpenAsync();
+                var command = new SqlCommand("SELECT customerId, FullName, Email, PhoneNumber FROM custumers WHERE FullName = @FullName AND PhoneNumber = @PhoneNumber", connection);
+                command.Parameters.AddWithValue("@FullName", fullName);
+                command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+                using (var reader = await command.ExecuteReaderAsync()) {
+                    if (await reader.ReadAsync()) {
+                        return new Customers {
+                            Id = reader.GetInt32(0),
+                            FullName = reader.GetString(1),
+                            Email = reader.GetString(2),
+                            PhoneNumber = reader.GetString(3)
+                        };
+                    }
+                    else {
+                        return null;
+                    }
+                }
+            }
+        }
+    }
+}

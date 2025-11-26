@@ -1,4 +1,7 @@
-﻿using ProjectRestaurant.AdminControl;
+﻿using Autofac;
+using ProjectRestaurant.AdminControl;
+using ProjectRestaurant.DAL.Repositories.Implementations;
+using ProjectRestaurant.DAL.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,16 +11,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace ProjectRestaurant
 {
-    public partial class frmMain : Form
-    {
+    public partial class frmMain : Form {
+        private readonly ILifetimeScope _scope;
+        private readonly IUsersRepository _usersRepository;
+        private Form _currentChildForm;
         public static frmMain instance { get; private set; }
         private Form CurrentChildForm;
-        public frmMain()
-        {
+        public frmMain(ILifetimeScope scope) {
             InitializeComponent();
+            _scope = scope;
             instance = this;
         }
         private void frmMain_Load(object sender, EventArgs e)
@@ -147,10 +153,9 @@ namespace ProjectRestaurant
 
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            FormLogin formLogin = new FormLogin();
+        private void ExitButton_Click(object sender, EventArgs e) {
+            this.Hide();
+            FormLogin formLogin = _scope.Resolve<FormLogin>();
             formLogin.Show();
         }
     }
