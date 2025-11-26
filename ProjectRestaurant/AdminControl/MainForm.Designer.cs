@@ -26,7 +26,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -87,12 +88,12 @@
             ReportsButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ReportsButton.ForeColor = Color.Black;
             ReportsButton.Image = Properties.Resources.ReportBlack;
-            ReportsButton.Location = new Point(806, 8);
+            ReportsButton.Location = new Point(810, 8);
             ReportsButton.Margin = new Padding(1);
             ReportsButton.Name = "ReportsButton";
             ReportsButton.PressedColor = Color.White;
             ReportsButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            ReportsButton.Size = new Size(130, 50);
+            ReportsButton.Size = new Size(131, 50);
             ReportsButton.TabIndex = 15;
             ReportsButton.Text = "Doanh Thu";
             ReportsButton.Click += NavigationButton_Click;
@@ -113,12 +114,12 @@
             EmployeesButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             EmployeesButton.ForeColor = Color.Black;
             EmployeesButton.Image = Properties.Resources.EmployeesBlack;
-            EmployeesButton.Location = new Point(938, 8);
+            EmployeesButton.Location = new Point(943, 8);
             EmployeesButton.Margin = new Padding(1);
             EmployeesButton.Name = "EmployeesButton";
             EmployeesButton.PressedColor = Color.White;
             EmployeesButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            EmployeesButton.Size = new Size(130, 50);
+            EmployeesButton.Size = new Size(131, 50);
             EmployeesButton.TabIndex = 16;
             EmployeesButton.Text = "Nhân Viên";
             EmployeesButton.Click += NavigationButton_Click;
@@ -140,12 +141,12 @@
             CustomerButton.ForeColor = Color.Black;
             CustomerButton.Image = Properties.Resources.CustomerBlack;
             CustomerButton.ImageSize = new Size(40, 40);
-            CustomerButton.Location = new Point(1070, 8);
+            CustomerButton.Location = new Point(1076, 8);
             CustomerButton.Margin = new Padding(1);
             CustomerButton.Name = "CustomerButton";
             CustomerButton.PressedColor = SystemColors.HighlightText;
             CustomerButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            CustomerButton.Size = new Size(130, 50);
+            CustomerButton.Size = new Size(131, 50);
             CustomerButton.TabIndex = 14;
             CustomerButton.Text = "Khách Hàng";
             CustomerButton.Click += NavigationButton_Click;
@@ -161,7 +162,7 @@
             DashboardButton.DisabledState.CustomBorderColor = Color.White;
             DashboardButton.DisabledState.FillColor = Color.White;
             DashboardButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            DashboardButton.FillColor = Color.FromArgb(226, 160, 90);
+            DashboardButton.FillColor = Color.FromArgb(255, 128, 0);
             DashboardButton.FocusedColor = Color.Transparent;
             DashboardButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DashboardButton.ForeColor = Color.White;
@@ -171,7 +172,7 @@
             DashboardButton.Name = "DashboardButton";
             DashboardButton.PressedColor = Color.White;
             DashboardButton.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            DashboardButton.Size = new Size(130, 50);
+            DashboardButton.Size = new Size(131, 50);
             DashboardButton.TabIndex = 9;
             DashboardButton.Text = "Trang Chủ";
             DashboardButton.Click += NavigationButton_Click;
@@ -193,12 +194,12 @@
             TableButton.ForeColor = Color.Black;
             TableButton.Image = Properties.Resources.TableBlack;
             TableButton.ImageSize = new Size(35, 35);
-            TableButton.Location = new Point(674, 8);
+            TableButton.Location = new Point(677, 8);
             TableButton.Margin = new Padding(1);
             TableButton.Name = "TableButton";
             TableButton.PressedColor = Color.White;
             TableButton.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            TableButton.Size = new Size(130, 50);
+            TableButton.Size = new Size(131, 50);
             TableButton.TabIndex = 13;
             TableButton.Text = "Sơ Đồ Bàn";
             TableButton.Click += NavigationButton_Click;
@@ -208,12 +209,12 @@
             TextLabel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             TextLabel1.AutoSize = true;
             TextLabel1.BackColor = Color.White;
-            TextLabel1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TextLabel1.ForeColor = Color.FromArgb(226, 160, 90);
-            TextLabel1.Location = new Point(97, 8);
+            TextLabel1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TextLabel1.ForeColor = Color.FromArgb(255, 128, 0);
+            TextLabel1.Location = new Point(85, 3);
             TextLabel1.Margin = new Padding(1, 0, 1, 0);
             TextLabel1.Name = "TextLabel1";
-            TextLabel1.Size = new Size(179, 50);
+            TextLabel1.Size = new Size(191, 60);
             TextLabel1.TabIndex = 6;
             TextLabel1.Text = "Restaurant Manager";
             // 
@@ -233,12 +234,12 @@
             OrderButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             OrderButton.ForeColor = Color.Black;
             OrderButton.Image = Properties.Resources.OderBlack;
-            OrderButton.Location = new Point(410, 8);
+            OrderButton.Location = new Point(411, 8);
             OrderButton.Margin = new Padding(1);
             OrderButton.Name = "OrderButton";
             OrderButton.PressedColor = Color.White;
             OrderButton.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            OrderButton.Size = new Size(130, 50);
+            OrderButton.Size = new Size(131, 50);
             OrderButton.TabIndex = 12;
             OrderButton.Text = "Đơn Hàng";
             OrderButton.Click += NavigationButton_Click;
@@ -259,12 +260,12 @@
             MenuButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MenuButton.ForeColor = Color.Black;
             MenuButton.Image = Properties.Resources.Menublack;
-            MenuButton.Location = new Point(542, 8);
+            MenuButton.Location = new Point(544, 8);
             MenuButton.Margin = new Padding(1);
             MenuButton.Name = "MenuButton";
             MenuButton.PressedColor = Color.White;
             MenuButton.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            MenuButton.Size = new Size(130, 50);
+            MenuButton.Size = new Size(131, 50);
             MenuButton.TabIndex = 10;
             MenuButton.Text = "Thực Đơn";
             MenuButton.Click += NavigationButton_Click;
@@ -273,28 +274,29 @@
             // 
             BackgroundIcon.BackColor = Color.White;
             BackgroundIcon.BorderColor = Color.White;
-            BackgroundIcon.BorderRadius = 20;
+            BackgroundIcon.BorderRadius = 10;
             BackgroundIcon.Controls.Add(tableLayoutPanel4);
             BackgroundIcon.CustomizableEdges = customizableEdges17;
             BackgroundIcon.Dock = DockStyle.Fill;
-            BackgroundIcon.FillColor = Color.FromArgb(226, 188, 90);
+            BackgroundIcon.FillColor = Color.FromArgb(255, 128, 0);
             BackgroundIcon.FillColor2 = Color.FromArgb(255, 128, 0);
-            BackgroundIcon.FillColor4 = Color.FromArgb(226, 188, 90);
+            BackgroundIcon.FillColor3 = Color.FromArgb(255, 128, 0);
+            BackgroundIcon.FillColor4 = Color.FromArgb(255, 128, 0);
             BackgroundIcon.ForeColor = Color.Transparent;
-            BackgroundIcon.Location = new Point(20, 14);
+            BackgroundIcon.Location = new Point(18, 14);
             BackgroundIcon.Margin = new Padding(1);
             BackgroundIcon.Name = "BackgroundIcon";
             BackgroundIcon.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            BackgroundIcon.Size = new Size(48, 33);
+            BackgroundIcon.Size = new Size(41, 33);
             BackgroundIcon.TabIndex = 4;
             // 
             // tableLayoutPanel4
             // 
             tableLayoutPanel4.BackColor = Color.Transparent;
             tableLayoutPanel4.ColumnCount = 3;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.2448978F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75.5102F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.2448978F));
             tableLayoutPanel4.Controls.Add(IconPictureBox, 1, 1);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(0, 0);
@@ -304,7 +306,7 @@
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanel4.Size = new Size(48, 33);
+            tableLayoutPanel4.Size = new Size(41, 33);
             tableLayoutPanel4.TabIndex = 0;
             // 
             // IconPictureBox
@@ -316,11 +318,11 @@
             IconPictureBox.Image = Properties.Resources.manager__3_;
             IconPictureBox.ImageRotate = 0F;
             IconPictureBox.InitialImage = Properties.Resources.manager;
-            IconPictureBox.Location = new Point(8, 5);
+            IconPictureBox.Location = new Point(6, 5);
             IconPictureBox.Margin = new Padding(1);
             IconPictureBox.Name = "IconPictureBox";
             IconPictureBox.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            IconPictureBox.Size = new Size(31, 21);
+            IconPictureBox.Size = new Size(28, 21);
             IconPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             IconPictureBox.TabIndex = 5;
             IconPictureBox.TabStop = false;
@@ -361,8 +363,8 @@
             // 
             tableLayoutPanel2.BackColor = Color.Transparent;
             tableLayoutPanel2.ColumnCount = 10;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.207207F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 13.5135136F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 6.25931454F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.38152F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.90991F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.90991F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.90991F));
@@ -406,12 +408,12 @@
             ExitButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ExitButton.ForeColor = Color.White;
             ExitButton.ImageSize = new Size(40, 40);
-            ExitButton.Location = new Point(1202, 1);
+            ExitButton.Location = new Point(1209, 9);
             ExitButton.Margin = new Padding(1);
             ExitButton.Name = "ExitButton";
             ExitButton.PressedColor = SystemColors.HighlightText;
             ExitButton.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            ExitButton.Size = new Size(139, 64);
+            ExitButton.Size = new Size(132, 49);
             ExitButton.TabIndex = 17;
             ExitButton.Text = "Đăng Xuất";
             ExitButton.Click += ExitButton_Click;
@@ -431,7 +433,7 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 22F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 56F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 22F));
-            tableLayoutPanel3.Size = new Size(90, 63);
+            tableLayoutPanel3.Size = new Size(78, 63);
             tableLayoutPanel3.TabIndex = 6;
             // 
             // frmMain
@@ -446,7 +448,7 @@
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMain";
-            FormClosed += frmMain_FormClosed;
+            WindowState = FormWindowState.Maximized;
             Load += frmMain_Load;
             BackgroundIcon.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);

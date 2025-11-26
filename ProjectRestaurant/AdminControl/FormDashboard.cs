@@ -138,8 +138,7 @@ namespace ProjectRestaurant.AdminControl
         //
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DateLabel1.Text = DateTime.Now.ToString("dddd dd/MM/yyyy");
-            TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss");
+            TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss tt");
         }
         //
         // Sự kiện click Ảnh Menu
@@ -188,6 +187,11 @@ namespace ProjectRestaurant.AdminControl
         {
             FormEmployee frmEmployee = new FormEmployee();
             frmMain.instance.EmployeesButton.PerformClick();
+        }
+
+        private void doubleBufferedtlp6_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

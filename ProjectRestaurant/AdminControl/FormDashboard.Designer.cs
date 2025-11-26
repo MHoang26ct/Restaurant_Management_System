@@ -170,12 +170,13 @@
             GrandientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             doubleBufferedtlp3 = new DoubleBufferedTLP();
             doubleBufferedtlp4 = new DoubleBufferedTLP();
-            TextLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             TextLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            TextLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             doubleBufferedtlp5 = new DoubleBufferedTLP();
             TimeGradientPanel = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             doubleBufferedtlp6 = new DoubleBufferedTLP();
-            DateLabel1 = new Label();
+            DateLabel = new Label();
+            doubleBufferedtlp48 = new DoubleBufferedTLP();
             TimeLabel = new Label();
             doubleBufferedtlp7 = new DoubleBufferedTLP();
             doubleBufferedtlp24 = new DoubleBufferedTLP();
@@ -231,7 +232,6 @@
             EmployeeIcon1 = new Guna.UI2.WinForms.Guna2PictureBox();
             doubleBufferedtlp39 = new DoubleBufferedTLP();
             ReportIcon4 = new Guna.UI2.WinForms.Guna2PictureBox();
-            DateLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             doubleBufferedtlp32 = new DoubleBufferedTLP();
             CustomerIcon = new Guna.UI2.WinForms.Guna2PictureBox();
             doubleBufferedtlp34 = new DoubleBufferedTLP();
@@ -276,6 +276,7 @@
             doubleBufferedtlp5.SuspendLayout();
             TimeGradientPanel.SuspendLayout();
             doubleBufferedtlp6.SuspendLayout();
+            doubleBufferedtlp48.SuspendLayout();
             doubleBufferedtlp7.SuspendLayout();
             doubleBufferedtlp24.SuspendLayout();
             BlurryEmployeePanel.SuspendLayout();
@@ -1072,9 +1073,9 @@
             doubleBufferedtlp2.Location = new Point(3, 3);
             doubleBufferedtlp2.Name = "doubleBufferedtlp2";
             doubleBufferedtlp2.RowCount = 3;
-            doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 10.0002346F));
-            doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 74.11939F));
-            doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 15.880373F));
+            doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 10.0002308F));
+            doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 74.1194F));
+            doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 15.8803749F));
             doubleBufferedtlp2.Size = new Size(1550, 259);
             doubleBufferedtlp2.TabIndex = 16;
             // 
@@ -1118,8 +1119,8 @@
             doubleBufferedtlp4.ColumnCount = 2;
             doubleBufferedtlp4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 4.95356035F));
             doubleBufferedtlp4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 95.04644F));
-            doubleBufferedtlp4.Controls.Add(TextLabel2, 1, 1);
             doubleBufferedtlp4.Controls.Add(TextLabel1, 1, 0);
+            doubleBufferedtlp4.Controls.Add(TextLabel2, 1, 1);
             doubleBufferedtlp4.Dock = DockStyle.Fill;
             doubleBufferedtlp4.Location = new Point(3, 3);
             doubleBufferedtlp4.Name = "doubleBufferedtlp4";
@@ -1128,18 +1129,6 @@
             doubleBufferedtlp4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             doubleBufferedtlp4.Size = new Size(644, 183);
             doubleBufferedtlp4.TabIndex = 0;
-            // 
-            // TextLabel2
-            // 
-            TextLabel2.BackColor = Color.Transparent;
-            TextLabel2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TextLabel2.ForeColor = Color.Black;
-            TextLabel2.Location = new Point(32, 92);
-            TextLabel2.Margin = new Padding(1);
-            TextLabel2.Name = "TextLabel2";
-            TextLabel2.Size = new Size(415, 27);
-            TextLabel2.TabIndex = 1;
-            TextLabel2.Text = "Đây là tổng quan hoạt động của nhà hàng hôm nay";
             // 
             // TextLabel1
             // 
@@ -1154,11 +1143,23 @@
             TextLabel1.TabIndex = 0;
             TextLabel1.Text = "Chào mừng bạn trở lại ! ";
             // 
+            // TextLabel2
+            // 
+            TextLabel2.BackColor = Color.Transparent;
+            TextLabel2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TextLabel2.ForeColor = Color.Black;
+            TextLabel2.Location = new Point(32, 92);
+            TextLabel2.Margin = new Padding(1);
+            TextLabel2.Name = "TextLabel2";
+            TextLabel2.Size = new Size(415, 27);
+            TextLabel2.TabIndex = 1;
+            TextLabel2.Text = "Đây là tổng quan hoạt động của nhà hàng hôm nay";
+            // 
             // doubleBufferedtlp5
             // 
             doubleBufferedtlp5.ColumnCount = 3;
-            doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
-            doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.8633537F));
+            doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38.04348F));
             doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             doubleBufferedtlp5.Controls.Add(TimeGradientPanel, 1, 1);
             doubleBufferedtlp5.Dock = DockStyle.Fill;
@@ -1179,10 +1180,10 @@
             TimeGradientPanel.CustomizableEdges = customizableEdges33;
             TimeGradientPanel.Dock = DockStyle.Fill;
             TimeGradientPanel.ForeColor = Color.Transparent;
-            TimeGradientPanel.Location = new Point(389, 21);
+            TimeGradientPanel.Location = new Point(337, 21);
             TimeGradientPanel.Name = "TimeGradientPanel";
             TimeGradientPanel.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            TimeGradientPanel.Size = new Size(187, 140);
+            TimeGradientPanel.Size = new Size(239, 140);
             TimeGradientPanel.TabIndex = 0;
             // 
             // doubleBufferedtlp6
@@ -1190,8 +1191,8 @@
             doubleBufferedtlp6.ColumnCount = 1;
             doubleBufferedtlp6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             doubleBufferedtlp6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            doubleBufferedtlp6.Controls.Add(DateLabel1, 0, 0);
-            doubleBufferedtlp6.Controls.Add(TimeLabel, 0, 1);
+            doubleBufferedtlp6.Controls.Add(DateLabel, 0, 0);
+            doubleBufferedtlp6.Controls.Add(doubleBufferedtlp48, 0, 1);
             doubleBufferedtlp6.Dock = DockStyle.Fill;
             doubleBufferedtlp6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             doubleBufferedtlp6.Location = new Point(0, 0);
@@ -1199,29 +1200,50 @@
             doubleBufferedtlp6.RowCount = 2;
             doubleBufferedtlp6.RowStyles.Add(new RowStyle(SizeType.Percent, 49.1228065F));
             doubleBufferedtlp6.RowStyles.Add(new RowStyle(SizeType.Percent, 50.8771935F));
-            doubleBufferedtlp6.Size = new Size(187, 140);
+            doubleBufferedtlp6.Size = new Size(239, 140);
             doubleBufferedtlp6.TabIndex = 0;
+            doubleBufferedtlp6.Paint += doubleBufferedtlp6_Paint;
             // 
-            // DateLabel1
+            // DateLabel
             // 
-            DateLabel1.Anchor = AnchorStyles.Bottom;
-            DateLabel1.AutoSize = true;
-            DateLabel1.ForeColor = Color.Black;
-            DateLabel1.Location = new Point(93, 47);
-            DateLabel1.Name = "DateLabel1";
-            DateLabel1.Size = new Size(0, 21);
-            DateLabel1.TabIndex = 0;
-            DateLabel1.TextAlign = ContentAlignment.MiddleCenter;
+            DateLabel.AutoSize = true;
+            DateLabel.Dock = DockStyle.Fill;
+            DateLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DateLabel.ForeColor = Color.Black;
+            DateLabel.Location = new Point(3, 0);
+            DateLabel.Name = "DateLabel";
+            DateLabel.Size = new Size(233, 68);
+            DateLabel.TabIndex = 11;
+            DateLabel.Text = "Monday ,17/28/2025";
+            DateLabel.TextAlign = ContentAlignment.BottomCenter;
+            // 
+            // doubleBufferedtlp48
+            // 
+            doubleBufferedtlp48.ColumnCount = 3;
+            doubleBufferedtlp48.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            doubleBufferedtlp48.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            doubleBufferedtlp48.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            doubleBufferedtlp48.Controls.Add(TimeLabel, 1, 0);
+            doubleBufferedtlp48.Dock = DockStyle.Fill;
+            doubleBufferedtlp48.Location = new Point(3, 71);
+            doubleBufferedtlp48.Name = "doubleBufferedtlp48";
+            doubleBufferedtlp48.RowCount = 2;
+            doubleBufferedtlp48.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            doubleBufferedtlp48.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            doubleBufferedtlp48.Size = new Size(233, 66);
+            doubleBufferedtlp48.TabIndex = 1;
             // 
             // TimeLabel
             // 
-            TimeLabel.Anchor = AnchorStyles.Top;
             TimeLabel.AutoSize = true;
+            TimeLabel.Dock = DockStyle.Fill;
+            TimeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TimeLabel.ForeColor = Color.Black;
-            TimeLabel.Location = new Point(93, 68);
+            TimeLabel.Location = new Point(26, 0);
             TimeLabel.Name = "TimeLabel";
-            TimeLabel.Size = new Size(0, 21);
-            TimeLabel.TabIndex = 1;
+            TimeLabel.Size = new Size(180, 39);
+            TimeLabel.TabIndex = 2;
+            TimeLabel.Text = "10:00:00";
             TimeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // doubleBufferedtlp7
@@ -1282,9 +1304,9 @@
             doubleBufferedtlp24.Location = new Point(3, 577);
             doubleBufferedtlp24.Name = "doubleBufferedtlp24";
             doubleBufferedtlp24.RowCount = 3;
-            doubleBufferedtlp24.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            doubleBufferedtlp24.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            doubleBufferedtlp24.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            doubleBufferedtlp24.RowStyles.Add(new RowStyle(SizeType.Percent, 11.5131578F));
+            doubleBufferedtlp24.RowStyles.Add(new RowStyle(SizeType.Percent, 65.13158F));
+            doubleBufferedtlp24.RowStyles.Add(new RowStyle(SizeType.Percent, 23.0263157F));
             doubleBufferedtlp24.Size = new Size(1550, 304);
             doubleBufferedtlp24.TabIndex = 18;
             // 
@@ -1297,11 +1319,11 @@
             BlurryEmployeePanel.Dock = DockStyle.Fill;
             BlurryEmployeePanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryEmployeePanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
-            BlurryEmployeePanel.Location = new Point(1189, 213);
+            BlurryEmployeePanel.Location = new Point(1189, 234);
             BlurryEmployeePanel.Margin = new Padding(1);
             BlurryEmployeePanel.Name = "BlurryEmployeePanel";
             BlurryEmployeePanel.ShadowDecoration.CustomizableEdges = customizableEdges42;
-            BlurryEmployeePanel.Size = new Size(199, 90);
+            BlurryEmployeePanel.Size = new Size(199, 69);
             BlurryEmployeePanel.TabIndex = 53;
             // 
             // doubleBufferedtlp35
@@ -1316,7 +1338,7 @@
             doubleBufferedtlp35.RowCount = 2;
             doubleBufferedtlp35.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             doubleBufferedtlp35.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            doubleBufferedtlp35.Size = new Size(199, 90);
+            doubleBufferedtlp35.Size = new Size(199, 69);
             doubleBufferedtlp35.TabIndex = 1;
             doubleBufferedtlp35.Click += EmployeePicture_Click;
             // 
@@ -1331,11 +1353,11 @@
             EmloyeeGradient.FillColor2 = Color.Blue;
             EmloyeeGradient.FillColor3 = Color.FromArgb(128, 128, 255);
             EmloyeeGradient.FillColor4 = Color.FromArgb(128, 128, 255);
-            EmloyeeGradient.Location = new Point(74, 8);
+            EmloyeeGradient.Location = new Point(74, 1);
             EmloyeeGradient.Margin = new Padding(1);
             EmloyeeGradient.Name = "EmloyeeGradient";
             EmloyeeGradient.ShadowDecoration.CustomizableEdges = customizableEdges40;
-            EmloyeeGradient.Size = new Size(50, 45);
+            EmloyeeGradient.Size = new Size(50, 39);
             EmloyeeGradient.TabIndex = 9;
             EmloyeeGradient.Click += EmployeePicture_Click;
             // 
@@ -1353,7 +1375,7 @@
             doubleBufferedtlp47.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             doubleBufferedtlp47.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
             doubleBufferedtlp47.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            doubleBufferedtlp47.Size = new Size(50, 45);
+            doubleBufferedtlp47.Size = new Size(50, 39);
             doubleBufferedtlp47.TabIndex = 19;
             doubleBufferedtlp47.Click += EmployeePicture_Click;
             // 
@@ -1365,11 +1387,11 @@
             EmployeeIcon.FillColor = Color.Transparent;
             EmployeeIcon.Image = Properties.Resources.EmployeesWhite;
             EmployeeIcon.ImageRotate = 0F;
-            EmployeeIcon.Location = new Point(6, 5);
+            EmployeeIcon.Location = new Point(6, 4);
             EmployeeIcon.Margin = new Padding(1);
             EmployeeIcon.Name = "EmployeeIcon";
             EmployeeIcon.ShadowDecoration.CustomizableEdges = customizableEdges38;
-            EmployeeIcon.Size = new Size(38, 34);
+            EmployeeIcon.Size = new Size(38, 29);
             EmployeeIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             EmployeeIcon.TabIndex = 18;
             EmployeeIcon.TabStop = false;
@@ -1383,11 +1405,11 @@
             doubleBufferedtlp45.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             doubleBufferedtlp45.Controls.Add(guna2HtmlLabel8, 1, 0);
             doubleBufferedtlp45.Dock = DockStyle.Fill;
-            doubleBufferedtlp45.Location = new Point(3, 57);
+            doubleBufferedtlp45.Location = new Point(3, 44);
             doubleBufferedtlp45.Name = "doubleBufferedtlp45";
             doubleBufferedtlp45.RowCount = 1;
             doubleBufferedtlp45.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            doubleBufferedtlp45.Size = new Size(193, 30);
+            doubleBufferedtlp45.Size = new Size(193, 22);
             doubleBufferedtlp45.TabIndex = 5;
             // 
             // guna2HtmlLabel8
@@ -1412,11 +1434,11 @@
             BlurryReportPanel.Dock = DockStyle.Fill;
             BlurryReportPanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryReportPanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
-            BlurryReportPanel.Location = new Point(970, 213);
+            BlurryReportPanel.Location = new Point(970, 234);
             BlurryReportPanel.Margin = new Padding(1);
             BlurryReportPanel.Name = "BlurryReportPanel";
             BlurryReportPanel.ShadowDecoration.CustomizableEdges = customizableEdges48;
-            BlurryReportPanel.Size = new Size(199, 90);
+            BlurryReportPanel.Size = new Size(199, 69);
             BlurryReportPanel.TabIndex = 51;
             // 
             // doubleBufferedtlp33
@@ -1431,7 +1453,7 @@
             doubleBufferedtlp33.RowCount = 2;
             doubleBufferedtlp33.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             doubleBufferedtlp33.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            doubleBufferedtlp33.Size = new Size(199, 90);
+            doubleBufferedtlp33.Size = new Size(199, 69);
             doubleBufferedtlp33.TabIndex = 1;
             doubleBufferedtlp33.Click += ReportPicture_Click;
             // 
@@ -1446,11 +1468,11 @@
             ReportGradient.FillColor2 = Color.DarkOrange;
             ReportGradient.FillColor3 = Color.Fuchsia;
             ReportGradient.FillColor4 = Color.Fuchsia;
-            ReportGradient.Location = new Point(74, 8);
+            ReportGradient.Location = new Point(74, 1);
             ReportGradient.Margin = new Padding(1);
             ReportGradient.Name = "ReportGradient";
             ReportGradient.ShadowDecoration.CustomizableEdges = customizableEdges46;
-            ReportGradient.Size = new Size(50, 45);
+            ReportGradient.Size = new Size(50, 39);
             ReportGradient.TabIndex = 8;
             ReportGradient.Click += ReportPicture_Click;
             // 
@@ -1468,7 +1490,7 @@
             doubleBufferedtlp46.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             doubleBufferedtlp46.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
             doubleBufferedtlp46.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            doubleBufferedtlp46.Size = new Size(50, 45);
+            doubleBufferedtlp46.Size = new Size(50, 39);
             doubleBufferedtlp46.TabIndex = 19;
             doubleBufferedtlp46.Click += ReportPicture_Click;
             // 
@@ -1480,11 +1502,11 @@
             ReportIcon.FillColor = Color.Transparent;
             ReportIcon.Image = Properties.Resources.ReportWhite;
             ReportIcon.ImageRotate = 0F;
-            ReportIcon.Location = new Point(6, 5);
+            ReportIcon.Location = new Point(6, 4);
             ReportIcon.Margin = new Padding(1);
             ReportIcon.Name = "ReportIcon";
             ReportIcon.ShadowDecoration.CustomizableEdges = customizableEdges44;
-            ReportIcon.Size = new Size(38, 34);
+            ReportIcon.Size = new Size(38, 29);
             ReportIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             ReportIcon.TabIndex = 18;
             ReportIcon.TabStop = false;
@@ -1498,11 +1520,11 @@
             doubleBufferedtlp44.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             doubleBufferedtlp44.Controls.Add(ReportLabel, 1, 0);
             doubleBufferedtlp44.Dock = DockStyle.Fill;
-            doubleBufferedtlp44.Location = new Point(3, 57);
+            doubleBufferedtlp44.Location = new Point(3, 44);
             doubleBufferedtlp44.Name = "doubleBufferedtlp44";
             doubleBufferedtlp44.RowCount = 1;
             doubleBufferedtlp44.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            doubleBufferedtlp44.Size = new Size(193, 30);
+            doubleBufferedtlp44.Size = new Size(193, 22);
             doubleBufferedtlp44.TabIndex = 7;
             // 
             // ReportLabel
@@ -1527,11 +1549,11 @@
             BlurryCustomerPanel.Dock = DockStyle.Fill;
             BlurryCustomerPanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryCustomerPanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
-            BlurryCustomerPanel.Location = new Point(751, 213);
+            BlurryCustomerPanel.Location = new Point(751, 234);
             BlurryCustomerPanel.Margin = new Padding(1);
             BlurryCustomerPanel.Name = "BlurryCustomerPanel";
             BlurryCustomerPanel.ShadowDecoration.CustomizableEdges = customizableEdges54;
-            BlurryCustomerPanel.Size = new Size(199, 90);
+            BlurryCustomerPanel.Size = new Size(199, 69);
             BlurryCustomerPanel.TabIndex = 49;
             // 
             // doubleBufferedtlp31
@@ -1546,7 +1568,7 @@
             doubleBufferedtlp31.RowCount = 2;
             doubleBufferedtlp31.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             doubleBufferedtlp31.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            doubleBufferedtlp31.Size = new Size(199, 90);
+            doubleBufferedtlp31.Size = new Size(199, 69);
             doubleBufferedtlp31.TabIndex = 1;
             doubleBufferedtlp31.Click += CustomerPicture_Click;
             // 
@@ -1558,11 +1580,11 @@
             doubleBufferedtlp43.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             doubleBufferedtlp43.Controls.Add(CustomerLabel, 1, 0);
             doubleBufferedtlp43.Dock = DockStyle.Fill;
-            doubleBufferedtlp43.Location = new Point(3, 57);
+            doubleBufferedtlp43.Location = new Point(3, 44);
             doubleBufferedtlp43.Name = "doubleBufferedtlp43";
             doubleBufferedtlp43.RowCount = 1;
             doubleBufferedtlp43.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            doubleBufferedtlp43.Size = new Size(193, 30);
+            doubleBufferedtlp43.Size = new Size(193, 22);
             doubleBufferedtlp43.TabIndex = 5;
             // 
             // CustomerLabel
@@ -1589,11 +1611,11 @@
             CustomerGradient.FillColor2 = Color.Red;
             CustomerGradient.FillColor3 = Color.DarkOrange;
             CustomerGradient.FillColor4 = Color.DarkOrange;
-            CustomerGradient.Location = new Point(74, 8);
+            CustomerGradient.Location = new Point(74, 1);
             CustomerGradient.Margin = new Padding(1);
             CustomerGradient.Name = "CustomerGradient";
             CustomerGradient.ShadowDecoration.CustomizableEdges = customizableEdges52;
-            CustomerGradient.Size = new Size(50, 45);
+            CustomerGradient.Size = new Size(50, 39);
             CustomerGradient.TabIndex = 4;
             CustomerGradient.Click += CustomerPicture_Click;
             // 
@@ -1611,7 +1633,7 @@
             doubleBufferedtlp38.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             doubleBufferedtlp38.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
             doubleBufferedtlp38.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            doubleBufferedtlp38.Size = new Size(50, 45);
+            doubleBufferedtlp38.Size = new Size(50, 39);
             doubleBufferedtlp38.TabIndex = 19;
             doubleBufferedtlp38.Click += CustomerPicture_Click;
             // 
@@ -1623,11 +1645,11 @@
             CustomerIcon4.FillColor = Color.Transparent;
             CustomerIcon4.Image = Properties.Resources.CustomerWhite;
             CustomerIcon4.ImageRotate = 0F;
-            CustomerIcon4.Location = new Point(6, 5);
+            CustomerIcon4.Location = new Point(6, 4);
             CustomerIcon4.Margin = new Padding(1);
             CustomerIcon4.Name = "CustomerIcon4";
             CustomerIcon4.ShadowDecoration.CustomizableEdges = customizableEdges50;
-            CustomerIcon4.Size = new Size(38, 34);
+            CustomerIcon4.Size = new Size(38, 29);
             CustomerIcon4.SizeMode = PictureBoxSizeMode.StretchImage;
             CustomerIcon4.TabIndex = 18;
             CustomerIcon4.TabStop = false;
@@ -1642,11 +1664,11 @@
             BlurryTablePanel.Dock = DockStyle.Fill;
             BlurryTablePanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryTablePanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
-            BlurryTablePanel.Location = new Point(532, 213);
+            BlurryTablePanel.Location = new Point(532, 234);
             BlurryTablePanel.Margin = new Padding(1);
             BlurryTablePanel.Name = "BlurryTablePanel";
             BlurryTablePanel.ShadowDecoration.CustomizableEdges = customizableEdges60;
-            BlurryTablePanel.Size = new Size(199, 90);
+            BlurryTablePanel.Size = new Size(199, 69);
             BlurryTablePanel.TabIndex = 47;
             // 
             // doubleBufferedtlp29
@@ -1661,7 +1683,7 @@
             doubleBufferedtlp29.RowCount = 2;
             doubleBufferedtlp29.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             doubleBufferedtlp29.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            doubleBufferedtlp29.Size = new Size(199, 90);
+            doubleBufferedtlp29.Size = new Size(199, 69);
             doubleBufferedtlp29.TabIndex = 1;
             doubleBufferedtlp29.Click += TablePicture_Click;
             // 
@@ -1673,11 +1695,11 @@
             doubleBufferedtlp42.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             doubleBufferedtlp42.Controls.Add(TableLable, 1, 0);
             doubleBufferedtlp42.Dock = DockStyle.Fill;
-            doubleBufferedtlp42.Location = new Point(3, 57);
+            doubleBufferedtlp42.Location = new Point(3, 44);
             doubleBufferedtlp42.Name = "doubleBufferedtlp42";
             doubleBufferedtlp42.RowCount = 1;
             doubleBufferedtlp42.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            doubleBufferedtlp42.Size = new Size(193, 30);
+            doubleBufferedtlp42.Size = new Size(193, 22);
             doubleBufferedtlp42.TabIndex = 5;
             // 
             // TableLable
@@ -1704,11 +1726,11 @@
             TableGradient.FillColor2 = Color.Fuchsia;
             TableGradient.FillColor3 = Color.Fuchsia;
             TableGradient.FillColor4 = Color.FromArgb(255, 128, 255);
-            TableGradient.Location = new Point(74, 8);
+            TableGradient.Location = new Point(74, 1);
             TableGradient.Margin = new Padding(1);
             TableGradient.Name = "TableGradient";
             TableGradient.ShadowDecoration.CustomizableEdges = customizableEdges58;
-            TableGradient.Size = new Size(50, 45);
+            TableGradient.Size = new Size(50, 39);
             TableGradient.TabIndex = 3;
             TableGradient.Click += TablePicture_Click;
             // 
@@ -1726,7 +1748,7 @@
             doubleBufferedtlp30.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             doubleBufferedtlp30.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
             doubleBufferedtlp30.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            doubleBufferedtlp30.Size = new Size(50, 45);
+            doubleBufferedtlp30.Size = new Size(50, 39);
             doubleBufferedtlp30.TabIndex = 19;
             doubleBufferedtlp30.Click += TablePicture_Click;
             // 
@@ -1738,11 +1760,11 @@
             TableIcon.FillColor = Color.Transparent;
             TableIcon.Image = Properties.Resources.TableWhite;
             TableIcon.ImageRotate = 0F;
-            TableIcon.Location = new Point(6, 5);
+            TableIcon.Location = new Point(6, 4);
             TableIcon.Margin = new Padding(1);
             TableIcon.Name = "TableIcon";
             TableIcon.ShadowDecoration.CustomizableEdges = customizableEdges56;
-            TableIcon.Size = new Size(38, 34);
+            TableIcon.Size = new Size(38, 29);
             TableIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             TableIcon.TabIndex = 18;
             TableIcon.TabStop = false;
@@ -1757,11 +1779,11 @@
             BlurryMenuPanel.Dock = DockStyle.Fill;
             BlurryMenuPanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryMenuPanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
-            BlurryMenuPanel.Location = new Point(94, 213);
+            BlurryMenuPanel.Location = new Point(94, 234);
             BlurryMenuPanel.Margin = new Padding(1);
             BlurryMenuPanel.Name = "BlurryMenuPanel";
             BlurryMenuPanel.ShadowDecoration.CustomizableEdges = customizableEdges66;
-            BlurryMenuPanel.Size = new Size(199, 90);
+            BlurryMenuPanel.Size = new Size(199, 69);
             BlurryMenuPanel.TabIndex = 44;
             // 
             // doubleBufferedtlp25
@@ -1778,7 +1800,7 @@
             doubleBufferedtlp25.RowCount = 2;
             doubleBufferedtlp25.RowStyles.Add(new RowStyle(SizeType.Percent, 59.30233F));
             doubleBufferedtlp25.RowStyles.Add(new RowStyle(SizeType.Percent, 40.6976738F));
-            doubleBufferedtlp25.Size = new Size(199, 90);
+            doubleBufferedtlp25.Size = new Size(199, 69);
             doubleBufferedtlp25.TabIndex = 0;
             doubleBufferedtlp25.Click += MenuPicture_Click;
             // 
@@ -1793,11 +1815,11 @@
             MenuGradient.FillColor2 = Color.FromArgb(0, 192, 0);
             MenuGradient.FillColor3 = Color.FromArgb(102, 188, 157);
             MenuGradient.FillColor4 = Color.FromArgb(102, 188, 157);
-            MenuGradient.Location = new Point(74, 7);
+            MenuGradient.Location = new Point(74, 1);
             MenuGradient.Margin = new Padding(1);
             MenuGradient.Name = "MenuGradient";
             MenuGradient.ShadowDecoration.CustomizableEdges = customizableEdges64;
-            MenuGradient.Size = new Size(50, 45);
+            MenuGradient.Size = new Size(50, 38);
             MenuGradient.TabIndex = 3;
             MenuGradient.Click += MenuPicture_Click;
             // 
@@ -1815,7 +1837,7 @@
             doubleBufferedtlp26.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             doubleBufferedtlp26.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
             doubleBufferedtlp26.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            doubleBufferedtlp26.Size = new Size(50, 45);
+            doubleBufferedtlp26.Size = new Size(50, 38);
             doubleBufferedtlp26.TabIndex = 19;
             doubleBufferedtlp26.Click += MenuPicture_Click;
             // 
@@ -1827,11 +1849,11 @@
             MenuIcon1.FillColor = Color.Transparent;
             MenuIcon1.Image = Properties.Resources.Menuwhite;
             MenuIcon1.ImageRotate = 0F;
-            MenuIcon1.Location = new Point(8, 5);
+            MenuIcon1.Location = new Point(8, 4);
             MenuIcon1.Margin = new Padding(1);
             MenuIcon1.Name = "MenuIcon1";
             MenuIcon1.ShadowDecoration.CustomizableEdges = customizableEdges62;
-            MenuIcon1.Size = new Size(35, 34);
+            MenuIcon1.Size = new Size(35, 28);
             MenuIcon1.SizeMode = PictureBoxSizeMode.StretchImage;
             MenuIcon1.TabIndex = 18;
             MenuIcon1.TabStop = false;
@@ -1845,11 +1867,11 @@
             doubleBufferedtlp37.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             doubleBufferedtlp37.Controls.Add(MenuLabel, 1, 0);
             doubleBufferedtlp37.Dock = DockStyle.Fill;
-            doubleBufferedtlp37.Location = new Point(3, 56);
+            doubleBufferedtlp37.Location = new Point(3, 43);
             doubleBufferedtlp37.Name = "doubleBufferedtlp37";
             doubleBufferedtlp37.RowCount = 1;
             doubleBufferedtlp37.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            doubleBufferedtlp37.Size = new Size(193, 31);
+            doubleBufferedtlp37.Size = new Size(193, 23);
             doubleBufferedtlp37.TabIndex = 4;
             // 
             // MenuLabel
@@ -1874,11 +1896,11 @@
             MenuPicture.ErrorImage = null;
             MenuPicture.Image = Properties.Resources.MenuPicture__2_;
             MenuPicture.ImageRotate = 0F;
-            MenuPicture.Location = new Point(94, 31);
+            MenuPicture.Location = new Point(94, 36);
             MenuPicture.Margin = new Padding(1);
             MenuPicture.Name = "MenuPicture";
             MenuPicture.ShadowDecoration.CustomizableEdges = customizableEdges68;
-            MenuPicture.Size = new Size(199, 180);
+            MenuPicture.Size = new Size(199, 196);
             MenuPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             MenuPicture.TabIndex = 33;
             MenuPicture.TabStop = false;
@@ -1894,11 +1916,11 @@
             OrderPicture.ErrorImage = null;
             OrderPicture.Image = Properties.Resources.OrderPicture11;
             OrderPicture.ImageRotate = 0F;
-            OrderPicture.Location = new Point(313, 31);
+            OrderPicture.Location = new Point(313, 36);
             OrderPicture.Margin = new Padding(1);
             OrderPicture.Name = "OrderPicture";
             OrderPicture.ShadowDecoration.CustomizableEdges = customizableEdges70;
-            OrderPicture.Size = new Size(199, 180);
+            OrderPicture.Size = new Size(199, 196);
             OrderPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             OrderPicture.TabIndex = 19;
             OrderPicture.TabStop = false;
@@ -1914,11 +1936,11 @@
             CustomerPicture.ErrorImage = null;
             CustomerPicture.Image = Properties.Resources.CustomerPicture;
             CustomerPicture.ImageRotate = 0F;
-            CustomerPicture.Location = new Point(751, 31);
+            CustomerPicture.Location = new Point(751, 36);
             CustomerPicture.Margin = new Padding(1);
             CustomerPicture.Name = "CustomerPicture";
             CustomerPicture.ShadowDecoration.CustomizableEdges = customizableEdges72;
-            CustomerPicture.Size = new Size(199, 180);
+            CustomerPicture.Size = new Size(199, 196);
             CustomerPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             CustomerPicture.TabIndex = 23;
             CustomerPicture.TabStop = false;
@@ -1934,11 +1956,11 @@
             TablePicture.ErrorImage = null;
             TablePicture.Image = (Image)resources.GetObject("TablePicture.Image");
             TablePicture.ImageRotate = 0F;
-            TablePicture.Location = new Point(532, 31);
+            TablePicture.Location = new Point(532, 36);
             TablePicture.Margin = new Padding(1);
             TablePicture.Name = "TablePicture";
             TablePicture.ShadowDecoration.CustomizableEdges = customizableEdges74;
-            TablePicture.Size = new Size(199, 180);
+            TablePicture.Size = new Size(199, 196);
             TablePicture.SizeMode = PictureBoxSizeMode.StretchImage;
             TablePicture.TabIndex = 21;
             TablePicture.TabStop = false;
@@ -1954,11 +1976,11 @@
             ReportPicture.ErrorImage = null;
             ReportPicture.Image = Properties.Resources.ReportPictute;
             ReportPicture.ImageRotate = 0F;
-            ReportPicture.Location = new Point(970, 31);
+            ReportPicture.Location = new Point(970, 36);
             ReportPicture.Margin = new Padding(1);
             ReportPicture.Name = "ReportPicture";
             ReportPicture.ShadowDecoration.CustomizableEdges = customizableEdges76;
-            ReportPicture.Size = new Size(199, 180);
+            ReportPicture.Size = new Size(199, 196);
             ReportPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             ReportPicture.TabIndex = 28;
             ReportPicture.TabStop = false;
@@ -1974,11 +1996,11 @@
             EmployeePicture.ErrorImage = null;
             EmployeePicture.Image = Properties.Resources.EmployeePicture;
             EmployeePicture.ImageRotate = 0F;
-            EmployeePicture.Location = new Point(1189, 31);
+            EmployeePicture.Location = new Point(1189, 36);
             EmployeePicture.Margin = new Padding(1);
             EmployeePicture.Name = "EmployeePicture";
             EmployeePicture.ShadowDecoration.CustomizableEdges = customizableEdges78;
-            EmployeePicture.Size = new Size(199, 180);
+            EmployeePicture.Size = new Size(199, 196);
             EmployeePicture.SizeMode = PictureBoxSizeMode.StretchImage;
             EmployeePicture.TabIndex = 30;
             EmployeePicture.TabStop = false;
@@ -1994,11 +2016,11 @@
             BlurryOrderPanel.Dock = DockStyle.Fill;
             BlurryOrderPanel.FillColor = Color.FromArgb(150, 0, 0, 0);
             BlurryOrderPanel.FillColor2 = Color.FromArgb(150, 0, 0, 0);
-            BlurryOrderPanel.Location = new Point(313, 213);
+            BlurryOrderPanel.Location = new Point(313, 234);
             BlurryOrderPanel.Margin = new Padding(1);
             BlurryOrderPanel.Name = "BlurryOrderPanel";
             BlurryOrderPanel.ShadowDecoration.CustomizableEdges = customizableEdges84;
-            BlurryOrderPanel.Size = new Size(199, 90);
+            BlurryOrderPanel.Size = new Size(199, 69);
             BlurryOrderPanel.TabIndex = 31;
             BlurryOrderPanel.Click += OrderPicture_Click;
             // 
@@ -2014,7 +2036,7 @@
             doubleBufferedtlp27.RowCount = 2;
             doubleBufferedtlp27.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             doubleBufferedtlp27.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            doubleBufferedtlp27.Size = new Size(199, 90);
+            doubleBufferedtlp27.Size = new Size(199, 69);
             doubleBufferedtlp27.TabIndex = 1;
             doubleBufferedtlp27.Click += OrderPicture_Click;
             // 
@@ -2026,11 +2048,11 @@
             doubleBufferedtlp41.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             doubleBufferedtlp41.Controls.Add(OrderLabel, 1, 0);
             doubleBufferedtlp41.Dock = DockStyle.Fill;
-            doubleBufferedtlp41.Location = new Point(3, 57);
+            doubleBufferedtlp41.Location = new Point(3, 44);
             doubleBufferedtlp41.Name = "doubleBufferedtlp41";
             doubleBufferedtlp41.RowCount = 1;
             doubleBufferedtlp41.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            doubleBufferedtlp41.Size = new Size(193, 30);
+            doubleBufferedtlp41.Size = new Size(193, 22);
             doubleBufferedtlp41.TabIndex = 5;
             // 
             // OrderLabel
@@ -2057,11 +2079,11 @@
             OrderGradient.FillColor2 = Color.Gold;
             OrderGradient.FillColor3 = Color.Khaki;
             OrderGradient.FillColor4 = Color.Khaki;
-            OrderGradient.Location = new Point(74, 8);
+            OrderGradient.Location = new Point(74, 1);
             OrderGradient.Margin = new Padding(1);
             OrderGradient.Name = "OrderGradient";
             OrderGradient.ShadowDecoration.CustomizableEdges = customizableEdges82;
-            OrderGradient.Size = new Size(50, 45);
+            OrderGradient.Size = new Size(50, 39);
             OrderGradient.TabIndex = 3;
             OrderGradient.Click += OrderPicture_Click;
             // 
@@ -2079,7 +2101,7 @@
             doubleBufferedtlp28.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             doubleBufferedtlp28.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
             doubleBufferedtlp28.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            doubleBufferedtlp28.Size = new Size(50, 45);
+            doubleBufferedtlp28.Size = new Size(50, 39);
             doubleBufferedtlp28.TabIndex = 19;
             doubleBufferedtlp28.Click += OrderPicture_Click;
             // 
@@ -2091,11 +2113,11 @@
             OrderIcon.FillColor = Color.Transparent;
             OrderIcon.Image = Properties.Resources.OrderWhite;
             OrderIcon.ImageRotate = 0F;
-            OrderIcon.Location = new Point(6, 5);
+            OrderIcon.Location = new Point(6, 4);
             OrderIcon.Margin = new Padding(1);
             OrderIcon.Name = "OrderIcon";
             OrderIcon.ShadowDecoration.CustomizableEdges = customizableEdges80;
-            OrderIcon.Size = new Size(38, 34);
+            OrderIcon.Size = new Size(38, 29);
             OrderIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             OrderIcon.TabIndex = 18;
             OrderIcon.TabStop = false;
@@ -2168,19 +2190,6 @@
             ReportIcon4.SizeMode = PictureBoxSizeMode.StretchImage;
             ReportIcon4.TabIndex = 18;
             ReportIcon4.TabStop = false;
-            // 
-            // DateLabel
-            // 
-            DateLabel.Anchor = AnchorStyles.Bottom;
-            DateLabel.BackColor = Color.Transparent;
-            DateLabel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DateLabel.ForeColor = Color.Black;
-            DateLabel.Location = new Point(8, 34);
-            DateLabel.Margin = new Padding(1);
-            DateLabel.Name = "DateLabel";
-            DateLabel.Size = new Size(171, 22);
-            DateLabel.TabIndex = 2;
-            DateLabel.Text = "Wednesday,13/10/2025";
             // 
             // doubleBufferedtlp32
             // 
@@ -2315,6 +2324,8 @@
             TimeGradientPanel.ResumeLayout(false);
             doubleBufferedtlp6.ResumeLayout(false);
             doubleBufferedtlp6.PerformLayout();
+            doubleBufferedtlp48.ResumeLayout(false);
+            doubleBufferedtlp48.PerformLayout();
             doubleBufferedtlp7.ResumeLayout(false);
             doubleBufferedtlp24.ResumeLayout(false);
             BlurryEmployeePanel.ResumeLayout(false);
@@ -2387,7 +2398,6 @@
         private Label LabelOfReport3;
         private Guna.UI2.WinForms.Guna2HtmlLabel LabelOfReport2;
         private DoubleBufferedTLP doubleBufferedtlp1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel DateLabel;
         private DoubleBufferedTLP doubleBufferedtlp2;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel GrandientPanel1;
         private DoubleBufferedTLP doubleBufferedtlp3;
@@ -2397,8 +2407,6 @@
         private DoubleBufferedTLP doubleBufferedtlp5;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel TimeGradientPanel;
         private DoubleBufferedTLP doubleBufferedtlp6;
-        private Label DateLabel1;
-        private Label TimeLabel;
         private DoubleBufferedTLP doubleBufferedtlp7;
         private DoubleBufferedTLP doubleBufferedtlp8;
         private DoubleBufferedTLP doubleBufferedtlp9;
@@ -2504,5 +2512,8 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel EmloyeeGradient;
         private DoubleBufferedTLP doubleBufferedtlp47;
         private Guna.UI2.WinForms.Guna2PictureBox EmployeeIcon;
+        private DoubleBufferedTLP doubleBufferedtlp48;
+        private Label TimeLabel;
+        private Label DateLabel;
     }
 }

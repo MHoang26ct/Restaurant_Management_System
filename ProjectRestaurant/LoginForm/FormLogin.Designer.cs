@@ -26,7 +26,8 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
@@ -233,7 +234,6 @@
             // 
             // PasswordTextbox
             // 
-            resources.ApplyResources(PasswordTextbox, "PasswordTextbox");
             PasswordTextbox.BorderColor = Color.Silver;
             PasswordTextbox.BorderRadius = 10;
             PasswordTextbox.BorderThickness = 2;
@@ -243,6 +243,7 @@
             PasswordTextbox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             PasswordTextbox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             PasswordTextbox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            resources.ApplyResources(PasswordTextbox, "PasswordTextbox");
             PasswordTextbox.FillColor = Color.Black;
             PasswordTextbox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             PasswordTextbox.ForeColor = Color.White;
@@ -274,7 +275,6 @@
             // 
             // UsernameTextbox
             // 
-            resources.ApplyResources(UsernameTextbox, "UsernameTextbox");
             UsernameTextbox.BorderColor = Color.Silver;
             UsernameTextbox.BorderRadius = 10;
             UsernameTextbox.BorderThickness = 2;
@@ -284,6 +284,7 @@
             UsernameTextbox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             UsernameTextbox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             UsernameTextbox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            resources.ApplyResources(UsernameTextbox, "UsernameTextbox");
             UsernameTextbox.FillColor = Color.Black;
             UsernameTextbox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             UsernameTextbox.ForeColor = Color.White;
@@ -341,6 +342,7 @@
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(BackgroundPanel);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "FormLogin";
             FormClosed += FormLogin_FormClosed;
