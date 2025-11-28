@@ -88,7 +88,7 @@
             ReportsButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ReportsButton.ForeColor = Color.Black;
             ReportsButton.Image = Properties.Resources.ReportBlack;
-            ReportsButton.Location = new Point(810, 8);
+            ReportsButton.Location = new Point(810, 5);
             ReportsButton.Margin = new Padding(1);
             ReportsButton.Name = "ReportsButton";
             ReportsButton.PressedColor = Color.White;
@@ -114,7 +114,7 @@
             EmployeesButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             EmployeesButton.ForeColor = Color.Black;
             EmployeesButton.Image = Properties.Resources.EmployeesBlack;
-            EmployeesButton.Location = new Point(943, 8);
+            EmployeesButton.Location = new Point(943, 5);
             EmployeesButton.Margin = new Padding(1);
             EmployeesButton.Name = "EmployeesButton";
             EmployeesButton.PressedColor = Color.White;
@@ -141,7 +141,7 @@
             CustomerButton.ForeColor = Color.Black;
             CustomerButton.Image = Properties.Resources.CustomerBlack;
             CustomerButton.ImageSize = new Size(40, 40);
-            CustomerButton.Location = new Point(1076, 8);
+            CustomerButton.Location = new Point(1076, 5);
             CustomerButton.Margin = new Padding(1);
             CustomerButton.Name = "CustomerButton";
             CustomerButton.PressedColor = SystemColors.HighlightText;
@@ -167,7 +167,7 @@
             DashboardButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DashboardButton.ForeColor = Color.White;
             DashboardButton.Image = Properties.Resources.DashboardWhite;
-            DashboardButton.Location = new Point(278, 8);
+            DashboardButton.Location = new Point(278, 5);
             DashboardButton.Margin = new Padding(1);
             DashboardButton.Name = "DashboardButton";
             DashboardButton.PressedColor = Color.White;
@@ -194,7 +194,7 @@
             TableButton.ForeColor = Color.Black;
             TableButton.Image = Properties.Resources.TableBlack;
             TableButton.ImageSize = new Size(35, 35);
-            TableButton.Location = new Point(677, 8);
+            TableButton.Location = new Point(677, 5);
             TableButton.Margin = new Padding(1);
             TableButton.Name = "TableButton";
             TableButton.PressedColor = Color.White;
@@ -211,7 +211,7 @@
             TextLabel1.BackColor = Color.White;
             TextLabel1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TextLabel1.ForeColor = Color.FromArgb(255, 128, 0);
-            TextLabel1.Location = new Point(85, 3);
+            TextLabel1.Location = new Point(85, 0);
             TextLabel1.Margin = new Padding(1, 0, 1, 0);
             TextLabel1.Name = "TextLabel1";
             TextLabel1.Size = new Size(191, 60);
@@ -234,7 +234,7 @@
             OrderButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             OrderButton.ForeColor = Color.Black;
             OrderButton.Image = Properties.Resources.OderBlack;
-            OrderButton.Location = new Point(411, 8);
+            OrderButton.Location = new Point(411, 5);
             OrderButton.Margin = new Padding(1);
             OrderButton.Name = "OrderButton";
             OrderButton.PressedColor = Color.White;
@@ -260,7 +260,7 @@
             MenuButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MenuButton.ForeColor = Color.Black;
             MenuButton.Image = Properties.Resources.Menublack;
-            MenuButton.Location = new Point(544, 8);
+            MenuButton.Location = new Point(544, 5);
             MenuButton.Margin = new Padding(1);
             MenuButton.Name = "MenuButton";
             MenuButton.PressedColor = Color.White;
@@ -283,11 +283,11 @@
             BackgroundIcon.FillColor3 = Color.FromArgb(255, 128, 0);
             BackgroundIcon.FillColor4 = Color.FromArgb(255, 128, 0);
             BackgroundIcon.ForeColor = Color.Transparent;
-            BackgroundIcon.Location = new Point(18, 14);
+            BackgroundIcon.Location = new Point(12, 9);
             BackgroundIcon.Margin = new Padding(1);
             BackgroundIcon.Name = "BackgroundIcon";
             BackgroundIcon.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            BackgroundIcon.Size = new Size(41, 33);
+            BackgroundIcon.Size = new Size(52, 37);
             BackgroundIcon.TabIndex = 4;
             // 
             // tableLayoutPanel4
@@ -306,7 +306,7 @@
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanel4.Size = new Size(41, 33);
+            tableLayoutPanel4.Size = new Size(52, 37);
             tableLayoutPanel4.TabIndex = 0;
             // 
             // IconPictureBox
@@ -318,11 +318,11 @@
             IconPictureBox.Image = Properties.Resources.manager__3_;
             IconPictureBox.ImageRotate = 0F;
             IconPictureBox.InitialImage = Properties.Resources.manager;
-            IconPictureBox.Location = new Point(6, 5);
+            IconPictureBox.Location = new Point(7, 6);
             IconPictureBox.Margin = new Padding(1);
             IconPictureBox.Name = "IconPictureBox";
             IconPictureBox.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            IconPictureBox.Size = new Size(28, 21);
+            IconPictureBox.Size = new Size(37, 23);
             IconPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             IconPictureBox.TabIndex = 5;
             IconPictureBox.TabStop = false;
@@ -332,11 +332,6 @@
             tableLayoutPanel1.BackColor = Color.White;
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
             tableLayoutPanel1.Controls.Add(MainPanel, 0, 1);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
@@ -345,18 +340,18 @@
             tableLayoutPanel1.Margin = new Padding(1);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 11F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 89F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
             tableLayoutPanel1.Size = new Size(1344, 631);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // MainPanel
             // 
             MainPanel.Dock = DockStyle.Fill;
-            MainPanel.Location = new Point(1, 70);
+            MainPanel.Location = new Point(1, 64);
             MainPanel.Margin = new Padding(1);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(1342, 560);
+            MainPanel.Size = new Size(1342, 566);
             MainPanel.TabIndex = 17;
             // 
             // tableLayoutPanel2
@@ -389,7 +384,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1342, 67);
+            tableLayoutPanel2.Size = new Size(1342, 61);
             tableLayoutPanel2.TabIndex = 18;
             // 
             // ExitButton
@@ -408,7 +403,7 @@
             ExitButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ExitButton.ForeColor = Color.White;
             ExitButton.ImageSize = new Size(40, 40);
-            ExitButton.Location = new Point(1209, 9);
+            ExitButton.Location = new Point(1209, 6);
             ExitButton.Margin = new Padding(1);
             ExitButton.Name = "ExitButton";
             ExitButton.PressedColor = SystemColors.HighlightText;
@@ -421,19 +416,19 @@
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 3;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 56F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             tableLayoutPanel3.Controls.Add(BackgroundIcon, 1, 1);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(3, 2);
             tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 3;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 22F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 56F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 22F));
-            tableLayoutPanel3.Size = new Size(78, 63);
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            tableLayoutPanel3.Size = new Size(78, 57);
             tableLayoutPanel3.TabIndex = 6;
             // 
             // frmMain

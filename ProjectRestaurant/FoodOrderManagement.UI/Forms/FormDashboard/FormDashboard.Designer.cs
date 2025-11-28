@@ -1243,7 +1243,6 @@
             TimeLabel.Name = "TimeLabel";
             TimeLabel.Size = new Size(180, 39);
             TimeLabel.TabIndex = 2;
-            TimeLabel.Text = "10:00:00";
             TimeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // doubleBufferedtlp7

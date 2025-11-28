@@ -69,11 +69,6 @@ namespace ProjectRestaurant
 
             }
         }
-
-        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void UsernameTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -166,6 +161,5 @@ namespace ProjectRestaurant
                 RememberBox.CheckState = CheckState.Unchecked;
             }
         }
-
     }
 }
