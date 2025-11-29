@@ -23,16 +23,6 @@ namespace ProjectRestaurant
             _scope = scope;
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void IconPanel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
         {
 
@@ -69,25 +59,6 @@ namespace ProjectRestaurant
 
             }
         }
-        private void UsernameTextbox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                PasswordTextbox.Focus(); // Tự động nhảy xuống password khi Enter
-            }
-
-            if (!char.IsControl(e.KeyChar) && e.KeyChar > 127)
-                e.Handled = true;
-        }
-        private void PasswordTextbox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                ContinueButton_Click(sender, e);
-            }
-            if (!char.IsControl(e.KeyChar) && e.KeyChar > 127)
-                e.Handled = true;
-        }
 
         private async void ContinueButton_Click(object sender, EventArgs e)
         {
@@ -121,11 +92,6 @@ namespace ProjectRestaurant
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng, vui lòng nhập lại", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void tableLayoutPanel11_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void ShowPWBox_CheckedChanged(object sender, EventArgs e)
