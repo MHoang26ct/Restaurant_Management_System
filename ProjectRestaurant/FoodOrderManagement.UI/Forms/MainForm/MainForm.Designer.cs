@@ -444,6 +444,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMain";
             WindowState = FormWindowState.Maximized;
+            FormClosed += frmMain_FormClosed;
             Load += frmMain_Load;
             BackgroundIcon.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);

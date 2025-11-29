@@ -16,12 +16,14 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace ProjectRestaurant
 {
-    public partial class frmMain : Form {
+    public partial class frmMain : Form
+    {
         private readonly ILifetimeScope _scope;
         private readonly IUsersRepository _usersRepository;
         public static frmMain instance { get; private set; }
         private Form CurrentChildForm;
-        public frmMain(ILifetimeScope scope) {
+        public frmMain(ILifetimeScope scope)
+        {
             InitializeComponent();
             _scope = scope;
             instance = this;
@@ -112,7 +114,7 @@ namespace ProjectRestaurant
             if (ClickedButton.Name == "DashboardButton")
             {
                 ClickedButton.Image = Properties.Resources.DashboardWhite;
-                FormDashboard frmDashboard =    _scope.Resolve<FormDashboard>();
+                FormDashboard frmDashboard = _scope.Resolve<FormDashboard>();
                 OpenChildForm(frmDashboard); // Mở FormDashBoard
             }
             //Menu
@@ -160,10 +162,16 @@ namespace ProjectRestaurant
 
         }
 
-        private void ExitButton_Click(object sender, EventArgs e) {
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
             this.Hide();
             FormLogin formLogin = _scope.Resolve<FormLogin>();
             formLogin.Show();
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
