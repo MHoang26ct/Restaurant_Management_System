@@ -58,6 +58,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="FoodOrderManagement.BLL\Validators\" />
 	  <Folder Include="FoodOrderManagement.UI\Forms\MenuManagement\Images\" />
 	</ItemGroup>
 

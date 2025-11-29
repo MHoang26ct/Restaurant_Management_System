@@ -156,8 +156,8 @@
             PriceTBox.ShadowDecoration.CustomizableEdges = customizableEdges2;
             PriceTBox.Size = new Size(432, 39);
             PriceTBox.TabIndex = 1;
-            PriceTBox.Enter += PriceTBox_Enter;
-            PriceTBox.Leave += PriceTBox_Leave;
+            PriceTBox.Enter += this.PriceTBox_Enter;
+            PriceTBox.Leave += this.PriceTBox_Leave;
             // 
             // Label4
             // 
@@ -264,8 +264,8 @@
             NameFoodTBox.ShadowDecoration.CustomizableEdges = customizableEdges6;
             NameFoodTBox.Size = new Size(432, 38);
             NameFoodTBox.TabIndex = 1;
-            NameFoodTBox.Enter += NameFoodTBox_Enter;
-            NameFoodTBox.Leave += NameFoodTBox_Leave;
+            NameFoodTBox.Enter += this.NameFoodTBox_Enter;
+            NameFoodTBox.Leave += this.NameFoodTBox_Leave;
             // 
             // Label2
             // 
@@ -376,7 +376,7 @@
             ChoosePictureButton.Size = new Size(438, 45);
             ChoosePictureButton.TabIndex = 2;
             ChoosePictureButton.Text = "Chọn ảnh ";
-            ChoosePictureButton.Click += ChoosePictureButton_Click;
+            ChoosePictureButton.Click += this.ChoosePictureButton_Click;
             // 
             // doubleBufferedtlp7
             // 
@@ -421,7 +421,7 @@
             ExitButton.Size = new Size(38, 30);
             ExitButton.TabIndex = 2;
             ExitButton.Text = "X";
-            ExitButton.Click += ExitButton_Click;
+            ExitButton.Click += this.ExitButton_Click;
             // 
             // AddFoodButton
             // 
@@ -443,7 +443,7 @@
             AddFoodButton.Size = new Size(346, 43);
             AddFoodButton.TabIndex = 16;
             AddFoodButton.Text = "Thêm Món Ăn";
-            AddFoodButton.Click += AddFoodButton_Click;
+            AddFoodButton.Click += this.AddFoodButton_Click;
             // 
             // UC_AddFood
             // 
