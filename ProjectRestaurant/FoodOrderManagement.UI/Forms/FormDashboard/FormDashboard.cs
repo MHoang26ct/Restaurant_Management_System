@@ -9,17 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Autofac;
+using ProjectRestaurant.DAL.Repositories.Interfaces;
 namespace ProjectRestaurant.AdminControl
 {
     public partial class FormDashboard : Form
     {
         // Lưu lại toàn bộ control với địa chỉ của chúng ban đầu
         private Dictionary<Control, Padding> DiOriginalLocations = new Dictionary<Control, Padding>();
-        public FormDashboard()
+        private readonly ILifetimeScope _scope;
+        public FormDashboard(ILifetimeScope scope)
         {
 
             InitializeComponent();
+            _scope = scope;
             //
             // MenuPicture
             //
@@ -146,7 +149,7 @@ namespace ProjectRestaurant.AdminControl
         //
         private void MenuPicture_Click(object sender, EventArgs e)
         {
-            FrmMenu frmMenu = new FrmMenu();
+            FrmMenu frmMenu = _scope.Resolve<FrmMenu>();
             frmMain.instance.MenuButton.PerformClick(); // Chỉnh modifiers của Menubutton thành public rồi gọi 
         }
         //

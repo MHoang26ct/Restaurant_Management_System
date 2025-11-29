@@ -23,7 +23,10 @@ namespace ProjectRestaurant.DAL.Repositories.Implementations {
                         var food = new Foods {
                             Id = reader.GetInt32(0),
                             Name = reader.GetString(1),
-                            Price = reader.GetInt32(2)
+                            Price = reader.GetDecimal(2),
+                            Category = reader.GetString(3),
+                            ImagePath = reader.GetString(4),
+                            Description = reader.GetString(5)
                         };
                         foodsList.Add(food);
                     }
@@ -44,7 +47,10 @@ namespace ProjectRestaurant.DAL.Repositories.Implementations {
                             food = new Foods {
                                 Id = reader.GetInt32(0),
                                 Name = reader.GetString(1),
-                                Price = reader.GetInt32(2)
+                                Price = reader.GetDecimal(2),
+                                Category = reader.GetString(3),
+                                ImagePath = reader.GetString(4),
+                                Description = reader.GetString(5)
                             };
                         }
                     }
@@ -62,6 +68,9 @@ namespace ProjectRestaurant.DAL.Repositories.Implementations {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@FoodName", food.Name);
                     command.Parameters.AddWithValue("@Price", food.Price);
+                    command.Parameters.AddWithValue("@Category", food.Category);
+                    command.Parameters.AddWithValue("@ImagePath", food.ImagePath);
+                    command.Parameters.AddWithValue("@Description", food.Description);
                     var outputIdParam = new SqlParameter("@NewFoodID", System.Data.SqlDbType.Int) {
                         Direction = System.Data.ParameterDirection.Output
                     };
@@ -82,6 +91,9 @@ namespace ProjectRestaurant.DAL.Repositories.Implementations {
                     command.Parameters.AddWithValue("@FoodID", food.Id);
                     command.Parameters.AddWithValue("@FoodName", food.Name);
                     command.Parameters.AddWithValue("@Price", food.Price);
+                    command.Parameters.AddWithValue("@Category", food.Category);
+                    command.Parameters.AddWithValue("@ImagePath", food.ImagePath);
+                    command.Parameters.AddWithValue("@Description", food.Description);
                     await command.ExecuteNonQueryAsync();
                 }
             }

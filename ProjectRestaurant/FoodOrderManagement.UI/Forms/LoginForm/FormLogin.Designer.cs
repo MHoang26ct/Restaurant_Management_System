@@ -296,6 +296,7 @@
             UsernameTextbox.PlaceholderText = "Username";
             UsernameTextbox.SelectedText = "";
             UsernameTextbox.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            UsernameTextbox.TextChanged += UsernameTextbox_TextChanged;
             UsernameTextbox.Enter += TextUsername_Enter;
             UsernameTextbox.Leave += TextUsername_Leave;
             // 

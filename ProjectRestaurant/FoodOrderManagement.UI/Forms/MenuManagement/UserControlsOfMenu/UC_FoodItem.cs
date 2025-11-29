@@ -16,7 +16,7 @@ namespace ProjectRestaurant.AdminControl.FormMenu
 {
     public partial class UC_FoodItem : UserControl
     {
-
+        public int FoodId { get; set; }
         public UC_FoodItem()
         {
             InitializeComponent();
@@ -25,14 +25,15 @@ namespace ProjectRestaurant.AdminControl.FormMenu
         //
         // Hàm Truyền dữ liệu 
         //
-        public void SetData(string name, string Catagories, string price, string Description, string PictureName)
+        public void SetData(int Id, string name, string price, string Catagories, string PicturePath, string Description)
         {
             FoodNameLabel.Text = name;
             CatagoriesButton.Text = Catagories;
             FoodPriceLabel.Text = price;
             FoodDesciptionLabel.Text = Description;
+            FoodId = Id;
 
-            string path = Path.Combine(Application.StartupPath, "Images", PictureName);
+            string path = Path.Combine(Application.StartupPath, PicturePath);
             if (File.Exists(path)) // Kiểm tra xem người dùng có truyền ảnh vào không
             {
                 using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
@@ -55,6 +56,11 @@ namespace ProjectRestaurant.AdminControl.FormMenu
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             OnDeleteClicked?.Invoke(this, EventArgs.Empty);
+        }
+        public event EventHandler OnEditClicked;
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            OnEditClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

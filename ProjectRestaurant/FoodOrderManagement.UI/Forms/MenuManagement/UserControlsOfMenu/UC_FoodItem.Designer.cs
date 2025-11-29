@@ -290,6 +290,7 @@
             EditButton.Size = new Size(125, 41);
             EditButton.TabIndex = 0;
             EditButton.Text = "Edit";
+            EditButton.Click += EditButton_Click;
             // 
             // FoodDesciptionLabel
             // 

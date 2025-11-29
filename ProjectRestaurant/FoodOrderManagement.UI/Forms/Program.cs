@@ -1,4 +1,5 @@
 using Autofac;
+using ProjectRestaurant.AdminControl.FormMenu;
 using ProjectRestaurant.DAL.Repositories.Implementations;
 using ProjectRestaurant.DAL.Repositories.Interfaces;
 using ProjectRestaurant.FoodOrderManagement.UI.Forms.MenuManagement;
@@ -36,7 +37,8 @@ namespace ProjectRestaurant.AdminControl {
             builder.RegisterType<FormCustomer>();
             builder.RegisterType<FormReport>();
             builder.RegisterType<FormEmployee>();
-
+            builder.RegisterType<UC_AddFood>();
+            builder.RegisterType<UC_FoodItem>();
 
             // 3. Xây dựng Container
             var container = builder.Build();

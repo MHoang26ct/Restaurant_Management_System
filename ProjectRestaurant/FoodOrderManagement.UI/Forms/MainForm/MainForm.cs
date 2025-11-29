@@ -2,6 +2,7 @@
 using ProjectRestaurant.AdminControl;
 using ProjectRestaurant.DAL.Repositories.Implementations;
 using ProjectRestaurant.DAL.Repositories.Interfaces;
+using ProjectRestaurant.FoodOrderManagement.UI.Forms.MenuManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,6 @@ namespace ProjectRestaurant
     public partial class frmMain : Form {
         private readonly ILifetimeScope _scope;
         private readonly IUsersRepository _usersRepository;
-        private Form _currentChildForm;
         public static frmMain instance { get; private set; }
         private Form CurrentChildForm;
         public frmMain(ILifetimeScope scope) {
@@ -112,43 +112,50 @@ namespace ProjectRestaurant
             if (ClickedButton.Name == "DashboardButton")
             {
                 ClickedButton.Image = Properties.Resources.DashboardWhite;
-                OpenChildForm(new FormDashboard()); // Mở FormDashBoard
+                FormDashboard frmDashboard =    _scope.Resolve<FormDashboard>();
+                OpenChildForm(frmDashboard); // Mở FormDashBoard
             }
             //Menu
             else if (ClickedButton.Name == "MenuButton")
             {
                 ClickedButton.Image = Properties.Resources.Menuwhite;
-                OpenChildForm(new FoodOrderManagement.UI.Forms.MenuManagement.FrmMenu()); // Mở FormMenu
+                FrmMenu frmMenu = _scope.Resolve<FrmMenu>();
+                OpenChildForm(frmMenu); // Mở FormMenu
             }
             //Order
             else if (ClickedButton.Name == "OrderButton")
             {
                 ClickedButton.Image = Properties.Resources.OrderWhite;
-                OpenChildForm(new FormOrder()); // Mở FormOrder
+                FormOrder frmOrder = _scope.Resolve<FormOrder>();
+                OpenChildForm(frmOrder); // Mở FormOrder
             }
             //Table
             else if (ClickedButton.Name == "TableButton")
             {
                 ClickedButton.Image = Properties.Resources.TableWhite;
-                OpenChildForm(new FormTable()); // Mở FormTable
+                FormTable frmTable = _scope.Resolve<FormTable>();
+                OpenChildForm(frmTable); // Mở FormTable
             }
             //Customer
             else if (ClickedButton.Name == "CustomerButton")
             {
                 ClickedButton.Image = Properties.Resources.CustomerWhite;
-                OpenChildForm(new FormCustomer());// Mở FormCustomer
+                FormCustomer frmCustomer = _scope.Resolve<FormCustomer>();
+                OpenChildForm(frmCustomer);// Mở FormCustomer
             }
             //Reports 
             else if (ClickedButton.Name == "ReportsButton")
             {
                 ClickedButton.Image = Properties.Resources.ReportWhite;
-                OpenChildForm(new FormReport());// Mở FormReports
+                FormReport frmReport = _scope.Resolve<FormReport>();
+                OpenChildForm(frmReport);// Mở FormReports
             }
             //Employees
             else if (ClickedButton.Name == "EmployeesButton")
             {
                 ClickedButton.Image = Properties.Resources.EmployeesWhite;
-                OpenChildForm(new FormEmployee());// Mở FormEmployees
+                FormEmployee frmEmployee = _scope.Resolve<FormEmployee>();
+                OpenChildForm(frmEmployee);// Mở FormEmployees
             }
 
         }
