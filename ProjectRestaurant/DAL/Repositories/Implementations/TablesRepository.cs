@@ -31,7 +31,7 @@ namespace ProjectRestaurant.DAL.Repositories.Implementations {
             return availableTables;
         }
 
-        // Cập nhật trạng thái và thời gian mở bàn
+        // Cập nhật trạng thái và thời gian mở bàn (thoi gian mở bàn có thể null nếu bàn được đặt lại thành trống)
         public async Task<bool> UpdateTableStatusAndOpenTimeAsync(int tableId, string status, DateTime? openedAt) {
             await using var connection = new SqlConnection(_connectionString);
             await connection.OpenAsync();
