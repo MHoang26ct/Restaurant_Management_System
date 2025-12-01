@@ -22,6 +22,13 @@ namespace ProjectRestaurant.DAL.Repositories.Interfaces {
         Task<int> AddCustomerAsync(Customers customer);
 
         /// <summary>
+        /// Cap nhật thông tin khách hàng
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        Task UpdateCustomerInfoAsync(Customers customer);
+
+        /// <summary>
         /// Lấy thông tin khách hàng theo tên và số điện thoại
         /// </summary>
         /// <param name="fullName"></param>
