@@ -13,6 +13,13 @@ namespace ProjectRestaurant.DAL.Repositories.Interfaces {
         public Task AddOrderDetailAsync(orderDetail orderDetail);
 
         /// <summary>
+        /// Them danh sách chi tiết order mới
+        /// </summary>
+        /// <param name="orderDetails"></param>
+        /// <returns></returns>
+        public Task AddListOrderDetailAsync(List<orderDetail> orderDetails);
+
+        /// <summary>
         /// Lấy chi tiết order theo OrderID, nếu muốn tính bill thì kiểm tra trạng thái của từng chi tiết order
         /// </summary>
         /// <param name="orderId"></param>

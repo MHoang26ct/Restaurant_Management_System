@@ -28,6 +28,24 @@ namespace ProjectRestaurant.DAL.Repositories.Implementations {
             }
         }
 
+        // Thêm nhiều chi tiết order cùng lúc
+        public async Task AddListOrderDetailAsync(List<orderDetail> orderDetails) {
+            using (var connection = new SqlConnection(_connectionString)) {
+                await connection.OpenAsync();
+                foreach (var orderDetail in orderDetails) {
+                    using (var command = new SqlCommand("AddOrderDetail", connection)) {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@OrderID", orderDetail.OrderId);
+                        command.Parameters.AddWithValue("@FoodID", orderDetail.FoodId);
+                        command.Parameters.AddWithValue("@Quantity", orderDetail.Quantity);
+                        command.Parameters.AddWithValue("@Notes", orderDetail.Notes);
+                        command.Parameters.AddWithValue("@OrderStatus", orderDetail.OrderStatus);
+                        await command.ExecuteNonQueryAsync();
+                    }
+                }
+            }
+        }
+
         // Lấy chi tiết order theo OrderID
         public async Task<List<orderDetail>> GetorderDetailByOrderIdAsync(int orderId) {
             var orderDetailList = new List<orderDetail>();
