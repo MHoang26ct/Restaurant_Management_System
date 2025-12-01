@@ -48,6 +48,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             ReportsButton = new Guna.UI2.WinForms.Guna2Button();
             EmployeesButton = new Guna.UI2.WinForms.Guna2Button();
             CustomerButton = new Guna.UI2.WinForms.Guna2Button();
@@ -439,6 +440,7 @@
             ClientSize = new Size(1344, 631);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(1);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
