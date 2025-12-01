@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectRestaurant.DAL.Models.Entities;
-using ProjectRestaurant.DAL.Repositories.Interfaces;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
 
-namespace ProjectRestaurant.DAL.Repositories.Interfaces {
+namespace FoodOrderManagement.DAL.Repositories.Interfaces {
     public interface ITablesRepository {
         /// <summary>
         /// Lấy danh sách các bàn còn trống

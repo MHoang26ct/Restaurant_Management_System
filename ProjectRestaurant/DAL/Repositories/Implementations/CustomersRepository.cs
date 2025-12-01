@@ -1,14 +1,14 @@
-﻿using ProjectRestaurant.DAL.Repositories.Interfaces;
+﻿using FoodOrderManagement.DAL.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectRestaurant.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Models.Entities;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
 
-namespace ProjectRestaurant.DAL.Repositories.Implementations {
+namespace FoodOrderManagement.DAL.Repositories.Implementations {
     public class CustomersRepository : ICustomersRepository {
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 

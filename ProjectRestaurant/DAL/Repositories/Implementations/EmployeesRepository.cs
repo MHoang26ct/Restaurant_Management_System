@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectRestaurant.DAL.Models.Entities;
-using ProjectRestaurant.DAL.Repositories.Interfaces;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
 
-namespace ProjectRestaurant.DAL.Repositories.Implementations {
+namespace FoodOrderManagement.DAL.Repositories.Implementations {
     public class EmployeesRepository : IEmployeesRepository {
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 

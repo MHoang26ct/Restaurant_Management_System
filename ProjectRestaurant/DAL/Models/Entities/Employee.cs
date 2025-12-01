@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectRestaurant.DAL.Models.Entities {
+namespace FoodOrderManagement.DAL.Models.Entities {
     public class Employee {
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }

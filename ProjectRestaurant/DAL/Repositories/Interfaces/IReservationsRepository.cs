@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectRestaurant.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Models.Entities;
 
-namespace ProjectRestaurant.DAL.Repositories.Interfaces {
+namespace FoodOrderManagement.DAL.Repositories.Interfaces {
     public interface IReservationsRepository {
 
         // Thêm đặt bàn mới và trả về ID đặt bàn mới tạo để thực hiện các order nếu cần

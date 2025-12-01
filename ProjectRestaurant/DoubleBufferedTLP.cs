@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ProjectRestaurant
+namespace FoodOrderManagement
 {
     public class DoubleBufferedTLP : TableLayoutPanel // Kế thừa từ TableLayoutPanel
     {
