@@ -8,6 +8,7 @@ namespace ProjectRestaurant.DAL.Models.Entities {
     public class Orders {
         public int Id { get; set; }
         public int ReservationId { get; set; }
+        public int CustomerId { get; set; }
         public int TableId { get; set; }
         public DateTime OrderTime { get; set; }
         public decimal TotalAmount { get; set; }

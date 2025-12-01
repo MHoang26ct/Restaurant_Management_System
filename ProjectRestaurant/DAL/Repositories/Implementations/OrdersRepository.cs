@@ -21,7 +21,7 @@ namespace ProjectRestaurant.DAL.Repositories.Implementations {
                     command.Parameters.AddWithValue("@ReservationId", order.ReservationId);
                     command.Parameters.AddWithValue("@TableId", order.TableId);
                     command.Parameters.AddWithValue("@OrderTime", order.OrderTime);
-                    command.Parameters.AddWithValue("@TotalAmount", order.TotalAmount);
+                    command.Parameters.AddWithValue("@CustomerID", order.CustomerId);
                     command.Parameters.AddWithValue("@NumberOfGuests", order.NumberOfGuests);
                     var outputIdParam = new SqlParameter("@NewOrderID", System.Data.SqlDbType.Int) {
                         Direction = System.Data.ParameterDirection.Output
@@ -56,7 +56,7 @@ namespace ProjectRestaurant.DAL.Repositories.Implementations {
             return orders;
         }
 
-        // Truy xuất order theo số bàn và thời gian vào bàn
+        // Truy xuất order theo số bàn
         public async Task<Orders?> GetOrdersByTableIdAsync(int tableId) {
             using (var connection = new SqlConnection(_connectionString)) {
                 await connection.OpenAsync();
@@ -68,6 +68,7 @@ namespace ProjectRestaurant.DAL.Repositories.Implementations {
                                 Id = reader.GetInt32(0),
                                 ReservationId = reader.GetInt32(1),
                                 TableId = reader.GetInt32(2),
+                                CustomerId = reader.GetInt32(7),
                                 OrderTime = reader.GetDateTime(3),
                                 TotalAmount = reader.GetDecimal(4),
                                 NumberOfGuests = reader.GetInt32(5),

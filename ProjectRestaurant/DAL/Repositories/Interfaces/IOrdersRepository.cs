@@ -10,6 +10,8 @@ namespace ProjectRestaurant.DAL.Repositories.Interfaces {
 
         /// <summary>
         /// Thêm order mới, trả về OrderID vừa tạo để dùng cho việc thêm OrderDetail sau đó
+        /// không can thiet phai truyen total amount vi da co trigger tinh toan roi
+        /// (trigger se tinh toan va cap nhat lai sau khi them/cap nhat chi tiet order)
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
