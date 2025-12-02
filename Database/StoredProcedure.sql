@@ -182,25 +182,19 @@ CREATE PROCEDURE UpdateReservation
     @TableID int,
     @ReservationTime datetime,
     @ComingTime datetime,
-    @NumberOfGuests int
+    @NumberOfGuests int,
+    @Status varchar(20)
 AS
 BEGIN
     UPDATE Reservations
     SET TableID = @TableID,
         ReservationTime = @ReservationTime,
         ComingTime = @ComingTime,
-        NumberOfGuests = @NumberOfGuests
+        NumberOfGuests = @NumberOfGuests,
+        Status = @Status
     WHERE ReservationID = @ReservationID
 END
 
--- 4.3 . Hủy phiếu đặt bàn
-CREATE PROCEDURE DeleteReservation
-    @ReservationID int
-AS
-BEGIN
-    DELETE FROM Reservations
-    WHERE ReservationID = @ReservationID
-END
 
 -- 4.4. Lấy danh sách tất cả các phiếu đặt bàn (ComingTime trong tương lai)
 CREATE PROCEDURE GetAllUpcomingReservations

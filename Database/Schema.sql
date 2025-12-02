@@ -66,6 +66,7 @@ CREATE TABLE Reservations (
     ReservationTime datetime NOT NULL, -- Thời điểm khách đặt
     ComingTime datetime NOT NULL,      -- Thời điểm khách dự kiến đến
     NumberOfGuests int NOT NULL,
+    status varchar(20) NOT NULL,
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
     FOREIGN KEY (TableID) REFERENCES Tables(TableID)
 )
@@ -153,3 +154,7 @@ GO
 ALTER TABLE Customers ADD CONSTRAINT CHK_CustomerRank
     CHECK (CustomerRank IN ('Regular', 'Silver', 'Gold', 'Platinum'))
 GO
+
+-- Kiểm tra Trạng thái Đặt bàn
+ALTER TABLE Reservations ADD CONSTRAINT CHK_ReservationStatus
+    CHECK (status IN ('Pending', 'Cancelled', 'Completed'))
