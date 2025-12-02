@@ -150,7 +150,7 @@ GO
 CREATE PROCEDURE GetAllCustomers
 AS
 BEGIN
-    SELECT CustomerID, FullName, Email, PhoneNumber
+    SELECT CustomerID, FullName, Email, PhoneNumber, LastVisitDate, TotalVisits, TotalSpent, CustomerRank
     FROM Customers
     ORDER BY FullName
 END
