@@ -37,5 +37,11 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="tableId"></param>
         /// <returns></returns>
         Task<bool> DeleteTableByIdAsync(int tableId);
+
+        /// <summary>
+        /// Lấy danh sách tất cả bàn
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Tables>> GetAllTablesAsync();
     }
 }

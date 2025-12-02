@@ -36,5 +36,11 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="phoneNumber"></param>
         /// <returns></returns>
         Task<bool> DeleteEmployeeByNameAndPhoneAsync(string fullName, string phoneNumber);
+
+        /// <summary>
+        /// Lấy tất cả nhân viên
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Employee>> GetAllEmployeesAsync();
     }
 }

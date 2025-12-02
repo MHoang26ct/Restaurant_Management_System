@@ -75,5 +75,29 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             int result = await command.ExecuteNonQueryAsync();
             return result > 0;
         }
+        
+        // Lấy tất cả nhân viên (đã có procedure)
+        public async Task<List<Employee>> GetAllEmployeesAsync() {
+            var employees = new List<Employee>();
+            using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                await connection.OpenAsync();
+                using (var command = new SqlCommand("GetAllEmployees", connection)) {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    using (var reader = await command.ExecuteReaderAsync()) {
+                        while (await reader.ReadAsync()) {
+                            var employee = new Employee {
+                                FullName = reader.GetString(0),
+                                PhoneNumber = reader.GetString(1),
+                                Email = reader.GetString(2),
+                                Position = reader.GetString(3),
+                                HireDate = reader.GetDateTime(4)
+                            };
+                            employees.Add(employee);
+                        }
+                    }
+                }
+            }
+            return employees;
+        }
     }
 }

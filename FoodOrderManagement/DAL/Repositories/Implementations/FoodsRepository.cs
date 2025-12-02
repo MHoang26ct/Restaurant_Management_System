@@ -14,25 +14,24 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
 
         // Lấy tất cả món ăn
         public async Task<List<Foods>> GetAllFoodsAsync() {
-            var foodsList = new List <Foods>();
+            var foods = new List<Foods>();
             using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                await connection .OpenAsync();
-                var command = new SqlCommand("SELECT * FROM Foods", connection);
-                using (var reader = await command.ExecuteReaderAsync()) {
-                    while (await reader.ReadAsync()) {
-                        var food = new Foods {
-                            Id = reader.GetInt32(0),
-                            Name = reader.GetString(1),
-                            Price = reader.GetDecimal(2),
-                            Category = reader.GetString(3),
-                            ImagePath = reader.GetString(4),
-                            Description = reader.GetString(5)
-                        };
-                        foodsList.Add(food);
+                await connection.OpenAsync();
+                using (var command = new SqlCommand("GetAllFoods", connection)) {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    using (var reader = await command.ExecuteReaderAsync()) {
+                        while (await reader.ReadAsync()) {
+                            var food = new Foods {
+                                Id = reader.GetInt32(0),
+                                Name = reader.GetString(1),
+                                Price = reader.GetDecimal(2)
+                            };
+                            foods.Add(food);
+                        }
                     }
                 }
             }
-            return foodsList;
+            return foods;
         }
 
         // Truy xuất món ăn theo ID

@@ -98,5 +98,31 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 }
             }
         }
+
+        // Lấy danh sách tất cả khách hàng
+        public async Task<List<Customers>> GetAllCustomersAsync() {
+            var customers = new List<Customers>();
+            using (var connection = new SqlConnection(_connectionString)) {
+                await connection.OpenAsync();
+                using (var command = new SqlCommand("GetAllCustomers", connection)) {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    using (var reader = await command.ExecuteReaderAsync()) {
+                        while (await reader.ReadAsync()) {
+                            customers.Add(new Customers {
+                                Id = reader.GetInt32(0),
+                                FullName = reader.GetString(1),
+                                Email = reader.GetString(2),
+                                PhoneNumber = reader.GetString(3),
+                                LastVisitDate = reader.IsDBNull(4) ? DateTime.MinValue : reader.GetDateTime(4),
+                                TotalVisits = reader.GetInt32(5),
+                                TotalSpent = (float)reader.GetDecimal(6),
+                                CustomerRank = reader.GetString(7)
+                            });
+                        }
+                    }
+                }
+            }
+            return customers;
+        }
     }
 }

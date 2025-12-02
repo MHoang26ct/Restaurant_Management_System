@@ -39,5 +39,11 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <returns></returns>
         public Task UpdateCheckoutTimeAsync(int orderId, DateTime checkoutTime);
 
+        /// <summary>
+        /// Lấy danh sách order chưa thanh toán (tức là chưa có thời gian thanh toán)
+        /// </summary>
+        /// <returns></returns>
+        public Task<List<Orders>> GetAllUnpaidOrdersAsync();
+
     }
 }

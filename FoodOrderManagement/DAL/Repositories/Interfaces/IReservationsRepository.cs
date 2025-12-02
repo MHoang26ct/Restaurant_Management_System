@@ -40,5 +40,11 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="reservationTime"></param>
         /// <returns></returns>
         public Task<List<Reservations>> GetReservationsByCustomerIdAndReservationTimeAsync(int customerId, DateTime reservationTime);
+
+        /// <summary>
+        /// Lấy danh sách tất cả đặt bàn (thời gian đặt bàn trong tương lai)
+        /// </summary>
+        /// <returns></returns>
+        public Task<List<Reservations>> GetAllUpcomingReservationsAsync();
     }
 }

@@ -35,5 +35,11 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="phoneNumber"></param>
         /// <returns></returns>
         Task<Customers?> GetCustomerByNameAndPhoneAsync(string fullName, string phoneNumber);
+
+        /// <summary>
+        /// Lấy danh sách tất cả khách hàng
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Customers>> GetAllCustomersAsync();
     }
 }
