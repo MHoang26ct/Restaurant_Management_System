@@ -147,5 +147,20 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             }
             return orders;
         }
+
+        // Xóa order theo mã order (cho trường hợp khách hủy đặt bàn) đã có procedure DeleteOrder
+        public async Task DeleteOrderByIdAsync(int orderId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                using (var command = new SqlCommand("DeleteOrder", connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@OrderID", orderId);
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
     }
 }

@@ -280,6 +280,16 @@ BEGIN
     ORDER BY o.OrderTime
 END
 
+-- 5.6. Xóa Order cho trường hợp khách hủy đặt bàn
+CREATE PROCEDURE DeleteOrder
+    @OrderID INT
+ AS
+ BEGIN
+    DELETE FROM Orders
+    WHERE OrderID = @OrderID
+END
+GO
+
 -- =============================================
 -- NHÓM 6: QUẢN LÝ NHÂN VIÊN (EMPLOYEES)
 -- =============================================
