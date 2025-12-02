@@ -76,7 +76,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             return result > 0;
         }
         
-        // Lấy tất cả nhân viên (đã có procedure)
+        // Lấy tất cả nhân viên
         public async Task<List<Employee>> GetAllEmployeesAsync() {
             var employees = new List<Employee>();
             using (SqlConnection connection = new SqlConnection(_connectionString)) {

@@ -66,7 +66,7 @@ CREATE TABLE Reservations (
     ReservationTime datetime NOT NULL, -- Thời điểm khách đặt
     ComingTime datetime NOT NULL,      -- Thời điểm khách dự kiến đến
     NumberOfGuests int NOT NULL,
-    status varchar(20) NOT NULL,
+    status varchar(20) NOT NULL DEFAULT 'Pending',
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
     FOREIGN KEY (TableID) REFERENCES Tables(TableID)
 )

@@ -340,7 +340,7 @@ GO
 CREATE PROCEDURE GetAllEmployees
 AS
 BEGIN
-    SELECT EmployeeID, FullName, PhoneNumber, Email, Position, HireDate
+    SELECT FullName, PhoneNumber, Email, Position, HireDate
     FROM Employees
     ORDER BY FullName
 END

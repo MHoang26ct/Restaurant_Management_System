@@ -26,6 +26,7 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
 
         /// <summary>
         /// Truy xuất order bằng số bàn. Thuộc tính TotalAmount chỉ là tạm tính, nếu muốn tính chính xác cần truy xuất chi tiết order
+        /// Có thể dùng để kiểm tra xem bàn đã có order chưa (chưa thanh toán) để tránh tạo thêm order mới trùng lặp
         /// </summary>
         /// <param name="tableId"></param>
         /// <returns></returns>
