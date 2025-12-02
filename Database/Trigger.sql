@@ -1,324 +1,152 @@
 ﻿/* =============================================
-   FILE: STORED PROCEDURES
-   MÔ TẢ: Các thủ tục lưu trữ cho hệ thống quản lý nhà hàng
+   FILE: DATABASE TRIGGERS
+   MÔ TẢ: Các trigger tự động xử lý logic nghiệp vụ
    NGÀY CẬP NHẬT: 2025
    ============================================= */
 
 -- =============================================
--- NHÓM 1: QUẢN LÝ MÓN ĂN (FOODS)
+-- NHÓM 1: TRIGGERS TRÊN BẢNG ORDERS
 -- =============================================
 
--- 1.1. Thêm món ăn mới vào thực đơn
--- Input: Tên món, Giá
--- Output: ID của món vừa tạo
-CREATE PROCEDURE AddFood
-    @FoodName varchar(100),
-    @Price decimal(10, 2),
-    @NewFoodID int OUTPUT 
-AS 
-BEGIN 
-    INSERT INTO Foods (FoodName, Price)
-    VALUES (@FoodName, @Price)
-    
-    SET @NewFoodID = SCOPE_IDENTITY()
-END
-GO
-
--- 1.2. Cập nhật thông tin món ăn (Tên, Giá)
-CREATE PROCEDURE UpdateFood 
-    @FoodID int,
-    @FoodName varchar(100),
-    @Price decimal(10, 2)
+-- 1.1. Cập nhật lịch sử khách hàng khi có đơn hàng mới
+-- Chức năng: Tăng tổng số lần ghé (TotalVisits) và cập nhật ngày ghé gần nhất (LastVisitDate)
+CREATE TRIGGER trg_UpdateCustomerTotalVisits_and_LastVisitDate
+ON Orders
+AFTER INSERT
 AS
 BEGIN
-    UPDATE Foods
-    SET FoodName = @FoodName,
-        Price = @Price
-    WHERE FoodID = @FoodID
-END
-GO
+    DECLARE @CustomerID int
+    SELECT @CustomerID = CustomerID FROM inserted
 
--- 1.3. Xóa món ăn khỏi thực đơn
-CREATE PROCEDURE DeleteFood
-    @FoodID int
-AS
-BEGIN
-    DELETE FROM Foods
-    WHERE FoodID = @FoodID
-END
-GO
-
--- =============================================
--- NHÓM 2: QUẢN LÝ BÀN ĂN (TABLES)
--- =============================================
-
--- 2.1. Thêm bàn ăn mới
--- Input: Sức chứa, Trạng thái, Thời gian mở (nếu có)
--- Output: ID bàn vừa tạo
-CREATE PROCEDURE AddTable
-    @Capacity INT,
-    @TableStatus VARCHAR(20),
-    @OpenTime DATETIME NULL,
-    @NewTableID INT OUTPUT
-AS
-BEGIN
-    INSERT INTO Tables (Capacity, TableStatus, OpenTime)
-    VALUES (@Capacity, @TableStatus, @OpenTime)
-
-    SET @NewTableID = SCOPE_IDENTITY()
-END
-GO
-
--- 2.2. Cập nhật trạng thái bàn và thời gian mở bàn (Check-in/Check-out bàn)
-CREATE PROCEDURE UpdateTableStatusAndOpenTime
-    @TableID int,
-    @NewStatus varchar(20),
-    @OpenTime datetime null
-AS
-BEGIN
-    UPDATE Tables
-    SET TableStatus = @NewStatus,
-        OpenTime = @OpenTime
-    WHERE TableID = @TableID
-END
-GO
-
--- 2.3. Xóa bàn ăn
-CREATE PROCEDURE DeleteTable
-    @TableID INT
-AS
-BEGIN
-    DELETE FROM Tables
-    WHERE TableID = @TableID
-END
-GO
-
--- =============================================
--- NHÓM 3: QUẢN LÝ KHÁCH HÀNG (CUSTOMERS)
--- =============================================
-
--- 3.1. Thêm khách hàng mới
-CREATE PROCEDURE AddCustomer
-    @FullName varchar(50),
-    @Email varchar(100),
-    @PhoneNumber varchar(15),
-    @NewCustomerID int OUTPUT
-AS
-BEGIN
-    INSERT INTO Customers (FullName, Email, PhoneNumber)
-    VALUES (@FullName, @Email, @PhoneNumber)
-
-    SET @NewCustomerID = SCOPE_IDENTITY()
-END
-GO
-
--- 3.2. Cập nhật thông tin liên hệ của khách hàng
-CREATE PROCEDURE UpdateCustomerInfo
-    @CustomerID INT,
-    @FullName VARCHAR(50),
-    @Email VARCHAR(100),
-    @PhoneNumber VARCHAR(15)
-AS
-BEGIN
     UPDATE Customers
-    SET FullName = @FullName,
-        Email = @Email,
-        PhoneNumber = @PhoneNumber
+    SET TotalVisits = TotalVisits + 1,
+        LastVisitDate = GETDATE()
     WHERE CustomerID = @CustomerID
 END
 GO
 
--- =============================================
--- NHÓM 4: QUẢN LÝ ĐẶT BÀN (RESERVATIONS)
--- =============================================
-
--- 4.1. Tạo phiếu đặt bàn mới
-CREATE PROCEDURE AddReservation
-    @CustomerID int,
-    @TableID int,
-    @ReservationTime datetime,
-    @ComingTime datetime,
-    @NumberOfGuests int,
-    @NewReservationID int OUTPUT
+-- 1.2. Cập nhật tổng chi tiêu của khách hàng khi thanh toán
+-- Chức năng: Cộng dồn TotalSpent vào bảng Customers khi đơn hàng có TimeCheckout
+CREATE TRIGGER trg_UpdateCustomerTotalSpent
+ON Orders
+AFTER UPDATE
 AS
 BEGIN
-    INSERT INTO Reservations (CustomerID, TableID, ReservationTime, ComingTime, NumberOfGuests)
-    VALUES (@CustomerID, @TableID, @ReservationTime, @ComingTime, @NumberOfGuests)
-
-    SET @NewReservationID = SCOPE_IDENTITY()
+    DECLARE @CustomerID int
+    DECLARE @TotalAmount decimal(10, 2)
+    DECLARE @TimeCheckout datetime
+    
+    SELECT @CustomerID = CustomerID, 
+           @TotalAmount = TotalAmount, 
+           @TimeCheckout = TimeCheckout 
+    FROM inserted
+    
+    -- Chỉ thực hiện nếu đơn hàng vừa được cập nhật TimeCheckout (tức là đã thanh toán)
+    IF @TimeCheckout IS NOT NULL
+    BEGIN
+        UPDATE Customers
+        SET TotalSpent = TotalSpent + @TotalAmount
+        WHERE CustomerID = @CustomerID
+    END
 END
 GO
 
+-- 1.3. Tính lại tổng tiền đơn hàng (TotalAmount) khi thanh toán
+-- Chức năng: Chốt sổ số tiền cuối cùng dựa trên các món ĐÃ HOÀN THÀNH (Completed) khi checkout
+CREATE TRIGGER trg_orders_totalamount_on_checkout 
+ON Orders
+AFTER UPDATE
+AS
+BEGIN
+    DECLARE @OrderID int
+    DECLARE @TotalAmount decimal(10, 2)
+    DECLARE @TimeCheckout datetime
+
+    SELECT @OrderID = OrderID, @TimeCheckout = TimeCheckout FROM inserted
+
+    IF @TimeCheckout IS NOT NULL
+    BEGIN
+        -- Chỉ tính tổng tiền các món có trạng thái 'Completed'
+        SELECT @TotalAmount = SUM(F.Price * OD.Quantity)
+        FROM OrderDetails OD
+            JOIN Foods F ON OD.FoodID = F.FoodID
+        WHERE OD.OrderID = @OrderID
+            AND OD.OrderStatus IN ('Completed')
+
+        UPDATE Orders
+        SET TotalAmount = ISNULL(@TotalAmount, 0)
+        WHERE OrderID = @OrderID
+    END
+END 
+GO
+
 -- =============================================
--- NHÓM 5: QUẢN LÝ ĐƠN HÀNG & CHI TIẾT (ORDERS & ORDER DETAILS)
+-- NHÓM 2: TRIGGERS TRÊN BẢNG ORDER DETAILS
 -- =============================================
 
--- 5.1. Tạo đơn hàng mới (Order)
--- Lưu ý: TotalAmount thường để 0 ban đầu, sẽ được tính lại khi thêm món
-CREATE PROCEDURE AddOrder
-    @ReservationID int,
-    @TableID int,
-    @OrderTime datetime,
-    @TotalAmount decimal(10, 2) = 0,
-    @NumberOfGuests int,
-    @CustomerID int,
-    @NewOrderID int OUTPUT
+-- 2.1. Tự động tính tổng tiền tạm tính của đơn hàng
+-- Chức năng: Khi thêm/sửa chi tiết món, cập nhật lại TotalAmount của bảng Orders.
+-- Bao gồm các món: Pending, In Progress, Completed
+CREATE TRIGGER trg_orders_totalamount 
+ON OrderDetails
+AFTER INSERT, UPDATE
 AS
 BEGIN
-    INSERT INTO Orders (ReservationID, TableID, OrderTime, TotalAmount, NumberOfGuests, CustomerID)
-    VALUES (@ReservationID, @TableID, @OrderTime, @TotalAmount, @NumberOfGuests, @CustomerID)
+    DECLARE @OrderID int
+    DECLARE @TotalAmount decimal(10, 2)
+    
+    -- Lấy OrderID từ dòng dữ liệu vừa tác động
+    SELECT @OrderID = OrderID FROM inserted
+    -- Nếu là thao tác delete (inserted rỗng) thì lấy từ deleted (trường hợp mở rộng sau này)
+    IF @OrderID IS NULL SELECT @OrderID = OrderID FROM deleted
 
-    SET @NewOrderID = SCOPE_IDENTITY()
-END
-GO
+    -- Tính tổng tiền
+    SELECT @TotalAmount = SUM(F.Price * OD.Quantity)
+    FROM OrderDetails OD
+        JOIN Foods F ON OD.FoodID = F.FoodID
+    WHERE OD.OrderID = @OrderID
+        AND OD.OrderStatus IN ('Pending', 'In Progress', 'Completed')
 
--- 5.2. Thêm món vào đơn hàng (Order Detail)
-CREATE PROCEDURE AddOrderDetail
-    @OrderID int,
-    @FoodID int,
-    @Quantity int,
-    @Notes varchar(255),
-    @OrderStatus varchar(20)
-AS
-BEGIN
-    INSERT INTO OrderDetails (OrderID, FoodID, Quantity, Notes, OrderStatus)
-    VALUES (@OrderID, @FoodID, @Quantity, @Notes, @OrderStatus)
-END
-GO
-
--- 5.3. Cập nhật trạng thái món ăn (Ví dụ: Đang nấu -> Đã xong)
-CREATE PROCEDURE UpdateOrderStatus
-    @OrderDetailID int,
-    @NewStatus varchar(20)
-AS
-BEGIN
-    UPDATE OrderDetails
-    SET OrderStatus = @NewStatus
-    WHERE OrderDetailID = @OrderDetailID
-END
-GO
-
--- 5.4. Cập nhật thời gian thanh toán (Checkout) cho đơn hàng
--- Chỉ cập nhật nếu đơn hàng chưa thanh toán (TimeCheckout is NULL)
-CREATE PROCEDURE UpdateOrderCheckoutTime
-    @OrderID INT,
-    @CheckoutTime DATETIME
-AS
-BEGIN
+    -- Cập nhật vào bảng cha Orders
     UPDATE Orders
-    SET TimeCheckout = @CheckoutTime
-    WHERE OrderID = @OrderID 
-    AND TimeCheckout IS NULL
+    SET TotalAmount = ISNULL(@TotalAmount, 0)
+    WHERE OrderID = @OrderID
 END
 GO
 
 -- =============================================
--- NHÓM 6: QUẢN LÝ NHÂN VIÊN (EMPLOYEES)
+-- NHÓM 3: TRIGGERS TRÊN BẢNG CUSTOMERS
 -- =============================================
 
--- 6.1. Thêm nhân viên mới
-CREATE PROCEDURE AddEmployee
-    @FullName VARCHAR(50),
-    @PhoneNumber VARCHAR(15),
-    @Email VARCHAR(100),
-    @Position VARCHAR(50),
-    @HireDate DATETIME
+-- 3.1. Cập nhật hạng thành viên (Rank)
+-- Chức năng: Tự động xét hạng (Silver, Gold, Platinum) dựa trên TotalSpent
+-- Quy tắc: Platinum >= 50tr, Gold >= 10tr, Silver >= 2tr
+CREATE TRIGGER trg_UpdateCustomerRank
+ON Customers
+AFTER UPDATE
 AS
 BEGIN
-    INSERT INTO Employees (FullName, PhoneNumber, Email, Position, HireDate)
-    VALUES (@FullName, @PhoneNumber, @Email, @Position, @HireDate)
-END
-GO
+    -- Chỉ chạy logic nếu cột TotalSpent bị thay đổi
+    IF UPDATE(TotalSpent)
+    BEGIN
+        DECLARE @CustomerID int
+        DECLARE @TotalSpent decimal(15, 2)
 
--- 6.2. Cập nhật thông tin nhân viên
-CREATE PROCEDURE UpdateEmployee
-    @FullName VARCHAR(50),
-    @PhoneNumber VARCHAR(15),
-    @Email VARCHAR(100),
-    @Position VARCHAR(50),
-    @HireDate DATETIME
-AS
-BEGIN
-    UPDATE Employees
-    SET Email = @Email,
-        Position = @Position,
-        HireDate = @HireDate
-    WHERE FullName = @FullName AND PhoneNumber = @PhoneNumber
-END
-GO
+        SELECT @CustomerID = CustomerID, @TotalSpent = TotalSpent FROM inserted
 
--- 6.3. Xóa nhân viên
-CREATE PROCEDURE DeleteEmployee
-    @FullName VARCHAR(50),
-    @PhoneNumber VARCHAR(15)
-AS
-BEGIN
-    DELETE FROM Employees
-    WHERE FullName = @FullName AND PhoneNumber = @PhoneNumber
-END
-GO
+        DECLARE @NewRank varchar(20)
+        SET @NewRank = 'Regular' -- Mặc định
 
--- =============================================
--- NHÓM 7: QUẢN LÝ TÀI KHOẢN HỆ THỐNG (USERS)
--- =============================================
+        IF @TotalSpent >= 50000000 -- 50 triệu
+            SET @NewRank = 'Platinum'
+        ELSE IF @TotalSpent >= 10000000 -- 10 triệu
+            SET @NewRank = 'Gold'
+        ELSE IF @TotalSpent >= 2000000 -- 2 triệu
+            SET @NewRank = 'Silver'
 
--- 7.1. Tạo tài khoản người dùng
-CREATE PROCEDURE AddUser
-    @Username VARCHAR(50),
-    @PasswordHash VARCHAR(255),
-    @UserRole INT
-AS
-BEGIN
-    INSERT INTO Users (Username, PasswordHash, UserRole)
-    VALUES (@Username, @PasswordHash, @UserRole)
-END
-GO
-
--- 7.2. Đổi mật khẩu
-CREATE PROCEDURE ChangeUserPassword
-    @Username VARCHAR(50),
-    @NewPasswordHash VARCHAR(255)
-AS
-BEGIN
-    UPDATE Users
-    SET PasswordHash = @NewPasswordHash
-    WHERE Username = @Username
-END
-GO
-
--- 7.3. Xóa tài khoản
-CREATE PROCEDURE DeleteUser
-    @Username VARCHAR(50)
-AS
-BEGIN
-    DELETE FROM Users
-    WHERE Username = @Username
-END
-GO
-
--- =============================================
--- NHÓM 8: BÁO CÁO & THỐNG KÊ (REPORTS)
--- =============================================
-
--- 8.1. Thống kê kinh doanh theo khoảng thời gian
--- Chỉ tính các đơn hàng đã thanh toán (TimeCheckout IS NOT NULL)
-CREATE PROCEDURE GetBusinessStatsByDate
-    @fromDate DATE,
-    @toDate DATE
-AS
-BEGIN
-    SELECT 
-        CAST(OrderTime AS DATE) AS Date, 
-        SUM(TotalAmount) AS TotalRevenue,
-        COUNT(DISTINCT Orders.OrderID) AS TotalOrders,
-        SUM(NumberOfGuests) AS TotalGuests,
-        COUNT(DISTINCT CASE WHEN ReservationID IS NOT NULL THEN ReservationID END) AS TotalReservations
-    FROM Orders
-    WHERE 
-        OrderTime >= @fromDate 
-        AND OrderTime < DATEADD(day, 1, @toDate)
-        AND TimeCheckout IS NOT NULL
-    GROUP BY CAST(OrderTime AS DATE)
-    ORDER BY Date
+        UPDATE Customers
+        SET CustomerRank = @NewRank
+        WHERE CustomerID = @CustomerID
+    END
 END
 GO
