@@ -16,5 +16,7 @@ namespace FoodOrderManagement.DAL.Models.Entities {
         /// </summary>
         public DateTime ComingTime { get; set; }
         public int NumberOfGuests { get; set; }
+
+        public string Status { get; set; } = "Pending";// Pending, Canceled, Completed
     }
 }

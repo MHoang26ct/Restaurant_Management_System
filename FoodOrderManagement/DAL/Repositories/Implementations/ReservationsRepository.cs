@@ -192,5 +192,25 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             }
             return reservations;
         }
+        // Cập nhật thông tin đặt bàn (dùng luôn cho hủy đặt bàn)
+        public async Task<bool> UpdateReservationAsync(Reservations reservation)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                using (var command = new SqlCommand("UpdateReservation", connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ReservationID", reservation.Id);
+                    command.Parameters.AddWithValue("@TableID", reservation.TableId);
+                    command.Parameters.AddWithValue("@ReservationTime", reservation.ReservationTime);
+                    command.Parameters.AddWithValue("@ComingTime", reservation.ComingTime);
+                    command.Parameters.AddWithValue("@NumberOfGuests", reservation.NumberOfGuests);
+                    command.Parameters.AddWithValue("@Status", reservation.Status);
+                    var rowsAffected = await command.ExecuteNonQueryAsync();
+                    return rowsAffected > 0;
+                }
+            }
+        }
     }
 }
