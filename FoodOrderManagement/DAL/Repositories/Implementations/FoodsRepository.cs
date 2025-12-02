@@ -24,7 +24,10 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                             var food = new Foods {
                                 Id = reader.GetInt32(0),
                                 Name = reader.GetString(1),
-                                Price = reader.GetDecimal(2)
+                                Price = reader.GetDecimal(2),
+                                Category = reader.GetString(3),
+                                ImagePath = reader.GetString(4),
+                                Description = reader.GetString(5)
                             };
                             foods.Add(food);
                         }
