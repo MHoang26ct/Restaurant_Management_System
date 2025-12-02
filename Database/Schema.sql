@@ -54,7 +54,10 @@ GO
 CREATE TABLE Foods (
     FoodID int IDENTITY(1,1) PRIMARY KEY,  
     FoodName varchar(100) NOT NULL,
-    Price decimal(10, 2) NOT NULL
+    Price decimal(10, 2) NOT NULL,
+    Category varchar(50),
+    ImagePath varchar(500) NOT NULL,
+    Description NVARCHAR(max)
 )
 GO
 

@@ -14,26 +14,40 @@
 CREATE PROCEDURE AddFood
     @FoodName varchar(100),
     @Price decimal(10, 2),
+    @Category VARCHAR(50) = NULL,
+    @ImagePath VARCHAR(500) = NULL,
+    @Description NVARCHAR(MAX) = NULL,
     @NewFoodID int OUTPUT 
 AS 
 BEGIN 
-    INSERT INTO Foods (FoodName, Price)
-    VALUES (@FoodName, @Price)
+    INSERT INTO Foods (FoodName, Price, Category, ImagePath, Description)
+    VALUES (@FoodName, @Price, @Category, @ImagePath, @Description)
     
     SET @NewFoodID = SCOPE_IDENTITY()
 END
 GO
 
 -- 1.2. Cập nhật thông tin món ăn (Tên, Giá)
-CREATE PROCEDURE UpdateFood 
+CREATE PROCEDURE UpdateFood
     @FoodID int,
     @FoodName varchar(100),
-    @Price decimal(10, 2)
+    @Price decimal(10, 2),
+    @Category VARCHAR(50) = NULL,
+    @ImagePath VARCHAR(500) = NULL,
+    @Description NVARCHAR(MAX) = NULL
 AS
 BEGIN
     UPDATE Foods
-    SET FoodName = @FoodName,
-        Price = @Price
+    SET 
+        -- Cập nhật bắt buộc (luôn luôn cập nhật FoodName và Price)
+        FoodName = @FoodName, 
+        Price = @Price,
+
+        -- Cập nhật có điều kiện: Nếu tham số (@Category, @ImagePath, @Description) là NULL, 
+        -- giữ nguyên giá trị hiện tại của cột. Nếu không NULL, lấy giá trị của tham số.
+        Category = COALESCE(@Category, Category), 
+        ImagePath = COALESCE(@ImagePath, ImagePath),
+        Description = COALESCE(@Description, Description)
     WHERE FoodID = @FoodID
 END
 GO
@@ -52,7 +66,7 @@ GO
 CREATE PROCEDURE GetAllFoods
 AS
 BEGIN
-    SELECT FoodID, FoodName, Price
+    SELECT FoodID, FoodName, Price, Category, ImagePath, Description
     FROM Foods
     ORDER BY FoodName
 END
