@@ -70,6 +70,30 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             return orderDetailList;
         }
 
+        // Lấy các chi tiết order đã hoàn thành để tính tổng hóa đơn
+        public async Task<List<orderDetail>> GetCompletedOrderDetailsByOrderIdAsync(int orderId) {
+            var completedOrderDetails = new List<orderDetail>();
+            using (var connection = new SqlConnection(_connectionString)) {
+                await connection.OpenAsync();
+                using (var command = new SqlCommand("SELECT * FROM orderDetail WHERE OrderId = @OrderId AND OrderStatus = 'Completed'", connection)) {
+                    command.Parameters.AddWithValue("@OrderId", orderId);
+                    using (var reader = await command.ExecuteReaderAsync()) {
+                        while (await reader.ReadAsync()) {
+                            completedOrderDetails.Add(new orderDetail {
+                                Id = reader.GetInt32(0),
+                                OrderId = reader.GetInt32(1),
+                                FoodId = reader.GetInt32(2),
+                                Quantity = reader.GetInt32(3),
+                                Notes = reader.GetString(4),
+                                OrderStatus = reader.GetString(5)
+                            });
+                        }
+                    }
+                }
+            }
+            return completedOrderDetails;
+        }
+
         // Cập nhật trạng thái của order
         public async Task UpdateOrderStatusAsync(int orderDetailId, string newStatus) {
             using (var connection = new SqlConnection(_connectionString)) {

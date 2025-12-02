@@ -20,11 +20,18 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         public Task AddListOrderDetailAsync(List<orderDetail> orderDetails);
 
         /// <summary>
-        /// Lấy chi tiết order theo OrderID, nếu muốn tính bill thì kiểm tra trạng thái của từng chi tiết order
+        /// Lấy chi tiết order theo OrderID
         /// </summary>
         /// <param name="orderId"></param>
         /// <returns></returns>
         public Task<List<orderDetail>> GetorderDetailByOrderIdAsync(int orderId);
+
+        /// <summary>
+        /// Lấy các chi tiết order đã hoàn thành để tính tổng hóa đơn
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public Task<List<orderDetail>> GetCompletedOrderDetailsByOrderIdAsync(int orderId);
 
         /// <summary>
         /// Thay đổi trạng thái của order
