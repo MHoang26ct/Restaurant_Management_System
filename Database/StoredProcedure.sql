@@ -48,6 +48,15 @@ BEGIN
 END
 GO
 
+-- 1.4 Lấy danh sách các món ăn để hiển thị lên giao diện
+CREATE PROCEDURE GetAllFoods
+AS
+BEGIN
+    SELECT FoodID, FoodName, Price
+    FROM Foods
+    ORDER BY FoodName
+END
+
 -- =============================================
 -- NHÓM 2: QUẢN LÝ BÀN ĂN (TABLES)
 -- =============================================
@@ -93,6 +102,15 @@ BEGIN
 END
 GO
 
+-- 2.4. Lấy danh sách các bàn ăn để hiển thị lên giao diện
+CREATE PROCEDURE GetAllTables
+AS
+BEGIN
+    SELECT TableID, Capacity, TableStatus, OpenTime
+    FROM Tables
+    ORDER BY TableID
+END
+
 -- =============================================
 -- NHÓM 3: QUẢN LÝ KHÁCH HÀNG (CUSTOMERS)
 -- =============================================
@@ -128,6 +146,15 @@ BEGIN
 END
 GO
 
+-- 3.3 Lấy danh sách tất cả khách hàng 
+CREATE PROCEDURE GetAllCustomers
+AS
+BEGIN
+    SELECT CustomerID, FullName, Email, PhoneNumber
+    FROM Customers
+    ORDER BY FullName
+END
+
 -- =============================================
 -- NHÓM 4: QUẢN LÝ ĐẶT BÀN (RESERVATIONS)
 -- =============================================
@@ -148,6 +175,43 @@ BEGIN
     SET @NewReservationID = SCOPE_IDENTITY()
 END
 GO
+
+-- 4.2. Cập nhật thông tin phiếu đặt bàn
+CREATE PROCEDURE UpdateReservation
+    @ReservationID int,
+    @TableID int,
+    @ReservationTime datetime,
+    @ComingTime datetime,
+    @NumberOfGuests int
+AS
+BEGIN
+    UPDATE Reservations
+    SET TableID = @TableID,
+        ReservationTime = @ReservationTime,
+        ComingTime = @ComingTime,
+        NumberOfGuests = @NumberOfGuests
+    WHERE ReservationID = @ReservationID
+END
+
+-- 4.3 . Hủy phiếu đặt bàn
+CREATE PROCEDURE DeleteReservation
+    @ReservationID int
+AS
+BEGIN
+    DELETE FROM Reservations
+    WHERE ReservationID = @ReservationID
+END
+
+-- 4.4. Lấy danh sách tất cả các phiếu đặt bàn (ComingTime trong tương lai)
+CREATE PROCEDURE GetAllUpcomingReservations
+AS
+BEGIN
+    SELECT ReservationID, CustomerID, TableID, ReservationTime, ComingTime, NumberOfGuests
+    FROM Reservations
+    WHERE ComingTime >= GETDATE()
+    ORDER BY ComingTime
+END
+
 
 -- =============================================
 -- NHÓM 5: QUẢN LÝ ĐƠN HÀNG & CHI TIẾT (ORDERS & ORDER DETAILS)
@@ -212,6 +276,16 @@ BEGIN
 END
 GO
 
+-- 5.5. Lấy danh sách các order chưa hoàn thành (TimeCheckout IS NULL)
+CREATE PROCEDURE GetAllPendingOrders
+AS
+BEGIN
+    SELECT o.OrderID, o.ReservationID, o.TableID, o.OrderTime, o.TotalAmount, o.NumberOfGuests, o.CustomerID
+    FROM Orders o
+    WHERE o.TimeCheckout IS NULL
+    ORDER BY o.OrderTime
+END
+
 -- =============================================
 -- NHÓM 6: QUẢN LÝ NHÂN VIÊN (EMPLOYEES)
 -- =============================================
@@ -257,6 +331,15 @@ BEGIN
     WHERE FullName = @FullName AND PhoneNumber = @PhoneNumber
 END
 GO
+
+-- 6.4. Lấy danh sách tất cả nhân viên
+CREATE PROCEDURE GetAllEmployees
+AS
+BEGIN
+    SELECT EmployeeID, FullName, PhoneNumber, Email, Position, HireDate
+    FROM Employees
+    ORDER BY FullName
+END
 
 -- =============================================
 -- NHÓM 7: QUẢN LÝ TÀI KHOẢN HỆ THỐNG (USERS)
