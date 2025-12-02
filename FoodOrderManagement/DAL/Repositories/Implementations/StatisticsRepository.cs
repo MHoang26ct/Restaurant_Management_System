@@ -1,19 +1,24 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FoodOrderManagement.DAL.Models.Entities;
-using FoodOrderManagement.DAL.Repositories.Interfaces;
-using Microsoft.Data.SqlClient;
-using System.Configuration;
+using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath;
 
 namespace FoodOrderManagement.DAL.Repositories.Implementations {
     public class StatisticsRepository : IStatisticsRepository {
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         // Thống kết quả kinh doanh theo khoảng thời gian
-        public async Task<Statistics?> GetBusinessStatsByDateAsync(DateTime startDate, DateTime endDate) {
+    public async Task<List<Statistics>> GetBusinessStatsByDateAsync(DateTime startDate, DateTime endDate) {
+            var statsList = new List<Statistics>();
             using (var connection = new SqlConnection(_connectionString)) {
                 await connection.OpenAsync();
                 using (var command = new SqlCommand("GetBusinessStatsByDate", connection)) {
@@ -21,21 +26,21 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                     command.Parameters.AddWithValue("@fromDate", startDate);
                     command.Parameters.AddWithValue("@toDate", endDate);
                     using (var reader = await command.ExecuteReaderAsync()) {
-                        if (await reader.ReadAsync()) {
-                            return new Statistics {
+                        while (await reader.ReadAsync()) {
+                            statsList.Add(new Statistics {
                                 Date = reader.GetDateTime(0),
                                 TotalRevenue = reader.GetDecimal(1),
                                 TotalOrders = reader.GetInt32(2),
-                                TotalCustomers = reader.GetInt32(3),
+                                TotalGuests = reader.GetInt32(3),
                                 TotalReservations = reader.GetInt32(4)
-                            };
-                        }
-                        else {
-                            return null;
+                            });
                         }
                     }
                 }
             }
+            return statsList;
         }
+
+
     }
 }

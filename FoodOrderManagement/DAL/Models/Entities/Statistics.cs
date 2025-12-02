@@ -24,7 +24,7 @@ namespace FoodOrderManagement.DAL.Models.Entities {
         /// <summary>
         /// Tổng số khách hàng
         /// </summary>
-        public int TotalCustomers { get; set; }
+        public int TotalGuests { get; set; }
 
         /// <summary>
         /// Tổng số lần đặt bàn

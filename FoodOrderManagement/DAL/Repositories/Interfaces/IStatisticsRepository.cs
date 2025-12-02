@@ -13,6 +13,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
         /// <returns></returns>
-        public Task<Statistics> GetBusinessStatsByDateAsync(DateTime startDate, DateTime endDate);
+        public Task<List<Statistics>> GetBusinessStatsByDateAsync(DateTime startDate, DateTime endDate);
     }
 }
