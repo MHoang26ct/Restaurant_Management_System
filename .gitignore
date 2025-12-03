@@ -416,3 +416,17 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Ngăn chặn các file chứa mật khẩu thật
+# 1. Bỏ qua file cấu hình cục bộ chứa mật khẩu thật
+App.Local.config
+
+# 2. Bỏ qua các file cấu hình được biên dịch (tự động tạo ra)
+*.exe.config
+
+# 3. Bỏ qua các file cấu hình Visual Studio tạo ra khi bạn debug
+*.user
+
+App.config
+App.config.config
+app.config
