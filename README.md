@@ -63,7 +63,7 @@ Ensure your system meets the following requirements:
 2. Configure Windows Firewall rules
    - Enable TCP port 1433 (or your custom port)
 3. Set up port forwarding on your router
-   - Reference: [Port forwarding tutorial](https://www.youtube.com/watch?v=zoFcqt9Yufw&t=400s)
+   - Reference: [Port forwarding tutorial](https://www.youtube.com/watch?v=zoFcqt9Yufw)
 4. Note your server's public IP address and credentials
 
 #### Step 1.5: Initialize Database Structure
@@ -179,7 +179,7 @@ If you encounter any issues or have questions:
 
 **Email:** mhoang26ct@gmail.com
 
-**Bug Reports:** [Create an issue](https://github.com/YOUR_USERNAME/restaurant-management-system/issues)
+**Bug Reports:** [Create an issue](https://github.com/MHoang26ct/Restaurant_Management_System/issues)
 
 We aim to respond to all inquiries within 24-48 hours.
 
@@ -233,6 +233,6 @@ Special thanks to:
 
 **Made with ❤️ by the HHH Team**
 
-[⭐ Star this repo](https://github.com/YOUR_USERNAME/restaurant-management-system) | [🐛 Report Bug](https://github.com/YOUR_USERNAME/restaurant-management-system/issues) | [💡 Request Feature](https://github.com/YOUR_USERNAME/restaurant-management-system/issues)
+[⭐ Star this repo](https://github.com/MHoang26ct/Restaurant_Management_System) | [🐛 Report Bug](https://github.com/MHoang26ct/Restaurant_Management_System/issues) | [💡 Request Feature](https://github.com/MHoang26ct/Restaurant_Management_System/issues)
 
 </div>
