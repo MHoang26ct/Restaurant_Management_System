@@ -66,6 +66,28 @@ Ensure your system meets the following requirements:
    - Reference: [Port forwarding tutorial](https://www.youtube.com/watch?v=zoFcqt9Yufw&t=400s)
 4. Note your server's public IP address and credentials
 
+#### Step 1.5: Initialize Database Structure
+
+After creating the database, you need to build its structure by executing SQL scripts:
+
+1. In SSMS, connect to your SQL Server instance
+2. Select the `RestaurantManagementDB` database
+3. Execute the SQL scripts in the following order:
+
+   **a) Create Tables:**
+   - Open `Database/Schema.sql`
+   - Click **Execute** (or press F5) to create all tables and relationships
+
+   **b) Create Stored Procedures:**
+   - Open `Database/StoredProcedure.sql`
+   - Click **Execute** to create all stored procedures
+
+   **c) Create Triggers:**
+   - Open `Database/Trigger.sql`
+   - Click **Execute** to create all database triggers
+
+> **💡 Tip:** Execute each script one at a time and verify there are no errors before proceeding to the next one. Check the Messages tab in SSMS for confirmation.
+
 #### Step 2: Clone the Repository
 
 #### Step 3: Configure Connection String
