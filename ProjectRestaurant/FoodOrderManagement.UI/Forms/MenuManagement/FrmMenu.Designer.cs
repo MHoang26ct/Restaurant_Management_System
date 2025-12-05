@@ -229,12 +229,13 @@
             CatagorieFoodsCBox.ForeColor = Color.Black;
             CatagorieFoodsCBox.HoverState.BorderColor = Color.Transparent;
             CatagorieFoodsCBox.IntegralHeight = false;
-            CatagorieFoodsCBox.ItemHeight = 40;
+            CatagorieFoodsCBox.ItemHeight = 50;
             CatagorieFoodsCBox.Items.AddRange(new object[] { "Tất cả", "Món chính", "Khai vị", "Đồ uống", "Tráng miệng" });
-            CatagorieFoodsCBox.Location = new Point(1018, 3);
+            CatagorieFoodsCBox.Location = new Point(1018, 5);
+            CatagorieFoodsCBox.Margin = new Padding(3, 5, 3, 0);
             CatagorieFoodsCBox.Name = "CatagorieFoodsCBox";
             CatagorieFoodsCBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            CatagorieFoodsCBox.Size = new Size(274, 46);
+            CatagorieFoodsCBox.Size = new Size(274, 56);
             CatagorieFoodsCBox.StartIndex = 0;
             CatagorieFoodsCBox.TabIndex = 4;
             // 
@@ -260,7 +261,7 @@
             SearchFoodTBox1.Margin = new Padding(4, 5, 4, 5);
             SearchFoodTBox1.Name = "SearchFoodTBox1";
             SearchFoodTBox1.PlaceholderForeColor = Color.Gray;
-            SearchFoodTBox1.PlaceholderText = "Search menu items...";
+            SearchFoodTBox1.PlaceholderText = "Tìm kiếm món ăn...";
             SearchFoodTBox1.SelectedText = "";
             SearchFoodTBox1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             SearchFoodTBox1.Size = new Size(1007, 43);
@@ -271,7 +272,6 @@
             // FlowLayoutFood
             // 
             FlowLayoutFood.AutoScroll = true;
-            FlowLayoutFood.AutoSize = true;
             FlowLayoutFood.Dock = DockStyle.Fill;
             FlowLayoutFood.Location = new Point(96, 179);
             FlowLayoutFood.Name = "FlowLayoutFood";
@@ -282,6 +282,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1556, 884);
             Controls.Add(doubleBufferedtlp1);
             FormBorderStyle = FormBorderStyle.None;
@@ -290,7 +291,6 @@
             Text = "FrmMenu";
             Load += FrmMenu_Load;
             doubleBufferedtlp1.ResumeLayout(false);
-            doubleBufferedtlp1.PerformLayout();
             doubleBufferedtlp2.ResumeLayout(false);
             doubleBufferedtlp3.ResumeLayout(false);
             doubleBufferedtlp3.PerformLayout();

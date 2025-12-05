@@ -1,6 +1,10 @@
 ﻿using Autofac;
+using Autofac;
 using Guna.UI2.WinForms;
 using ProjectRestaurant.AdminControl.FormMenu;
+using ProjectRestaurant.DAL.Models.Entities;
+using ProjectRestaurant.DAL.Repositories.Interfaces;
+using ProjectRestaurant.FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +15,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Autofac;
-using ProjectRestaurant.DAL.Repositories.Interfaces;
-using ProjectRestaurant.DAL.Models.Entities;
 namespace ProjectRestaurant.FoodOrderManagement.UI.Forms.MenuManagement
 {
     public partial class FrmMenu : Form
@@ -82,13 +83,17 @@ namespace ProjectRestaurant.FoodOrderManagement.UI.Forms.MenuManagement
         private void AddFoodButton_Click(object sender, EventArgs e)
         {
             _uc_AddFood.ResetForm();
+            _uc_AddFood.Location = new Point(
+                 (this.Width - _uc_AddFood.Width) / 2,
+                 (this.Height - _uc_AddFood.Height) / 2
+            );
             _uc_AddFood.Visible = true;
             _uc_AddFood.BringToFront();
         }
 
         private void SearchFoodTBox1_Enter(object sender, EventArgs e)
         {
-            if (SearchFoodTBox1.PlaceholderText == "Search menu items...")
+            if (SearchFoodTBox1.PlaceholderText == "Tìm kiếm món ăn...")
             {
                 SearchFoodTBox1.Text = "";
             }
@@ -98,8 +103,13 @@ namespace ProjectRestaurant.FoodOrderManagement.UI.Forms.MenuManagement
         {
             if (string.IsNullOrEmpty(SearchFoodTBox1.Text))
             {
-                SearchFoodTBox1.PlaceholderText = "Search menu items...";
-            }    
+                SearchFoodTBox1.PlaceholderText = "Tìm kiếm món ăn...";
+            }
+        }
+
+        private void CatagorieFoodsCBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

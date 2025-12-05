@@ -114,7 +114,7 @@ namespace ProjectRestaurant
             if (ClickedButton.Name == "DashboardButton")
             {
                 ClickedButton.Image = Properties.Resources.DashboardWhite;
-                FormDashboard frmDashboard = _scope.Resolve<FormDashboard>();
+                FrmDashboard frmDashboard = _scope.Resolve<FrmDashboard>();
                 OpenChildForm(frmDashboard); // Mở FormDashBoard
             }
             //Menu
@@ -128,7 +128,7 @@ namespace ProjectRestaurant
             else if (ClickedButton.Name == "OrderButton")
             {
                 ClickedButton.Image = Properties.Resources.OrderWhite;
-                FormOrder frmOrder = _scope.Resolve<FormOrder>();
+                FrmOrder frmOrder = _scope.Resolve<FrmOrder>();
                 OpenChildForm(frmOrder); // Mở FormOrder
             }
             //Table
@@ -142,21 +142,21 @@ namespace ProjectRestaurant
             else if (ClickedButton.Name == "CustomerButton")
             {
                 ClickedButton.Image = Properties.Resources.CustomerWhite;
-                FormCustomer frmCustomer = _scope.Resolve<FormCustomer>();
+                FrmCustomer frmCustomer = _scope.Resolve<FrmCustomer>();
                 OpenChildForm(frmCustomer);// Mở FormCustomer
             }
             //Reports 
             else if (ClickedButton.Name == "ReportsButton")
             {
                 ClickedButton.Image = Properties.Resources.ReportWhite;
-                FormReport frmReport = _scope.Resolve<FormReport>();
+                FrmReport frmReport = _scope.Resolve<FrmReport>();
                 OpenChildForm(frmReport);// Mở FormReports
             }
             //Employees
             else if (ClickedButton.Name == "EmployeesButton")
             {
                 ClickedButton.Image = Properties.Resources.EmployeesWhite;
-                FormEmployee frmEmployee = _scope.Resolve<FormEmployee>();
+                FrmEmployee frmEmployee = _scope.Resolve<FrmEmployee>();
                 OpenChildForm(frmEmployee);// Mở FormEmployees
             }
 
@@ -165,7 +165,7 @@ namespace ProjectRestaurant
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormLogin formLogin = _scope.Resolve<FormLogin>();
+            FrmLogin formLogin = _scope.Resolve<FrmLogin>();
             formLogin.Show();
         }
 

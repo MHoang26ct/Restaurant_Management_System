@@ -82,7 +82,8 @@
             ShadowPanel.Name = "ShadowPanel";
             ShadowPanel.Radius = 5;
             ShadowPanel.ShadowColor = Color.Black;
-            ShadowPanel.ShadowDepth = 50;
+            ShadowPanel.ShadowDepth = 150;
+            ShadowPanel.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
             ShadowPanel.Size = new Size(500, 600);
             ShadowPanel.TabIndex = 0;
             // 
@@ -103,14 +104,14 @@
             doubleBufferedtlp1.Location = new Point(0, 0);
             doubleBufferedtlp1.Name = "doubleBufferedtlp1";
             doubleBufferedtlp1.RowCount = 8;
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 3F));
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 7F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 2F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 6F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 14F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 14F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 14F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 19F));
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 16F));
             doubleBufferedtlp1.Size = new Size(500, 600);
             doubleBufferedtlp1.TabIndex = 0;
             // 
@@ -121,12 +122,12 @@
             doubleBufferedtlp4.Controls.Add(PriceTBox, 0, 1);
             doubleBufferedtlp4.Controls.Add(Label4, 0, 0);
             doubleBufferedtlp4.Dock = DockStyle.Fill;
-            doubleBufferedtlp4.Location = new Point(28, 243);
+            doubleBufferedtlp4.Location = new Point(28, 219);
             doubleBufferedtlp4.Name = "doubleBufferedtlp4";
             doubleBufferedtlp4.RowCount = 2;
             doubleBufferedtlp4.RowStyles.Add(new RowStyle(SizeType.Percent, 32.1428566F));
             doubleBufferedtlp4.RowStyles.Add(new RowStyle(SizeType.Percent, 67.85714F));
-            doubleBufferedtlp4.Size = new Size(444, 84);
+            doubleBufferedtlp4.Size = new Size(444, 78);
             doubleBufferedtlp4.TabIndex = 13;
             // 
             // PriceTBox
@@ -147,17 +148,17 @@
             PriceTBox.ForeColor = Color.Black;
             PriceTBox.HoverState.BorderColor = Color.Black;
             PriceTBox.HoverState.PlaceholderForeColor = Color.Black;
-            PriceTBox.Location = new Point(6, 36);
+            PriceTBox.Location = new Point(6, 34);
             PriceTBox.Margin = new Padding(6, 9, 6, 9);
             PriceTBox.Name = "PriceTBox";
             PriceTBox.PlaceholderForeColor = Color.Gray;
             PriceTBox.PlaceholderText = "Nhập giá tiền...";
             PriceTBox.SelectedText = "";
             PriceTBox.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            PriceTBox.Size = new Size(432, 39);
+            PriceTBox.Size = new Size(432, 35);
             PriceTBox.TabIndex = 1;
-            PriceTBox.Enter += this.PriceTBox_Enter;
-            PriceTBox.Leave += this.PriceTBox_Leave;
+            PriceTBox.Enter += PriceTBox_Enter;
+            PriceTBox.Leave += PriceTBox_Leave;
             // 
             // Label4
             // 
@@ -177,12 +178,12 @@
             doubleBufferedtlp3.Controls.Add(CatagorieFoodsCBox, 0, 1);
             doubleBufferedtlp3.Controls.Add(Label3, 0, 0);
             doubleBufferedtlp3.Dock = DockStyle.Fill;
-            doubleBufferedtlp3.Location = new Point(28, 153);
+            doubleBufferedtlp3.Location = new Point(28, 135);
             doubleBufferedtlp3.Name = "doubleBufferedtlp3";
             doubleBufferedtlp3.RowCount = 2;
             doubleBufferedtlp3.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
             doubleBufferedtlp3.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            doubleBufferedtlp3.Size = new Size(444, 84);
+            doubleBufferedtlp3.Size = new Size(444, 78);
             doubleBufferedtlp3.TabIndex = 10;
             // 
             // CatagorieFoodsCBox
@@ -204,7 +205,7 @@
             CatagorieFoodsCBox.IntegralHeight = false;
             CatagorieFoodsCBox.ItemHeight = 40;
             CatagorieFoodsCBox.Items.AddRange(new object[] { "Tất cả", "Món chính", "Khai vị", "Đồ uống", "Tráng miệng" });
-            CatagorieFoodsCBox.Location = new Point(3, 36);
+            CatagorieFoodsCBox.Location = new Point(3, 34);
             CatagorieFoodsCBox.Name = "CatagorieFoodsCBox";
             CatagorieFoodsCBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
             CatagorieFoodsCBox.Size = new Size(438, 46);
@@ -216,7 +217,7 @@
             Label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             Label3.BackColor = Color.Transparent;
             Label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Label3.Location = new Point(3, 9);
+            Label3.Location = new Point(3, 7);
             Label3.Name = "Label3";
             Label3.Size = new Size(78, 21);
             Label3.TabIndex = 0;
@@ -229,12 +230,12 @@
             doubleBufferedtlp2.Controls.Add(NameFoodTBox, 0, 1);
             doubleBufferedtlp2.Controls.Add(Label2, 0, 0);
             doubleBufferedtlp2.Dock = DockStyle.Fill;
-            doubleBufferedtlp2.Location = new Point(28, 63);
+            doubleBufferedtlp2.Location = new Point(28, 51);
             doubleBufferedtlp2.Name = "doubleBufferedtlp2";
             doubleBufferedtlp2.RowCount = 2;
             doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 66.6666641F));
-            doubleBufferedtlp2.Size = new Size(444, 84);
+            doubleBufferedtlp2.Size = new Size(444, 78);
             doubleBufferedtlp2.TabIndex = 1;
             // 
             // NameFoodTBox
@@ -255,24 +256,24 @@
             NameFoodTBox.ForeColor = Color.Black;
             NameFoodTBox.HoverState.BorderColor = Color.Black;
             NameFoodTBox.HoverState.PlaceholderForeColor = Color.Black;
-            NameFoodTBox.Location = new Point(6, 37);
+            NameFoodTBox.Location = new Point(6, 35);
             NameFoodTBox.Margin = new Padding(6, 9, 6, 9);
             NameFoodTBox.Name = "NameFoodTBox";
             NameFoodTBox.PlaceholderForeColor = Color.Gray;
             NameFoodTBox.PlaceholderText = "Nhập tên món ăn...";
             NameFoodTBox.SelectedText = "";
             NameFoodTBox.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            NameFoodTBox.Size = new Size(432, 38);
+            NameFoodTBox.Size = new Size(432, 34);
             NameFoodTBox.TabIndex = 1;
-            NameFoodTBox.Enter += this.NameFoodTBox_Enter;
-            NameFoodTBox.Leave += this.NameFoodTBox_Leave;
+            NameFoodTBox.Enter += NameFoodTBox_Enter;
+            NameFoodTBox.Leave += NameFoodTBox_Leave;
             // 
             // Label2
             // 
             Label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             Label2.BackColor = Color.Transparent;
             Label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Label2.Location = new Point(3, 4);
+            Label2.Location = new Point(3, 3);
             Label2.Name = "Label2";
             Label2.Size = new Size(69, 21);
             Label2.TabIndex = 0;
@@ -285,12 +286,12 @@
             doubleBufferedtlp5.Controls.Add(DescriptionTBox, 0, 1);
             doubleBufferedtlp5.Controls.Add(Label5, 0, 0);
             doubleBufferedtlp5.Dock = DockStyle.Fill;
-            doubleBufferedtlp5.Location = new Point(28, 333);
+            doubleBufferedtlp5.Location = new Point(28, 303);
             doubleBufferedtlp5.Name = "doubleBufferedtlp5";
             doubleBufferedtlp5.RowCount = 2;
             doubleBufferedtlp5.RowStyles.Add(new RowStyle(SizeType.Percent, 25.4385967F));
             doubleBufferedtlp5.RowStyles.Add(new RowStyle(SizeType.Percent, 74.5614F));
-            doubleBufferedtlp5.Size = new Size(444, 114);
+            doubleBufferedtlp5.Size = new Size(444, 108);
             doubleBufferedtlp5.TabIndex = 14;
             // 
             // DescriptionTBox
@@ -311,14 +312,14 @@
             DescriptionTBox.ForeColor = Color.Black;
             DescriptionTBox.HoverState.BorderColor = Color.Black;
             DescriptionTBox.HoverState.PlaceholderForeColor = Color.Black;
-            DescriptionTBox.Location = new Point(6, 38);
+            DescriptionTBox.Location = new Point(6, 36);
             DescriptionTBox.Margin = new Padding(6, 9, 6, 9);
             DescriptionTBox.Name = "DescriptionTBox";
             DescriptionTBox.PlaceholderForeColor = Color.Gray;
             DescriptionTBox.PlaceholderText = ".";
             DescriptionTBox.SelectedText = "";
             DescriptionTBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            DescriptionTBox.Size = new Size(432, 67);
+            DescriptionTBox.Size = new Size(432, 63);
             DescriptionTBox.TabIndex = 2;
             // 
             // Label5
@@ -326,7 +327,7 @@
             Label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             Label5.BackColor = Color.Transparent;
             Label5.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Label5.Location = new Point(3, 5);
+            Label5.Location = new Point(3, 3);
             Label5.Name = "Label5";
             Label5.Size = new Size(40, 21);
             Label5.TabIndex = 1;
@@ -340,7 +341,7 @@
             doubleBufferedtlp6.Controls.Add(Label6, 0, 0);
             doubleBufferedtlp6.Controls.Add(ChoosePictureButton, 0, 1);
             doubleBufferedtlp6.Dock = DockStyle.Fill;
-            doubleBufferedtlp6.Location = new Point(28, 453);
+            doubleBufferedtlp6.Location = new Point(28, 417);
             doubleBufferedtlp6.Name = "doubleBufferedtlp6";
             doubleBufferedtlp6.RowCount = 2;
             doubleBufferedtlp6.RowStyles.Add(new RowStyle(SizeType.Percent, 36.11111F));
@@ -376,7 +377,7 @@
             ChoosePictureButton.Size = new Size(438, 45);
             ChoosePictureButton.TabIndex = 2;
             ChoosePictureButton.Text = "Chọn ảnh ";
-            ChoosePictureButton.Click += this.ChoosePictureButton_Click;
+            ChoosePictureButton.Click += ChoosePictureButton_Click;
             // 
             // doubleBufferedtlp7
             // 
@@ -386,12 +387,12 @@
             doubleBufferedtlp7.Controls.Add(Label1, 0, 0);
             doubleBufferedtlp7.Controls.Add(ExitButton, 1, 0);
             doubleBufferedtlp7.Dock = DockStyle.Fill;
-            doubleBufferedtlp7.Location = new Point(28, 21);
+            doubleBufferedtlp7.Location = new Point(28, 15);
             doubleBufferedtlp7.Name = "doubleBufferedtlp7";
             doubleBufferedtlp7.RowCount = 1;
             doubleBufferedtlp7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             doubleBufferedtlp7.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            doubleBufferedtlp7.Size = new Size(444, 36);
+            doubleBufferedtlp7.Size = new Size(444, 30);
             doubleBufferedtlp7.TabIndex = 17;
             // 
             // Label1
@@ -418,10 +419,10 @@
             ExitButton.Name = "ExitButton";
             ExitButton.ShadowDecoration.CustomizableEdges = customizableEdges11;
             ExitButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            ExitButton.Size = new Size(38, 30);
+            ExitButton.Size = new Size(38, 24);
             ExitButton.TabIndex = 2;
             ExitButton.Text = "X";
-            ExitButton.Click += this.ExitButton_Click;
+            ExitButton.Click += ExitButton_Click;
             // 
             // AddFoodButton
             // 
@@ -437,13 +438,13 @@
             AddFoodButton.FillColor2 = Color.Chocolate;
             AddFoodButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddFoodButton.ForeColor = Color.White;
-            AddFoodButton.Location = new Point(77, 543);
+            AddFoodButton.Location = new Point(77, 507);
             AddFoodButton.Name = "AddFoodButton";
             AddFoodButton.ShadowDecoration.CustomizableEdges = customizableEdges13;
             AddFoodButton.Size = new Size(346, 43);
             AddFoodButton.TabIndex = 16;
             AddFoodButton.Text = "Thêm Món Ăn";
-            AddFoodButton.Click += this.AddFoodButton_Click;
+            AddFoodButton.Click += AddFoodButton_Click;
             // 
             // UC_AddFood
             // 

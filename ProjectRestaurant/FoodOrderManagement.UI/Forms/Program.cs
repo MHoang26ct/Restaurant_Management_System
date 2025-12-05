@@ -28,15 +28,15 @@ namespace ProjectRestaurant.AdminControl {
 
             // 2. Đăng ký Form chính (Rất quan trọng)
             // Autofac cần biết cách tạo MainForm
-            builder.RegisterType<FormLogin>();
+            builder.RegisterType<FrmLogin>();
             builder.RegisterType<frmMain>();
-            builder.RegisterType<FormDashboard>();
+            builder.RegisterType<FrmDashboard>();
             builder.RegisterType<FrmMenu>();
-            builder.RegisterType<FormOrder>();
+            builder.RegisterType<FrmOrder>();
             builder.RegisterType<FormTable>();
-            builder.RegisterType<FormCustomer>();
-            builder.RegisterType<FormReport>();
-            builder.RegisterType<FormEmployee>();
+            builder.RegisterType<FrmCustomer>();
+            builder.RegisterType<FrmReport>();
+            builder.RegisterType<FrmEmployee>();
             builder.RegisterType<UC_AddFood>();
             builder.RegisterType<UC_FoodItem>();
 
@@ -45,7 +45,7 @@ namespace ProjectRestaurant.AdminControl {
 
             // 4. Chạy ứng dụng, sử dụng Container để khởi tạo Form
             // Autofac sẽ tự động inject các dependency vào constructor của MainForm
-            Application.Run(container.Resolve<FormLogin>());
+            Application.Run(container.Resolve<FrmLogin>());
         }
     }
 }
