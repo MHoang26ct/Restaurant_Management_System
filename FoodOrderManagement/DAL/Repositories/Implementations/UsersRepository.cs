@@ -40,6 +40,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 command.Parameters.AddWithValue("@UserRole", user.Role);
                 await command.ExecuteNonQueryAsync();
             }
+
         }
 
         // Đổi mật khẩu
@@ -66,7 +67,6 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 var count = (int)await command.ExecuteScalarAsync();
                 return count > 0;
             }
-            return true;
         }
 
         // Xoá người dùng

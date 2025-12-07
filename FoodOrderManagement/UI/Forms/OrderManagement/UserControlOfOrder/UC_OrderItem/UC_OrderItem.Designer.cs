@@ -451,7 +451,7 @@
             guna2Button1.FillColor = Color.Transparent;
             guna2Button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button1.ForeColor = Color.Black;
-            guna2Button1.Image = Properties.Resources.add__1_;
+            guna2Button1.Image = Properties.Resources.AddFood2;
             guna2Button1.ImageSize = new Size(15, 15);
             guna2Button1.Location = new Point(165, 49);
             guna2Button1.Name = "guna2Button1";
