@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 ﻿
 namespace FoodOrderManagement.UI.Forms.MenuManagement
-=======
-﻿namespace FoodOrderManagement.UI.Forms.MenuManagement
->>>>>>> e29c6e7b9bd0ca705b8462e637d04ba8b0e5d6c0
 {
     partial class UC_AddFood : UserControl
     {

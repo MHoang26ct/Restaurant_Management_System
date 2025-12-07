@@ -4,7 +4,7 @@ using FoodOrderManagement.DAL.Models.Entities;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
 using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
 using Guna.UI2.WinForms;
-using FoodOrderManagement.AdminControl.FormMenu;
+using FoodOrderManagement.UI.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -110,34 +110,4 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 control.Region = new Region(path);
             }
         }
-
-        public FrmMenu(ILifetimeScope scope, IFoodsRepository foodsRepository)
-        {
-            InitializeComponent();
-            _scope = scope;
-            _foodsRepository = foodsRepository;
-        }
-        private void AddFoodButton_Click(object sender, EventArgs e)
-        {
-            _uc_AddFood.ResetForm();
-            _uc_AddFood.Visible = true;
-            _uc_AddFood.BringToFront();
-        }
-
-        private void SearchFoodTBox1_Enter(object sender, EventArgs e)
-        {
-            if (SearchFoodTBox1.PlaceholderText == "Search menu items...")
-            {
-                SearchFoodTBox1.Text = "";
-            }
-        }
-
-        private void SearchFoodTBox1_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(SearchFoodTBox1.Text))
-            {
-                SearchFoodTBox1.PlaceholderText = "Search menu items...";
-            }    
-        }
-    }
 }
