@@ -35,14 +35,15 @@ namespace FoodOrderManagement.AdminControl
             //
             OrderPicture.Controls.Add(BlurryOrderPanel);
             BlurryOrderPanel.Dock = DockStyle.Fill;
+  
             //
             // TablePicture
-            //
+            // 
             TablePicture.Controls.Add(BlurryTablePanel);
             BlurryTablePanel.Dock = DockStyle.Fill;
-            //
-            // CustomerPicture
-            //
+           //
+           // CustomerPicture
+           //
             CustomerPicture.Controls.Add(BlurryCustomerPanel);
             BlurryCustomerPanel.Dock = DockStyle.Fill;
             //
@@ -56,9 +57,9 @@ namespace FoodOrderManagement.AdminControl
             EmployeePicture.Controls.Add(BlurryEmployeePanel);
             BlurryEmployeePanel.Dock = DockStyle.Fill;
 
-        }
+               
         private void TimeShow()
-        {
+                {
             DateTime now = DateTime.Now;
             TimeLabel.Text = now.ToString("HH:mm:ss tt");
             DateLabel.Text = now.ToString("dddd, dd/MM/yyyy", new CultureInfo("vi-VN"));
