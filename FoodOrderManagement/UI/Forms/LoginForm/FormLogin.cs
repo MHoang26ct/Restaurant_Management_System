@@ -147,7 +147,12 @@ namespace FoodOrderManagement
         {
             if (e.KeyCode == Keys.Escape)
             {
-                 Application.Exit(); 
+               DialogResult result =  MessageBox.Show("Bạn có chắc muốn đóng ứng dụng?", "Thông báo", 
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    Application.Exit();
+                }
             }
         }
     }
