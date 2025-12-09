@@ -350,8 +350,6 @@
             TableGradientPanel.Size = new Size(277, 140);
             TableGradientPanel.TabIndex = 3;
             TableGradientPanel.Tag = "HoverContainer";
-            TableGradientPanel.MouseEnter += Control_MouseEnter;
-            TableGradientPanel.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp16
             // 
@@ -538,8 +536,6 @@
             OrderGradientPanel.Size = new Size(277, 141);
             OrderGradientPanel.TabIndex = 6;
             OrderGradientPanel.Tag = "HoverContainer";
-            OrderGradientPanel.MouseEnter += Control_MouseEnter;
-            OrderGradientPanel.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp8
             // 
@@ -588,8 +584,6 @@
             LabelOfOrder3.Size = new Size(154, 21);
             LabelOfOrder3.TabIndex = 3;
             LabelOfOrder3.Text = "+30% (1 ngày trước)";
-            LabelOfOrder3.MouseEnter += Control_MouseEnter;
-            LabelOfOrder3.MouseLeave += Control_MouseLeave;
             // 
             // OrderIcon2
             // 
@@ -605,8 +599,6 @@
             OrderIcon2.SizeMode = PictureBoxSizeMode.StretchImage;
             OrderIcon2.TabIndex = 4;
             OrderIcon2.TabStop = false;
-            OrderIcon2.MouseEnter += Control_MouseEnter;
-            OrderIcon2.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp10
             // 
@@ -640,8 +632,6 @@
             GradientPanelOfOrder.ShadowDecoration.CustomizableEdges = customizableEdges14;
             GradientPanelOfOrder.Size = new Size(40, 34);
             GradientPanelOfOrder.TabIndex = 1;
-            GradientPanelOfOrder.MouseEnter += Control_MouseEnter;
-            GradientPanelOfOrder.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp11
             // 
@@ -688,8 +678,6 @@
             LabelOfOrder1.Size = new Size(81, 21);
             LabelOfOrder1.TabIndex = 0;
             LabelOfOrder1.Text = "Đơn Hàng";
-            LabelOfOrder1.MouseEnter += Control_MouseEnter;
-            LabelOfOrder1.MouseLeave += Control_MouseLeave;
             // 
             // LabelOfOrder2
             // 
@@ -703,8 +691,6 @@
             LabelOfOrder2.Size = new Size(27, 32);
             LabelOfOrder2.TabIndex = 2;
             LabelOfOrder2.Text = " 70";
-            LabelOfOrder2.MouseEnter += Control_MouseEnter;
-            LabelOfOrder2.MouseLeave += Control_MouseLeave;
             // 
             // LabelOfCusstomer2
             // 
@@ -722,8 +708,6 @@
             LabelOfCusstomer2.Size = new Size(277, 140);
             LabelOfCusstomer2.TabIndex = 5;
             LabelOfCusstomer2.Tag = "HoverContainer";
-            LabelOfCusstomer2.MouseEnter += Control_MouseEnter;
-            LabelOfCusstomer2.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp20
             // 
@@ -897,8 +881,6 @@
             ReportsGradientPanel.Size = new Size(277, 141);
             ReportsGradientPanel.TabIndex = 7;
             ReportsGradientPanel.Tag = "HoverContainer";
-            ReportsGradientPanel.MouseEnter += Control_MouseEnter;
-            ReportsGradientPanel.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp12
             // 
@@ -1202,7 +1184,6 @@
             doubleBufferedtlp6.RowStyles.Add(new RowStyle(SizeType.Percent, 50.8771935F));
             doubleBufferedtlp6.Size = new Size(239, 140);
             doubleBufferedtlp6.TabIndex = 0;
-            doubleBufferedtlp6.Paint += doubleBufferedtlp6_Paint;
             // 
             // DateLabel
             // 
@@ -1214,7 +1195,6 @@
             DateLabel.Name = "DateLabel";
             DateLabel.Size = new Size(233, 68);
             DateLabel.TabIndex = 11;
-            DateLabel.Text = "Monday ,17/28/2025";
             DateLabel.TextAlign = ContentAlignment.BottomCenter;
             // 
             // doubleBufferedtlp48

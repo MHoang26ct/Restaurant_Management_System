@@ -24,10 +24,6 @@ namespace FoodOrderManagement
             _scope = scope;
         }
 
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         //PlaceholderText Username
         private void TextUsername_Enter(object sender, EventArgs e)
         {
@@ -154,7 +150,7 @@ namespace FoodOrderManagement
                DialogResult result =  MessageBox.Show("Bạn có chắc muốn đóng ứng dụng?", "Thông báo", 
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
-        {
+                {
                     Application.Exit();
                 }
             }

@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:FoodOrderManagement/UI/Forms/TableManagement/UserControlOfTable/AddDetailsTable.Designer.cs
-﻿namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
-========
-﻿namespace FoodOrderManagement.AdminControl
->>>>>>>> origin/MHoang26ct-patch-1:FoodOrderManagement/UI/Forms/TableManagement/FormTable.Designer.cs
+namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 {
     partial class AddDetailsTable
     {

@@ -35,21 +35,19 @@ namespace FoodOrderManagement.AdminControl
             //
             OrderPicture.Controls.Add(BlurryOrderPanel);
             BlurryOrderPanel.Dock = DockStyle.Fill;
-
-
             //
             // TablePicture
             //
             TablePicture.Controls.Add(BlurryTablePanel);
             BlurryTablePanel.Dock = DockStyle.Fill;
-                                                    //   
+            //   
             // CustomerPicture
-                                                       // 
+            // 
             CustomerPicture.Controls.Add(BlurryCustomerPanel);
             BlurryCustomerPanel.Dock = DockStyle.Fill;
-        //
+            //
             // ReportPicture
-        //
+            //
             ReportPicture.Controls.Add(BlurryReportPanel);
             BlurryReportPanel.Dock = DockStyle.Fill;
             //
@@ -58,17 +56,6 @@ namespace FoodOrderManagement.AdminControl
             EmployeePicture.Controls.Add(BlurryEmployeePanel);
             BlurryEmployeePanel.Dock = DockStyle.Fill;
         }
-        private void Control_MouseLeave(object sender, EventArgs e)
-        {
-            Control MainContainer = FindHoverContainer((Control)sender); // HoverContainer
-
-            if (MainContainer != null && DiOriginalLocations.ContainsKey(MainContainer)) // Có HoverContainer và
-                                                                                         // HoverCointainer của Control có
-                                                                                         // trong Dictionary
-            {
-                Padding OriginalLocation = DiOriginalLocations[MainContainer];
-                Point MousePosition = MainContainer.PointToClient(Cursor.Position); // Địa chỉ chuột đang trỏ đến
-
         private void TimeShow()
                 {
             DateTime now = DateTime.Now;

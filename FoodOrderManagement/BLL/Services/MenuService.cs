@@ -14,7 +14,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static FoodOrderManagement.UI.Forms.MenuManagement.FrmMenu;
 namespace FoodOrderManagement.UI.Forms.MenuManagement
 {
     public partial class FrmMenu : Form
