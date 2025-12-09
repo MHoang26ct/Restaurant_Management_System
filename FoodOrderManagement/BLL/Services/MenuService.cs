@@ -68,14 +68,12 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
 
                 return matchName && matchCategory;
             }).ToList();
-
             RenderFoodList(filteredList);
         }
         public async Task LoadFoodAsync()
         {
             try
             {
-
                 OriginalFoodList = await _foodsRepository.GetAllFoodsAsync();
                 ApplyFilter();
             }
@@ -116,10 +114,9 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         }
         private async void FormMenu_Load(object sender, EventArgs e)
         {
-            LoadFoodAsync();
-            _uc_AddFood = _scope.Resolve<UC_AddFood>();
+            await LoadFoodAsync();
             _uc_AddFood.Visible = false;
-            this.Controls.Add(_uc_AddFood);
+            this.Controls.Add(_uc_AddFood); 
             _uc_AddFood.BringToFront();
             //Khời tạo vị trí của AddFood
             _uc_AddFood.Location = new Point(
@@ -135,7 +132,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             _uc_AddFood.FoodAdded += (s, args) =>
             {
                 _uc_AddFood.Visible = false;
-                LoadFoodAsync();
+                 LoadFoodAsync();
             };
         }
     }
@@ -285,6 +282,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         // Sự kiện nút exit
         private void ExitButton_Click(object sender, EventArgs e)
         {
+            ResetForm();
             this.Visible = false;
         }
 

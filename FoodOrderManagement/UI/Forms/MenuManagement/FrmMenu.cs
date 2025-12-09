@@ -4,7 +4,6 @@ using FoodOrderManagement.DAL.Models.Entities;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
 using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
 using Guna.UI2.WinForms;
-using FoodOrderManagement.UI.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +30,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             InitializeComponent();
             _scope = scope;
             _foodsRepository = foodsRepository;
+            _uc_AddFood = _scope.Resolve<UC_AddFood>();
         }
 
         private void AddFoodButton_Click(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             }
         }
     }
-        public static class Helper
+    public static class Helper
         {
             // Hàm bo góc tuỳ chỉnh (Cắt Region - Viền sẽ hơi răng cưa)
             public static void BoGoc(Control control, int radius, bool topLeft, bool topRight, bool bottomRight, bool bottomLeft)

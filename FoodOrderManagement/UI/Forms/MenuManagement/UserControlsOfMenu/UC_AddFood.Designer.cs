@@ -378,6 +378,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             ChoosePictureButton.Size = new Size(438, 45);
             ChoosePictureButton.TabIndex = 2;
             ChoosePictureButton.Text = "Chọn ảnh ";
+            ChoosePictureButton.Click += ChoosePictureButton_Click;
             // 
             // doubleBufferedtlp7
             // 
@@ -422,6 +423,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             ExitButton.Size = new Size(38, 24);
             ExitButton.TabIndex = 2;
             ExitButton.Text = "X";
+            ExitButton.Click += ExitButton_Click;
             // 
             // AddFoodButton
             // 
@@ -443,6 +445,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             AddFoodButton.Size = new Size(346, 43);
             AddFoodButton.TabIndex = 16;
             AddFoodButton.Text = "Thêm Món Ăn";
+            AddFoodButton.Click += AddFoodButton_Click;
             // 
             // UC_AddFood
             // 
