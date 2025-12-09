@@ -66,6 +66,9 @@ Ensure your system meets the following requirements:
    - Reference: [Port forwarding tutorial](https://www.youtube.com/watch?v=zoFcqt9Yufw)
 4. Note your server's public IP address and credentials
 
+> [!NOTE]
+> For a stable remote connection, consider [setting up a static IP address](https://youtu.be/-G3ePnXAoHc?si=ATj-qD86jkQih7Ox) and [registering a DDNS (Dynamic DNS) service](https://youtu.be/Qbad9pYSVwg?si=2_E7ZEwJxPA3__8j). This ensures your server remains accessible even if your public IP changes
+
 #### Step 1.5: Initialize Database Structure
 
 After creating the database, you need to build its structure by executing SQL scripts:
