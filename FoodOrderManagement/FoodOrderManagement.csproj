@@ -9,12 +9,17 @@
 
 		<ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
 		<ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
+		<ApplicationIcon>Resources\download (1).ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <Compile Remove="Foodmages\**" />
 	  <EmbeddedResource Remove="Foodmages\**" />
 	  <None Remove="Foodmages\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Resources\download (1).ico" />
 	</ItemGroup>
 
 	<ItemGroup>
