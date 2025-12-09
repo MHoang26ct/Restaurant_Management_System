@@ -198,6 +198,7 @@
             resources.ApplyResources(RememberBox, "RememberBox");
             RememberBox.ForeColor = Color.White;
             RememberBox.Name = "RememberBox";
+            RememberBox.TabStop = false;
             RememberBox.UseVisualStyleBackColor = true;
             // 
             // ShowPWBox
@@ -205,6 +206,7 @@
             resources.ApplyResources(ShowPWBox, "ShowPWBox");
             ShowPWBox.ForeColor = Color.White;
             ShowPWBox.Name = "ShowPWBox";
+            ShowPWBox.TabStop = false;
             ShowPWBox.UseVisualStyleBackColor = true;
             ShowPWBox.CheckedChanged += ShowPWBox_CheckedChanged;
             // 
@@ -309,9 +311,11 @@
             Controls.Add(BackgroundPanel);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            KeyPreview = true;
             Name = "FormLogin";
             FormClosed += FormLogin_FormClosed;
             Load += FormLogin_FormLoad;
+            KeyDown += FormLogin_KeyDown;
             BackgroundPanel.ResumeLayout(false);
             doubleBufferedtlp1.ResumeLayout(false);
             LoginGadient2.ResumeLayout(false);

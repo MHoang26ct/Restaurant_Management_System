@@ -83,8 +83,8 @@ namespace FoodOrderManagement
                 }
 
                 FormMain FormMain = _scope.Resolve<FormMain>();
-            FormMain.Show();
-            this.Hide();
+                FormMain.Show();
+                this.Hide();
             }
             else
             {
@@ -140,6 +140,14 @@ namespace FoodOrderManagement
             {
                 e.SuppressKeyPress = true;
                 ContinueButton.PerformClick();
+            }
+        }
+
+        private void FormLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                 Application.Exit(); 
             }
         }
     }

@@ -179,7 +179,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 return;
             }
 
-            if (CatagorieFoodsCBox.SelectedItem.ToString() == "Tất cả")
+            if ( CatagorieFoodsCBox.SelectedItem.ToString() == "Tất cả")
             {
                 MessageBox.Show("Vui lòng chọn danh mục cụ thể (Ví dụ: Món chính/Món phụ...)" +
                     "\nKhông được chọn 'Tất cả'. ", "Lỗi Danh Mục",
