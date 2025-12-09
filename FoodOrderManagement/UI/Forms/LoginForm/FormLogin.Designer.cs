@@ -306,6 +306,7 @@
             // 
             // FormLogin
             // 
+            AcceptButton = ContinueButton;
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(BackgroundPanel);
