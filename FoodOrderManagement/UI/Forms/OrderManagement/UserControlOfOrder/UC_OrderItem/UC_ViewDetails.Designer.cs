@@ -194,6 +194,7 @@
             AutoScroll = true;
             BackColor = Color.Transparent;
             Controls.Add(guna2Panel1);
+            DoubleBuffered = true;
             Name = "UC_ViewDetails";
             Size = new Size(500, 300);
             guna2Panel1.ResumeLayout(false);

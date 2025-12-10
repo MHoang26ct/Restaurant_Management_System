@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             doubleBufferedtlp1 = new DoubleBufferedTLP();
             doubleBufferedtlp2 = new DoubleBufferedTLP();
             doubleBufferedtlp4 = new DoubleBufferedTLP();
@@ -187,13 +187,13 @@
             // 
             guna2CustomGradientPanel3.BorderRadius = 10;
             guna2CustomGradientPanel3.Controls.Add(doubleBufferedtlp12);
-            guna2CustomGradientPanel3.CustomizableEdges = customizableEdges13;
+            guna2CustomGradientPanel3.CustomizableEdges = customizableEdges1;
             guna2CustomGradientPanel3.Dock = DockStyle.Fill;
             guna2CustomGradientPanel3.FillColor2 = Color.FromArgb(255, 224, 192);
             guna2CustomGradientPanel3.FillColor4 = Color.FromArgb(255, 255, 192);
             guna2CustomGradientPanel3.Location = new Point(3, 3);
             guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
-            guna2CustomGradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2CustomGradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2CustomGradientPanel3.Size = new Size(328, 156);
             guna2CustomGradientPanel3.TabIndex = 2;
             // 
@@ -270,13 +270,13 @@
             // 
             guna2CustomGradientPanel2.BorderRadius = 10;
             guna2CustomGradientPanel2.Controls.Add(doubleBufferedtlp10);
-            guna2CustomGradientPanel2.CustomizableEdges = customizableEdges15;
+            guna2CustomGradientPanel2.CustomizableEdges = customizableEdges3;
             guna2CustomGradientPanel2.Dock = DockStyle.Fill;
             guna2CustomGradientPanel2.FillColor2 = Color.FromArgb(255, 192, 192);
             guna2CustomGradientPanel2.FillColor4 = Color.FromArgb(255, 192, 192);
             guna2CustomGradientPanel2.Location = new Point(3, 3);
             guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
-            guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2CustomGradientPanel2.Size = new Size(323, 156);
             guna2CustomGradientPanel2.TabIndex = 1;
             // 
@@ -353,13 +353,13 @@
             // 
             guna2CustomGradientPanel1.BorderRadius = 10;
             guna2CustomGradientPanel1.Controls.Add(doubleBufferedtlp8);
-            guna2CustomGradientPanel1.CustomizableEdges = customizableEdges17;
+            guna2CustomGradientPanel1.CustomizableEdges = customizableEdges5;
             guna2CustomGradientPanel1.Dock = DockStyle.Fill;
             guna2CustomGradientPanel1.FillColor2 = Color.FromArgb(192, 255, 192);
             guna2CustomGradientPanel1.FillColor4 = Color.FromArgb(192, 255, 192);
             guna2CustomGradientPanel1.Location = new Point(3, 3);
             guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2CustomGradientPanel1.Size = new Size(323, 156);
             guna2CustomGradientPanel1.TabIndex = 0;
             // 
@@ -437,13 +437,13 @@
             GradientPanel1.BackColor = Color.Transparent;
             GradientPanel1.BorderRadius = 10;
             GradientPanel1.Controls.Add(doubleBufferedtlp7);
-            GradientPanel1.CustomizableEdges = customizableEdges19;
+            GradientPanel1.CustomizableEdges = customizableEdges7;
             GradientPanel1.Dock = DockStyle.Fill;
             GradientPanel1.FillColor = Color.WhiteSmoke;
             GradientPanel1.FillColor2 = Color.WhiteSmoke;
             GradientPanel1.Location = new Point(3, 3);
             GradientPanel1.Name = "GradientPanel1";
-            GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             GradientPanel1.Size = new Size(324, 156);
             GradientPanel1.TabIndex = 1;
             // 
@@ -522,13 +522,13 @@
             TableGradient1.BackColor = SystemColors.Control;
             TableGradient1.BorderRadius = 15;
             TableGradient1.Controls.Add(doubleBufferedtlp6);
-            TableGradient1.CustomizableEdges = customizableEdges21;
+            TableGradient1.CustomizableEdges = customizableEdges11;
             TableGradient1.Dock = DockStyle.Fill;
             TableGradient1.FillColor = Color.FromArgb(255, 128, 0);
             TableGradient1.FillColor2 = Color.Chocolate;
             TableGradient1.Location = new Point(3, 14);
             TableGradient1.Name = "TableGradient1";
-            TableGradient1.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            TableGradient1.ShadowDecoration.CustomizableEdges = customizableEdges12;
             TableGradient1.Size = new Size(62, 65);
             TableGradient1.TabIndex = 5;
             // 
@@ -552,14 +552,14 @@
             // 
             // TableIcon1
             // 
-            TableIcon1.CustomizableEdges = customizableEdges23;
+            TableIcon1.CustomizableEdges = customizableEdges9;
             TableIcon1.Dock = DockStyle.Fill;
             TableIcon1.FillColor = Color.Transparent;
             TableIcon1.Image = Properties.Resources.TableWhite;
             TableIcon1.ImageRotate = 0F;
             TableIcon1.Location = new Point(9, 9);
             TableIcon1.Name = "TableIcon1";
-            TableIcon1.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            TableIcon1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             TableIcon1.Size = new Size(44, 46);
             TableIcon1.SizeMode = PictureBoxSizeMode.StretchImage;
             TableIcon1.TabIndex = 0;

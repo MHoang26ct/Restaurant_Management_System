@@ -32,5 +32,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             _customersRepository = customersRepository;
             ThemDongMonAn();
         }
+
     }
 }

@@ -57,7 +57,7 @@
             doubleBufferedtlp1.Name = "doubleBufferedtlp1";
             doubleBufferedtlp1.RowCount = 1;
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            doubleBufferedtlp1.Size = new Size(521, 45);
+            doubleBufferedtlp1.Size = new Size(500, 45);
             doubleBufferedtlp1.TabIndex = 0;
             // 
             // QuantityFoodNBox
@@ -70,12 +70,12 @@
             QuantityFoodNBox.Dock = DockStyle.Fill;
             QuantityFoodNBox.FillColor = Color.Gainsboro;
             QuantityFoodNBox.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            QuantityFoodNBox.Location = new Point(345, 5);
+            QuantityFoodNBox.Location = new Point(332, 5);
             QuantityFoodNBox.Margin = new Padding(7, 5, 2, 9);
             QuantityFoodNBox.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             QuantityFoodNBox.Name = "QuantityFoodNBox";
             QuantityFoodNBox.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            QuantityFoodNBox.Size = new Size(121, 31);
+            QuantityFoodNBox.Size = new Size(116, 31);
             QuantityFoodNBox.TabIndex = 19;
             QuantityFoodNBox.UpDownButtonFillColor = Color.Gray;
             QuantityFoodNBox.Value = new decimal(new int[] { 1, 0, 0, 0 });
@@ -92,11 +92,11 @@
             NameFoodCBox.Font = new Font("Segoe UI", 10F);
             NameFoodCBox.ForeColor = Color.Black;
             NameFoodCBox.ItemHeight = 30;
-            NameFoodCBox.Location = new Point(3, 6);
-            NameFoodCBox.Margin = new Padding(3, 6, 3, 0);
+            NameFoodCBox.Location = new Point(0, 4);
+            NameFoodCBox.Margin = new Padding(0, 4, 0, 0);
             NameFoodCBox.Name = "NameFoodCBox";
             NameFoodCBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            NameFoodCBox.Size = new Size(332, 36);
+            NameFoodCBox.Size = new Size(325, 36);
             NameFoodCBox.TabIndex = 0;
             // 
             // DeleteButton
@@ -111,21 +111,22 @@
             DeleteButton.Font = new Font("Segoe UI", 9F);
             DeleteButton.ForeColor = Color.White;
             DeleteButton.Image = (Image)resources.GetObject("DeleteButton.Image");
-            DeleteButton.Location = new Point(471, 0);
+            DeleteButton.Location = new Point(453, 0);
             DeleteButton.Margin = new Padding(3, 0, 3, 3);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            DeleteButton.Size = new Size(47, 42);
+            DeleteButton.Size = new Size(44, 42);
             DeleteButton.TabIndex = 20;
-            DeleteButton.Click += this.DeleteButton_Click;
+            DeleteButton.Click += DeleteButton_Click;
             // 
             // UC_AddFoodOrder
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Transparent;
             Controls.Add(doubleBufferedtlp1);
             Name = "UC_AddFoodOrder";
-            Size = new Size(521, 45);
+            Size = new Size(500, 45);
             doubleBufferedtlp1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)QuantityFoodNBox).EndInit();
             ResumeLayout(false);

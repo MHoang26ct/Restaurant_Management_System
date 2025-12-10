@@ -470,6 +470,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             Controls.Add(guna2ShadowPanel1);
+            DoubleBuffered = true;
             ImeMode = ImeMode.Katakana;
             Name = "UC_OrderItem";
             Size = new Size(1370, 200);
