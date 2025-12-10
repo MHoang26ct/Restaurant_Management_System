@@ -116,8 +116,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         }
         private async void FormMenu_Load(object sender, EventArgs e)
         {
-            LoadFoodAsync();
-            _uc_AddFood = _scope.Resolve<UC_AddFood>();
+            await LoadFoodAsync();
             _uc_AddFood.Visible = false;
             this.Controls.Add(_uc_AddFood);
             _uc_AddFood.BringToFront();
@@ -285,6 +284,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         // Sự kiện nút exit
         private void ExitButton_Click(object sender, EventArgs e)
         {
+            ResetForm();
             this.Visible = false;
         }
 

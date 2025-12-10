@@ -61,6 +61,5 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 PriceTBox.PlaceholderText = "Nhập giá tiền...";
             }
         }
-
     }
 }

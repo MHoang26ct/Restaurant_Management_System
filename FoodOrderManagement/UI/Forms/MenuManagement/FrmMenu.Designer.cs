@@ -289,6 +289,7 @@
             Name = "FrmMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMenu";
+            Load += FormMenu_Load;
             doubleBufferedtlp1.ResumeLayout(false);
             doubleBufferedtlp2.ResumeLayout(false);
             doubleBufferedtlp3.ResumeLayout(false);

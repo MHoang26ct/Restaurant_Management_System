@@ -1,4 +1,4 @@
-﻿namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
+namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 {
     partial class AddDetailsTable
     {
