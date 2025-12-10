@@ -11,18 +11,21 @@ using System.Windows.Forms;
 
 namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 {
-  
+
     public partial class UC_AddTableCard : UserControl
     {
-        public event EventHandler OnAddTable_Click;
+        public event EventHandler OnCardClicked;
+
         public UC_AddTableCard()
         {
             InitializeComponent();
+           
         }
 
         private void AddTableButton_Click(object sender, EventArgs e)
         {
-            OnAddTable_Click?.Invoke(this, EventArgs.Empty);
+            OnCardClicked?.Invoke(this, EventArgs.Empty);
+            OnCardClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

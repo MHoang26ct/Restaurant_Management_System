@@ -12,32 +12,57 @@ using System.Windows.Forms;
 
 namespace FoodOrderManagement.AdminControl
 {
-    
+
     public partial class FormTable : Form
-    {
+    {   
         UC_AddTableCard uc_AddTableCard;
+        UC_AddTable uc_AddTable;
+        private int TableCount = 0;
         public FormTable()
         {
             InitializeComponent();
-            FlowLayoutLoad();
+            SetupUI();
         }
 
-        private void FlowLayoutLoad()
+        private void SetupUI()
         {
+            //AddTableCard
             uc_AddTableCard = new UC_AddTableCard();
-            FlowLayoutTable.Controls.Add(uc_AddTableCard);
-            
-        }
+            uc_AddTableCard.OnCardClicked += (s, e) => ShowAddTable(); // hiện bảng nhập liệu
 
-        private void HandlerAddTableClicked()
-        {
-            UC_AddTable uc_AddTable = new UC_AddTable();
+            FlowLayoutTable.Controls.Add(uc_AddTableCard);
+            //AddTable
+            uc_AddTable = new UC_AddTable();
             this.Controls.Add(uc_AddTable);
+            uc_AddTable.Visible = false;
+
+            uc_AddTable.OnSaveTable += (s, Capacity) =>
+            {
+                AddNewTable(Capacity);
+                uc_AddTable.Visible = false;
+            };
+
+        }
+        private void ShowAddTable()
+        {
+            uc_AddTable.ResetData();
             uc_AddTable.Location = new Point(
-                 (this.Width - uc_AddTable.Width) / 2,
-                 (this.Height - uc_AddTable.Height) / 2
+                (this.Width - uc_AddTable.Width) / 2,
+                (this.Height - uc_AddTable.Height) / 2
             );
+            uc_AddTable.Visible = true;
             uc_AddTable.BringToFront();
         }
+
+        private void AddNewTable(int Capacity)
+        {
+            TableCount++;
+            UC_TableItem NewTable = new UC_TableItem();
+            NewTable.SetData(TableCount, Capacity, "Available");
+
+            FlowLayoutTable.Controls.Add(NewTable);
+            FlowLayoutTable.Controls.SetChildIndex(uc_AddTableCard, FlowLayoutTable.Controls.Count - 1);
+        }
+
     }
 }

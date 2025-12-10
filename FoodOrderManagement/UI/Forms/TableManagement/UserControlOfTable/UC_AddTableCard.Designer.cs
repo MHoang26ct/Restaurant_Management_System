@@ -69,21 +69,22 @@
             AddTableButton.FillColor = Color.Transparent;
             AddTableButton.FillColor2 = Color.Transparent;
             AddTableButton.FocusedColor = Color.Transparent;
-            AddTableButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AddTableButton.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AddTableButton.ForeColor = Color.DarkGray;
             AddTableButton.HoverState.BorderColor = Color.Transparent;
             AddTableButton.HoverState.CustomBorderColor = Color.Transparent;
             AddTableButton.HoverState.FillColor = Color.Transparent;
             AddTableButton.HoverState.FillColor2 = Color.Transparent;
-            AddTableButton.Image = Properties.Resources.add__1_;
+            AddTableButton.Image = Properties.Resources.add__2_1;
             AddTableButton.Location = new Point(0, 0);
+            AddTableButton.Margin = new Padding(3, 10, 3, 3);
             AddTableButton.Name = "AddTableButton";
             AddTableButton.PressedColor = Color.White;
             AddTableButton.PressedDepth = 0;
             AddTableButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
             AddTableButton.Size = new Size(200, 230);
             AddTableButton.TabIndex = 0;
-            AddTableButton.Text = "Thêm Bàn ";
+            AddTableButton.Text = "  Thêm Bàn ";
             AddTableButton.Click += AddTableButton_Click;
             // 
             // UC_AddTableCard

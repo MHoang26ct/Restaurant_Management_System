@@ -12,6 +12,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 {
     public partial class UC_AddTable : UserControl
     {
+        public event EventHandler<int> OnSaveTable;
         public UC_AddTable()
         {
             InitializeComponent();
@@ -19,7 +20,17 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 
         private void AddButton_Click(object sender, EventArgs e)
         {
+            int capacity = (int)CapacityNBox.Value;
+            OnSaveTable?.Invoke(this, capacity);
+        }
+        public void ResetData()
+        {
+            CapacityNBox.Value = 2; // Mặc định 2 ghế
+        }
 
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
         }
     }
 }
