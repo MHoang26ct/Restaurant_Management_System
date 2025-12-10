@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,32 +13,11 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 {
     public partial class UC_OrderItem : UserControl
     {
-        private OrderModel _currentOrderData;
-        public event EventHandler<OrderModel> OnViewDetailsClicked;
+        private Orders _currentOrderData;
+        public event EventHandler<Orders> OnViewDetailsClicked;
         public UC_OrderItem()
         {
             InitializeComponent();
-        }
-        private void ViewDetailsButton_Click(object sender, EventArgs e)
-        {
-            if (_currentOrderData != null)
-            {
-                OnViewDetailsClicked?.Invoke(this, _currentOrderData);
-            }
-            else
-            {
-                MessageBox.Show("Lỗi: Không tìm thấy dữ liệu đơn hàng!");
-            }
-        }
-        public void SetOrderData(OrderModel order)
-        {
-            _currentOrderData = order;
-            OrderIDLabel.Text = order.OrderId;
-            NameCustomerLabel.Text = order.CustomerName;
-            TableIDLabel.Text = "Bàn " + order.TableNumber;
-            TimeOrderLabel.Text = order.OrderDate.ToString("dd/MM/yyyy HH:mm");
-            TotalMoneyLabel.Text = "Tổng: " + order.TotalPrice.ToString("N0") + " VND";
-            TotalItemsLabel.Text = order.TotalItems + " món";
         }
         private void StatusCBox_SelectedIndexChanged(object sender, EventArgs e)
         {

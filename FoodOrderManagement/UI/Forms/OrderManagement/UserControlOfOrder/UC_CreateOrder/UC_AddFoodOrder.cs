@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Accessibility;
+using Autofac;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +16,16 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 {
     public partial class UC_AddFoodOrder : UserControl
     {
-        public UC_AddFoodOrder()
+        private readonly ILifetimeScope _scope;
+        private readonly IFoodsRepository _foodsRepository;
+        List<Foods> foodlist = new List<Foods>();
+        public UC_AddFoodOrder(ILifetimeScope scope, IFoodsRepository foodsRepository)
         {
             InitializeComponent();
-        }
+            _scope = scope;
+            _foodsRepository = foodsRepository;
+            LoadFoodToComboBox();
 
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            this.Parent.Controls.Remove(this);
         }
     }
 }

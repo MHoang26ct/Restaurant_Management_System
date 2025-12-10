@@ -9,23 +9,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Autofac;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
 
 namespace FoodOrderManagement.AdminControl
 {
     public partial class FormOrder : Form
     {
+        private readonly ILifetimeScope _scope;
+        private readonly IOrdersRepository _ordersRepository;
         UC_CreateOrder _ucCreateOrder;
         UC_ViewDetails _ucViewDetails;
         Guna2Panel _overlayPanel; // Làm tối nền
         public UC_OrderItem _uc_OrderItem;
-        public FormOrder()
+        public FormOrder(ILifetimeScope scope, IOrdersRepository ordersRepository)
         {
             InitializeComponent();
+            _scope = scope;
+            _ordersRepository = ordersRepository;
+            LoadAllOrders();
         }
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
-            _ucCreateOrder = new UC_CreateOrder();
+            _ucCreateOrder = _scope.Resolve<UC_CreateOrder>();
             _ucCreateOrder.OnOrderCreated += HandleOrderCreated;
+            _ucCreateOrder.OnOrderCreated += (s, newOrder) =>
+            {
+                LoadAllOrders() ;
+            };
             this.Controls.Add(_ucCreateOrder);
             _ucCreateOrder.Location = new Point(
                  (this.Width - _ucCreateOrder.Width) / 2,
@@ -33,7 +45,7 @@ namespace FoodOrderManagement.AdminControl
             );
             _ucCreateOrder.BringToFront();
         }
-        private void HandleOrderCreated(object sender, OrderModel orderData)
+        private void HandleOrderCreated(object sender, Orders orderData)
         {
             UC_OrderItem orderItem = new UC_OrderItem();
 
@@ -50,7 +62,7 @@ namespace FoodOrderManagement.AdminControl
                 ctrl.Dispose(); // Hủy nó đi cho nhẹ bộ nhớ
             }
         }
-        private void HandleViewDetailsClicked(object sender, OrderModel orderData)
+        private void HandleViewDetailsClicked(object sender, Orders orderData)
         {
             //Khởi tạo UserControl xem chi tiết
             _ucViewDetails = new UC_ViewDetails();

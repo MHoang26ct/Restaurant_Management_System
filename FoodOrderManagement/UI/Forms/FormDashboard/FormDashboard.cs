@@ -82,7 +82,7 @@ namespace FoodOrderManagement.AdminControl
         //
         private void OrderPicture_Click(object sender, EventArgs e)
         {
-            FormOrder FormOrder = new FormOrder();
+            FormOrder FormOrder = _scope.Resolve<FormOrder>();
             FormMain.instance.OrderButton.PerformClick();
         }
         //

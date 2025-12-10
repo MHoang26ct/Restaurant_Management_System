@@ -36,11 +36,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_AddFoodOrder));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             doubleBufferedtlp1 = new DoubleBufferedTLP();
-            QuanlityFoodNBox = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            CategoriesFoodCBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            QuantityFoodNBox = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            NameFoodCBox = new Guna.UI2.WinForms.Guna2ComboBox();
             DeleteButton = new Guna.UI2.WinForms.Guna2Button();
             doubleBufferedtlp1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)QuanlityFoodNBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)QuantityFoodNBox).BeginInit();
             SuspendLayout();
             // 
             // doubleBufferedtlp1
@@ -49,8 +49,8 @@
             doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65F));
             doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            doubleBufferedtlp1.Controls.Add(QuanlityFoodNBox, 1, 0);
-            doubleBufferedtlp1.Controls.Add(CategoriesFoodCBox, 0, 0);
+            doubleBufferedtlp1.Controls.Add(QuantityFoodNBox, 1, 0);
+            doubleBufferedtlp1.Controls.Add(NameFoodCBox, 0, 0);
             doubleBufferedtlp1.Controls.Add(DeleteButton, 2, 0);
             doubleBufferedtlp1.Dock = DockStyle.Fill;
             doubleBufferedtlp1.Location = new Point(0, 0);
@@ -60,44 +60,44 @@
             doubleBufferedtlp1.Size = new Size(521, 45);
             doubleBufferedtlp1.TabIndex = 0;
             // 
-            // QuanlityFoodNBox
+            // QuantityFoodNBox
             // 
-            QuanlityFoodNBox.BackColor = Color.Transparent;
-            QuanlityFoodNBox.BorderColor = Color.White;
-            QuanlityFoodNBox.BorderRadius = 8;
-            QuanlityFoodNBox.BorderThickness = 0;
-            QuanlityFoodNBox.CustomizableEdges = customizableEdges1;
-            QuanlityFoodNBox.Dock = DockStyle.Fill;
-            QuanlityFoodNBox.FillColor = Color.Gainsboro;
-            QuanlityFoodNBox.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            QuanlityFoodNBox.Location = new Point(345, 5);
-            QuanlityFoodNBox.Margin = new Padding(7, 5, 2, 9);
-            QuanlityFoodNBox.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            QuanlityFoodNBox.Name = "QuanlityFoodNBox";
-            QuanlityFoodNBox.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            QuanlityFoodNBox.Size = new Size(121, 31);
-            QuanlityFoodNBox.TabIndex = 19;
-            QuanlityFoodNBox.UpDownButtonFillColor = Color.Gray;
-            QuanlityFoodNBox.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            QuantityFoodNBox.BackColor = Color.Transparent;
+            QuantityFoodNBox.BorderColor = Color.White;
+            QuantityFoodNBox.BorderRadius = 8;
+            QuantityFoodNBox.BorderThickness = 0;
+            QuantityFoodNBox.CustomizableEdges = customizableEdges1;
+            QuantityFoodNBox.Dock = DockStyle.Fill;
+            QuantityFoodNBox.FillColor = Color.Gainsboro;
+            QuantityFoodNBox.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            QuantityFoodNBox.Location = new Point(345, 5);
+            QuantityFoodNBox.Margin = new Padding(7, 5, 2, 9);
+            QuantityFoodNBox.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            QuantityFoodNBox.Name = "QuantityFoodNBox";
+            QuantityFoodNBox.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            QuantityFoodNBox.Size = new Size(121, 31);
+            QuantityFoodNBox.TabIndex = 19;
+            QuantityFoodNBox.UpDownButtonFillColor = Color.Gray;
+            QuantityFoodNBox.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // CategoriesFoodCBox
+            // NameFoodCBox
             // 
-            CategoriesFoodCBox.BackColor = Color.Transparent;
-            CategoriesFoodCBox.CustomizableEdges = customizableEdges3;
-            CategoriesFoodCBox.Dock = DockStyle.Fill;
-            CategoriesFoodCBox.DrawMode = DrawMode.OwnerDrawFixed;
-            CategoriesFoodCBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            CategoriesFoodCBox.FocusedColor = Color.FromArgb(94, 148, 255);
-            CategoriesFoodCBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            CategoriesFoodCBox.Font = new Font("Segoe UI", 10F);
-            CategoriesFoodCBox.ForeColor = Color.Black;
-            CategoriesFoodCBox.ItemHeight = 30;
-            CategoriesFoodCBox.Location = new Point(3, 6);
-            CategoriesFoodCBox.Margin = new Padding(3, 6, 3, 0);
-            CategoriesFoodCBox.Name = "CategoriesFoodCBox";
-            CategoriesFoodCBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            CategoriesFoodCBox.Size = new Size(332, 36);
-            CategoriesFoodCBox.TabIndex = 0;
+            NameFoodCBox.BackColor = Color.Transparent;
+            NameFoodCBox.CustomizableEdges = customizableEdges3;
+            NameFoodCBox.Dock = DockStyle.Fill;
+            NameFoodCBox.DrawMode = DrawMode.OwnerDrawFixed;
+            NameFoodCBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            NameFoodCBox.FocusedColor = Color.FromArgb(94, 148, 255);
+            NameFoodCBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            NameFoodCBox.Font = new Font("Segoe UI", 10F);
+            NameFoodCBox.ForeColor = Color.Black;
+            NameFoodCBox.ItemHeight = 30;
+            NameFoodCBox.Location = new Point(3, 6);
+            NameFoodCBox.Margin = new Padding(3, 6, 3, 0);
+            NameFoodCBox.Name = "NameFoodCBox";
+            NameFoodCBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            NameFoodCBox.Size = new Size(332, 36);
+            NameFoodCBox.TabIndex = 0;
             // 
             // DeleteButton
             // 
@@ -117,7 +117,7 @@
             DeleteButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
             DeleteButton.Size = new Size(47, 42);
             DeleteButton.TabIndex = 20;
-            DeleteButton.Click += DeleteButton_Click;
+            DeleteButton.Click += this.DeleteButton_Click;
             // 
             // UC_AddFoodOrder
             // 
@@ -127,15 +127,15 @@
             Name = "UC_AddFoodOrder";
             Size = new Size(521, 45);
             doubleBufferedtlp1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)QuanlityFoodNBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)QuantityFoodNBox).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private DoubleBufferedTLP doubleBufferedtlp1;
-        private Guna.UI2.WinForms.Guna2ComboBox CategoriesFoodCBox;
-        private Guna.UI2.WinForms.Guna2NumericUpDown QuanlityFoodNBox;
+        private Guna.UI2.WinForms.Guna2ComboBox NameFoodCBox;
+        private Guna.UI2.WinForms.Guna2NumericUpDown QuantityFoodNBox;
         private Guna.UI2.WinForms.Guna2Button DeleteButton;
     }
 }
