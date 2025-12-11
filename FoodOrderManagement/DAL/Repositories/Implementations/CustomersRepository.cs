@@ -16,7 +16,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         public async Task<Customers?> GetCustomerByIdAsync(int id) {
             using (var connection = new SqlConnection(_connectionString)) {
                 await connection.OpenAsync();
-                var command = new SqlCommand("SELECT customerId, FullName, Email, PhoneNumber, LastVisitDate, TotalVisits, TotalSpent, CustomerRank FROM custumers WHERE customerId = @CustomerID", connection);
+                var command = new SqlCommand("SELECT customerId, FullName, Email, PhoneNumber, LastVisitDate, TotalVisits, TotalSpent, CustomerRank FROM customers WHERE customerId = @CustomerID", connection);
                 command.Parameters.AddWithValue("@CustomerID", id);
                 using (var reader = await command.ExecuteReaderAsync()) {
                     if (await reader.ReadAsync()) {
