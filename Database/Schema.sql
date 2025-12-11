@@ -21,7 +21,7 @@ GO
 CREATE TABLE Employees (
     FullName varchar(50) NOT NULL,
     PhoneNumber varchar(15) NOT NULL UNIQUE,
-    Email varchar(100) NOT NULL UNIQUE,
+    Email varchar(100) NULL,
     HireDate datetime,
     Position varchar(50),
     PRIMARY KEY (FullName, PhoneNumber) -- Khóa chính kết hợp
@@ -32,8 +32,8 @@ GO
 CREATE TABLE Customers (
     CustomerID int IDENTITY(1,1) PRIMARY KEY,  
     FullName varchar(50) NOT NULL,
-    Email varchar(100) NOT NULL UNIQUE,
-    PhoneNumber varchar(15),
+    Email varchar(100) NULL,
+    PhoneNumber varchar(15) NOT NULL,
     LastVisitDate datetime NULL, -- Ngày ghé thăm gần nhất
     TotalVisits int DEFAULT 0,   -- Tổng số lần ghé
     TotalSpent decimal(15, 2) DEFAULT 0, -- Tổng chi tiêu
