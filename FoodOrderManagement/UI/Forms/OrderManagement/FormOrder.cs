@@ -1,5 +1,9 @@
-﻿using Guna.UI2.WinForms;
+﻿using Autofac;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Implementations;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
 using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,9 +13,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Autofac;
-using FoodOrderManagement.DAL.Models.Entities;
-using FoodOrderManagement.DAL.Repositories.Interfaces;
 
 namespace FoodOrderManagement.AdminControl
 {
@@ -19,16 +20,18 @@ namespace FoodOrderManagement.AdminControl
     {
         private readonly ILifetimeScope _scope;
         private readonly IOrdersRepository _ordersRepository;
+        private readonly IOrderDetailsRepository _orderDetailsRepository;
         UC_CreateOrder _ucCreateOrder;
         UC_ViewDetails _ucViewDetails;
         Guna2Panel _overlayPanel; // Làm tối nền
         public UC_OrderItem _uc_OrderItem;
-        public FormOrder(ILifetimeScope scope, IOrdersRepository ordersRepository)
+        public FormOrder(ILifetimeScope scope, IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository)
         {
             InitializeComponent();
             _scope = scope;
             _ordersRepository = ordersRepository;
             LoadAllOrders();
+            _orderDetailsRepository = orderDetailsRepository;
         }
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
@@ -62,13 +65,13 @@ namespace FoodOrderManagement.AdminControl
                 ctrl.Dispose(); // Hủy nó đi cho nhẹ bộ nhớ
             }
         }
-        private void HandleViewDetailsClicked(object sender, Orders orderData)
+        private async void HandleViewDetailsClicked(object sender, Orders orderData)
         {
             //Khởi tạo UserControl xem chi tiết
             _ucViewDetails = new UC_ViewDetails();
-
+            var listMonAn = await _orderDetailsRepository.GetDetailsByOrderIdAsync(orderData.Id);
             //Truyền dữ liệu vào 
-            _ucViewDetails.LoadDetailData(orderData);
+            _ucViewDetails.LoadDetailData(orderData, listMonAn);
 
             //Thêm vào Form cha
             this.Controls.Add(_ucViewDetails);
@@ -83,7 +86,7 @@ namespace FoodOrderManagement.AdminControl
 
         private void SearchOrderTBox1_Enter(object sender, EventArgs e)
         {
-            if (SearchOrderTBox1.PlaceholderText == "Số hóa đơn hoặc tên khác hàng...")
+            if (SearchOrderTBox1.PlaceholderText == "Số bàn...")
             {
                 SearchOrderTBox1.Text = "";
             }
@@ -93,7 +96,7 @@ namespace FoodOrderManagement.AdminControl
         {
             if (string.IsNullOrEmpty(SearchOrderTBox1.Text))
             {
-                SearchOrderTBox1.PlaceholderText = "Số hóa đơn hoặc tên khác hàng...";
+                SearchOrderTBox1.PlaceholderText = "Số bàn...";
             }
         }
     }
