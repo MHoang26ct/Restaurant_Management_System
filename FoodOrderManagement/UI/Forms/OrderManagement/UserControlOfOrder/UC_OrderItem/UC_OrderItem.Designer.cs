@@ -361,18 +361,18 @@
             TotalMoneyLabel.Name = "TotalMoneyLabel";
             TotalMoneyLabel.Size = new Size(222, 36);
             TotalMoneyLabel.TabIndex = 11;
-            TotalMoneyLabel.Text = "Tổng : 12.200.000VND ";
+            TotalMoneyLabel.Text = "0VND ";
             // 
             // TotalItemsLabel
             // 
             TotalItemsLabel.AutoSize = true;
             TotalItemsLabel.Dock = DockStyle.Fill;
-            TotalItemsLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TotalItemsLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             TotalItemsLabel.Location = new Point(3, 0);
             TotalItemsLabel.Name = "TotalItemsLabel";
             TotalItemsLabel.Size = new Size(78, 36);
             TotalItemsLabel.TabIndex = 10;
-            TotalItemsLabel.Text = " 25 món ";
+            TotalItemsLabel.Text = "   Tổng :";
             // 
             // ViewDetailsButton
             // 

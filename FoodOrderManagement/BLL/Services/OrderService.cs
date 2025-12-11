@@ -26,7 +26,6 @@ namespace FoodOrderManagement.AdminControl
                 FlowLayoutOrder.Controls.Clear();
 
                 // 2. Lấy danh sách từ Repo (Bạn cần có hàm GetAllOrdersAsync trong Repo)
-                // Giả sử hàm này trả về List<Orders> sắp xếp theo ngày mới nhất
                 var listOrders = await _ordersRepository.GetAllUnpaidOrdersAsync();
 
                 // 3. Duyệt và vẽ từng đơn hàng
@@ -97,7 +96,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             {
                 if (NameFoodCBox.SelectedItem is Foods food)
                 {
-                    return food.Id; // Lấy trực tiếp ID từ object
+                    return food.Id;
                 }
                 return 0;
             }
@@ -106,7 +105,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         {
             get
             {
-                // ⚠️ Thay 'NumericUpDown1' bằng tên thật của ô số lượng bên design của bạn
                 return (int)QuantityFoodNBox.Value;
             }
         }
@@ -138,7 +136,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 
             // Căn chỉnh chiều ngang cho đẹp
             newItem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            newItem.Width = ListFoodFlowLayout.Width - 25; // Trừ hao thanh cuộn
+            newItem.Width = ListFoodFlowLayout.Width - 25;
 
             // Thêm vào Layout
             ListFoodFlowLayout.Controls.Add(newItem);
@@ -257,12 +255,12 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         public void SetOrderData(Orders order)
         {
             _currentOrderData = order;
-            OrderIDLabel.Text = order.Id.ToString();
+            OrderIDLabel.Text = "#" + order.Id.ToString();
             NameCustomerLabel.Text = order.CustomerId.ToString();
             TableIDLabel.Text = "Bàn " + order.TableId.ToString();
             TimeOrderLabel.Text = order.OrderTime.ToString("dd/MM/yyyy HH:mm");
-            TotalMoneyLabel.Text = "Tổng: " + order.TotalAmount.ToString("N0") + " VND";
-            //TotalItemsLabel.Text = order.TotalItems + " món";
+            TotalMoneyLabel.Text = order.TotalAmount.ToString("N0") + " VND";
+            TotalItemsLabel.Text = "Tổng tiền: ";
         }
     }
 }
@@ -274,13 +272,37 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 {
     public partial class UC_ViewDetails : UserControl
     {
-        public void LoadDetailData(Orders order)
+        public class OrderDetailDisplay
         {
-            OrderIDLabel.Text = order.Id.ToString(); // Ví dụ: Đơn Hàng #3636
+            // Các tên này sẽ trở thành Tiêu đề cột trong DataGridView
+            public string TenMon { get; set; }  // Tên món ăn
+            public int SoLuong { get; set; }    // Số lượng
+            public decimal DonGia { get; set; } // Giá gốc
+            public decimal ThanhTien => DonGia * SoLuong; // Tự động tính tổng
+        }
+        public void LoadDetailData(Orders order, List<OrderDetailDisplay> listMonAn)
+        {
+            OrderIDLabel.Text ="#" + order.Id.ToString(); // Ví dụ: Đơn Hàng #3636
             NameCustomerLabel.Text = "Khách hàng: " + order.CustomerId.ToString();
             TableIDLabel.Text = "Bàn " + order.TableId.ToString();
             TimeOrderLabel.Text = "Thời gian: " + order.OrderTime.ToString("dd/MM/yyyy HH:mm");
-            TotalMoney.Text = "Tổng: " + order.TotalAmount.ToString("N0") + " VND";
+            TotalMoney.Text = order.TotalAmount.ToString("N0") + " VND";
+            dgvChiTiet.DataSource = null; // Reset trước để tránh lỗi
+            dgvChiTiet.DataSource = listMonAn;
+
+            // 3. Tinh chỉnh giao diện cột (Tùy chọn cho đẹp)
+            if (dgvChiTiet.Columns["TenMon"] != null) dgvChiTiet.Columns["TenMon"].HeaderText = "Tên Món";
+            if (dgvChiTiet.Columns["SoLuong"] != null) dgvChiTiet.Columns["SoLuong"].HeaderText = "SL";
+            if (dgvChiTiet.Columns["DonGia"] != null)
+            {
+                dgvChiTiet.Columns["DonGia"].HeaderText = "Đơn Giá";
+                dgvChiTiet.Columns["DonGia"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
+            }
+            if (dgvChiTiet.Columns["ThanhTien"] != null)
+            {
+                dgvChiTiet.Columns["ThanhTien"].HeaderText = "Thành Tiền";
+                dgvChiTiet.Columns["ThanhTien"].DefaultCellStyle.Format = "N0";
+            }
             // lblDetailCount.Text = ...
 
             // Nếu có danh sách món ăn chi tiết (List<Food>), bạn cũng đổ vào DataGridView ở đây

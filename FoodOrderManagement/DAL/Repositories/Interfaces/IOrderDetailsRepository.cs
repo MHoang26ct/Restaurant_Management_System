@@ -1,9 +1,10 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FoodOrderManagement.DAL.Models.Entities;
+using static FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder.UC_ViewDetails;
 
 namespace FoodOrderManagement.DAL.Repositories.Interfaces {
     public interface IOrderDetailsRepository {
@@ -25,6 +26,7 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="orderId"></param>
         /// <returns></returns>
         public Task<List<orderDetail>> GetorderDetailByOrderIdAsync(int orderId);
+        public Task<List<OrderDetailDisplay>> GetDetailsByOrderIdAsync(int orderId);
 
         /// <summary>
         /// Lấy các chi tiết order đã hoàn thành để tính tổng hóa đơn
@@ -40,5 +42,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="newStatus"></param>
         /// <returns></returns>
         public Task UpdateOrderStatusAsync(int orderDetailId, string newStatus);
+        
     }
 }

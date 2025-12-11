@@ -261,7 +261,7 @@
             SearchOrderTBox1.Margin = new Padding(4, 5, 4, 5);
             SearchOrderTBox1.Name = "SearchOrderTBox1";
             SearchOrderTBox1.PlaceholderForeColor = Color.Gray;
-            SearchOrderTBox1.PlaceholderText = "Số hóa đơn hoặc tên khác hàng...";
+            SearchOrderTBox1.PlaceholderText = "Số bàn...";
             SearchOrderTBox1.SelectedText = "";
             SearchOrderTBox1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             SearchOrderTBox1.Size = new Size(996, 43);
