@@ -13,7 +13,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         // Lấy thông tin khách theo ID
-        public aysnc Task<Customers?> GetCustomerByIdAsync(int id) {
+        public async Task<Customers?> GetCustomerByIdAsync(int id) {
             using SqlConnection connection = new SqlConnection(_connectionString);
             SqlCommand command = new SqlCommand("GetCustomerByID", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -36,12 +36,12 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             }
         }
 
-// Thêm khách hàng mới và trả về ID khách hàng mới tạo (dùng cho đặt bàn)
+        // Thêm khách hàng mới và trả về ID khách hàng mới tạo (dùng cho đặt bàn)
         public async Task<int> AddCustomerAsync(Customers customer) {
             using SqlConnection connection = new SqlConnection(_connectionString);
             using SqlCommand command = new SqlCommand("AddCustomer", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            
+
             command.Parameters.AddWithValue("@FullName", customer.FullName);
             command.Parameters.AddWithValue("@Email", customer.Email);
             command.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
@@ -53,7 +53,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
 
             await connection.OpenAsync();
             await command.ExecuteNonQueryAsync();
-            
+
             return (int)outputIdParam.Value;
         }
 
@@ -94,7 +94,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                     TotalVisits = reader.GetInt32(5)
                 };
             }
-            
+
             return null;
         }
 
@@ -120,6 +120,8 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                     CustomerRank = reader.GetString(7)
                 });
             }
-            
+
             return customers;
         }
+    }
+}

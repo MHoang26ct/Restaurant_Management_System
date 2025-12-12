@@ -17,7 +17,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         // Thống kết quả kinh doanh theo khoảng thời gian
-    public async Task<List<Statistics>> GetBusinessStatsByDateAsync(DateTime startDate, DateTime endDate) {
+        public async Task<List<Statistics>> GetBusinessStatsByDateAsync(DateTime startDate, DateTime endDate) {
             var statsList = new List<Statistics>();
             using (var connection = new SqlConnection(_connectionString)) {
                 await connection.OpenAsync();
@@ -40,7 +40,5 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             }
             return statsList;
         }
-
-
     }
 }

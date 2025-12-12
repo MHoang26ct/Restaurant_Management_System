@@ -43,9 +43,9 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
 
             while (await reader.ReadAsync()) {
                 orderDetails.Add(new OrderDetailDisplay {
-                    FoodName = reader.GetString(0),
-                    Quantity = reader.GetInt32(1),
-                    Price = reader.GetDecimal(2)
+                    TenMon = reader.GetString(0),
+                    SoLuong = reader.GetInt32(1),
+                    DonGia = reader.GetDecimal(2)
                 });
             }
             
@@ -86,11 +86,11 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
 
             while (await reader.ReadAsync()) {
                 completedOrderDetails.Add(new orderDetail {
-                    OrderDetailId = reader.GetInt32(0),
+                    Id = reader.GetInt32(0),
                     OrderId = reader.GetInt32(1),
                     FoodId = reader.GetInt32(2),
                     Quantity = reader.GetInt32(3),
-                    Notes = reader.IsDBNull(4) ? null : reader.GetString(4),
+                    Notes = reader.IsDBNull(4) ? string.Empty : reader.GetString(4),
                     OrderStatus = reader.GetString(5)
                 });
             }
