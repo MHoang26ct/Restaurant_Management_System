@@ -15,6 +15,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
     {
         private Orders _currentOrderData;
         public event EventHandler<Orders> OnViewDetailsClicked;
+        public event EventHandler<Orders> OnAddFoodClicked;
         public UC_OrderItem()
         {
             InitializeComponent();
@@ -55,6 +56,11 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                     TotalMoneyLabel.ForeColor = Color.Firebrick;
                     break;
             }
+        }
+
+        private void AddFoodInOrderItem_Click(object sender, EventArgs e)
+        {
+            OnAddFoodClicked?.Invoke(this, _currentOrderData);
         }
     }
 }

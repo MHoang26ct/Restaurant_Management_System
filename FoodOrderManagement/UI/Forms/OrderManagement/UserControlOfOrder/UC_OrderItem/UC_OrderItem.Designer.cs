@@ -64,7 +64,7 @@
             ViewDetailsButton = new Guna.UI2.WinForms.Guna2Button();
             doubleBufferedtlp9 = new DoubleBufferedTLP();
             StatusCBox = new Guna.UI2.WinForms.Guna2ComboBox();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            AddFoodInOrderItem = new Guna.UI2.WinForms.Guna2Button();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             guna2ShadowPanel1.SuspendLayout();
             doubleBufferedtlp1.SuspendLayout();
@@ -403,7 +403,7 @@
             doubleBufferedtlp9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             doubleBufferedtlp9.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             doubleBufferedtlp9.Controls.Add(StatusCBox, 0, 0);
-            doubleBufferedtlp9.Controls.Add(guna2Button1, 0, 1);
+            doubleBufferedtlp9.Controls.Add(AddFoodInOrderItem, 0, 1);
             doubleBufferedtlp9.Dock = DockStyle.Fill;
             doubleBufferedtlp9.Location = new Point(970, 75);
             doubleBufferedtlp9.Name = "doubleBufferedtlp9";
@@ -437,28 +437,29 @@
             StatusCBox.TabIndex = 0;
             StatusCBox.SelectedIndexChanged += StatusCBox_SelectedIndexChanged;
             // 
-            // guna2Button1
+            // AddFoodInOrderItem
             // 
-            guna2Button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            guna2Button1.BorderColor = Color.Gray;
-            guna2Button1.BorderRadius = 5;
-            guna2Button1.BorderThickness = 1;
-            guna2Button1.CustomizableEdges = customizableEdges9;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.Transparent;
-            guna2Button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2Button1.ForeColor = Color.Black;
-            guna2Button1.Image = Properties.Resources.AddFood2;
-            guna2Button1.ImageSize = new Size(15, 15);
-            guna2Button1.Location = new Point(165, 49);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2Button1.Size = new Size(180, 38);
-            guna2Button1.TabIndex = 3;
-            guna2Button1.Text = "Thêm món ăn";
+            AddFoodInOrderItem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            AddFoodInOrderItem.BorderColor = Color.Gray;
+            AddFoodInOrderItem.BorderRadius = 5;
+            AddFoodInOrderItem.BorderThickness = 1;
+            AddFoodInOrderItem.CustomizableEdges = customizableEdges9;
+            AddFoodInOrderItem.DisabledState.BorderColor = Color.DarkGray;
+            AddFoodInOrderItem.DisabledState.CustomBorderColor = Color.DarkGray;
+            AddFoodInOrderItem.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            AddFoodInOrderItem.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            AddFoodInOrderItem.FillColor = Color.Transparent;
+            AddFoodInOrderItem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AddFoodInOrderItem.ForeColor = Color.Black;
+            AddFoodInOrderItem.Image = Properties.Resources.AddFood2;
+            AddFoodInOrderItem.ImageSize = new Size(15, 15);
+            AddFoodInOrderItem.Location = new Point(165, 49);
+            AddFoodInOrderItem.Name = "AddFoodInOrderItem";
+            AddFoodInOrderItem.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            AddFoodInOrderItem.Size = new Size(180, 38);
+            AddFoodInOrderItem.TabIndex = 3;
+            AddFoodInOrderItem.Text = "Thêm món ăn";
+            AddFoodInOrderItem.Click += AddFoodInOrderItem_Click;
             // 
             // guna2Elipse1
             // 
@@ -520,7 +521,7 @@
         private Guna.UI2.WinForms.Guna2Button ViewDetailsButton;
         private DoubleBufferedTLP doubleBufferedtlp9;
         private Guna.UI2.WinForms.Guna2ComboBox StatusCBox;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button AddFoodInOrderItem;
         public Label OrderIDLabel;
     }
 }
