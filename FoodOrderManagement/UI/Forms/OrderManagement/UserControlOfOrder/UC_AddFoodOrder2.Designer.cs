@@ -87,7 +87,6 @@
             AddFoodButton.Size = new Size(394, 36);
             AddFoodButton.TabIndex = 4;
             AddFoodButton.Text = "Thêm món ăn";
-            AddFoodButton.Click += AddFoodButton_Click;
             // 
             // ListFoodFlowLayout
             // 
@@ -118,7 +117,6 @@
             CreateOrderButton.Size = new Size(394, 38);
             CreateOrderButton.TabIndex = 19;
             CreateOrderButton.Text = "Tạo Hóa Đơn";
-            CreateOrderButton.Click += this.CreateOrderButton_Click;
             // 
             // doubleBufferedtlp2
             // 
@@ -153,7 +151,6 @@
             ExitButton.Size = new Size(35, 33);
             ExitButton.TabIndex = 3;
             ExitButton.Text = "X";
-            ExitButton.Click += ExitButton_Click;
             // 
             // label1
             // 

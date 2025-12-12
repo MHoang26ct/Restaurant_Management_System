@@ -39,7 +39,7 @@ namespace FoodOrderManagement.AdminControl
             _ucCreateOrder.OnOrderCreated += HandleOrderCreated;
             _ucCreateOrder.OnOrderCreated += (s, newOrder) =>
             {
-                LoadAllOrders() ;
+                LoadAllOrders();
             };
             this.Controls.Add(_ucCreateOrder);
             _ucCreateOrder.Location = new Point(

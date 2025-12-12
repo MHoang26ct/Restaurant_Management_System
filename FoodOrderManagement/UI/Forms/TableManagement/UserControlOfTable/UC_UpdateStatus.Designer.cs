@@ -227,7 +227,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             StatusText.ShadowDecoration.CustomizableEdges = customizableEdges2;
             StatusText.Size = new Size(96, 22);
             StatusText.TabIndex = 6;
-            StatusText.Text = "Đã đặt bàn";
+            StatusText.Text = "Reserved";
             // 
             // label2
             // 

@@ -227,7 +227,7 @@
             StatusText.ShadowDecoration.CustomizableEdges = customizableEdges5;
             StatusText.Size = new Size(96, 22);
             StatusText.TabIndex = 0;
-            StatusText.Text = "Đã đặt bàn";
+            StatusText.Text = "Reserved";
             // 
             // UC_TableItem
             // 
