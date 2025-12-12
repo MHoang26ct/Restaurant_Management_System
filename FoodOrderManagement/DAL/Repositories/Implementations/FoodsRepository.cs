@@ -27,7 +27,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
 
         // Lấy tất cả món ăn
         public async Task<List<Foods>> GetAllFoodsAsync() {
-            return await _db.QueryAsync("GetAllFoods", Mapper);
+            return await _db.GetListAsync("GetAllFoods", Mapper);
         }
 
         // Truy xuất món ăn theo ID

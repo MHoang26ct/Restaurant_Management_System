@@ -74,7 +74,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         
         // Lấy tất cả nhân viên
         public async Task<List<Employee>> GetAllEmployeesAsync() {
-            return await _db.QueryAsync("GetAllEmployees", Mapper);
+            return await _db.GetListAsync("GetAllEmployees", Mapper);
         }
     }
 }

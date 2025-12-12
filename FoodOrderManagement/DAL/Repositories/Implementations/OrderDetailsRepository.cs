@@ -75,7 +75,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         // Lấy các chi tiết order đã hoàn thành để tính tổng hóa đơn
         public async Task<List<orderDetail>> GetCompletedOrderDetailsByOrderIdAsync(int orderId) {
             var param = new SqlParameter("@OrderID", orderId);
-            return await _db.QueryAsync("GetCompletedOrderDetailsByOrderID", Mapper, param);
+            return await _db.GetListAsync("GetCompletedOrderDetailsByOrderID", Mapper, param);
         }
 
         // Cập nhật trạng thái của order

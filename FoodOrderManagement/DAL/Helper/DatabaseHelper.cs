@@ -52,7 +52,7 @@ namespace FoodOrderManagement.DAL.Helper
         }
 
         //
-        public async Task<List<T>> QueryAsync<T>(string procedureName, Func<SqlDataReader, T> mapper, params SqlParameter[] parameters)
+        public async Task<List<T>> GetListAsync<T>(string procedureName, Func<SqlDataReader, T> mapper, params SqlParameter[] parameters)
         {
             var list = new List<T>();
             using SqlConnection connection = new SqlConnection(_connectionString);

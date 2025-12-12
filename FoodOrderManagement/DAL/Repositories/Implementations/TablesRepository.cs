@@ -33,7 +33,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         // Lấy danh sách các bàn còn trống
         public async Task<List<Tables>> GetAvailableTablesAsync()
         {
-            return await _db.QueryAsync("GetAvailableTables", Mapper);
+            return await _db.GetListAsync("GetAvailableTables", Mapper);
         }
 
         // Cập nhật trạng thái và thời gian mở bàn
@@ -79,7 +79,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         // Lấy danh sách tất cả bàn
         public async Task<List<Tables>> GetAllTablesAsync()
         {
-            return await _db.QueryAsync("GetAllTables", Mapper);
+            return await _db.GetListAsync("GetAllTables", Mapper);
         }
     }
 }
