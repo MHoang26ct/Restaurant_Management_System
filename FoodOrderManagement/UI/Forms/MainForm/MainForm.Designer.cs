@@ -49,7 +49,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            ReportsButton = new Guna.UI2.WinForms.Guna2Button();
+            ReservationButton = new Guna.UI2.WinForms.Guna2Button();
             EmployeesButton = new Guna.UI2.WinForms.Guna2Button();
             CustomerButton = new Guna.UI2.WinForms.Guna2Button();
             DashboardButton = new Guna.UI2.WinForms.Guna2Button();
@@ -73,31 +73,31 @@
             tableLayoutPanel3.SuspendLayout();
             SuspendLayout();
             // 
-            // ReportsButton
+            // ReservationButton
             // 
-            ReportsButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            ReportsButton.BackColor = Color.White;
-            ReportsButton.BorderColor = Color.Transparent;
-            ReportsButton.BorderRadius = 20;
-            ReportsButton.CustomizableEdges = customizableEdges1;
-            ReportsButton.DisabledState.BorderColor = Color.White;
-            ReportsButton.DisabledState.CustomBorderColor = Color.White;
-            ReportsButton.DisabledState.FillColor = Color.White;
-            ReportsButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            ReportsButton.FillColor = Color.White;
-            ReportsButton.FocusedColor = Color.Transparent;
-            ReportsButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ReportsButton.ForeColor = Color.Black;
-            ReportsButton.Image = Properties.Resources.ReportBlack;
-            ReportsButton.Location = new Point(810, 5);
-            ReportsButton.Margin = new Padding(1);
-            ReportsButton.Name = "ReportsButton";
-            ReportsButton.PressedColor = Color.White;
-            ReportsButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            ReportsButton.Size = new Size(131, 50);
-            ReportsButton.TabIndex = 15;
-            ReportsButton.Text = "Doanh Thu";
-            ReportsButton.Click += NavigationButton_Click;
+            ReservationButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            ReservationButton.BackColor = Color.White;
+            ReservationButton.BorderColor = Color.Transparent;
+            ReservationButton.BorderRadius = 20;
+            ReservationButton.CustomizableEdges = customizableEdges1;
+            ReservationButton.DisabledState.BorderColor = Color.White;
+            ReservationButton.DisabledState.CustomBorderColor = Color.White;
+            ReservationButton.DisabledState.FillColor = Color.White;
+            ReservationButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            ReservationButton.FillColor = Color.White;
+            ReservationButton.FocusedColor = Color.Transparent;
+            ReservationButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ReservationButton.ForeColor = Color.Black;
+            ReservationButton.Image = Properties.Resources.Reserved;
+            ReservationButton.Location = new Point(810, 5);
+            ReservationButton.Margin = new Padding(1);
+            ReservationButton.Name = "ReservationButton";
+            ReservationButton.PressedColor = Color.White;
+            ReservationButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            ReservationButton.Size = new Size(131, 50);
+            ReservationButton.TabIndex = 15;
+            ReservationButton.Text = "Đặt Bàn";
+            ReservationButton.Click += NavigationButton_Click;
             // 
             // EmployeesButton
             // 
@@ -372,7 +372,7 @@
             tableLayoutPanel2.Controls.Add(ExitButton, 9, 0);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 0);
             tableLayoutPanel2.Controls.Add(EmployeesButton, 7, 0);
-            tableLayoutPanel2.Controls.Add(ReportsButton, 6, 0);
+            tableLayoutPanel2.Controls.Add(ReservationButton, 6, 0);
             tableLayoutPanel2.Controls.Add(DashboardButton, 2, 0);
             tableLayoutPanel2.Controls.Add(TableButton, 5, 0);
             tableLayoutPanel2.Controls.Add(MenuButton, 4, 0);
@@ -460,7 +460,7 @@
 
         #endregion
         private TableLayoutPanel tableLayoutPanel1;
-        public Guna.UI2.WinForms.Guna2Button ReportsButton;
+        public Guna.UI2.WinForms.Guna2Button ReservationButton;
         public Guna.UI2.WinForms.Guna2Button EmployeesButton;
         public Guna.UI2.WinForms.Guna2Button CustomerButton;
         private Guna.UI2.WinForms.Guna2Button DashboardButton;

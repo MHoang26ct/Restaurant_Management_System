@@ -230,7 +230,7 @@
             StatusCBox.HoverState.BorderColor = Color.Transparent;
             StatusCBox.IntegralHeight = false;
             StatusCBox.ItemHeight = 50;
-            StatusCBox.Items.AddRange(new object[] { "All", "Pending", "Completed", "Cancelled" });
+            StatusCBox.Items.AddRange(new object[] { "Tất cả", "Đã hoàn thành", "Chưa thanh toán" });
             StatusCBox.Location = new Point(1007, 5);
             StatusCBox.Margin = new Padding(3, 5, 3, 0);
             StatusCBox.Name = "StatusCBox";
@@ -316,7 +316,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton CreateOrderButton;
         private DoubleBufferedTLP doubleBufferedtlp4;
         private Guna.UI2.WinForms.Guna2ComboBox StatusCBox;
-        private Guna.UI2.WinForms.Guna2TextBox SearchOrderTBox1;
         private FlowLayoutPanel FlowLayoutOrder;
+        private Guna.UI2.WinForms.Guna2TextBox SearchOrderTBox1;
     }
 }

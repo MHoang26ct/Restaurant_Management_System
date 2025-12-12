@@ -52,11 +52,11 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             StatusText = new Guna.UI2.WinForms.Guna2GradientButton();
             label2 = new Label();
             label3 = new Label();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            AvailableButton = new Guna.UI2.WinForms.Guna2Button();
+            OccupiedButton = new Guna.UI2.WinForms.Guna2Button();
+            ReservedButton = new Guna.UI2.WinForms.Guna2Button();
             ExitButton = new Guna.UI2.WinForms.Guna2Button();
-            label4 = new Label();
+            TimeStart = new Label();
             Gradient.SuspendLayout();
             doubleBufferedtlp1.SuspendLayout();
             doubleBufferedtlp2.SuspendLayout();
@@ -90,11 +90,11 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             doubleBufferedtlp1.Controls.Add(TimeReservedLabel, 1, 7);
             doubleBufferedtlp1.Controls.Add(doubleBufferedtlp2, 1, 3);
             doubleBufferedtlp1.Controls.Add(label3, 1, 8);
-            doubleBufferedtlp1.Controls.Add(guna2Button1, 1, 9);
-            doubleBufferedtlp1.Controls.Add(guna2Button2, 1, 10);
-            doubleBufferedtlp1.Controls.Add(guna2Button3, 1, 11);
+            doubleBufferedtlp1.Controls.Add(AvailableButton, 1, 9);
+            doubleBufferedtlp1.Controls.Add(OccupiedButton, 1, 10);
+            doubleBufferedtlp1.Controls.Add(ReservedButton, 1, 11);
             doubleBufferedtlp1.Controls.Add(ExitButton, 1, 12);
-            doubleBufferedtlp1.Controls.Add(label4, 1, 6);
+            doubleBufferedtlp1.Controls.Add(TimeStart, 1, 6);
             doubleBufferedtlp1.Dock = DockStyle.Fill;
             doubleBufferedtlp1.Location = new Point(0, 0);
             doubleBufferedtlp1.Name = "doubleBufferedtlp1";
@@ -115,7 +115,6 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             doubleBufferedtlp1.Size = new Size(500, 500);
             doubleBufferedtlp1.TabIndex = 0;
-            doubleBufferedtlp1.Paint += doubleBufferedtlp1_Paint;
             // 
             // CustomerNameLabel
             // 
@@ -255,71 +254,73 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             label3.TabIndex = 9;
             label3.Text = "Cập nhật trạng thái: ";
             // 
-            // guna2Button1
+            // AvailableButton
             // 
-            guna2Button1.BorderColor = Color.Gray;
-            guna2Button1.BorderRadius = 5;
-            guna2Button1.BorderThickness = 1;
-            guna2Button1.CustomizableEdges = customizableEdges3;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.Dock = DockStyle.Fill;
-            guna2Button1.FillColor = Color.White;
-            guna2Button1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
-            guna2Button1.ForeColor = Color.Black;
-            guna2Button1.Location = new Point(28, 328);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2Button1.Size = new Size(444, 39);
-            guna2Button1.TabIndex = 10;
-            guna2Button1.Text = "Còn trống";
-            guna2Button1.TextAlign = HorizontalAlignment.Left;
+            AvailableButton.BorderColor = Color.Gray;
+            AvailableButton.BorderRadius = 5;
+            AvailableButton.BorderThickness = 1;
+            AvailableButton.CustomizableEdges = customizableEdges3;
+            AvailableButton.DisabledState.BorderColor = Color.DarkGray;
+            AvailableButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            AvailableButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            AvailableButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            AvailableButton.Dock = DockStyle.Fill;
+            AvailableButton.FillColor = Color.White;
+            AvailableButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            AvailableButton.ForeColor = Color.Black;
+            AvailableButton.Location = new Point(28, 328);
+            AvailableButton.Name = "AvailableButton";
+            AvailableButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            AvailableButton.Size = new Size(444, 39);
+            AvailableButton.TabIndex = 10;
+            AvailableButton.Text = "Còn trống";
+            AvailableButton.TextAlign = HorizontalAlignment.Left;
+            AvailableButton.Click += AvailableButton_Click;
             // 
-            // guna2Button2
+            // OccupiedButton
             // 
-            guna2Button2.BorderColor = Color.Gray;
-            guna2Button2.BorderRadius = 5;
-            guna2Button2.BorderThickness = 1;
-            guna2Button2.CustomizableEdges = customizableEdges5;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.Dock = DockStyle.Fill;
-            guna2Button2.FillColor = Color.White;
-            guna2Button2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
-            guna2Button2.ForeColor = Color.Black;
-            guna2Button2.Location = new Point(28, 373);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2Button2.Size = new Size(444, 39);
-            guna2Button2.TabIndex = 11;
-            guna2Button2.Text = "Đang sử dụng";
-            guna2Button2.TextAlign = HorizontalAlignment.Left;
+            OccupiedButton.BorderColor = Color.Gray;
+            OccupiedButton.BorderRadius = 5;
+            OccupiedButton.BorderThickness = 1;
+            OccupiedButton.CustomizableEdges = customizableEdges5;
+            OccupiedButton.DisabledState.BorderColor = Color.DarkGray;
+            OccupiedButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            OccupiedButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            OccupiedButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            OccupiedButton.Dock = DockStyle.Fill;
+            OccupiedButton.FillColor = Color.White;
+            OccupiedButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            OccupiedButton.ForeColor = Color.Black;
+            OccupiedButton.Location = new Point(28, 373);
+            OccupiedButton.Name = "OccupiedButton";
+            OccupiedButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            OccupiedButton.Size = new Size(444, 39);
+            OccupiedButton.TabIndex = 11;
+            OccupiedButton.Text = "Đang sử dụng";
+            OccupiedButton.TextAlign = HorizontalAlignment.Left;
+            OccupiedButton.Click += OccupiedButton_Click;
             // 
-            // guna2Button3
+            // ReservedButton
             // 
-            guna2Button3.BorderColor = Color.Gray;
-            guna2Button3.BorderRadius = 5;
-            guna2Button3.BorderThickness = 1;
-            guna2Button3.CustomizableEdges = customizableEdges7;
-            guna2Button3.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button3.Dock = DockStyle.Fill;
-            guna2Button3.FillColor = Color.White;
-            guna2Button3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
-            guna2Button3.ForeColor = Color.Black;
-            guna2Button3.Location = new Point(28, 418);
-            guna2Button3.Name = "guna2Button3";
-            guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Button3.Size = new Size(444, 39);
-            guna2Button3.TabIndex = 12;
-            guna2Button3.Text = "Đã đặt bàn";
-            guna2Button3.TextAlign = HorizontalAlignment.Left;
+            ReservedButton.BorderColor = Color.Gray;
+            ReservedButton.BorderRadius = 5;
+            ReservedButton.BorderThickness = 1;
+            ReservedButton.CustomizableEdges = customizableEdges7;
+            ReservedButton.DisabledState.BorderColor = Color.DarkGray;
+            ReservedButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            ReservedButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            ReservedButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            ReservedButton.Dock = DockStyle.Fill;
+            ReservedButton.FillColor = Color.White;
+            ReservedButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            ReservedButton.ForeColor = Color.Black;
+            ReservedButton.Location = new Point(28, 418);
+            ReservedButton.Name = "ReservedButton";
+            ReservedButton.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            ReservedButton.Size = new Size(444, 39);
+            ReservedButton.TabIndex = 12;
+            ReservedButton.Text = "Đã đặt bàn";
+            ReservedButton.TextAlign = HorizontalAlignment.Left;
             // 
             // ExitButton
             // 
@@ -341,18 +342,19 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             ExitButton.Size = new Size(62, 24);
             ExitButton.TabIndex = 13;
             ExitButton.Text = "Thoát";
+            ExitButton.Click += ExitButton_Click;
             // 
-            // label4
+            // TimeStart
             // 
-            label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.DimGray;
-            label4.Location = new Point(28, 229);
-            label4.Name = "label4";
-            label4.Size = new Size(181, 21);
-            label4.TabIndex = 14;
-            label4.Text = "Thời gian bắt đầu : 16:00";
+            TimeStart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            TimeStart.AutoSize = true;
+            TimeStart.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TimeStart.ForeColor = Color.DimGray;
+            TimeStart.Location = new Point(28, 229);
+            TimeStart.Name = "TimeStart";
+            TimeStart.Size = new Size(154, 21);
+            TimeStart.TabIndex = 14;
+            TimeStart.Text = "Thời gian vào : 16:00";
             // 
             // UC_UpdateStatus
             // 
@@ -384,10 +386,10 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
         private DoubleBufferedTLP doubleBufferedtlp2;
         private Guna.UI2.WinForms.Guna2GradientButton StatusText;
         private Label label3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button AvailableButton;
+        private Guna.UI2.WinForms.Guna2Button OccupiedButton;
+        private Guna.UI2.WinForms.Guna2Button ReservedButton;
         private Guna.UI2.WinForms.Guna2Button ExitButton;
-        private Label label4;
+        private Label TimeStart;
     }
 }

@@ -91,10 +91,10 @@ namespace FoodOrderManagement
             //
             // ReportsButton
             //
-            ReportsButton.BackColor = Color.White;
-            ReportsButton.FillColor = Color.White;
-            ReportsButton.ForeColor = Color.Black;
-            ReportsButton.Image = Properties.Resources.ReportBlack; // Icon lúc chưa click
+            ReservationButton.BackColor = Color.White;
+            ReservationButton.FillColor = Color.White;
+            ReservationButton.ForeColor = Color.Black;
+            ReservationButton.Image = Properties.Resources.Reserved; // Icon lúc chưa click
             //
             // EmployeesButton
             //
@@ -146,11 +146,11 @@ namespace FoodOrderManagement
                 OpenChildForm(FormCustomer);// Mở FormCustomer
             }
             //Reports 
-            else if (ClickedButton.Name == "ReportsButton")
+            else if (ClickedButton.Name == "ReservationButton")
             {
-                ClickedButton.Image = Properties.Resources.ReportWhite;
-                FormReport FormReport = _scope.Resolve<FormReport>();
-                OpenChildForm(FormReport);// Mở FormReports
+                ClickedButton.Image = Properties.Resources.ReservedWhite;
+                FormReservation FormReservation = _scope.Resolve<FormReservation>();
+                OpenChildForm(FormReservation);// Mở FormRersevation
             }
             //Employees
             else if (ClickedButton.Name == "EmployeesButton")

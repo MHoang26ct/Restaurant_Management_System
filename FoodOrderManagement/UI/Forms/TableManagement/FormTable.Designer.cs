@@ -73,7 +73,6 @@
             doubleBufferedtlp6 = new DoubleBufferedTLP();
             TableIcon1 = new Guna.UI2.WinForms.Guna2PictureBox();
             FlowLayoutTable = new FlowLayoutPanel();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             doubleBufferedtlp1.SuspendLayout();
             doubleBufferedtlp2.SuspendLayout();
             doubleBufferedtlp4.SuspendLayout();
@@ -635,7 +634,6 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel3;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel2;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private DoubleBufferedTLP doubleBufferedtlp7;
         private Label label1;
         private Label TotalTableLabel;

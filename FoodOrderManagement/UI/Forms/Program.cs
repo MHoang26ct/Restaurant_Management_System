@@ -36,7 +36,7 @@ namespace FoodOrderManagement.AdminControl {
             builder.RegisterType<FormOrder>();
             builder.RegisterType<FormTable>();
             builder.RegisterType<FormCustomer>();
-            builder.RegisterType<FormReport>();
+            builder.RegisterType<FormReservation>();
             builder.RegisterType<FormEmployee>();
             builder.RegisterType<UC_AddFood>();
             builder.RegisterType<UC_FoodItem>();

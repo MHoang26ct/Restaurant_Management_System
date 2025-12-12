@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace FoodOrderManagement.AdminControl
 {
-    public partial class FormReport : Form
+    public partial class FormReservation : Form
     {
-        public FormReport()
+        public FormReservation()
         {
             InitializeComponent();
+        }
+
+        private void doubleBufferedtlp4_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

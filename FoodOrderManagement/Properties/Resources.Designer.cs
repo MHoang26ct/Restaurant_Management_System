@@ -643,6 +643,26 @@ namespace FoodOrderManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Reserved {
+            get {
+                object obj = ResourceManager.GetObject("Reserved", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ReservedWhite {
+            get {
+                object obj = ResourceManager.GetObject("ReservedWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap TableBlack {
             get {
                 object obj = ResourceManager.GetObject("TableBlack", resourceCulture);

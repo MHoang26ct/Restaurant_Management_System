@@ -106,8 +106,8 @@ namespace FoodOrderManagement.AdminControl
         //
         private void ReportPicture_Click(object sender, EventArgs e)
         {
-            FormReport FormReport = new FormReport();
-            FormMain.instance.ReportsButton.PerformClick();
+            FormReservation FormReport = new FormReservation();
+            FormMain.instance.ReservationButton.PerformClick();
         }
         //
         // Sự kiện click Ảnh Employee

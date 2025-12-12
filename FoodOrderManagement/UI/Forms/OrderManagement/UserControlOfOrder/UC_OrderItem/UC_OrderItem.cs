@@ -23,47 +23,34 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             InitializeComponent();
             _customersRepository = customersRepository;
         }
-        private void StatusCBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-            string status = StatusCBox.Text;
-            switch (status)
-            {
-                case "Pending":
-                    StatusBackgroundColor.CustomBorderColor = Color.Gold;
-                    StatusMiniBackGroundColor.BorderColor = Color.DarkGoldenrod;
-                    StatusMiniBackGroundColor.FillColor = Color.FromArgb(255, 255, 192);
-                    StatusMiniBackGroundColor.FillColor2 = Color.FromArgb(255, 255, 192);
-                    StatusLabel.Text = "Pending";
-                    StatusLabel.ForeColor = Color.DarkGoldenrod;
-                    TotalMoneyLabel.ForeColor = Color.DarkGoldenrod;
-                    break;
-
-                case "Completed":
-                    StatusBackgroundColor.CustomBorderColor = Color.LimeGreen;
-                    StatusMiniBackGroundColor.BorderColor = Color.Green;
-                    StatusMiniBackGroundColor.FillColor = Color.FromArgb(192, 255, 192);
-                    StatusMiniBackGroundColor.FillColor2 = Color.FromArgb(192, 255, 192);
-                    StatusLabel.Text = "Completed";
-                    StatusLabel.ForeColor = Color.LimeGreen;
-                    TotalMoneyLabel.ForeColor = Color.Green;
-                    break;
-
-                case "Cancelled":
-                    StatusBackgroundColor.CustomBorderColor = Color.Red;
-                    StatusMiniBackGroundColor.BorderColor = Color.Firebrick;
-                    StatusMiniBackGroundColor.FillColor = Color.FromArgb(255, 192, 192);
-                    StatusMiniBackGroundColor.FillColor2 = Color.FromArgb(255, 192, 192);
-                    StatusLabel.Text = "Cancelled";
-                    StatusLabel.ForeColor = Color.Firebrick;
-                    TotalMoneyLabel.ForeColor = Color.Firebrick;
-                    break;
-            }
-        }
 
         private void AddFoodInOrderItem_Click(object sender, EventArgs e)
         {
             OnAddFoodClicked?.Invoke(this, _currentOrderData);
+        }
+
+        private void PaymentStatusCBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PaymentStatusCBox.SelectedIndex == 0)
+            {
+                PaymentStatusCBox.ForeColor = Color.Red;
+                PaymentStatusCBox.BorderColor = Color.Red;
+                StatusBackgroundColor.CustomBorderColor = Color.Red;
+                TotalMoneyLabel.ForeColor = Color.Red;
+            }
+            else if (PaymentStatusCBox.SelectedIndex == 1)
+            {
+                PaymentStatusCBox.ForeColor = Color.LimeGreen;
+                PaymentStatusCBox.BorderColor = Color.LimeGreen;
+                StatusBackgroundColor.CustomBorderColor = Color.LimeGreen;
+                TotalMoneyLabel.ForeColor = Color.LimeGreen;
+            }
+        }
+
+        private void TotalItemsLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

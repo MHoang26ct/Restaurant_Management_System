@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             doubleBufferedtlp1 = new DoubleBufferedTLP();
             TotalMoney = new Label();
@@ -51,39 +51,40 @@
             // 
             guna2Panel1.BorderRadius = 15;
             guna2Panel1.Controls.Add(doubleBufferedtlp1);
-            guna2Panel1.CustomizableEdges = customizableEdges4;
+            guna2Panel1.CustomizableEdges = customizableEdges2;
             guna2Panel1.Dock = DockStyle.Fill;
             guna2Panel1.FillColor = Color.White;
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges5;
-            guna2Panel1.Size = new Size(498, 298);
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            guna2Panel1.Size = new Size(532, 298);
             guna2Panel1.TabIndex = 0;
             // 
             // doubleBufferedtlp1
             // 
             doubleBufferedtlp1.ColumnCount = 3;
-            doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 4.601367F));
-            doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 92.42746F));
-            doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2.97118F));
-            doubleBufferedtlp1.Controls.Add(TotalMoney, 1, 5);
-            doubleBufferedtlp1.Controls.Add(TimeOrderLabel, 1, 3);
+            doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
+            doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 92F));
+            doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 3F));
+            doubleBufferedtlp1.Controls.Add(TotalMoney, 1, 6);
+            doubleBufferedtlp1.Controls.Add(TimeOrderLabel, 1, 4);
             doubleBufferedtlp1.Controls.Add(doubleBufferedtlp2, 1, 0);
-            doubleBufferedtlp1.Controls.Add(NameCustomerLabel, 1, 1);
-            doubleBufferedtlp1.Controls.Add(TableIDLabel, 1, 2);
-            doubleBufferedtlp1.Controls.Add(dgvChiTiet, 1, 4);
+            doubleBufferedtlp1.Controls.Add(NameCustomerLabel, 1, 2);
+            doubleBufferedtlp1.Controls.Add(TableIDLabel, 1, 3);
+            doubleBufferedtlp1.Controls.Add(dgvChiTiet, 1, 5);
             doubleBufferedtlp1.Dock = DockStyle.Fill;
             doubleBufferedtlp1.Location = new Point(0, 0);
             doubleBufferedtlp1.Name = "doubleBufferedtlp1";
-            doubleBufferedtlp1.RowCount = 7;
+            doubleBufferedtlp1.RowCount = 8;
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 11F));
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 11.333333F));
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.666667F));
-            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 36F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 2F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 8F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 8F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 8F));
+            doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 42F));
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 7F));
-            doubleBufferedtlp1.Size = new Size(498, 298);
+            doubleBufferedtlp1.Size = new Size(532, 298);
             doubleBufferedtlp1.TabIndex = 0;
             // 
             // TotalMoney
@@ -92,7 +93,7 @@
             TotalMoney.AutoSize = true;
             TotalMoney.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TotalMoney.ForeColor = Color.Black;
-            TotalMoney.Location = new Point(25, 252);
+            TotalMoney.Location = new Point(29, 251);
             TotalMoney.Name = "TotalMoney";
             TotalMoney.Size = new Size(56, 21);
             TotalMoney.TabIndex = 30;
@@ -104,10 +105,10 @@
             TimeOrderLabel.Dock = DockStyle.Fill;
             TimeOrderLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TimeOrderLabel.ForeColor = Color.Gray;
-            TimeOrderLabel.Location = new Point(24, 109);
+            TimeOrderLabel.Location = new Point(28, 95);
             TimeOrderLabel.Margin = new Padding(2, 0, 0, 0);
             TimeOrderLabel.Name = "TimeOrderLabel";
-            TimeOrderLabel.Size = new Size(458, 28);
+            TimeOrderLabel.Size = new Size(487, 23);
             TimeOrderLabel.TabIndex = 17;
             TimeOrderLabel.Text = "Thời gian : 16/10/2025 14:35";
             TimeOrderLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -120,12 +121,12 @@
             doubleBufferedtlp2.Controls.Add(OrderIDLabel, 0, 0);
             doubleBufferedtlp2.Controls.Add(ClosedButton, 1, 0);
             doubleBufferedtlp2.Dock = DockStyle.Fill;
-            doubleBufferedtlp2.Location = new Point(25, 3);
+            doubleBufferedtlp2.Location = new Point(29, 3);
             doubleBufferedtlp2.Name = "doubleBufferedtlp2";
             doubleBufferedtlp2.RowCount = 1;
             doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            doubleBufferedtlp2.Size = new Size(454, 38);
+            doubleBufferedtlp2.Size = new Size(483, 38);
             doubleBufferedtlp2.TabIndex = 0;
             // 
             // OrderIDLabel
@@ -150,11 +151,11 @@
             ClosedButton.FillColor = Color.Transparent;
             ClosedButton.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ClosedButton.ForeColor = Color.Black;
-            ClosedButton.Location = new Point(421, 3);
+            ClosedButton.Location = new Point(450, 3);
             ClosedButton.Margin = new Padding(3, 3, 0, 0);
             ClosedButton.Name = "ClosedButton";
             ClosedButton.PressedColor = Color.White;
-            ClosedButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            ClosedButton.ShadowDecoration.CustomizableEdges = customizableEdges1;
             ClosedButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             ClosedButton.Size = new Size(33, 22);
             ClosedButton.TabIndex = 1;
@@ -168,13 +169,13 @@
             NameCustomerLabel.Font = new Font("Segoe UI", 12F);
             NameCustomerLabel.ForeColor = Color.Gray;
             NameCustomerLabel.ImageAlign = ContentAlignment.MiddleRight;
-            NameCustomerLabel.Location = new Point(24, 44);
+            NameCustomerLabel.Location = new Point(28, 49);
             NameCustomerLabel.Margin = new Padding(2, 0, 0, 0);
             NameCustomerLabel.Name = "NameCustomerLabel";
-            NameCustomerLabel.Size = new Size(458, 32);
+            NameCustomerLabel.Size = new Size(487, 23);
             NameCustomerLabel.TabIndex = 6;
             NameCustomerLabel.Text = "Khách hàng: Nguyễn Hoàn Hải";
-            NameCustomerLabel.TextAlign = ContentAlignment.BottomLeft;
+            NameCustomerLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // TableIDLabel
             // 
@@ -182,21 +183,22 @@
             TableIDLabel.Dock = DockStyle.Fill;
             TableIDLabel.Font = new Font("Segoe UI", 12F);
             TableIDLabel.ForeColor = Color.Gray;
-            TableIDLabel.Location = new Point(24, 76);
+            TableIDLabel.Location = new Point(28, 72);
             TableIDLabel.Margin = new Padding(2, 0, 0, 0);
             TableIDLabel.Name = "TableIDLabel";
-            TableIDLabel.Size = new Size(458, 33);
+            TableIDLabel.Size = new Size(487, 23);
             TableIDLabel.TabIndex = 7;
             TableIDLabel.Text = "Bàn 10";
             TableIDLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dgvChiTiet
             // 
+            dgvChiTiet.BackgroundColor = SystemColors.ControlLightLight;
             dgvChiTiet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvChiTiet.Dock = DockStyle.Fill;
-            dgvChiTiet.Location = new Point(25, 140);
+            dgvChiTiet.Location = new Point(29, 121);
             dgvChiTiet.Name = "dgvChiTiet";
-            dgvChiTiet.Size = new Size(454, 101);
+            dgvChiTiet.Size = new Size(483, 119);
             dgvChiTiet.TabIndex = 31;
             // 
             // UC_ViewDetails
@@ -209,7 +211,7 @@
             Controls.Add(guna2Panel1);
             DoubleBuffered = true;
             Name = "UC_ViewDetails";
-            Size = new Size(498, 298);
+            Size = new Size(532, 298);
             guna2Panel1.ResumeLayout(false);
             doubleBufferedtlp1.ResumeLayout(false);
             doubleBufferedtlp1.PerformLayout();

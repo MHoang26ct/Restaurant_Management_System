@@ -325,11 +325,12 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         public async void SetOrderData(Orders order)
         {
             _currentOrderData = order;
-            OrderIDLabel.Text = "Hóa đơn #" + order.Id.ToString();
+            OrderIDLabel.Text = "Đơn Hàng #" + order.Id.ToString();
             Customers cus = await _customersRepository.GetCustomerByIdAsync(order.CustomerId);
             string namecus = cus.FullName;
-            NameCustomerLabel.Text = namecus;
-            TableIDLabel.Text = "Bàn " + order.TableId.ToString();
+            InfomationLabel.Text = "Bàn " + order.TableId.ToString() + " - Khách hàng: " + namecus;
+            //NameCustomerLabel.Text = namecus;
+            //TableIDLabel.Text = "Bàn " + order.TableId.ToString();
             TimeOrderLabel.Text = order.OrderTime.ToString("dd/MM/yyyy HH:mm");
             TotalMoneyLabel.Text = order.TotalAmount.ToString("N0") + " VND";
             TotalItemsLabel.Text = "Tổng tiền: ";
