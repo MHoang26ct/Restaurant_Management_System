@@ -1,100 +1,89 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Helper;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using FoodOrderManagement.DAL.Models.Entities;
-using FoodOrderManagement.DAL.Repositories.Interfaces;
-using Microsoft.Data.SqlClient;
-using System.Configuration;
 
 namespace FoodOrderManagement.DAL.Repositories.Implementations {
     public class UsersRepository : IUsersRepository {
-        string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private readonly DatabaseHelper _db = new DatabaseHelper();
+
+        //
+        private Users Mapper(SqlDataReader reader) {
+            return new Users {
+                Username = reader.GetString(0),
+                PasswordHash = reader.GetString(1),
+                Role = reader.GetInt32(2)
+            };
+        }
+
+        // Ham xu ly hash mat khau
+        private string HashPassword(string password) {
+            using var sha256 = SHA256.Create();
+            var passwordBytes = Encoding.UTF8.GetBytes(password);
+            return Convert.ToBase64String(sha256.ComputeHash(passwordBytes));
+        }
 
         // Kiểm tra đăng nhập
         public async Task<bool> LoginAsync(Users user) {
-            // Xử lý Hash mật khẩu
-            using var sha256 = SHA256.Create();
-            var passwordBytes = Encoding.UTF8.GetBytes(user.PasswordHash);
-            var passwordHash = Convert.ToBase64String(sha256.ComputeHash(passwordBytes));
+            var passwordHash = HashPassword(user.PasswordHash);
 
-            using SqlConnection connection = new SqlConnection(connectionString);
-            using SqlCommand command = new SqlCommand("ValidateUserLogin", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            
-            command.Parameters.AddWithValue("@Username", user.Username);
-            command.Parameters.AddWithValue("@PasswordHash", passwordHash);
-            
-            await connection.OpenAsync();
-            var result = await command.ExecuteScalarAsync();
-            
-            // Kiểm tra null và convert an toàn
-            return (result != null && (int)result > 0);
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Username", user.Username),
+                new SqlParameter("@PasswordHash", passwordHash)
+            };
+            var list = await _db.QueryAsync("ValidateUserLogin", Mapper, parameters);
+            return list.Any();
         }
 
         // Thêm tài khoản người dùng mới
         public async Task AddUserAsync(Users user) {
-            // Xử lý Hash mật khẩu mới
-            using var sha256 = SHA256.Create();
-            var passwordBytes = Encoding.UTF8.GetBytes(user.PasswordHash);
-            var passwordHash = Convert.ToBase64String(sha256.ComputeHash(passwordBytes));
+            var passwordHash = HashPassword(user.PasswordHash);
 
-            using SqlConnection connection = new SqlConnection(connectionString);
-            using SqlCommand command = new SqlCommand("AddUser", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            
-            command.Parameters.AddWithValue("@Username", user.Username);
-            command.Parameters.AddWithValue("@PasswordHash", passwordHash);
-            command.Parameters.AddWithValue("@UserRole", user.Role);
-            
-            await connection.OpenAsync();
-            await command.ExecuteNonQueryAsync();
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Username", user.Username),
+                new SqlParameter("@PasswordHash", passwordHash),
+                new SqlParameter("@UserRole", user.Role)
+            };
+            await _db.ExecuteNonQueryAsync("AddUser", parameters);  
         }
 
         // Đổi mật khẩu
         public async Task ChangePasswordAsync(string username, string newPassword) {
-            // Xử lý Hash mật khẩu mới
-            using var sha256 = SHA256.Create();
-            var passwordBytes = Encoding.UTF8.GetBytes(newPassword);
-            var newPasswordHash = Convert.ToBase64String(sha256.ComputeHash(passwordBytes));
-
-            using SqlConnection connection = new SqlConnection(connectionString);
-            using SqlCommand command = new SqlCommand("ChangeUserPassword", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            
-            command.Parameters.AddWithValue("@Username", username);
-            command.Parameters.AddWithValue("@NewPasswordHash", newPasswordHash);
-            
-            await connection.OpenAsync();
-            await command.ExecuteNonQueryAsync();
+            var newPasswordHash = HashPassword(newPassword);
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Username", username),
+                new SqlParameter("@NewPasswordHash", newPasswordHash)
+            };
+            await _db.ExecuteNonQueryAsync("ChangeUserPassword", parameters);
         }
 
         // Kiểm tra tên người dùng đã tồn tại
         public async Task<bool> IsUsernameExistsAsync(string username) {
-            using SqlConnection connection = new SqlConnection(connectionString);
-            using SqlCommand command = new SqlCommand("CheckUsernameExists", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            
-            command.Parameters.AddWithValue("@Username", username);
-            
-            await connection.OpenAsync();
-            var result = await command.ExecuteScalarAsync();
-            
-            return (result != null && (int)result > 0);
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Username", username)
+            };
+            var list = await _db.QueryAsync("CheckUsernameExists", Mapper, parameters);
+            return list.Any();
         }
 
         // Xoá người dùng
         public async Task DeleteUserAsync(string username) {
-            using SqlConnection connection = new SqlConnection(connectionString);
-            using SqlCommand command = new SqlCommand("DeleteUser", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            
-            command.Parameters.AddWithValue("@Username", username);
-            
-            await connection.OpenAsync();
-            await command.ExecuteNonQueryAsync();
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Username", username)
+            };
+            await _db.ExecuteNonQueryAsync("DeleteUser", parameters);
         }
     }
 }
