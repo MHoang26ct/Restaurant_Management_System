@@ -60,5 +60,10 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                     break;
             }
         }
+
+        private void AddFoodInOrderItem_Click(object sender, EventArgs e)
+        {
+            OnAddFoodClicked?.Invoke(this, _currentOrderData);
+        }
     }
 }

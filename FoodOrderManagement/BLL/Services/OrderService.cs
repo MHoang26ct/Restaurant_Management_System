@@ -361,7 +361,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         }
         public void LoadDetailData(Orders order, List<OrderDetailDisplay> listMonAn)
         {
-            OrderIDLabel.Text ="Hóa đơn #" + order.Id.ToString(); // Ví dụ: Đơn Hàng #3636
+            OrderIDLabel.Text ="Đơn hàng #" + order.Id.ToString(); // Ví dụ: Đơn Hàng #3636
             NameCustomerLabel.Text = "Khách hàng: " + order.CustomerId.ToString();
             TableIDLabel.Text = "Bàn " + order.TableId.ToString();
             TimeOrderLabel.Text = "Thời gian: " + order.OrderTime.ToString("dd/MM/yyyy HH:mm");
@@ -386,6 +386,39 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         private void ClosedButton_Click(object sender, EventArgs e)
         {
             this.Parent.Controls.Remove(this);
+        }
+    }
+}
+
+///-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
+{
+    public partial class UC_AddFoodOrder2 : UserControl
+    {
+        private void ThemDongMonAn()
+        {
+            try
+            {
+                // Resolve UC con từ Scope
+                var newItem = _scope.Resolve<UC_AddFoodOrder>();
+
+                // Căn chỉnh giao diện
+                newItem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                // Trừ hao thanh cuộn (nếu có)
+                if (ListFoodFlowLayout.Width > 25)
+                    newItem.Width = ListFoodFlowLayout.Width - 25;
+                else
+                    newItem.Width = 300; // Giá trị mặc định nếu layout chưa load xong
+
+                // Thêm vào Layout
+                ListFoodFlowLayout.Controls.Add(newItem);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi thêm dòng món ăn: " + ex.Message);
+            }
         }
     }
 }
