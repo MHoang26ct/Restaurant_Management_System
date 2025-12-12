@@ -7,125 +7,79 @@ using FoodOrderManagement.DAL.Models.Entities;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
+using FoodOrderManagement.DAL.Helper;
 
 namespace FoodOrderManagement.DAL.Repositories.Implementations {
     public class TablesRepository : ITablesRepository
     {
-        private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private readonly DatabaseHelper _db = new DatabaseHelper();
+
+        // Hàm chung để chuyển dữ liệu từ Reader sang Object Tables
+        private Tables Mapper(SqlDataReader reader)
+        {
+            var table = new Tables
+            {
+                Id = reader.GetInt32(0),
+                Capacity = reader.GetInt32(1),
+                Status = reader.GetString(2)
+            };
+            if (!reader.IsDBNull(3))
+            {
+                table.OpenTime = reader.GetDateTime(3);
+            }
+            return table;
+        }
 
         // Lấy danh sách các bàn còn trống
         public async Task<List<Tables>> GetAvailableTablesAsync()
         {
-            var availableTables = new List<Tables>();
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("GetAvailableTables", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            await connection.OpenAsync();
-            using SqlDataReader reader = await command.ExecuteReaderAsync();
-
-            while (await reader.ReadAsync())
-            {
-                var table = new Tables
-                {
-                    Id = reader.GetInt32(0),
-                    Capacity = reader.GetInt32(1),
-                    Status = reader.GetString(2)
-                };
-
-                if (!reader.IsDBNull(3))
-                {
-                    table.OpenTime = reader.GetDateTime(3);
-                }
-
-                availableTables.Add(table);
-            }
-            return availableTables;
+            return await _db.QueryAsync("GetAvailableTables", Mapper);
         }
 
         // Cập nhật trạng thái và thời gian mở bàn
         public async Task<bool> UpdateTableStatusAndOpenTimeAsync(int tableId, string status, DateTime? openedAt)
         {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("UpdateTableStatusAndOpenTime", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TableID", tableId),
+                new SqlParameter("@NewStatus", status),
+                new SqlParameter("@OpenTime", (object?)openedAt ?? DBNull.Value)
+            };
 
-            command.Parameters.AddWithValue("@TableID", tableId);
-            command.Parameters.AddWithValue("@NewStatus", status);
-            command.Parameters.AddWithValue("@OpenTime", (object?)openedAt ?? DBNull.Value);
-
-            await connection.OpenAsync();
-            int rowsAffected = await command.ExecuteNonQueryAsync();
-
+            int rowsAffected = await _db.ExecuteNonQueryAsync("UpdateTableStatusAndOpenTime", parameters);
             return rowsAffected > 0;
         }
 
         // Thêm bàn mới
         public async Task<int> AddTableAsync(int capacity, string tableStatus)
         {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("AddTable", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@Capacity", capacity);
-            command.Parameters.AddWithValue("@TableStatus", tableStatus);
-            command.Parameters.AddWithValue("@OpenTime", DBNull.Value);
-
-            SqlParameter outputIdParam = new SqlParameter("@NewTableID", System.Data.SqlDbType.Int)
+            var outputIdParam = new SqlParameter("@NewTableID", System.Data.SqlDbType.Int)
             {
                 Direction = System.Data.ParameterDirection.Output
             };
-            command.Parameters.Add(outputIdParam);
-
-            await connection.OpenAsync();
-            await command.ExecuteNonQueryAsync();
-
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Capacity", capacity),
+                new SqlParameter("@TableStatus", tableStatus),
+                new SqlParameter("@OpenTime", DBNull.Value),
+                outputIdParam
+            };
+            await _db.ExecuteNonQueryAsync("AddTable", parameters);
             return (int)outputIdParam.Value;
         }
 
         // Xoá bàn theo ID
         public async Task<bool> DeleteTableByIdAsync(int tableId)
         {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("DeleteTable", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@TableID", tableId);
-
-            await connection.OpenAsync();
-            int rowsAffected = await command.ExecuteNonQueryAsync();
-
+            var param = new SqlParameter("@TableID", tableId);
+            int rowsAffected = await _db.ExecuteNonQueryAsync("DeleteTable", param);
             return rowsAffected > 0;
         }
 
         // Lấy danh sách tất cả bàn
         public async Task<List<Tables>> GetAllTablesAsync()
         {
-            var tables = new List<Tables>();
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("GetAllTables", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            await connection.OpenAsync();
-            using SqlDataReader reader = await command.ExecuteReaderAsync();
-
-            while (await reader.ReadAsync())
-            {
-                var table = new Tables
-                {
-                    Id = reader.GetInt32(0),
-                    Capacity = reader.GetInt32(1),
-                    Status = reader.GetString(2)
-                };
-
-                if (!reader.IsDBNull(3))
-                {
-                    table.OpenTime = reader.GetDateTime(3);
-                }
-
-                tables.Add(table);
-            }
-            return tables;
+            return await _db.QueryAsync("GetAllTables", Mapper);
         }
     }
 }

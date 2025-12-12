@@ -7,92 +7,74 @@ using FoodOrderManagement.DAL.Models.Entities;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
+using FoodOrderManagement.DAL.Helper;
 
 namespace FoodOrderManagement.DAL.Repositories.Implementations {
     public class EmployeesRepository : IEmployeesRepository {
-        private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private readonly DatabaseHelper _db = new DatabaseHelper();
+
+        //
+        private Employee Mapper(SqlDataReader reader) {
+            return new Employee {
+                FullName = reader.GetString(0),
+                PhoneNumber = reader.GetString(1),
+                Email = reader.GetString(2),
+                Position = reader.GetString(3),
+                HireDate = reader.GetDateTime(4)
+            };
+        }
 
         // Lấy thông tin nhân viên theo tên và số điện thoại
         public async Task<Employee?> GetEmployeeByNameAndPhoneAsync(string fullName, string phoneNumber) {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            SqlCommand command = new SqlCommand("GetEmployeesByNameAndPhone", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@FullName", fullName);
-            command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-            await connection.OpenAsync();
-            using SqlDataReader reader = await command.ExecuteReaderAsync();
-            if (await reader.ReadAsync()) {
-                return new Employee {
-                    FullName = reader.GetString(0),
-                    PhoneNumber = reader.GetString(1),
-                    Email = reader.GetString(2),
-                    Position = reader.GetString(3),
-                    HireDate = reader.GetDateTime(4)
-                };
-            }
-            return null;
+            var parameters = new SqlParameter[] {
+                new SqlParameter("@FullName", fullName),
+                new SqlParameter("@PhoneNumber", phoneNumber)
+            };
+            return await _db.QuerySingleAsync("GetEmployeesByNameAndPhone", Mapper, parameters);
         }
 
         // Thêm nhân viên mới
         public async Task<bool> AddEmployeeAsync(Employee employee) {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            SqlCommand command = new SqlCommand("AddEmployee", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@FullName", employee.FullName);
-            command.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
-            command.Parameters.AddWithValue("@Email", employee.Email);
-            command.Parameters.AddWithValue("@Position", employee.Position);
-            command.Parameters.AddWithValue("@HireDate", employee.HireDate);
-            await connection.OpenAsync();
-            int result = await command.ExecuteNonQueryAsync();
-            return result > 0;
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@FullName", employee.FullName),
+                new SqlParameter("@PhoneNumber", employee.PhoneNumber),
+                new SqlParameter("@Email", employee.Email),
+                new SqlParameter("@Position", employee.Position),
+                new SqlParameter("@HireDate", employee.HireDate)
+            };
+            int rowsAffected = await _db.ExecuteNonQueryAsync("AddEmployee", parameters);
+            return rowsAffected > 0;
         }
 
         // Cập nhật thông tin nhân viên
         public async Task<bool> UpdateEmployeeAsync(Employee employee) {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            SqlCommand command = new SqlCommand("UpdateEmployee", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@FullName", employee.FullName);
-            command.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
-            command.Parameters.AddWithValue("@Email", employee.Email);
-            command.Parameters.AddWithValue("@Position", employee.Position);
-            command.Parameters.AddWithValue("@HireDate", employee.HireDate);
-            await connection.OpenAsync();
-            int result = await command.ExecuteNonQueryAsync();
-            return result > 0;
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@FullName", employee.FullName),
+                new SqlParameter("@PhoneNumber", employee.PhoneNumber),
+                new SqlParameter("@Email", employee.Email),
+                new SqlParameter("@Position", employee.Position),
+                new SqlParameter("@HireDate", employee.HireDate)
+            };
+            int rowsAffected = await _db.ExecuteNonQueryAsync("UpdateEmployee", parameters);
+            return rowsAffected > 0;
         }
 
         // Xoá nhân viên theo tên và số điện thoại
         public async Task<bool> DeleteEmployeeByNameAndPhoneAsync(string fullName, string phoneNumber) {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            SqlCommand command = new SqlCommand("DeleteEmployee", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@FullName", fullName);
-            command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-            await connection.OpenAsync();
-            int result = await command.ExecuteNonQueryAsync();
-            return result > 0;
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@FullName", fullName),
+                new SqlParameter("@PhoneNumber", phoneNumber)
+            };
+            int rowsAffected = await _db.ExecuteNonQueryAsync("DeleteEmployee", parameters);
+            return rowsAffected > 0;
         }
         
         // Lấy tất cả nhân viên
         public async Task<List<Employee>> GetAllEmployeesAsync() {
-            List<Employee> employees = new List<Employee>();
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            SqlCommand command = new SqlCommand("GetAllEmployees", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            await connection.OpenAsync();
-            using SqlDataReader reader = await command.ExecuteReaderAsync();
-            while (await reader.ReadAsync()) {
-                employees.Add(new Employee {
-                    FullName = reader.GetString(0),
-                    PhoneNumber = reader.GetString(1),
-                    Email = reader.GetString(2),
-                    Position = reader.GetString(3),
-                    HireDate = reader.GetDateTime(4)
-                });
-            }
-            return employees;
+            return await _db.QueryAsync("GetAllEmployees", Mapper);
         }
     }
 }

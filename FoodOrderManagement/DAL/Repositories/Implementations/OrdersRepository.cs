@@ -1,142 +1,92 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Helper;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FoodOrderManagement.DAL.Repositories.Interfaces;
-using FoodOrderManagement.DAL.Models.Entities;
-using Microsoft.Data.SqlClient;
-using System.Configuration;
 
 namespace FoodOrderManagement.DAL.Repositories.Implementations {
     public class OrdersRepository : IOrdersRepository
     {
-        private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private readonly DatabaseHelper _db = new DatabaseHelper();
+
+        //
+        private Orders Mapper(SqlDataReader reader) {
+            return new Orders {
+                Id = reader.GetInt32(0),
+                ReservationId = reader.GetInt32(1),
+                TableId = reader.GetInt32(2),
+                OrderTime = reader.GetDateTime(3),
+                TotalAmount = reader.GetDecimal(4),
+                NumberOfGuests = reader.GetInt32(5),
+                CustomerId = reader.GetInt32(6)
+            };
+        }
 
         // Thêm order mới, trả về OrderID vừa tạo để dùng cho việc thêm OrderDetail sau đó
-        public async Task<int> AddOrderAsync(Orders order) {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("AddOrder", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@ReservationId", order.ReservationId);
-            command.Parameters.AddWithValue("@TableId", order.TableId);
-            command.Parameters.AddWithValue("@OrderTime", order.OrderTime);
-            command.Parameters.AddWithValue("@CustomerID", order.CustomerId);
-            command.Parameters.AddWithValue("@NumberOfGuests", order.NumberOfGuests);
-
-            SqlParameter outputIdParam = new SqlParameter("@NewOrderID", System.Data.SqlDbType.Int) {
+        public async Task<int> AddOrderAsync(Orders order)
+        {
+            var outputIdParam = new SqlParameter("@NewOrderID", System.Data.SqlDbType.Int)
+            {
                 Direction = System.Data.ParameterDirection.Output
             };
-            command.Parameters.Add(outputIdParam);
-
-            await connection.OpenAsync();
-            await command.ExecuteNonQueryAsync();
-            
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ReservationId", order.ReservationId),
+                new SqlParameter("@TableId", order.TableId),
+                new SqlParameter("@OrderTime", order.OrderTime),
+                new SqlParameter("@CustomerID", order.CustomerId),
+                new SqlParameter("@NumberOfGuests", order.NumberOfGuests),
+                outputIdParam
+            };
+            await _db.ExecuteNonQueryAsync("AddOrder", parameters);
             return (int)outputIdParam.Value;
         }
 
         // Truy xuất order theo reservationID
         public async Task<List<Orders>> GetOrdersByReservationIdAsync(int reservationId) {
-            var orders = new List<Orders>();
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("GetOrdersByReservationID", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@ReservationID", reservationId);
-
-            await connection.OpenAsync();
-            using SqlDataReader reader = await command.ExecuteReaderAsync();
-
-            while (await reader.ReadAsync()) {
-                orders.Add(new Orders {
-                    Id = reader.GetInt32(0),
-                    ReservationId = reader.GetInt32(1),
-                    TableId = reader.GetInt32(2),
-                    OrderTime = reader.GetDateTime(3),
-                    TotalAmount = reader.GetDecimal(4),
-                    NumberOfGuests = reader.GetInt32(5),
-                    CustomerId = reader.GetInt32(6)
-                });
-            }
-            
-            return orders;
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ReservationID", reservationId)
+            };
+            return await _db.QueryAsync("GetOrdersByReservationID", Mapper, parameters);
         }
 
         // Truy xuất order theo số bàn (thường là order đang pending)
         public async Task<Orders?> GetOrdersByTableIdAsync(int tableId) {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("GetOrdersByTableIDAndPendingStatus", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@TableID", tableId);
-
-            await connection.OpenAsync();
-            using SqlDataReader reader = await command.ExecuteReaderAsync();
-
-            if (await reader.ReadAsync()) {
-                return new Orders {
-                    Id = reader.GetInt32(0),
-                    ReservationId = reader.GetInt32(1),
-                    TableId = reader.GetInt32(2),
-                    OrderTime = reader.GetDateTime(3),
-                    TotalAmount = reader.GetDecimal(4),
-                    NumberOfGuests = reader.GetInt32(5),
-                    CustomerId = reader.GetInt32(6)
-                };
-            }
-            
-            return null;
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TableID", tableId)
+            };
+            return await _db.QuerySingleAsync("GetOrdersByTableIDAndPendingStatus", Mapper, parameters);
         }
 
         // Cập nhật thời gian thanh toán
         public async Task UpdateCheckoutTimeAsync(int orderId, DateTime checkoutTime) {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("UpdateOrderCheckoutTime", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@OrderID", orderId);
-            command.Parameters.AddWithValue("@CheckoutTime", checkoutTime);
-
-            await connection.OpenAsync();
-            await command.ExecuteNonQueryAsync();
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderID", orderId),
+                new SqlParameter("@CheckoutTime", checkoutTime)
+            };
+            await _db.ExecuteNonQueryAsync("UpdateOrderCheckoutTime", parameters);
         }
 
         // Lấy danh sách order chưa thanh toán
         public async Task<List<Orders>> GetAllUnpaidOrdersAsync() {
-            var orders = new List<Orders>();
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("GetAllPendingOrders", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            await connection.OpenAsync();
-            using SqlDataReader reader = await command.ExecuteReaderAsync();
-
-            while (await reader.ReadAsync()) {
-                orders.Add(new Orders {
-                    Id = reader.GetInt32(0),
-                    ReservationId = reader.GetInt32(1),
-                    TableId = reader.GetInt32(2),
-                    OrderTime = reader.GetDateTime(3),
-                    TotalAmount = reader.GetDecimal(4),
-                    NumberOfGuests = reader.GetInt32(5),
-                    CustomerId = reader.GetInt32(6)
-                });
-            }
-            
-            return orders;
+            return await _db.QueryAsync("GetAllPendingOrders", Mapper);
         }
 
         // Xóa order theo mã order (cho trường hợp khách hủy đặt bàn)
         public async Task DeleteOrderByIdAsync(int orderId) {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand command = new SqlCommand("DeleteOrder", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@OrderID", orderId);
-
-            await connection.OpenAsync();
-            await command.ExecuteNonQueryAsync();
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderID", orderId)
+            };
+            await _db.ExecuteNonQueryAsync("DeleteOrder", parameters);
         }
     }
 }
