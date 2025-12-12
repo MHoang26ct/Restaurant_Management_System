@@ -25,7 +25,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             CapacityLabel.Text = Capacity.ToString();
             switch (Status)
             {
-                case "Available":
+                case "Còn trống":
                     this.NumberCircleLabel.FillColor = Color.FromArgb(80, 200, 120);
                     this.NumberCircleLabel.HoverState.FillColor = Color.FromArgb(80, 200, 120);
                     this.StatusPanel.FillColor = Color.FromArgb(220, 255, 220);
@@ -39,7 +39,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
                     this.StatusText.ForeColor = Color.DarkGreen;
                     this.StatusText.Text = Status;
                     break;
-                case "Occupied":
+                case "Đang sử dụng":
                     this.NumberCircleLabel.FillColor = Color.Red;
                     this.NumberCircleLabel.HoverState.FillColor = Color.Red;
                     this.StatusPanel.FillColor = Color.FromArgb(255, 192, 192);
@@ -53,7 +53,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
                     this.StatusText.ForeColor = Color.DarkRed;
                     this.StatusText.Text = Status;
                     break;
-                case "Reserved":
+                case "Đã đặt bàn":
                     this.NumberCircleLabel.FillColor = Color.Gold;
                     this.NumberCircleLabel.HoverState.FillColor = Color.Gold;
                     this.StatusPanel.FillColor = Color.FromArgb(255, 255, 128);
@@ -68,16 +68,6 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
                     this.StatusText.Text = Status;
                     break;
             }
-        }
-
-        private void StatusText_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StatusText_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
