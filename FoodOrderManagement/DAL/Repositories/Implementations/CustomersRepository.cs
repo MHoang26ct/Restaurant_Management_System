@@ -81,7 +81,7 @@ public class CustomersRepository : ICustomersRepository {
 
         // Lấy danh sách tất cả khách hàng
         public async Task<List<Customers>> GetAllCustomersAsync() {
-            return await _db.QueryAsync("GetAllCustomers", Mapper);
+            return await _db.GetListAsync("GetAllCustomers", Mapper);
         }
     }
 }

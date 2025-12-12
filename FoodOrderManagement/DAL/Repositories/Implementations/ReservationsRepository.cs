@@ -66,7 +66,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             {
                 new SqlParameter("@Date", date.Date)
             };
-            return await _db.QueryAsync("GetReservationsByDate", Mapper, parameters);
+            return await _db.GetListAsync("GetReservationsByDate", Mapper, parameters);
         }
 
         // Truy xuất phiếu đặt bàn theo số điện thoại trong tương lai
@@ -76,7 +76,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             {
                 new SqlParameter("@PhoneNumber", phoneNumber)
             };
-            return await _db.QueryAsync("GetUpcomingReservationsByPhoneNumber", Mapper, parameters);
+            return await _db.GetListAsync("GetUpcomingReservationsByPhoneNumber", Mapper, parameters);
         }
 
         // Truy xuất phiếu đặt bàn theo số điện thoại (bao gồm cả quá khứ)
@@ -86,13 +86,13 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             {
                 new SqlParameter("@PhoneNumber", phoneNumber)
             };
-            return await _db.QueryAsync("GetReservationsByPhoneNumber", Mapper, parameters);
+            return await _db.GetListAsync("GetReservationsByPhoneNumber", Mapper, parameters);
         }
 
         // Lấy danh sách tất cả đặt bàn (thời gian đặt bàn trong tương lai)
         public async Task<List<Reservations>> GetAllUpcomingReservationsAsync()
         {
-            return await _db.QueryAsync("GetAllUpcomingReservations", Mapper);
+            return await _db.GetListAsync("GetAllUpcomingReservations", Mapper);
         }
 
         // Cập nhật thông tin đặt bàn (dùng luôn cho hủy đặt bàn - thay đổi trạng thái)

@@ -15,12 +15,8 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         private readonly DatabaseHelper _db = new DatabaseHelper();
 
         //
-        private Users Mapper(SqlDataReader reader) {
-            return new Users {
-                Username = reader.GetString(0),
-                PasswordHash = reader.GetString(1),
-                Role = reader.GetInt32(2)
-            };
+        private int Mapper(SqlDataReader reader) {
+            return reader.GetInt32(0);
         }
 
         // Ham xu ly hash mat khau
@@ -39,8 +35,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 new SqlParameter("@Username", user.Username),
                 new SqlParameter("@PasswordHash", passwordHash)
             };
-            var list = await _db.QueryAsync("ValidateUserLogin", Mapper, parameters);
-            return list.Any();
+            return await _db.QuerySingleAsync("ValidateUserLogin", Mapper, parameters) > 0;
         }
 
         // Thêm tài khoản người dùng mới
@@ -73,8 +68,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             {
                 new SqlParameter("@Username", username)
             };
-            var list = await _db.QueryAsync("CheckUsernameExists", Mapper, parameters);
-            return list.Any();
+            return await _db.QuerySingleAsync("CheckUsernameExists", Mapper, parameters) > 0;
         }
 
         // Xoá người dùng

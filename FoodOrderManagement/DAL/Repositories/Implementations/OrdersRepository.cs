@@ -53,7 +53,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             {
                 new SqlParameter("@ReservationID", reservationId)
             };
-            return await _db.QueryAsync("GetOrdersByReservationID", Mapper, parameters);
+            return await _db.GetListAsync("GetOrdersByReservationID", Mapper, parameters);
         }
 
         // Truy xuất order theo số bàn (thường là order đang pending)
@@ -77,7 +77,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
 
         // Lấy danh sách order chưa thanh toán
         public async Task<List<Orders>> GetAllUnpaidOrdersAsync() {
-            return await _db.QueryAsync("GetAllPendingOrders", Mapper);
+            return await _db.GetListAsync("GetAllPendingOrders", Mapper);
         }
 
         // Xóa order theo mã order (cho trường hợp khách hủy đặt bàn)
