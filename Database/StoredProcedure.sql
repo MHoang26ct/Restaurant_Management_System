@@ -70,6 +70,7 @@ BEGIN
     FROM Foods
     ORDER BY FoodName
 END
+GO
 
 -- 1.5 Tìm kiếm món ăn theo tên (dùng cho chức năng tìm kiếm nhanh)
 CREATE PROCEDURE SearchFoodsByName
@@ -147,6 +148,7 @@ BEGIN
     FROM Tables
     ORDER BY TableID
 END
+GO
 
 -- 2.5 Lấy danh sách các bàn ăn trống
 CREATE PROCEDURE GetAvailableTables
@@ -403,6 +405,7 @@ BEGIN
     WHERE o.TimeCheckout IS NULL
     ORDER BY o.OrderTime
 END
+GO
 
 -- 5.6. Xóa Order cho trường hợp khách hủy đặt bàn
 CREATE PROCEDURE DeleteOrder
