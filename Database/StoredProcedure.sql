@@ -70,6 +70,30 @@ BEGIN
     FROM Foods
     ORDER BY FoodName
 END
+GO
+
+-- 1.5 Tìm kiếm món ăn theo tên (dùng cho chức năng tìm kiếm nhanh)
+CREATE PROCEDURE SearchFoodsByName
+    @SearchTerm VARCHAR(100)
+AS
+BEGIN
+    SELECT FoodID, FoodName, Price, Category, ImagePath, Description
+    FROM Foods
+    WHERE FoodName LIKE '%' + @SearchTerm + '%'
+    ORDER BY FoodName
+END
+GO
+
+-- 1.6 Lấy món ăn theo ID
+CREATE PROCEDURE GetFoodByID
+    @FoodID INT
+AS
+BEGIN
+    SELECT FoodID, FoodName, Price, Category, ImagePath, Description
+    FROM Foods
+    WHERE FoodID = @FoodID
+END
+GO
 
 -- =============================================
 -- NHÓM 2: QUẢN LÝ BÀN ĂN (TABLES)
@@ -124,6 +148,18 @@ BEGIN
     FROM Tables
     ORDER BY TableID
 END
+GO
+
+-- 2.5 Lấy danh sách các bàn ăn trống
+CREATE PROCEDURE GetAvailableTables
+AS
+BEGIN
+    SELECT TableID, Capacity, TableStatus, OpenTime
+    FROM Tables
+    WHERE TableStatus = 'Available'
+    ORDER BY TableID
+END
+GO
 
 -- =============================================
 -- NHÓM 3: QUẢN LÝ KHÁCH HÀNG (CUSTOMERS)
@@ -168,6 +204,32 @@ BEGIN
     FROM Customers
     ORDER BY FullName
 END
+GO
+
+-- 3.4 Tìm kiếm khách hàng theo tên và số điện thoại
+CREATE PROCEDURE GetCustomerByNameAndPhone
+    @Name VARCHAR(50) = NULL,
+    @PhoneNumber VARCHAR(15) = NULL
+AS
+BEGIN
+    SELECT CustomerID, FullName, Email, PhoneNumber, LastVisitDate, TotalVisits
+    FROM Customers
+    WHERE (@Name IS NULL OR FullName LIKE '%' + @Name + '%')
+      AND (@PhoneNumber IS NULL OR PhoneNumber LIKE '%' + @PhoneNumber + '%')
+    ORDER BY FullName
+END
+GO
+
+-- 3.5 Lấy thông tin khách hàng theo Id
+CREATE PROCEDURE GetCustomerByID
+    @CustomerID INT
+AS
+BEGIN
+    SELECT CustomerID, FullName, Email, PhoneNumber, LastVisitDate, TotalVisits, TotalSpent, CustomerRank
+    FROM Customers
+    WHERE CustomerID = @CustomerID
+END
+GO
 
 -- =============================================
 -- NHÓM 4: QUẢN LÝ ĐẶT BÀN (RESERVATIONS)
@@ -208,7 +270,21 @@ BEGIN
         Status = @Status
     WHERE ReservationID = @ReservationID
 END
+GO
 
+-- 4.3. Lấy phiếu đặt bàn bằng số điện thoại khách hàng trong tương lai
+CREATE PROCEDURE GetUpcomingReservationsByPhone
+    @PhoneNumber VARCHAR(15)
+AS
+BEGIN
+    SELECT r.ReservationID, r.CustomerID, r.TableID, r.ReservationTime, r.ComingTime, r.NumberOfGuests, r.Status
+    FROM Reservations r
+    JOIN Customers c ON r.CustomerID = c.CustomerID
+    WHERE c.PhoneNumber = @PhoneNumber
+      AND r.ComingTime >= GETDATE()
+    ORDER BY r.ComingTime
+END
+GO
 
 -- 4.4. Lấy danh sách tất cả các phiếu đặt bàn (ComingTime trong tương lai)
 CREATE PROCEDURE GetAllUpcomingReservations
@@ -219,7 +295,43 @@ BEGIN
     WHERE ComingTime >= GETDATE()
     ORDER BY ComingTime
 END
+GO
 
+-- 4.5 Lấy phiếu đặt bàn theo ReservationID
+CREATE PROCEDURE GetReservationByID
+    @ReservationID INT
+AS
+BEGIN
+    SELECT ReservationID, CustomerID, TableID, ReservationTime, ComingTime, NumberOfGuests, Status
+    FROM Reservations
+    WHERE ReservationID = @ReservationID
+END
+GO
+
+-- 4.6 Lấy phiếu đặt bàn theo số điện thoại khách hàng
+CREATE PROCEDURE GetReservationsByPhoneNumber
+    @PhoneNumber VARCHAR(15)
+AS
+BEGIN
+    SELECT r.ReservationID, r.CustomerID, r.TableID, r.ReservationTime, r.ComingTime, r.NumberOfGuests, r.Status
+    FROM Reservations r
+    JOIN Customers c ON r.CustomerID = c.CustomerID
+    WHERE c.PhoneNumber = @PhoneNumber
+    ORDER BY r.ComingTime
+END
+GO
+
+-- 4.7 Lấy phiếu đặt bàn theo ngày
+CREATE PROCEDURE GetReservationsByDate
+    @Date DATE
+AS
+BEGIN
+    SELECT ReservationID, CustomerID, TableID, ReservationTime, ComingTime, NumberOfGuests, Status
+    FROM Reservations
+    WHERE CAST(ComingTime AS DATE) = @Date
+    ORDER BY ComingTime
+END
+GO
 
 -- =============================================
 -- NHÓM 5: QUẢN LÝ ĐƠN HÀNG & CHI TIẾT (ORDERS & ORDER DETAILS)
@@ -293,6 +405,7 @@ BEGIN
     WHERE o.TimeCheckout IS NULL
     ORDER BY o.OrderTime
 END
+GO
 
 -- 5.6. Xóa Order cho trường hợp khách hủy đặt bàn
 CREATE PROCEDURE DeleteOrder
@@ -301,6 +414,55 @@ CREATE PROCEDURE DeleteOrder
  BEGIN
     DELETE FROM Orders
     WHERE OrderID = @OrderID
+END
+GO
+
+-- 5.7. Lấy danh sách order theo tableID và trạng thái chưa thanh toán
+CREATE PROCEDURE GetOrdersByTableIDAndPendingStatus
+    @TableID INT
+AS
+BEGIN
+    SELECT o.OrderID, o.ReservationID, o.TableID, o.OrderTime, o.TotalAmount, o.NumberOfGuests, o.CustomerID
+    FROM Orders o
+    WHERE o.TableID = @TableID AND o.TimeCheckout IS NULL
+    ORDER BY o.OrderTime
+END
+GO
+
+-- 5.8 Lấy danh sách order theo ReservationID
+CREATE PROCEDURE GetOrdersByReservationID
+    @ReservationID INT
+AS
+BEGIN
+    SELECT o.OrderID, o.ReservationID, o.TableID, o.OrderTime,
+              o.TotalAmount, o.NumberOfGuests, o.CustomerID
+    FROM Orders o
+    WHERE o.ReservationID = @ReservationID
+    ORDER BY o.OrderTime
+END
+GO
+
+-- 5.9 Lấy chi tiết order theo OrderID( có tên món và giá)
+CREATE PROCEDURE GetOrderDetailsWithFoodInfoByOrderID
+    @OrderID INT
+AS
+BEGIN
+    SELECT f.FoodName, od.Quantity, f.Price
+    FROM OrderDetails od
+    JOIN Foods f ON od.FoodID = f.FoodID
+    WHERE od.OrderID = @OrderID
+END
+GO
+
+-- 5.10 Lấy các chi tiết order đã hoàn thành theo OrderID
+CREATE PROCEDURE GetCompletedOrderDetailsByOrderID
+    @OrderID INT
+AS
+BEGIN
+    SELECT OrderDetailID, OrderID, FoodID, Quantity, Notes, OrderStatus
+    FROM OrderDetails
+    WHERE OrderID = @OrderID AND OrderStatus = 'Completed'
+    ORDER BY OrderDetailID
 END
 GO
 
@@ -358,6 +520,21 @@ BEGIN
     FROM Employees
     ORDER BY FullName
 END
+GO
+
+-- 6.5 Tìm kiếm nhân viên theo tên và số điện thoại
+CREATE PROCEDURE GetEmployeesByNameAndPhone
+    @FullName VARCHAR(50) = NULL,
+    @PhoneNumber VARCHAR(15) = NULL
+AS
+BEGIN
+    SELECT FullName, PhoneNumber, Email, Position, HireDate
+    FROM Employees
+    WHERE (@FullName IS NULL OR FullName LIKE '%' + @FullName + '%')
+      AND (@PhoneNumber IS NULL OR PhoneNumber LIKE '%' + @PhoneNumber + '%')
+    ORDER BY FullName
+END
+GO
 
 -- =============================================
 -- NHÓM 7: QUẢN LÝ TÀI KHOẢN HỆ THỐNG (USERS)
@@ -393,6 +570,29 @@ CREATE PROCEDURE DeleteUser
 AS
 BEGIN
     DELETE FROM Users
+    WHERE Username = @Username
+END
+GO
+
+-- 7.4. Kiểm tra đăng nhập
+CREATE PROCEDURE ValidateUserLogin
+    @Username VARCHAR(50),
+    @PasswordHash VARCHAR(255)
+AS
+BEGIN
+    SELECT COUNT(*) AS UserCount
+    FROM Users
+    WHERE Username = @Username AND PasswordHash = @PasswordHash
+END
+GO
+
+-- 7.6 Kiểm tra username đã tồn tại
+CREATE PROCEDURE CheckUsernameExists
+    @Username VARCHAR(50)
+AS
+BEGIN
+    SELECT COUNT(*) AS UserCount
+    FROM Users
     WHERE Username = @Username
 END
 GO

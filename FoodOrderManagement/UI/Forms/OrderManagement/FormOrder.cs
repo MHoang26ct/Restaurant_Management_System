@@ -50,8 +50,7 @@ namespace FoodOrderManagement.AdminControl
         }
         private void HandleOrderCreated(object sender, Orders orderData)
         {
-            UC_OrderItem orderItem = new UC_OrderItem();
-
+            UC_OrderItem orderItem = _scope.Resolve<UC_OrderItem>();
             orderItem.SetOrderData(orderData); // thêm dữ liệu vào 
             orderItem.OnViewDetailsClicked += HandleViewDetailsClicked;// Đăng kí sự kiện xem chi tiết
 
@@ -82,6 +81,31 @@ namespace FoodOrderManagement.AdminControl
                  (this.Height - _ucViewDetails.Height) / 2
             );
             _ucViewDetails.BringToFront();
+        }
+        private async void HandleAddFoodClicked(object sender, Orders orderData)
+        {
+            // 1. Tạo UC CreateOrder (nhưng dùng để thêm món)
+            var ucAddMore = _scope.Resolve<UC_CreateOrder>();
+
+            // 2. Chuyển sang chế độ "Thêm món" (Truyền đơn hàng cũ vào)
+            // Hàm SetModeAddFood này bạn phải viết trong UC_CreateOrder như hướng dẫn trước
+            ucAddMore.SetModeAddFood(orderData);
+
+            // 3. Đăng ký sự kiện: Khi lưu xong -> Load lại danh sách
+            ucAddMore.OnOrderCreated += (s, updatedOrder) =>
+            {
+                LoadAllOrders(); // Tải lại toàn bộ để cập nhật tổng tiền mới
+            };
+
+            // 4. Hiển thị form lên
+            this.Controls.Add(ucAddMore);
+            ucAddMore.BringToFront();
+
+            // Căn giữa màn hình
+            ucAddMore.Location = new Point(
+                (this.Width - ucAddMore.Width) / 2,
+                (this.Height - ucAddMore.Height) / 2
+            );
         }
 
         private void SearchOrderTBox1_Enter(object sender, EventArgs e)

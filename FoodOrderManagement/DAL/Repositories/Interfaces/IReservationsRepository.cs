@@ -19,14 +19,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         public Task<Reservations?> GetReservationByReservationIdAsync(int reservationId);
 
         /// <summary>
-        /// Truy xuất theo mã khách hàng và thời gian đến (thời gian đến lớn hơn hoặc bằng thời gian hiện tại) 
-        /// </summary>
-        /// <param name="customerId"></param>
-        /// <param name="ComingTime"></param>
-        /// <returns></returns>
-        public Task<List<Reservations>> GetReservationsByCustomerIdAndComingTimeAsync(int customerId, DateTime ComingTime);
-
-        /// <summary>
         /// Truy xuất theo ngày để tránh đặt trùng
         /// </summary>
         /// <param name="date"></param>
@@ -34,12 +26,18 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         public Task<List<Reservations>> GetReservationsByDateAsync(DateTime date);
 
         /// <summary>
-        /// Truy vấn đặt bàn theo mã khách hàng và thời gian đặt
+        /// Truy xuât phiếu đặt bàn theo số điện thoại trong tương lai
         /// </summary>
-        /// <param name="customerId"></param>
-        /// <param name="reservationTime"></param>
+        /// <param name="phoneNumber"></param>
         /// <returns></returns>
-        public Task<List<Reservations>> GetReservationsByCustomerIdAndReservationTimeAsync(int customerId, DateTime reservationTime);
+        public Task<List<Reservations>> GetUpcomingReservationsByPhoneNumberAsync(string phoneNumber);
+
+        /// <summary>
+        /// Truy xuất phiếu đặt bàn theo số điện thoại (bao gồm cả quá khứ)
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
+        public Task<List<Reservations>> GetReservationsByPhoneNumberAsync(string phoneNumber);
 
         /// <summary>
         /// Lấy danh sách tất cả đặt bàn (thời gian đặt bàn trong tương lai)

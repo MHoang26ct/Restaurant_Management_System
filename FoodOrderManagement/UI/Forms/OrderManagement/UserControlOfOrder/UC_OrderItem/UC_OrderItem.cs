@@ -1,4 +1,5 @@
 ﻿using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,13 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
     public partial class UC_OrderItem : UserControl
     {
         private Orders _currentOrderData;
+        private readonly ICustomersRepository _customersRepository;
         public event EventHandler<Orders> OnViewDetailsClicked;
         public event EventHandler<Orders> OnAddFoodClicked;
-        public UC_OrderItem()
+        public UC_OrderItem(ICustomersRepository customersRepository)
         {
             InitializeComponent();
+            _customersRepository = customersRepository;
         }
         private void StatusCBox_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -15,21 +15,20 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         // Lấy thông tin nhân viên theo tên và số điện thoại
         public async Task<Employee?> GetEmployeeByNameAndPhoneAsync(string fullName, string phoneNumber) {
             using SqlConnection connection = new SqlConnection(_connectionString);
-            string query = "SELECT * FROM Employees WHERE FullName = @FullName AND PhoneNumber = @PhoneNumber";
-            SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand command = new SqlCommand("GetEmployeesByNameAndPhone", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@FullName", fullName);
             command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
             await connection.OpenAsync();
-            SqlDataReader reader = await command.ExecuteReaderAsync();
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
             if (await reader.ReadAsync()) {
-                Employee employee = new Employee {
-                    FullName = reader["FullName"].ToString(),
-                    PhoneNumber = reader["PhoneNumber"].ToString(),
-                    Email = reader["Email"].ToString(),
-                    Position = reader["Position"].ToString(),
-                    HireDate = Convert.ToDateTime(reader["HireDate"])
+                return new Employee {
+                    FullName = reader.GetString(0),
+                    PhoneNumber = reader.GetString(1),
+                    Email = reader.GetString(2),
+                    Position = reader.GetString(3),
+                    HireDate = reader.GetDateTime(4)
                 };
-                return employee;
             }
             return null;
         }
@@ -37,8 +36,8 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         // Thêm nhân viên mới
         public async Task<bool> AddEmployeeAsync(Employee employee) {
             using SqlConnection connection = new SqlConnection(_connectionString);
-            string query = "INSERT INTO Employees (FullName, PhoneNumber, Email, Position, HireDate) VALUES (@FullName, @PhoneNumber, @Email, @Position, @HireDate)";
-            SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand command = new SqlCommand("AddEmployee", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@FullName", employee.FullName);
             command.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
             command.Parameters.AddWithValue("@Email", employee.Email);
@@ -78,24 +77,20 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         
         // Lấy tất cả nhân viên
         public async Task<List<Employee>> GetAllEmployeesAsync() {
-            var employees = new List<Employee>();
-            using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("GetAllEmployees", connection)) {
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    using (var reader = await command.ExecuteReaderAsync()) {
-                        while (await reader.ReadAsync()) {
-                            var employee = new Employee {
-                                FullName = reader.GetString(0),
-                                PhoneNumber = reader.GetString(1),
-                                Email = reader.GetString(2),
-                                Position = reader.GetString(3),
-                                HireDate = reader.GetDateTime(4)
-                            };
-                            employees.Add(employee);
-                        }
-                    }
-                }
+            List<Employee> employees = new List<Employee>();
+            using SqlConnection connection = new SqlConnection(_connectionString);
+            SqlCommand command = new SqlCommand("GetAllEmployees", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            await connection.OpenAsync();
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync()) {
+                employees.Add(new Employee {
+                    FullName = reader.GetString(0),
+                    PhoneNumber = reader.GetString(1),
+                    Email = reader.GetString(2),
+                    Position = reader.GetString(3),
+                    HireDate = reader.GetDateTime(4)
+                });
             }
             return employees;
         }

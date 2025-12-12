@@ -13,6 +13,7 @@ using Autofac;
 using FoodOrderManagement.DAL.Models.Entities;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
 
+
 namespace FoodOrderManagement.AdminControl
 {
     public partial class FormOrder : Form
@@ -52,6 +53,8 @@ namespace FoodOrderManagement.AdminControl
 
             // Thêm vào Panel (FlowLayoutPanel)
             FlowLayoutOrder.Controls.Add(item);
+
+            item.OnAddFoodClicked += HandleAddFoodClicked;
 
             // Đưa đơn mới nhất lên đầu (nếu muốn)
             FlowLayoutOrder.Controls.SetChildIndex(item, 0);
@@ -129,11 +132,34 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 {
     public partial class UC_CreateOrder : UserControl
     {
+        private int? _currentOrderId = null;
+        private Orders _existingOrderData = null;
+
+        public async void SetModeAddFood(Orders oldOrder)
+        {
+            _currentOrderId = oldOrder.Id;
+            _existingOrderData = oldOrder;
+
+            // Điền lại thông tin cũ lên giao diện
+            TableID_NBox.Value = oldOrder.TableId;
+
+            // Khóa các ô không được sửa
+            TableID_NBox.Value = oldOrder.TableId;
+            TableID_NBox.Enabled = false;
+            Customers c = await _customersRepository.GetCustomerByIdAsync(oldOrder.CustomerId);
+            CustomerNameTBox.Text = c.FullName;
+            CustomerNameTBox.Enabled = false;
+            PhoneNumberTBox.Text = c.PhoneNumber;
+            PhoneNumberTBox.Enabled = false;
+
+            // Đổi tên nút bấm cho hợp lý
+            // Giả sử nút tạo đơn tên là CreateOrderButton
+            CreateOrderButton.Text = "Lưu Món Mới";
+        }
         private void ThemDongMonAn()
         {
             // Resolve UC con từ Scope để nó có đủ Repository
             var newItem = _scope.Resolve<UC_AddFoodOrder>();
-
             // Căn chỉnh chiều ngang cho đẹp
             newItem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             newItem.Width = ListFoodFlowLayout.Width - 25;
@@ -173,58 +199,103 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             Customers newCus = new Customers();
             newCus.PhoneNumber = phone;
             newCus.FullName = name;
-            newCus.Email = "123@gmail.com";
+            newCus.Email = "";
             // Hàm AddCustomerAsync phải trả về ID khách mới
             int newId = await _customersRepository.AddCustomerAsync(newCus);
             return newId;
         }
+
         private async void CreateOrderButton_Click(object sender, EventArgs e)
         {
-            if (KiemTraDauVao() == false) return;
-            /////////////////////////
-            Orders order = new Orders();
-            order.ReservationId = 1;
-            order.TableId = (int)TableID_NBox.Value;
-            order.OrderTime = DateTime.Now;
-            //order.CustomerId = 1;
-            string phone = "0123456789";
-            order.CustomerId = await GetOrCreateCustomerAsync(CustomerNameTBox.Text, phone);
-            order.NumberOfGuests = 1;
-           // int newOrderId = await _ordersRepository.AddOrderAsync(order);
-            decimal totalAmount = 0;
-            List<orderDetail> details = new List<orderDetail>();
+            // Validate: Nếu là tạo mới thì phải check input, còn thêm món thì không cần check tên khách
+            if (_currentOrderId == null && KiemTraDauVao() == false) return;
 
-            foreach (Control ctrl in ListFoodFlowLayout.Controls)
+            try
             {
-                if (ctrl is UC_AddFoodOrder row && row.SelectedFoodId > 0 && row.Quantity > 0)
+                int targetOrderId;
+
+                // --- BƯỚC 1: XÁC ĐỊNH ORDER ID ---
+                if (_currentOrderId == null)
                 {
-                    orderDetail item = new orderDetail
+                    // TẠO ORDER MỚI
+                    Orders order = new Orders();
+                    // Nếu không có tính năng đặt bàn, hãy để null (nếu int? trong DB) hoặc 0
+                    order.ReservationId = 0;
+                    order.TableId = (int)TableID_NBox.Value;
+                    order.OrderTime = DateTime.Now;
+                    // Xử lý khách hàng
+                    string phone = string.IsNullOrEmpty(PhoneNumberTBox.Text) ? "Unknown" : PhoneNumberTBox.Text;
+                    order.CustomerId = await GetOrCreateCustomerAsync(CustomerNameTBox.Text, phone);
+
+                    // Nên lấy từ UI, tạm thời để 1
+                    order.NumberOfGuests = 1;
+                    order.TotalAmount = 0; // Mới tạo thì tiền là 0, tính sau
+
+                    targetOrderId = await _ordersRepository.AddOrderAsync(order);
+
+                    // Gán lại ID và dữ liệu để dùng cho việc hiển thị
+                    order.Id = targetOrderId;
+                    _existingOrderData = order;
+                }
+                else
+                {
+                    // DÙNG ORDER CŨ
+                    targetOrderId = _currentOrderId.Value;
+                }
+
+                // --- BƯỚC 2: TẠO DANH SÁCH CHI TIẾT ---
+                List<orderDetail> details = new List<orderDetail>();
+                decimal currentBatchTotal = 0; // Tổng tiền của đợt thêm món này
+
+                foreach (Control ctrl in ListFoodFlowLayout.Controls)
+                {
+                    if (ctrl is UC_AddFoodOrder row && row.SelectedFoodId > 0 && row.Quantity > 0)
                     {
-                        FoodId = row.SelectedFoodId,
-                        Quantity = row.Quantity,
-                        OrderStatus = "Pending",
-                        Notes = string.Empty
-                    };
-                    details.Add(item);
-                    totalAmount += row.Price * row.Quantity;
+                        orderDetail item = new orderDetail
+                        {
+                            OrderId = targetOrderId, // ✅ Gán ID ngay tại đây luôn
+                            FoodId = row.SelectedFoodId,
+                            Quantity = row.Quantity,
+                            OrderStatus = "Pending",
+                            Notes = string.Empty
+                        };
+                        details.Add(item);
+                        currentBatchTotal += (row.Price * row.Quantity);
+                    }
+                }
+
+                // --- BƯỚC 3: LƯU VÀO DB ---
+                if (details.Count > 0)
+                {
+                    // 1. Lưu chi tiết món ăn
+                    await _orderDetailsRepository.AddListOrderDetailAsync(details);
+
+                    // 2. Cập nhật lại tổng tiền cho Order chính (Quan trọng)
+                    if (_existingOrderData != null)
+                    {
+                        // Cộng thêm tiền mới vào tiền cũ
+                        _existingOrderData.TotalAmount += currentBatchTotal;
+
+                        // GỌI REPO ĐỂ UPDATE TIỀN VÀO DB (Bạn cần viết hàm này bên Repo nếu chưa có)
+                        // await _ordersRepository.UpdateOrderTotalAsync(targetOrderId, _existingOrderData.TotalAmount);
+                    }
+
+                    // 3. Thông báo ra ngoài
+                    OnOrderCreated?.Invoke(this, _existingOrderData);
+
+                    MessageBox.Show($"Lưu thành công!\nMã đơn: {targetOrderId}\nTiền đợt này: {currentBatchTotal:N0} đ\nTổng cộng: {_existingOrderData?.TotalAmount:N0} đ");
+
+                    this.Parent?.Controls.Remove(this);
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn ít nhất 1 món ăn!");
                 }
             }
-
-            if (details.Count > 0)
+            catch (Exception ex)
             {
-                order.TotalAmount = totalAmount;
-                int newOrderId = await _ordersRepository.AddOrderAsync(order);
-
-                // gán OrderId cho chi tiết
-                foreach (var d in details) d.OrderId = newOrderId;
-                await _orderDetailsRepository.AddListOrderDetailAsync(details);
-
-                OnOrderCreated?.Invoke(this, order);
-                MessageBox.Show($"Tạo đơn thành công! Mã đơn: {newOrderId}\nTổng tiền: {totalAmount:N0} VNĐ");
-                
-                this.Parent?.Controls.Remove(this);
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
-
         }
     }
 }
@@ -240,7 +311,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 {
     public partial class UC_OrderItem : UserControl
     {
-
         private void ViewDetailsButton_Click(object sender, EventArgs e)
         {
             if (_currentOrderData != null)
@@ -252,15 +322,24 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 MessageBox.Show("Lỗi: Không tìm thấy dữ liệu đơn hàng!");
             }
         }
-        public void SetOrderData(Orders order)
+        public async void SetOrderData(Orders order)
         {
             _currentOrderData = order;
-            OrderIDLabel.Text = "#" + order.Id.ToString();
-            NameCustomerLabel.Text = order.CustomerId.ToString();
+            OrderIDLabel.Text = "Hóa đơn #" + order.Id.ToString();
+            Customers cus = await _customersRepository.GetCustomerByIdAsync(order.CustomerId);
+            string namecus = cus.FullName;
+            NameCustomerLabel.Text = namecus;
             TableIDLabel.Text = "Bàn " + order.TableId.ToString();
             TimeOrderLabel.Text = order.OrderTime.ToString("dd/MM/yyyy HH:mm");
             TotalMoneyLabel.Text = order.TotalAmount.ToString("N0") + " VND";
             TotalItemsLabel.Text = "Tổng tiền: ";
+        }
+        private void AddFoodButton_Click(object sender, EventArgs e)
+        {
+            if (_currentOrderData != null)
+            {
+                OnAddFoodClicked?.Invoke(this, _currentOrderData);
+            }
         }
     }
 }
@@ -282,7 +361,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         }
         public void LoadDetailData(Orders order, List<OrderDetailDisplay> listMonAn)
         {
-            OrderIDLabel.Text ="Đơn hàng#" + order.Id.ToString(); // Ví dụ: Đơn Hàng #3636
+            OrderIDLabel.Text ="Đơn hàng #" + order.Id.ToString(); // Ví dụ: Đơn Hàng #3636
             NameCustomerLabel.Text = "Khách hàng: " + order.CustomerId.ToString();
             TableIDLabel.Text = "Bàn " + order.TableId.ToString();
             TimeOrderLabel.Text = "Thời gian: " + order.OrderTime.ToString("dd/MM/yyyy HH:mm");
@@ -303,9 +382,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 dgvChiTiet.Columns["ThanhTien"].HeaderText = "Thành Tiền";
                 dgvChiTiet.Columns["ThanhTien"].DefaultCellStyle.Format = "N0";
             }
-            // lblDetailCount.Text = ...
-
-            // Nếu có danh sách món ăn chi tiết (List<Food>), bạn cũng đổ vào DataGridView ở đây
         }
         private void ClosedButton_Click(object sender, EventArgs e)
         {
