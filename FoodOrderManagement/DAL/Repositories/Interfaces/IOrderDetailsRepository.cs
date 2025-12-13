@@ -32,15 +32,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// </summary>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        public Task<List<orderDetail>> GetCompletedOrderDetailsByOrderIdAsync(int orderId);
-
-        /// <summary>
-        /// Thay đổi trạng thái của order
-        /// </summary>
-        /// <param name="orderDetailId"></param>
-        /// <param name="newStatus"></param>
-        /// <returns></returns>
-        public Task UpdateOrderStatusAsync(int orderDetailId, string newStatus);
-        
+        public Task<List<orderDetail>> GetOrderDetailsByOrderIdAsync(int orderId);
     }
 }

@@ -38,7 +38,7 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="orderId"></param>
         /// <param name="checkoutTime"></param>
         /// <returns></returns>
-        public Task UpdateCheckoutTimeAsync(int orderId, DateTime checkoutTime);
+        public Task UpdateTimeCheckoutAsync(int orderId, DateTime TimeCheckout);
 
         /// <summary>
         /// Lấy danh sách order chưa thanh toán (tức là chưa có thời gian thanh toán)
@@ -48,5 +48,12 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
 
         // Xóa order theo mã order (cho trường hợp khách hủy đặt bàn)
         public Task DeleteOrderByIdAsync(int orderId);
+
+        // Lấy các order hoàn thành để hiển thị trong quản lý order
+        public Task<List<Orders>> GetAllCompletedOrdersAsync();
+
+        // Lấy tất cả order
+        public Task<List<Orders>> GetAllOrdersAsync();
+
     }
 }

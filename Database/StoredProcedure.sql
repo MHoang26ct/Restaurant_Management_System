@@ -335,7 +335,6 @@ GO
 
 -- =============================================
 -- NHÓM 5: QUẢN LÝ ĐƠN HÀNG & CHI TIẾT (ORDERS & ORDER DETAILS)
--- =============================================
 
 -- 5.1. Tạo đơn hàng mới (Order)
 -- Lưu ý: TotalAmount thường để 0 ban đầu, sẽ được tính lại khi thêm món
@@ -346,12 +345,12 @@ CREATE PROCEDURE AddOrder
     @TotalAmount decimal(10, 2) = 0,
     @NumberOfGuests int,
     @CustomerID int,
+    @TimeCheckout datetime = NULL,
     @NewOrderID int OUTPUT
 AS
 BEGIN
-    INSERT INTO Orders (ReservationID, TableID, OrderTime, TotalAmount, NumberOfGuests, CustomerID)
-    VALUES (@ReservationID, @TableID, @OrderTime, @TotalAmount, @NumberOfGuests, @CustomerID)
-
+    INSERT INTO Orders (ReservationID, TableID, OrderTime, TotalAmount, NumberOfGuests, CustomerID, TimeCheckout)
+    VALUES (@ReservationID, @TableID, @OrderTime, @TotalAmount, @NumberOfGuests, @CustomerID, @TimeCheckout)
     SET @NewOrderID = SCOPE_IDENTITY()
 END
 GO
@@ -361,24 +360,22 @@ CREATE PROCEDURE AddOrderDetail
     @OrderID int,
     @FoodID int,
     @Quantity int,
-    @Notes varchar(255),
-    @OrderStatus varchar(20)
+    @Notes varchar(255) = NULL
 AS
 BEGIN
-    INSERT INTO OrderDetails (OrderID, FoodID, Quantity, Notes, OrderStatus)
-    VALUES (@OrderID, @FoodID, @Quantity, @Notes, @OrderStatus)
+    INSERT INTO OrderDetails (OrderID, FoodID, Quantity, Notes)
+    VALUES (@OrderID, @FoodID, @Quantity, @Notes)
 END
 GO
 
--- 5.3. Cập nhật trạng thái món ăn (Ví dụ: Đang nấu -> Đã xong)
-CREATE PROCEDURE UpdateOrderStatus
-    @OrderDetailID int,
-    @NewStatus varchar(20)
+-- 5.3 Lấy danh sách các order đã hoàn thành (TimeCheckout IS NOT NULL)
+CREATE PROCEDURE GetAllCompletedOrders
 AS
 BEGIN
-    UPDATE OrderDetails
-    SET OrderStatus = @NewStatus
-    WHERE OrderDetailID = @OrderDetailID
+    SELECT OrderID, ReservationID, TableID, OrderTime, TotalAmount, NumberOfGuests, CustomerID, TimeCheckout
+    FROM Orders
+    WHERE TimeCheckout IS NOT NULL
+    ORDER BY OrderTime
 END
 GO
 
@@ -400,10 +397,10 @@ GO
 CREATE PROCEDURE GetAllPendingOrders
 AS
 BEGIN
-    SELECT o.OrderID, o.ReservationID, o.TableID, o.OrderTime, o.TotalAmount, o.NumberOfGuests, o.CustomerID
-    FROM Orders o
-    WHERE o.TimeCheckout IS NULL
-    ORDER BY o.OrderTime
+    SELECT OrderID, ReservationID, TableID, OrderTime, TotalAmount, NumberOfGuests, CustomerID, TimeCheckout
+    FROM Orders
+    WHERE TimeCheckout IS NULL
+    ORDER BY OrderTime
 END
 GO
 
@@ -422,10 +419,10 @@ CREATE PROCEDURE GetOrdersByTableIDAndPendingStatus
     @TableID INT
 AS
 BEGIN
-    SELECT o.OrderID, o.ReservationID, o.TableID, o.OrderTime, o.TotalAmount, o.NumberOfGuests, o.CustomerID
-    FROM Orders o
-    WHERE o.TableID = @TableID AND o.TimeCheckout IS NULL
-    ORDER BY o.OrderTime
+    SELECT OrderID, ReservationID, TableID, OrderTime, TotalAmount, NumberOfGuests, CustomerID, TimeCheckout
+    FROM Orders
+    WHERE TableID = @TableID AND TimeCheckout IS NULL
+    ORDER BY OrderTime
 END
 GO
 
@@ -434,11 +431,10 @@ CREATE PROCEDURE GetOrdersByReservationID
     @ReservationID INT
 AS
 BEGIN
-    SELECT o.OrderID, o.ReservationID, o.TableID, o.OrderTime,
-              o.TotalAmount, o.NumberOfGuests, o.CustomerID
-    FROM Orders o
-    WHERE o.ReservationID = @ReservationID
-    ORDER BY o.OrderTime
+    SELECT OrderID, ReservationID, TableID, OrderTime, TotalAmount, NumberOfGuests, CustomerID, TimeCheckout
+    FROM Orders
+    WHERE ReservationID = @ReservationID
+    ORDER BY OrderTime
 END
 GO
 
@@ -454,14 +450,24 @@ BEGIN
 END
 GO
 
--- 5.10 Lấy các chi tiết order đã hoàn thành theo OrderID
-CREATE PROCEDURE GetCompletedOrderDetailsByOrderID
+-- 5.10 Lấy tất cả order
+CREATE PROCEDURE GetAllOrders
+AS
+BEGIN
+    SELECT OrderID, ReservationID, TableID, OrderTime, TotalAmount, NumberOfGuests, CustomerID, TimeCheckout
+    FROM Orders
+    ORDER BY OrderTime
+END
+GO
+
+-- 5.11 Lấy chi tiết order theo OrderID
+CREATE PROCEDURE GetOrderDetailsByOrderID
     @OrderID INT
 AS
 BEGIN
-    SELECT OrderDetailID, OrderID, FoodID, Quantity, Notes, OrderStatus
+    SELECT OrderDetailID, OrderID, FoodID, Quantity, Notes
     FROM OrderDetails
-    WHERE OrderID = @OrderID AND OrderStatus = 'Completed'
+    WHERE OrderID = @OrderID
     ORDER BY OrderDetailID
 END
 GO

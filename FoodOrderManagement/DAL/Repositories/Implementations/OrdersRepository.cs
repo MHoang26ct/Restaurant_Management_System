@@ -23,7 +23,8 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 OrderTime = reader.GetDateTime(3),
                 TotalAmount = reader.GetDecimal(4),
                 NumberOfGuests = reader.GetInt32(5),
-                CustomerId = reader.GetInt32(6)
+                CustomerId = reader.GetInt32(6),
+                TimeCheckout = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
             };
         }
 
@@ -66,11 +67,11 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         }
 
         // Cập nhật thời gian thanh toán
-        public async Task UpdateCheckoutTimeAsync(int orderId, DateTime checkoutTime) {
+        public async Task UpdateTimeCheckoutAsync(int orderId, DateTime TimeCheckout) {
             var parameters = new SqlParameter[]
             {
                 new SqlParameter("@OrderID", orderId),
-                new SqlParameter("@CheckoutTime", checkoutTime)
+                new SqlParameter("@TimeCheckout", TimeCheckout)
             };
             await _db.ExecuteNonQueryAsync("UpdateOrderCheckoutTime", parameters);
         }
@@ -87,6 +88,16 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 new SqlParameter("@OrderID", orderId)
             };
             await _db.ExecuteNonQueryAsync("DeleteOrder", parameters);
+        }
+
+        // Lấy các order hoàn thành để hiển thị trong quản lý order
+        public async Task<List<Orders>> GetAllCompletedOrdersAsync() {
+            return await _db.GetListAsync("GetAllCompletedOrders", Mapper);
+        }
+
+        // Lấy tất cả order
+        public async Task<List<Orders>> GetAllOrdersAsync() {
+            return await _db.GetListAsync("GetAllOrders", Mapper);
         }
     }
 }

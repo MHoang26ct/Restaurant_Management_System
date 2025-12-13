@@ -52,7 +52,7 @@ END
 GO
 
 -- 1.3. Tính lại tổng tiền đơn hàng (TotalAmount) khi thanh toán
--- Chức năng: Chốt sổ số tiền cuối cùng dựa trên các món ĐÃ HOÀN THÀNH (Completed) khi checkout
+-- Chức năng: Chốt sổ số tiền cuối cùng dựa trên các món đã có khi checkout
 CREATE TRIGGER trg_orders_totalamount_on_checkout 
 ON Orders
 AFTER UPDATE
@@ -71,7 +71,6 @@ BEGIN
         FROM OrderDetails OD
             JOIN Foods F ON OD.FoodID = F.FoodID
         WHERE OD.OrderID = @OrderID
-            AND OD.OrderStatus IN ('Completed')
 
         UPDATE Orders
         SET TotalAmount = ISNULL(@TotalAmount, 0)
@@ -87,6 +86,7 @@ GO
 -- 2.1. Tự động tính tổng tiền tạm tính của đơn hàng
 -- Chức năng: Khi thêm/sửa chi tiết món, cập nhật lại TotalAmount của bảng Orders.
 -- Bao gồm các món: Pending, In Progress, Completed
+
 CREATE TRIGGER trg_orders_totalamount 
 ON OrderDetails
 AFTER INSERT, UPDATE
@@ -105,7 +105,6 @@ BEGIN
     FROM OrderDetails OD
         JOIN Foods F ON OD.FoodID = F.FoodID
     WHERE OD.OrderID = @OrderID
-        AND OD.OrderStatus IN ('Pending', 'In Progress', 'Completed')
 
     -- Cập nhật vào bảng cha Orders
     UPDATE Orders

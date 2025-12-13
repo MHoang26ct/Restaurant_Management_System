@@ -82,7 +82,7 @@ CREATE TABLE Orders (
     TableID int NOT NULL,
     CustomerID int NOT NULL,
     OrderTime datetime NOT NULL,
-    TotalAmount decimal(10, 2) NOT NULL, -- Tổng tiền (sẽ được Trigger tự động tính toán)
+    TotalAmount decimal(10, 2) NOT NULL DEFAULT 0, -- Tổng tiền (sẽ được Trigger tự động tính toán)
     NumberOfGuests int NOT NULL,
     TimeCheckout datetime NULL,          -- Thời điểm thanh toán
     FOREIGN KEY (TableID) REFERENCES Tables(TableID),
@@ -97,8 +97,7 @@ CREATE TABLE OrderDetails (
     OrderID int NOT NULL,
     FoodID int NOT NULL,
     Quantity int NOT NULL,
-    Notes varchar(255),
-    OrderStatus varchar(20) NOT NULL, -- Trạng thái món (Pending, In Progress, Completed, Cancelled)
+    Notes varchar(255)
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
     FOREIGN KEY (FoodID) REFERENCES Foods(FoodID)
 )
@@ -113,10 +112,6 @@ ALTER TABLE Tables ADD CONSTRAINT CHK_TableStatus
     CHECK (TableStatus IN ('Available', 'Occupied', 'Reserved'))
 GO
 
--- Kiểm tra Trạng thái Chi tiết Đơn hàng
-ALTER TABLE OrderDetails ADD CONSTRAINT CHK_OrderStatus
-    CHECK (OrderStatus IN ('Pending', 'In Progress', 'Completed', 'Cancelled'))
-GO
 
 -- Kiểm tra Vai trò Người dùng (0 hoặc 1)
 ALTER TABLE Users ADD CONSTRAINT CHK_UserRole
@@ -158,6 +153,11 @@ ALTER TABLE Customers ADD CONSTRAINT CHK_CustomerRank
     CHECK (CustomerRank IN ('Regular', 'Silver', 'Gold', 'Platinum'))
 GO
 
+-- bỏ constraint kiểm tra trạng thái đặt bàn cũ
+ALTER TABLE Reservations DROP CONSTRAINT IF EXISTS CHK_ReservationStatus
+GO
+
 -- Kiểm tra Trạng thái Đặt bàn
 ALTER TABLE Reservations ADD CONSTRAINT CHK_ReservationStatus
     CHECK (status IN ('Pending', 'Cancelled', 'Completed'))
+GO

@@ -24,8 +24,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 OrderId = reader.GetInt32(1),
                 FoodId = reader.GetInt32(2),
                 Quantity = reader.GetInt32(3),
-                Notes = reader.IsDBNull(4) ? string.Empty : reader.GetString(4),
-                OrderStatus = reader.GetString(5)
+                Notes = reader.IsDBNull(4) ? string.Empty : reader.GetString(4)
             };
         }
 
@@ -36,8 +35,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 new SqlParameter("@OrderID", orderDetail.OrderId),
                 new SqlParameter("@FoodID", orderDetail.FoodId),
                 new SqlParameter("@Quantity", orderDetail.Quantity),
-                new SqlParameter("@Notes", orderDetail.Notes),
-                new SqlParameter("@OrderStatus", orderDetail.OrderStatus)
+                new SqlParameter("@Notes", orderDetail.Notes)
             };
             await _db.ExecuteNonQueryAsync("AddOrderDetail", parameters);
         }
@@ -73,19 +71,9 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         }
 
         // Lấy các chi tiết order đã hoàn thành để tính tổng hóa đơn
-        public async Task<List<orderDetail>> GetCompletedOrderDetailsByOrderIdAsync(int orderId) {
+        public async Task<List<orderDetail>> GetOrderDetailsByOrderIdAsync(int orderId) {
             var param = new SqlParameter("@OrderID", orderId);
-            return await _db.GetListAsync("GetCompletedOrderDetailsByOrderID", Mapper, param);
-        }
-
-        // Cập nhật trạng thái của order
-        public async Task UpdateOrderStatusAsync(int orderDetailId, string newStatus) {
-            var parameters = new SqlParameter[]
-            {
-                new SqlParameter("@OrderDetailID", orderDetailId),
-                new SqlParameter("@Status", newStatus)
-            };
-            await _db.ExecuteNonQueryAsync("UpdateOrderStatus", parameters);
+            return await _db.GetListAsync("GetOrderDetailsByOrderID", Mapper, param);
         }
     }
 }
