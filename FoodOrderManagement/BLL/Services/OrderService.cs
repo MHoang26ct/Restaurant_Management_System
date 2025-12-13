@@ -175,6 +175,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Parent.Controls.Remove(this);
+            this.Dispose(); //Hủy
         }
 
         private bool KiemTraDauVao()
@@ -387,6 +388,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         private void ClosedButton_Click(object sender, EventArgs e)
         {
             this.Parent.Controls.Remove(this);
+            this.Dispose();
         }
     }
 }

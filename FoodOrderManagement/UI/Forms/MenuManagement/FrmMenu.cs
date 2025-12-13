@@ -24,7 +24,6 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         private readonly IFoodsRepository _foodsRepository;
         public UC_AddFood _uc_AddFood;
         private List<Foods> OriginalFoodList = new List<Foods>();
-
         public FrmMenu(ILifetimeScope scope, IFoodsRepository foodsRepository)
         {
             InitializeComponent();

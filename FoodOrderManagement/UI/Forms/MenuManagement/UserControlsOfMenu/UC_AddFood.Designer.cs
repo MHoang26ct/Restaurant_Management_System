@@ -83,7 +83,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             ShadowPanel.Name = "ShadowPanel";
             ShadowPanel.Radius = 5;
             ShadowPanel.ShadowColor = Color.Black;
-            ShadowPanel.ShadowDepth = 150;
+            ShadowPanel.ShadowDepth = 50;
             ShadowPanel.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
             ShadowPanel.Size = new Size(500, 600);
             ShadowPanel.TabIndex = 0;

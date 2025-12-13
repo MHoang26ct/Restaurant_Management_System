@@ -33,5 +33,9 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             ThemDongMonAn();
         }
 
+        private void PhoneNumberTBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); // chặn chữ 
+        }
     }
 }
