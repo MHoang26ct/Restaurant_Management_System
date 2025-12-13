@@ -198,6 +198,7 @@
             dgvChiTiet.Dock = DockStyle.Fill;
             dgvChiTiet.Location = new Point(29, 121);
             dgvChiTiet.Name = "dgvChiTiet";
+            dgvChiTiet.RowHeadersVisible = false;
             dgvChiTiet.Size = new Size(483, 119);
             dgvChiTiet.TabIndex = 31;
             // 
