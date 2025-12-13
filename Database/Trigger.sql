@@ -85,8 +85,6 @@ GO
 
 -- 2.1. Tự động tính tổng tiền tạm tính của đơn hàng
 -- Chức năng: Khi thêm/sửa chi tiết món, cập nhật lại TotalAmount của bảng Orders.
--- Bao gồm các món: Pending, In Progress, Completed
-
 CREATE TRIGGER trg_orders_totalamount 
 ON OrderDetails
 AFTER INSERT, UPDATE

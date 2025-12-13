@@ -153,10 +153,6 @@ ALTER TABLE Customers ADD CONSTRAINT CHK_CustomerRank
     CHECK (CustomerRank IN ('Regular', 'Silver', 'Gold', 'Platinum'))
 GO
 
--- bỏ constraint kiểm tra trạng thái đặt bàn cũ
-ALTER TABLE Reservations DROP CONSTRAINT IF EXISTS CHK_ReservationStatus
-GO
-
 -- Kiểm tra Trạng thái Đặt bàn
 ALTER TABLE Reservations ADD CONSTRAINT CHK_ReservationStatus
     CHECK (status IN ('Pending', 'Cancelled', 'Completed'))
