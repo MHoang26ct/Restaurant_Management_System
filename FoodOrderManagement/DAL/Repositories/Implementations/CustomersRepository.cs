@@ -15,15 +15,15 @@ public class CustomersRepository : ICustomersRepository {
 
         //
         private Customers Mapper(SqlDataReader reader) {
-            return new Customers {
+            return new Customers {               
                 Id = reader.GetInt32(0),
-                FullName = reader.GetString(1),
-                Email = reader.GetString(2),
-                PhoneNumber = reader.GetString(3),
+                FullName = reader.IsDBNull(1) ? null : reader.GetString(1),
+                Email = reader.IsDBNull(2) ? null : reader.GetString(2),
+                PhoneNumber = reader.IsDBNull(3) ? null : reader.GetString(3),
                 LastVisitDate = reader.IsDBNull(4) ? DateTime.MinValue : reader.GetDateTime(4),
                 TotalVisits = reader.GetInt32(5),
                 TotalSpent = (float)reader.GetDecimal(6),
-                CustomerRank = reader.GetString(7)
+                CustomerRank = reader.IsDBNull(7) ? null : reader.GetString(7)
             };
         }
 
@@ -38,19 +38,30 @@ public class CustomersRepository : ICustomersRepository {
         }
 
         // Thêm khách hàng mới và trả về ID khách hàng mới tạo (dùng cho đặt bàn)
-        public async Task<int> AddCustomerAsync(Customers customer) {
-            var outputIdParam = new SqlParameter("@NewCustomerID", System.Data.SqlDbType.Int) {
+        public async Task<int> AddCustomerAsync(Customers customer)
+        {
+            var outputIdParam = new SqlParameter("@NewCustomerID", System.Data.SqlDbType.Int)
+            {
                 Direction = System.Data.ParameterDirection.Output
             };
+
             var parameters = new SqlParameter[]
             {
-                new SqlParameter("@FullName", customer.FullName),
-                new SqlParameter("@Email", customer.Email),
-                new SqlParameter("@PhoneNumber", customer.PhoneNumber),
-                outputIdParam
+        new SqlParameter("@FullName", customer.FullName),
+
+        // 👇 SỬA DÒNG NÀY (Quan trọng):
+        // Nếu Email là null hoặc rỗng "" -> Truyền DBNull.Value (SQL sẽ hiểu là NULL)
+        // Nếu có Email -> Truyền giá trị bình thường
+        new SqlParameter("@Email", string.IsNullOrEmpty(customer.Email) ? (object)DBNull.Value : customer.Email),
+
+        new SqlParameter("@PhoneNumber", customer.PhoneNumber),
+        outputIdParam
             };
+
             await _db.ExecuteNonQueryAsync("AddCustomer", parameters);
-            return (int)outputIdParam.Value;
+
+            // Kiểm tra an toàn khi return
+            return outputIdParam.Value != DBNull.Value ? (int)outputIdParam.Value : 0;
         }
 
         // Cập nhật thông tin khách hàng

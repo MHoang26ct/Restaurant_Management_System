@@ -18,6 +18,8 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         private readonly ICustomersRepository _customersRepository;
         public event EventHandler<Orders> OnViewDetailsClicked;
         public event EventHandler<Orders> OnAddFoodClicked;
+        public event EventHandler<Orders> OnStatusChanged;
+
         public UC_OrderItem(ICustomersRepository customersRepository)
         {
             InitializeComponent();
@@ -32,20 +34,20 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 
         private void PaymentStatusCBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (PaymentStatusCBox.SelectedIndex == 0)
+            if (_currentOrderData == null) return;
+
+            int index = PaymentStatusCBox.SelectedIndex;
+            UpdateUIStyle(index);
+            if (index == 0)
             {
-                PaymentStatusCBox.ForeColor = Color.Red;
-                PaymentStatusCBox.BorderColor = Color.Red;
-                StatusBackgroundColor.CustomBorderColor = Color.Red;
-                TotalMoneyLabel.ForeColor = Color.Red;
+                _currentOrderData.CheckoutTime = null;
             }
-            else if (PaymentStatusCBox.SelectedIndex == 1)
+            else if (index == 1) 
             {
-                PaymentStatusCBox.ForeColor = Color.LimeGreen;
-                PaymentStatusCBox.BorderColor = Color.LimeGreen;
-                StatusBackgroundColor.CustomBorderColor = Color.LimeGreen;
-                TotalMoneyLabel.ForeColor = Color.LimeGreen;
+                if (_currentOrderData.CheckoutTime == null)
+                    _currentOrderData.CheckoutTime = DateTime.Now;
             }
+            OnStatusChanged?.Invoke(this, _currentOrderData);
         }
 
         private void TotalItemsLabel_Click(object sender, EventArgs e)
