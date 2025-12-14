@@ -75,5 +75,11 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             var param = new SqlParameter("@OrderID", orderId);
             return await _db.GetListAsync("GetOrderDetailsByOrderID", Mapper, param);
         }
+
+        // Xóa chi tiết order
+        public async Task DeleteOrderDetailAsync(int orderDetailId) {
+            var param = new SqlParameter("@OrderDetailID", orderDetailId);
+            await _db.ExecuteNonQueryAsync("DeleteOrderDetail", param);
+        }
     }
 }

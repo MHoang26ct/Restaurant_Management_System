@@ -472,6 +472,16 @@ BEGIN
 END
 GO
 
+-- 5.12 Xóa chi tiết order
+CREATE PROCEDURE DeleteOrderDetail
+    @OrderDetailID INT
+AS
+BEGIN
+    DELETE FROM OrderDetails
+    WHERE OrderDetailID = @OrderDetailID
+END
+GO
+
 -- =============================================
 -- NHÓM 6: QUẢN LÝ NHÂN VIÊN (EMPLOYEES)
 -- =============================================

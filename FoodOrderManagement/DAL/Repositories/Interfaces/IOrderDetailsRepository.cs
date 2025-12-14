@@ -33,5 +33,8 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="orderId"></param>
         /// <returns></returns>
         public Task<List<orderDetail>> GetOrderDetailsByOrderIdAsync(int orderId);
+
+        // Xóa chi tiết order
+        public Task DeleteOrderDetailAsync(int orderDetailId);
     }
 }
