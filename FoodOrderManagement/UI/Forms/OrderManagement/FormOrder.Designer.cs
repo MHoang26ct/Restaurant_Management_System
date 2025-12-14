@@ -238,6 +238,7 @@
             StatusCBox.Size = new Size(271, 56);
             StatusCBox.StartIndex = 0;
             StatusCBox.TabIndex = 4;
+            StatusCBox.SelectedIndexChanged += StatusCBox_SelectedIndexChanged;
             // 
             // SearchOrderTBox1
             // 
@@ -266,6 +267,7 @@
             SearchOrderTBox1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             SearchOrderTBox1.Size = new Size(996, 43);
             SearchOrderTBox1.TabIndex = 0;
+            SearchOrderTBox1.TextChanged += SearchOrderTBox1_TextChanged;
             SearchOrderTBox1.Enter += SearchOrderTBox1_Enter;
             SearchOrderTBox1.Leave += SearchOrderTBox1_Leave;
             // 

@@ -26,21 +26,21 @@ namespace FoodOrderManagement.AdminControl
         UC_CreateOrder _ucCreateOrder;
         UC_ViewDetails _ucViewDetails;
         public UC_OrderItem _uc_OrderItem;
-        OverlayBackground _overlayBackground; // khai báo làm tối nền
+        OverlayBackground _overlayBackground;
         public FormOrder(ILifetimeScope scope, IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository)
         {
             InitializeComponent();
             _scope = scope;
             _ordersRepository = ordersRepository;
+            SetupFilterControls();
             LoadAllOrders();
             _orderDetailsRepository = orderDetailsRepository;
             _overlayBackground = new OverlayBackground();
         }
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
-            _overlayBackground.Show(this);// hiện panel làm tối
+            _overlayBackground.Show(this);
             _ucCreateOrder = _scope.Resolve<UC_CreateOrder>();
-            _ucCreateOrder.OnOrderCreated += HandleOrderCreated;
             _ucCreateOrder.OnOrderCreated += (s, newOrder) =>
             {
                 LoadAllOrders();
@@ -61,32 +61,28 @@ namespace FoodOrderManagement.AdminControl
         private void HandleOrderCreated(object sender, Orders orderData)
         {
             UC_OrderItem orderItem = _scope.Resolve<UC_OrderItem>();
-            orderItem.SetOrderData(orderData); // thêm dữ liệu vào 
-            orderItem.OnViewDetailsClicked += HandleViewDetailsClicked;// Đăng kí sự kiện xem chi tiết
+            orderItem.SetOrderData(orderData); 
+            orderItem.OnViewDetailsClicked += HandleViewDetailsClicked;
 
             FlowLayoutOrder.Controls.Add(orderItem);
 
-            Control ctrl = sender as Control; // Đặt tính hiệu 
+            Control ctrl = sender as Control;
 
             if (ctrl != null)
             {
-                this.Controls.Remove(ctrl);   // Gỡ nó ra khỏi Form cha
-                ctrl.Dispose(); // Hủy nó đi cho nhẹ bộ nhớ
+                this.Controls.Remove(ctrl);   
+                ctrl.Dispose(); 
             }
         }
         private async void HandleViewDetailsClicked(object sender, Orders orderData)
         {
             _overlayBackground.Show(this);
 
-            //Khởi tạo UserControl xem chi tiết
             _ucViewDetails = new UC_ViewDetails();
             var listMonAn = await _orderDetailsRepository.GetDetailsByOrderIdAsync(orderData.Id);
-            //Truyền dữ liệu vào 
             _ucViewDetails.LoadDetailData(orderData, listMonAn);
 
-            //Thêm vào Form cha
             this.Controls.Add(_ucViewDetails);
-            //Canh giữa màn hình
             _ucViewDetails.Location = new Point(
                  (this.Width - _ucViewDetails.Width) / 2,
                  (this.Height - _ucViewDetails.Height) / 2
@@ -94,44 +90,41 @@ namespace FoodOrderManagement.AdminControl
             _ucViewDetails.BringToFront();
             _ucViewDetails.Disposed += (s, e) =>
             {
-                _overlayBackground.Hide(this); // ẩn làm tối nền 
+                _overlayBackground.Hide(this);
             };
         }
         private async void HandleAddFoodClicked(object sender, Orders orderData)
         {
-            _overlayBackground.Show(this); // làm tối nền
+            foreach (Control ctrl in this.Controls.OfType<UC_CreateOrder>().ToList())
+            {
+                this.Controls.Remove(ctrl);
+                ctrl.Dispose();
+            }
+            _overlayBackground.Show(this); 
 
-            // 1. Tạo UC CreateOrder (nhưng dùng để thêm món)
             var ucAddMore = _scope.Resolve<UC_CreateOrder>();
 
-            // 2. Chuyển sang chế độ "Thêm món" (Truyền đơn hàng cũ vào)
-            // Hàm SetModeAddFood này bạn phải viết trong UC_CreateOrder như hướng dẫn trước
             ucAddMore.SetModeAddFood(orderData);
-            // 3. Đăng ký sự kiện: Khi lưu xong -> Load lại danh sách
             ucAddMore.OnOrderCreated += (s, updatedOrder) =>
             {
-                LoadAllOrders(); // Tải lại toàn bộ để cập nhật tổng tiền mới
+                LoadAllOrders(); 
                 HandleClosePopup(ucAddMore);
             };
             ucAddMore.Disposed += (s, e) =>
             {
-                _overlayBackground.Hide(this); // hủy làm tối nền
+                _overlayBackground.Hide(this); 
             };
-            // 4. Hiển thị form lên
             this.Controls.Add(ucAddMore);
             Helper.BoGoc(ucAddMore, 20, true, true, true, true);
             ucAddMore.BringToFront();
 
-            // Căn giữa màn hình
             ucAddMore.Location = new Point(
                 (this.Width - ucAddMore.Width) / 2,
                 (this.Height - ucAddMore.Height) / 2
             );
 
         }
-        //
-        // Hàm dọn dẹp
-        // 
+
         private void HandleClosePopup(Control popup)
         {
             this.Controls.Remove(popup);
@@ -153,6 +146,16 @@ namespace FoodOrderManagement.AdminControl
             {
                 SearchOrderTBox1.PlaceholderText = "Số bàn...";
             }
+        }
+
+        private void SearchOrderTBox1_TextChanged(object sender, EventArgs e)
+        {
+            ApplyFilters();
+        }
+
+        private void StatusCBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyFilters();
         }
     }
 }
