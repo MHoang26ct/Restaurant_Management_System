@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Autofac;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,22 +57,42 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
                     break;
             }
         }
-        public UC_UpdateStatus()
+        public UC_UpdateStatus(ILifetimeScope scope, ITablesRepository tablesRepository)
         {
             InitializeComponent();
+            _tablesRepository = tablesRepository;
+            _scope = scope;
+        }
+
+        private void ReservedButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn chuyển trạng thái bàn này sang 'Đã đặt trước' (Reserved)?",
+                "Xác nhận đặt bàn",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                UpdateStatus("Reserved", DateTime.Now);
+            }
         }
 
         private void AvailableButton_Click(object sender, EventArgs e)
         {
-
+            UpdateStatus("Available", null);
         }
+
         private void OccupiedButton_Click(object sender, EventArgs e)
         {
+            UpdateStatus("Occupied", null);
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-
+            this.Parent.Controls.Remove(this);
+            this.Dispose();
         }
     }
 }

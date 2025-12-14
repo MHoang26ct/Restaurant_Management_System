@@ -1,4 +1,8 @@
-﻿using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
+﻿using Autofac;
+using FoodOrderManagement.DAL.Repositories.Implementations;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using FoodOrderManagement.UI;
+using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
 using FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable;
 using System;
 using System.Collections.Generic;
@@ -9,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FoodOrderManagement.UI;
+using static System.Formats.Asn1.AsnWriter;
 namespace FoodOrderManagement.AdminControl
 {
 
@@ -18,30 +22,16 @@ namespace FoodOrderManagement.AdminControl
         UC_AddTableCard uc_AddTableCard;
         UC_AddTable uc_AddTable;
         private int TableCount = 0;
-        public FormTable()
+        private readonly ILifetimeScope _scope;
+        private readonly ITablesRepository _tablesRepository;
+        private OverlayBackground _overlayBackground = new OverlayBackground();
+        public FormTable(ILifetimeScope scope, ITablesRepository tablesRepository)
         {
             InitializeComponent();
-            SetupUI();
-        }
+            _scope = scope;
+            _tablesRepository = tablesRepository;
 
-        private void SetupUI()
-        {
-            //AddTableCard
-            uc_AddTableCard = new UC_AddTableCard();
-            uc_AddTableCard.OnCardClicked += (s, e) => ShowAddTable(); // hiện bảng nhập liệu
-
-            FlowLayoutTable.Controls.Add(uc_AddTableCard);
-            //AddTable
-            uc_AddTable = new UC_AddTable();
-            this.Controls.Add(uc_AddTable);
-            uc_AddTable.Visible = false;
-
-            uc_AddTable.OnSaveTable += (s, Capacity) =>
-            {
-                AddNewTable(Capacity);
-                uc_AddTable.Visible = false;
-            };
-
+            LoadTableList();
         }
         private void ShowAddTable()
         {
@@ -53,16 +43,5 @@ namespace FoodOrderManagement.AdminControl
             uc_AddTable.Visible = true;
             uc_AddTable.BringToFront();
         }
-
-        private void AddNewTable(int Capacity)
-        {
-            TableCount++;
-            UC_TableItem NewTable = new UC_TableItem();
-            NewTable.SetData(TableCount, Capacity, "Available");
-
-            FlowLayoutTable.Controls.Add(NewTable);
-            FlowLayoutTable.Controls.SetChildIndex(uc_AddTableCard, FlowLayoutTable.Controls.Count - 1);
-        }
-
     }
 }

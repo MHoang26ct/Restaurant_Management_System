@@ -16,8 +16,13 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
         public UC_TableItem()
         {
             InitializeComponent();
+            // Gán click cho tất cả control con để bấm đâu cũng ăn
+            this.Click += TriggerClick;
+            NumberCircleLabel.Click += TriggerClick;
+            NumberTableLabel.Click += TriggerClick;
+            StatusPanel.Click += TriggerClick;
+            StatusText.Click += TriggerClick;
         }
-
         public void SetData(int TableID, int Capacity, string Status)
         {
             NumberCircleLabel.Text = TableID.ToString();

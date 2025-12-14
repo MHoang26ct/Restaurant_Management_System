@@ -11,6 +11,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement
         public int TableId { get; set; }
         public string TableName { get; set; } // Ví dụ: Bàn 5
         public string Status { get; set; } // Available, Occupied, Reserved;
+        public int Capacity { get; set; } 
         public string CustomerName { get; set; }
         public string OrderId { get; set; }
         public DateTime? ReservationTime { get; set; } // Nullable nếu không đặt

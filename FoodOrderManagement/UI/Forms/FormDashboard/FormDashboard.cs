@@ -90,7 +90,7 @@ namespace FoodOrderManagement.AdminControl
         //
         private void TablePicture_Click(object sender, EventArgs e)
         {
-            FormTable FormTable = new FormTable();
+            FormTable FormTable = _scope.Resolve<FormTable>();
             FormMain.instance.TableButton.PerformClick();
         }
         //

@@ -4,6 +4,7 @@ using FoodOrderManagement.DAL.Repositories.Interfaces;
 using FoodOrderManagement.UI.Forms;
 using FoodOrderManagement.UI.Forms.MenuManagement;
 using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
+using FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable;
 
 namespace FoodOrderManagement.AdminControl {
     internal static class Program {
@@ -44,6 +45,10 @@ namespace FoodOrderManagement.AdminControl {
             builder.RegisterType<UC_AddFoodOrder>();
             builder.RegisterType<UC_OrderItem>();
             builder.RegisterType<UC_ViewDetails>();
+            builder.RegisterType<UC_TableItem>();
+            builder.RegisterType<UC_AddTable>();
+            builder.RegisterType<UC_UpdateStatus>();
+            builder.RegisterType<UC_AddTableCard>();
 
             // 3. Xây dựng Container
             var container = builder.Build();

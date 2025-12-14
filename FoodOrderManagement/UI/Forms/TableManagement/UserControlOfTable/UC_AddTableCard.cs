@@ -25,7 +25,6 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
         private void AddTableButton_Click(object sender, EventArgs e)
         {
             OnCardClicked?.Invoke(this, EventArgs.Empty);
-            OnCardClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

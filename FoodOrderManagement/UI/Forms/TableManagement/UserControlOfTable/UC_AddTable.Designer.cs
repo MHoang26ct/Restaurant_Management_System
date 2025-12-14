@@ -136,7 +136,7 @@
             AddButton.Size = new Size(294, 42);
             AddButton.TabIndex = 22;
             AddButton.Text = "Thêm bàn";
-            AddButton.Click += AddButton_Click;
+            AddButton.Click += this.BtnSave_Click;
             // 
             // ExitButton
             // 

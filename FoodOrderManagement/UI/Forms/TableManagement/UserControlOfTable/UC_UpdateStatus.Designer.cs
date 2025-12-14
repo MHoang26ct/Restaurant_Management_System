@@ -321,6 +321,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             ReservedButton.TabIndex = 12;
             ReservedButton.Text = "Đã đặt bàn";
             ReservedButton.TextAlign = HorizontalAlignment.Left;
+            ReservedButton.Click += ReservedButton_Click;
             // 
             // ExitButton
             // 
