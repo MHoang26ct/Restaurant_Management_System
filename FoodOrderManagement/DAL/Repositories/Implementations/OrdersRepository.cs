@@ -24,7 +24,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 TotalAmount = reader.GetDecimal(4),
                 NumberOfGuests = reader.GetInt32(5),
                 CustomerId = reader.GetInt32(6),
-                TimeCheckout = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
+                //TimeCheckout = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
             };
         }
 

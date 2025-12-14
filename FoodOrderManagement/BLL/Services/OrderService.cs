@@ -257,7 +257,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                             OrderId = targetOrderId, // ✅ Gán ID ngay tại đây luôn
                             FoodId = row.SelectedFoodId,
                             Quantity = row.Quantity,
-                            OrderStatus = "Pending",
+                            //OrderStatus = "Pending",
                             Notes = string.Empty
                         };
                         details.Add(item);

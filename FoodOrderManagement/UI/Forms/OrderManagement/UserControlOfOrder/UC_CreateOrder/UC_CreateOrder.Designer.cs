@@ -76,6 +76,7 @@
             ShadowPanel.Location = new Point(0, 0);
             ShadowPanel.Margin = new Padding(0);
             ShadowPanel.Name = "ShadowPanel";
+            ShadowPanel.Radius = 10;
             ShadowPanel.ShadowColor = Color.Black;
             ShadowPanel.ShadowDepth = 0;
             ShadowPanel.ShadowShift = 0;
@@ -326,10 +327,17 @@
             ExitButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             ExitButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             ExitButton.FillColor = Color.White;
+            ExitButton.FocusedColor = Color.White;
             ExitButton.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ExitButton.ForeColor = Color.Black;
+            ExitButton.HoverState.BorderColor = Color.White;
+            ExitButton.HoverState.CustomBorderColor = Color.White;
+            ExitButton.HoverState.FillColor = Color.White;
+            ExitButton.HoverState.ForeColor = Color.Black;
             ExitButton.Location = new Point(508, 3);
             ExitButton.Name = "ExitButton";
+            ExitButton.PressedColor = Color.White;
+            ExitButton.PressedDepth = 0;
             ExitButton.ShadowDecoration.CustomizableEdges = customizableEdges10;
             ExitButton.Size = new Size(35, 25);
             ExitButton.TabIndex = 2;
@@ -381,7 +389,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            BackColor = Color.Transparent;
+            BackColor = Color.FromArgb(105, 0, 0, 0);
             Controls.Add(ShadowPanel);
             DoubleBuffered = true;
             Name = "UC_CreateOrder";

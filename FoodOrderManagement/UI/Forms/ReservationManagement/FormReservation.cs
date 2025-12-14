@@ -9,28 +9,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using FoodOrderManagement.UI;
+using FoodOrderManagement.UI.Forms.MenuManagement;
 namespace FoodOrderManagement.AdminControl
 {
     public partial class FormReservation : Form
     {
         UC_CreateReservation uc_CreateReservation;
+        OverlayBackground _overlayBackground;
         public FormReservation()
         {
             InitializeComponent();
+            _overlayBackground = new OverlayBackground();
         }
-
-        private void doubleBufferedtlp4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void CreateReservationButton_Click(object sender, EventArgs e)
         {
+          _overlayBackground.Show(this); // hiện panel làm tối
           uc_CreateReservation = new UC_CreateReservation();
           this.Controls.Add(uc_CreateReservation);
+            Helper.BoGoc(uc_CreateReservation, 5, true, true, true, true);
           uc_CreateReservation.BringToFront();
-
+            uc_CreateReservation.Disposed += (s, e) =>
+            {
+                _overlayBackground.Hide(this);
+            };
           uc_CreateReservation.Location = new Point(
                  (this.Width - uc_CreateReservation.Width) / 2,
                  (this.Height - uc_CreateReservation.Height) / 2

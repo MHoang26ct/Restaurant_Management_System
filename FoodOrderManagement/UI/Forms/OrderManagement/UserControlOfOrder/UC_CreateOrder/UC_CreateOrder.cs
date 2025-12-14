@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using FoodOrderManagement.DAL.Models.Entities;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
+using FoodOrderManagement.UI.Forms.MenuManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             _customersRepository = customersRepository;
             ThemDongMonAn();
         }
-
+        
         private void PhoneNumberTBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); // chặn chữ 

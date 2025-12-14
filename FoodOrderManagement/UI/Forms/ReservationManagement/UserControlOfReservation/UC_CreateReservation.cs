@@ -22,6 +22,7 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
         private void ExitButton_Click(object sender, EventArgs e)
         {
             OnExitClicked?.Invoke(this, EventArgs.Empty);
+            this.Dispose();
         }
 
         private void PhoneNumberTBox_KeyPress(object sender, KeyPressEventArgs e)

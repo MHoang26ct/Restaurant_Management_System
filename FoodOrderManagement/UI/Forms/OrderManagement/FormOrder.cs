@@ -3,6 +3,7 @@ using FoodOrderManagement.DAL.Models.Entities;
 using FoodOrderManagement.DAL.Repositories.Implementations;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
 using FoodOrderManagement.UI;
+using FoodOrderManagement.UI.Forms.MenuManagement;
 using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
 using Guna.UI2.WinForms;
 using System;
@@ -50,6 +51,7 @@ namespace FoodOrderManagement.AdminControl
                 _overlayBackground.Hide(this);
             };
             this.Controls.Add(_ucCreateOrder);
+            Helper.BoGoc(_ucCreateOrder, 20, true, true , true, true);
             _ucCreateOrder.Location = new Point(
                  (this.Width - _ucCreateOrder.Width) / 2,
                  (this.Height - _ucCreateOrder.Height) / 2
@@ -117,6 +119,7 @@ namespace FoodOrderManagement.AdminControl
             };
             // 4. Hiển thị form lên
             this.Controls.Add(ucAddMore);
+            Helper.BoGoc(ucAddMore, 20, true, true, true, true);
             ucAddMore.BringToFront();
 
             // Căn giữa màn hình

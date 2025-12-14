@@ -133,6 +133,26 @@ namespace FoodOrderManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap bin {
+            get {
+                object obj = ResourceManager.GetObject("bin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap BinRed {
+            get {
+                object obj = ResourceManager.GetObject("BinRed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap blackmenu {
             get {
                 object obj = ResourceManager.GetObject("blackmenu", resourceCulture);
@@ -166,6 +186,16 @@ namespace FoodOrderManagement.Properties {
         public static System.Drawing.Bitmap CustomerBlack1 {
             get {
                 object obj = ResourceManager.GetObject("CustomerBlack1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CustomerOrange {
+            get {
+                object obj = ResourceManager.GetObject("CustomerOrange", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +246,16 @@ namespace FoodOrderManagement.Properties {
         public static System.Drawing.Bitmap DashboardWhite {
             get {
                 object obj = ResourceManager.GetObject("DashboardWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap EditBlack {
+            get {
+                object obj = ResourceManager.GetObject("EditBlack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -656,6 +696,16 @@ namespace FoodOrderManagement.Properties {
         public static System.Drawing.Bitmap ReservedWhite {
             get {
                 object obj = ResourceManager.GetObject("ReservedWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap StarWhite {
+            get {
+                object obj = ResourceManager.GetObject("StarWhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

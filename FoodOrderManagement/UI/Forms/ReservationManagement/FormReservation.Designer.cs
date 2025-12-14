@@ -215,7 +215,6 @@
             doubleBufferedtlp4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             doubleBufferedtlp4.Size = new Size(1268, 61);
             doubleBufferedtlp4.TabIndex = 1;
-            doubleBufferedtlp4.Paint += doubleBufferedtlp4_Paint;
             // 
             // SearchReservationTBox1
             // 
@@ -286,6 +285,7 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            guna2DataGridView1.Dock = DockStyle.Fill;
             guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.Location = new Point(94, 164);
             guna2DataGridView1.Name = "guna2DataGridView1";

@@ -86,7 +86,9 @@
             // 
             // BackgroundPanel
             // 
-            BackgroundPanel.BorderRadius = 20;
+            BackgroundPanel.BackColor = Color.White;
+            BackgroundPanel.BorderColor = Color.Transparent;
+            BackgroundPanel.BorderRadius = 10;
             BackgroundPanel.Controls.Add(doubleBufferedtlp4);
             BackgroundPanel.Controls.Add(doubleBufferedtlp2);
             BackgroundPanel.Controls.Add(doubleBufferedtlp1);
@@ -337,8 +339,14 @@
             ExitButton.FillColor = Color.White;
             ExitButton.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ExitButton.ForeColor = Color.Black;
+            ExitButton.HoverState.BorderColor = Color.White;
+            ExitButton.HoverState.CustomBorderColor = Color.White;
+            ExitButton.HoverState.FillColor = Color.White;
+            ExitButton.HoverState.ForeColor = Color.Black;
             ExitButton.Location = new Point(416, 3);
             ExitButton.Name = "ExitButton";
+            ExitButton.PressedColor = Color.White;
+            ExitButton.PressedDepth = 0;
             ExitButton.ShadowDecoration.CustomizableEdges = customizableEdges10;
             ExitButton.Size = new Size(35, 26);
             ExitButton.TabIndex = 2;
@@ -529,7 +537,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Transparent;
+            BackColor = Color.FromArgb(110, 0, 0, 0);
             Controls.Add(BackgroundPanel);
             ForeColor = Color.Black;
             Name = "UC_CreateReservation";
@@ -552,6 +560,11 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel BackgroundPanel;
+        private DoubleBufferedTLP doubleBufferedtlp4;
+        private FlowLayoutPanel ListFoodFlowLayout;
+        private DoubleBufferedTLP doubleBufferedtlp2;
+        private Guna.UI2.WinForms.Guna2Button AddFoodButton;
+        private Guna.UI2.WinForms.Guna2GradientButton CreateOrderButton;
         private DoubleBufferedTLP doubleBufferedtlp1;
         private Guna.UI2.WinForms.Guna2TextBox CustomerNameTBox;
         private Label label2;
@@ -563,14 +576,9 @@
         private Label label5;
         private Guna.UI2.WinForms.Guna2TextBox PhoneNumberTBox;
         private Label label4;
-        private DoubleBufferedTLP doubleBufferedtlp2;
-        private Guna.UI2.WinForms.Guna2Button AddFoodButton;
-        private Guna.UI2.WinForms.Guna2GradientButton CreateOrderButton;
-        private DoubleBufferedTLP doubleBufferedtlp4;
-        private FlowLayoutPanel ListFoodFlowLayout;
+        private DoubleBufferedTLP doubleBufferedtlp5;
         private Label label7;
         private Label label6;
-        private DoubleBufferedTLP doubleBufferedtlp5;
         private DoubleBufferedTLP doubleBufferedtlp7;
         private Guna.UI2.WinForms.Guna2ComboBox TimeReservationCBox;
         private Guna.UI2.WinForms.Guna2DateTimePicker DateReservation;
