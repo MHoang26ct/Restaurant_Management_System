@@ -32,7 +32,14 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
             TotalSpent.Text = customer.TotalSpent.ToString("#,##0") + " VNĐ";
             TotalVisit.Text = customer.TotalVisits.ToString();
             //Ngày ghé gần nhất
-            LastVisitDate.Text = customer.LastVisitDate.ToString("dd/MM/yyyy");
+            if (customer.LastVisitDate == DateTime.MinValue)
+            {
+                LastVisitDate.Text = "Chưa đến";
+            }
+            else
+            {
+                LastVisitDate.Text = customer.LastVisitDate.ToString("dd/MM/yyyy");
+            }
             // Lưu trữ ID để sau này sửa/xóa nếu cần
             this.Tag = customer.Id;
             //switch (RankCustomer.ToLower()) // Chuyển về chữ thường để so sánh

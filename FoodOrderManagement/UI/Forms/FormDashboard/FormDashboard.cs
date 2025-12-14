@@ -98,7 +98,7 @@ namespace FoodOrderManagement.AdminControl
         //
         private void CustomerPicture_Click(object sender, EventArgs e)
         {
-            FormCustomer FormCustomer = new FormCustomer();
+            FormCustomer FormCustomer = _scope.Resolve<FormCustomer>();
             FormMain.instance.CustomerButton.PerformClick();
         }
         //

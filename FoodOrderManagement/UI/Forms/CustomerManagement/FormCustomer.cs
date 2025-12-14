@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
 using FoodOrderManagement.UI;
 using FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer;
 using FoodOrderManagement.UI.Forms.MenuManagement;
@@ -20,21 +21,26 @@ namespace FoodOrderManagement.AdminControl
     public partial class FormCustomer : Form
     {
         private readonly ILifetimeScope _scope;
+        private readonly ICustomersRepository _customersRepository;
         UC_AddCustomer _ucAddCustomer;
         OverlayBackground _overlayBackground;
-        public FormCustomer()
+        public FormCustomer(ILifetimeScope scope, ICustomersRepository customersRepository)
         {
             InitializeComponent();
+            _scope = scope;
+            _customersRepository = customersRepository;
             _overlayBackground = new OverlayBackground(); // Khởi tạo overlay
+            LoadCustomerList();
         }
 
         private void AddCustomerButton_Click(object sender, EventArgs e)
         {
             _overlayBackground.Show(this);
-            _ucAddCustomer = new UC_AddCustomer();
+            _ucAddCustomer = _scope.Resolve<UC_AddCustomer>();
             //ĐĂNG KÝ SỰ KIỆN: Khi bên kia bấm "Xác nhận"
             _ucAddCustomer.OnCustomerAdded += (s, newCustomerData) =>
             {
+                //LoadCustomerList();
                 // a. Tạo thẻ item mới để hiển thị
                 UC_CustomerItem newItem = new UC_CustomerItem();
 
@@ -71,7 +77,7 @@ namespace FoodOrderManagement.AdminControl
             _overlayBackground.Show(this);
 
             // Tạo form nhập liệu (dùng lại UC_AddCustomer)
-            UC_AddCustomer _ucEditCustomer = new UC_AddCustomer();
+            UC_AddCustomer _ucEditCustomer = _scope.Resolve<UC_AddCustomer>();
 
             // Chuyển sang chế độ Sửa (Điền dữ liệu cũ vào)
             // (Bạn cần chắc chắn bên UC_AddCustomer đã có hàm SetEditMode như bài trước)
@@ -102,7 +108,7 @@ namespace FoodOrderManagement.AdminControl
         }
 
         // --- HÀM XỬ LÝ SỰ KIỆN XÓA ---
-        private void HandleDeleteCustomer(object sender, Customers cusData)
+        private async void HandleDeleteCustomer(object sender, Customers cusData)
         {
             var result = MessageBox.Show(
                 $"Bạn có chắc chắn muốn xóa khách hàng {cusData.FullName}?",
@@ -112,16 +118,23 @@ namespace FoodOrderManagement.AdminControl
 
             if (result == DialogResult.Yes)
             {
-                // 1. Gọi xuống Database xóa (Giả sử bạn có Repository)
-                // _customerRepository.Delete(cusData.Id);
-                // _customerRepository.Save();
-
-                // 2. Xóa thẻ item khỏi giao diện
-                UC_CustomerItem itemToRemove = sender as UC_CustomerItem;
-                if (itemToRemove != null)
+                try
                 {
-                    FlowLayoutCustomer.Controls.Remove(itemToRemove);
-                    itemToRemove.Dispose(); // Giải phóng bộ nhớ
+                    // 1. Gọi Repository xóa trong Database
+                    await _customersRepository.DeleteCustomerAsync  (cusData.Id); // Cần viết hàm này trong Repo
+
+                    // 2. Xóa trên giao diện
+                    UC_CustomerItem itemToRemove = sender as UC_CustomerItem;
+                    if (itemToRemove != null)
+                    {
+                        FlowLayoutCustomer.Controls.Remove(itemToRemove);
+                        itemToRemove.Dispose();
+                    }
+                    MessageBox.Show("Đã xóa khách hàng!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể xóa (có thể khách đang có đơn hàng). Lỗi: " + ex.Message);
                 }
             }
         }

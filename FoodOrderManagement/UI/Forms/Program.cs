@@ -2,6 +2,7 @@ using Autofac;
 using FoodOrderManagement.DAL.Repositories.Implementations;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
 using FoodOrderManagement.UI.Forms;
+using FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer;
 using FoodOrderManagement.UI.Forms.MenuManagement;
 using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
 using FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable;
@@ -49,6 +50,9 @@ namespace FoodOrderManagement.AdminControl {
             builder.RegisterType<UC_AddTable>();
             builder.RegisterType<UC_UpdateStatus>();
             builder.RegisterType<UC_AddTableCard>();
+            builder.RegisterType<FormCustomer>();
+            builder.RegisterType<UC_AddCustomer>();
+            builder.RegisterType<UC_CustomerItem>();
 
             // 3. Xây dựng Container
             var container = builder.Build();
