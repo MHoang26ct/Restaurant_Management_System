@@ -72,7 +72,8 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
                     Email = EmailTBox.Text,
                     LastVisitDate = DateTimePicker.Value.Date,
                     TotalVisits = 0,
-                    TotalSpent = 0
+                    TotalSpent = 0,
+                    CustomerRank = "Regular"
                 };
 
                 // 1. Lưu vào Database trước
@@ -90,7 +91,6 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
                 _editingCustomer.FullName = CustomerNameTBox.Text;
                 _editingCustomer.PhoneNumber = PhoneNumberTBox.Text;
                 _editingCustomer.Email = EmailTBox.Text;
-
                 // 1. Cập nhật xuống Database
                 await _customersRepository.UpdateCustomerInfoAsync(_editingCustomer);
 
@@ -99,6 +99,7 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
                 MessageBox.Show("Cập nhật thành công!");
             }
         }
+
     }
 }
 
