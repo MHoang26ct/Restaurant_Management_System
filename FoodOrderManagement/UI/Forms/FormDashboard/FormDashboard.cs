@@ -114,7 +114,7 @@ namespace FoodOrderManagement.AdminControl
         //
         private void EmployeePicture_Click(object sender, EventArgs e)
         {
-            FormEmployee FormEmployee = new FormEmployee();
+            FormEmployee FormEmployee = _scope.Resolve<FormEmployee>();
             FormMain.instance.EmployeesButton.PerformClick();
         }
     }

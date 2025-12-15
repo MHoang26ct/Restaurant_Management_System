@@ -17,7 +17,7 @@ using System.Windows.Forms;
 using static System.Formats.Asn1.AsnWriter;
 namespace FoodOrderManagement.AdminControl
 {
-    
+
     public partial class FormCustomer : Form
     {
         private readonly ILifetimeScope _scope;
@@ -72,40 +72,42 @@ namespace FoodOrderManagement.AdminControl
 
             _ucAddCustomer.BringToFront();
         }
-        private void HandleEditCustomer(object sender, Customers cusData)
+        private void HandleEditCustomer(object sender, Customers cusToEdit)
         {
             _overlayBackground.Show(this);
 
-            // Tạo form nhập liệu (dùng lại UC_AddCustomer)
-            UC_AddCustomer _ucEditCustomer = _scope.Resolve<UC_AddCustomer>();
+            // 2. Tạo UC Edit
+            var ucEdit = _scope.Resolve<UC_AddCustomer>();
 
-            // Chuyển sang chế độ Sửa (Điền dữ liệu cũ vào)
-            // (Bạn cần chắc chắn bên UC_AddCustomer đã có hàm SetEditMode như bài trước)
-            _ucEditCustomer.SetEditMode(cusData);
+            // 3. QUAN TRỌNG: Kích hoạt chế độ Sửa và nạp dữ liệu cũ
+            ucEdit.SetEditMode(cusToEdit);
 
-            // Đăng ký sự kiện: Khi update xong
-            _ucEditCustomer.OnCustomerUpdated += (s, updatedCus) =>
+            // 4. Xử lý sự kiện: Khi Sửa Xong
+            ucEdit.OnCustomerUpdated += (s, updatedCus) =>
             {
-                //Load lại toàn bộ danh sách (Dễ nhất)
-                // LoadData(); 
-                // Khi nào nối database thì làm nhé
-                // Cập nhật lại giao diện của cái thẻ đang sửa (Tối ưu hơn)
-                UC_CustomerItem itemBeingEdited = sender as UC_CustomerItem;
-                if (itemBeingEdited != null)
-                {
-                    itemBeingEdited.SetCustomerData(updatedCus);
-                }
+                // Cách đơn giản nhất: Load lại toàn bộ danh sách để cập nhật giao diện
+                LoadCustomerList();
 
-                HandleClosePopup(_ucEditCustomer);
+                // Đóng Popup
+                HandleClosePopup(ucEdit);
             };
 
-            // Xử lý đóng form
-            _ucEditCustomer.Disposed += (s, args) => _overlayBackground.Hide(this);
+            // 5. Xử lý sự kiện: Khi bấm nút X hoặc Hủy
+            ucEdit.OnCancelClicked += (s, e) =>
+            {
+                HandleClosePopup(ucEdit);
+            };
+            ucEdit.Disposed += (s, args) => _overlayBackground.Hide(this); // Phòng hờ
 
-            this.Controls.Add(_ucEditCustomer);
-            _ucEditCustomer.Location = new Point((this.Width - _ucEditCustomer.Width) / 2, (this.Height - _ucEditCustomer.Height) / 2);
-            _ucEditCustomer.BringToFront();
+            // 6. Tính toán vị trí hiển thị (giữa màn hình)
+            this.Controls.Add(ucEdit);
+            ucEdit.Location = new Point(
+                (this.Width - ucEdit.Width) / 2,
+                (this.Height - ucEdit.Height) / 2);
+
+            ucEdit.BringToFront();
         }
+
 
         // --- HÀM XỬ LÝ SỰ KIỆN XÓA ---
         private async void HandleDeleteCustomer(object sender, Customers cusData)
@@ -121,7 +123,7 @@ namespace FoodOrderManagement.AdminControl
                 try
                 {
                     // 1. Gọi Repository xóa trong Database
-                    await _customersRepository.DeleteCustomerAsync  (cusData.Id); // Cần viết hàm này trong Repo
+                    await _customersRepository.DeleteCustomerAsync(cusData.Id); // Cần viết hàm này trong Repo
 
                     // 2. Xóa trên giao diện
                     UC_CustomerItem itemToRemove = sender as UC_CustomerItem;
@@ -143,6 +145,28 @@ namespace FoodOrderManagement.AdminControl
             this.Controls.Remove(popup);
             popup.Dispose();
             _overlayBackground.Hide(this);
+        }
+
+        private void SearchCustomer_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = SearchCustomer.Text.Trim().ToLower(); // Chuyển về chữ thường để tìm không phân biệt hoa thường
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                // Nếu ô tìm kiếm trống -> Hiển thị lại toàn bộ danh sách gốc
+                RenderCustomerList(_originalCustomerList);
+            }
+            else
+            {
+                // Dùng LINQ để lọc: Tìm theo Tên HOẶC Số điện thoại
+                var filteredList = _originalCustomerList
+                    .Where(c => c.FullName.ToLower().Contains(keyword) ||
+                                c.PhoneNumber.Contains(keyword))
+                    .ToList();
+
+                // Hiển thị danh sách đã lọc
+                RenderCustomerList(filteredList);
+            }
         }
     }
 }

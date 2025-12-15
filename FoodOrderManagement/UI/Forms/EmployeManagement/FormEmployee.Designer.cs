@@ -257,6 +257,7 @@
             SearchEmployeeTBox1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             SearchEmployeeTBox1.Size = new Size(996, 43);
             SearchEmployeeTBox1.TabIndex = 0;
+            SearchEmployeeTBox1.TextChanged += SearchEmployeeTBox1_TextChanged;
             // 
             // DateTimePickerSearchHireDate
             // 

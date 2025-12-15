@@ -408,6 +408,7 @@
             SearchCustomer.ShadowDecoration.CustomizableEdges = customizableEdges14;
             SearchCustomer.Size = new Size(1308, 47);
             SearchCustomer.TabIndex = 5;
+            SearchCustomer.TextChanged += SearchCustomer_TextChanged;
             // 
             // guna2TextBox2
             // 

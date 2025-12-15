@@ -18,6 +18,7 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
         //Khai báo 2 sự kiện: Thêm mới và Cập nhật
         public event EventHandler<Customers> OnCustomerAdded;
         public event EventHandler<Customers> OnCustomerUpdated;
+        public event EventHandler OnCancelClicked;
         private readonly ICustomersRepository _customersRepository;
         //Biến để lưu khách hàng đang sửa (nếu có)
         private Customers _editingCustomer = null;
@@ -30,23 +31,20 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
 
         public void SetEditMode(Customers customer)
         {
-            // Lưu lại khách hàng đang sửa
-            _editingCustomer = customer;
+            _editingCustomer = customer; // Lưu lại khách đang sửa
 
-            ConfirmButton.Text = "Lưu Thay Đổi";
-            TitleLable.Text = "Cập Nhật Khách Hàng";
+            TitleLable.Text = "CẬP NHẬT THÔNG TIN"; // Đổi tiêu đề
+            ConfirmButton.Text = "Lưu Thay Đổi";      // Đổi tên nút
 
-            // Điền dữ liệu cũ vào các ô
+            // Đổ dữ liệu cũ vào ô nhập
             CustomerNameTBox.Text = customer.FullName;
             PhoneNumberTBox.Text = customer.PhoneNumber;
             EmailTBox.Text = customer.Email;
 
-            // Xử lý ngày tháng (Chỉ hiển thị, không cho sửa ngày tạo)
+            // Ngày tháng chỉ hiển thị, không cho sửa (tùy nghiệp vụ)
             if (customer.LastVisitDate != DateTime.MinValue)
-            {
                 DateTimePicker.Value = customer.LastVisitDate;
-            }
-            DateTimePicker.Enabled = false; // Khóa lại không cho sửa ngày này
+            DateTimePicker.Enabled = false;
         }
 
         private bool IsValidEmail(string email)
@@ -59,6 +57,10 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
+            // Bắn sự kiện ra ngoài để Form cha tắt Popup đi
+            OnCancelClicked?.Invoke(this, EventArgs.Empty);
+
+            // Hoặc tự hủy chính mình (nếu Form cha không handle sự kiện Cancel)
             this.Dispose();
         }
 
@@ -94,5 +96,6 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
                 EmailTBox.BorderColor = Color.FromArgb(213, 218, 223);
             }
         }
+
     }
 }

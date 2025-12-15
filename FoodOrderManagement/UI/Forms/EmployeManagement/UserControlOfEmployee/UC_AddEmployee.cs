@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,8 +12,11 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
 {
     public partial class UC_AddEmployee : UserControl
     {
-        public delegate void OnAddEmployeeHandler(string ten, string sdt, string email, string vitri, string ngay);
-        public event OnAddEmployeeHandler OnAddClicked; // Sự kiện xác nhận
+        public event EventHandler<Employee> OnSaveClicked;
+        public event EventHandler OnCancelClicked;
+        // public event OnAddEmployeeHandler OnAddClicked; // Sự kiện xác nhận
+        private Employee _editingEmp = null;
+
         public UC_AddEmployee()
         {
             InitializeComponent();
@@ -20,41 +24,35 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            if (OnAddClicked != null)
+            Employee newEmp = new Employee
             {
-                OnAddClicked.Invoke(
-                    NameTbox.Text,
-                    PhoneNumberTBox.Text,
-                    EmailTbox.Text,
-                    PositionTBox.Text,
-                    HireDateDTP.Value.ToString("dd/MM/yyyy")
-                );
-            }
+                FullName = NameTbox.Text,
+                PhoneNumber = PhoneNumberTBox.Text,
+                Email = EmailTbox.Text,
+                Position = PositionTBox.Text,
+                HireDate = HireDateDTP.Value
+            };
+
+            OnSaveClicked?.Invoke(_editingEmp, newEmp);
         }
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            OnCancelClicked?.Invoke(this, EventArgs.Empty);
         }
-        public void SetModeEdit(string name, string phone, string email, string position, string date)
+        public void SetModeEdit(Employee emp)
         {
+            _editingEmp = emp; 
+
             TitleLabel.Text = "CẬP NHẬT THÔNG TIN";
-            // Điền dữ liệu cũ vào
-            NameTbox.Text = name;
-            PhoneNumberTBox.Text = phone;
-            EmailTbox.Text = email;
-            PositionTBox.Text = position;
-            // Xử lý ngày tháng (cần try-catch để tránh lỗi format)
-            try { HireDateDTP.Value = DateTime.ParseExact(date, "dd/MM/yyyy", null); } catch { }
-
-            // KHÓA các ô không cho sửa
-            NameTbox.Enabled = false;      // Khóa tên    
-            HireDateDTP.Enabled = false; // Khóa ngày
-
-            // 4. MỞ các ô cho phép sửa
-            PhoneNumberTBox.Enabled = true;
-            EmailTbox.Enabled = true;
-            PositionTBox.Enabled = true;
-            PhoneNumberTBox.Focus(); // Đưa con trỏ chuột vào sđt
+            NameTbox.Text = emp.FullName;
+            PhoneNumberTBox.Text = emp.PhoneNumber;
+            EmailTbox.Text = emp.Email;
+            PositionTBox.Text = emp.Position;
+            HireDateDTP.Value = emp.HireDate;
+            // Tùy bạn có muốn khóa Tên hay Ngày không, thường thì cho sửa hết trừ ID
+            // NameTbox.Enabled = false;
+            NameTbox.Enabled = false;
+            PhoneNumberTBox.Enabled = false;
         }
     }
 }

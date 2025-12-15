@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,9 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
 {
     public partial class UC_EmployeeItem : UserControl
     {
-        public event EventHandler<UC_EmployeeItem> OnEditClicked;
+        public event EventHandler<Employee> OnEditClicked;
+        public event EventHandler<Employee> OnDeleteClicked;
+        private Employee _currentEmp;
         public UC_EmployeeItem()
         {
             InitializeComponent();
@@ -28,32 +31,29 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
                 this.Width = this.Parent.ClientSize.Width - 20;
             }
         }
-        public void SetData(string name, string phone, string email, string position, string date)
+        public void SetData(Employee emp)
         {
-            NameLabel.Text = name;
-            PhoneNumberLabel.Text = phone;
-            EmailLabel.Text = email;
-            PositionLabel.Text = position;
-            HireDateLabel.Text = date;
+            _currentEmp = emp; // Lưu lại để dùng sau
+
+            NameLabel.Text = emp.FullName;
+            PhoneNumberLabel.Text = emp.PhoneNumber;
+            EmailLabel.Text = emp.Email;
+            PositionLabel.Text = emp.Position;
+            HireDateLabel.Text = emp.HireDate.ToString("dd/MM/yyyy");
 
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            OnEditClicked?.Invoke(this, this);
+            OnEditClicked?.Invoke(this, _currentEmp);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                this.Parent.Controls.Remove(this);
+                OnEditClicked?.Invoke(this, _currentEmp);
             }
         }
-        public string GetTen() => NameLabel.Text;
-        public string GetSDT() => PhoneNumberLabel.Text;
-        public string GetEmail() => EmailLabel.Text;
-        public string GetViTri() => PositionLabel.Text;
-        public string GetNgay() => HireDateLabel.Text;
     }
 }

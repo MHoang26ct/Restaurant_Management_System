@@ -138,7 +138,10 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            OnEditClicked?.Invoke(this, _currentCustomer);
+            if (_currentCustomer != null)
+            {
+                OnEditClicked?.Invoke(this, _currentCustomer);
+            }
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)

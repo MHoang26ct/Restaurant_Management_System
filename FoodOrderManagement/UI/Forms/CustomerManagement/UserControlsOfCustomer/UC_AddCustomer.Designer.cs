@@ -138,6 +138,7 @@
             ConfirmButton.Size = new Size(447, 38);
             ConfirmButton.TabIndex = 34;
             ConfirmButton.Text = "Xác Nhận";
+            ConfirmButton.Click += this.ConfirmButton_Click;
             // 
             // CustomerNameTBox
             // 
