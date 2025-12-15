@@ -19,11 +19,11 @@ GO
 
 -- 3. Tạo Bảng Employees (Thông tin nhân viên)
 CREATE TABLE Employees (
-    FullName varchar(50) NOT NULL,
+    FullName nvarchar(100) NOT NULL,
     PhoneNumber varchar(15) NOT NULL UNIQUE,
     Email varchar(100) NULL,
     HireDate datetime,
-    Position varchar(50),
+    Position nvarchar(100),
     PRIMARY KEY (FullName, PhoneNumber) -- Khóa chính kết hợp
 )
 GO
@@ -31,7 +31,7 @@ GO
 -- 4. Tạo Bảng Customers (Thông tin khách hàng)
 CREATE TABLE Customers (
     CustomerID int IDENTITY(1,1) PRIMARY KEY,  
-    FullName varchar(50) NOT NULL,
+    FullName nvarchar(100) NOT NULL,
     Email varchar(100) NULL,
     PhoneNumber varchar(15) NOT NULL,
     LastVisitDate datetime NULL, -- Ngày ghé thăm gần nhất
@@ -53,7 +53,7 @@ GO
 -- 6. Tạo Bảng Foods (Thực đơn món ăn)
 CREATE TABLE Foods (
     FoodID int IDENTITY(1,1) PRIMARY KEY,  
-    FoodName varchar(100) NOT NULL,
+    FoodName nvarchar(200) NOT NULL,
     Price decimal(10, 2) NOT NULL,
     Category varchar(50),
     ImagePath varchar(500) NOT NULL,

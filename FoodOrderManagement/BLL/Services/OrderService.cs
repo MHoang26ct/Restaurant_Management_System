@@ -26,11 +26,6 @@ namespace FoodOrderManagement.AdminControl
                 FlowLayoutOrder.Controls.Clear();
                 _allOrders = await _ordersRepository.GetAllOrdersAsync();
                 RenderOrderList(_allOrders);
-                // 3. Duyệt và vẽ từng đơn hàng
-                foreach (var order in _allOrders)
-                {
-                    AddOrderToUI(order);
-                }
             }
             catch (Exception ex)
             {
@@ -216,8 +211,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         {
             _currentOrderId = oldOrder.Id;
             _existingOrderData = oldOrder;
-
-            TableID_NBox.Value = oldOrder.TableId;
             TableID_NBox.Value = oldOrder.TableId;
             TableID_NBox.Enabled = false;
             Customers c = await _customersRepository.GetCustomerByIdAsync(oldOrder.CustomerId);

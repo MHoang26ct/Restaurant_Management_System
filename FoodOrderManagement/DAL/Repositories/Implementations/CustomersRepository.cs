@@ -49,9 +49,6 @@ public class CustomersRepository : ICustomersRepository {
             {
         new SqlParameter("@FullName", customer.FullName),
 
-        // 👇 SỬA DÒNG NÀY (Quan trọng):
-        // Nếu Email là null hoặc rỗng "" -> Truyền DBNull.Value (SQL sẽ hiểu là NULL)
-        // Nếu có Email -> Truyền giá trị bình thường
         new SqlParameter("@Email", string.IsNullOrEmpty(customer.Email) ? (object)DBNull.Value : customer.Email),
 
         new SqlParameter("@PhoneNumber", customer.PhoneNumber),

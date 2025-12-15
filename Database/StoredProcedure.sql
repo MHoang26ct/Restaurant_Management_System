@@ -12,7 +12,7 @@
 -- Input: Tên món, Giá
 -- Output: ID của món vừa tạo
 CREATE PROCEDURE AddFood
-    @FoodName varchar(100),
+    @FoodName nvarchar(200),
     @Price decimal(10, 2),
     @Category VARCHAR(50) = NULL,
     @ImagePath VARCHAR(500) = NULL,
@@ -30,7 +30,7 @@ GO
 -- 1.2. Cập nhật thông tin món ăn (Tên, Giá)
 CREATE PROCEDURE UpdateFood
     @FoodID int,
-    @FoodName varchar(100),
+    @FoodName nvarchar(200),
     @Price decimal(10, 2),
     @Category VARCHAR(50) = NULL,
     @ImagePath VARCHAR(500) = NULL,
@@ -74,7 +74,7 @@ GO
 
 -- 1.5 Tìm kiếm món ăn theo tên (dùng cho chức năng tìm kiếm nhanh)
 CREATE PROCEDURE SearchFoodsByName
-    @SearchTerm VARCHAR(100)
+    @SearchTerm NVARCHAR(200)
 AS
 BEGIN
     SELECT FoodID, FoodName, Price, Category, ImagePath, Description
@@ -167,7 +167,7 @@ GO
 
 -- 3.1. Thêm khách hàng mới
 CREATE PROCEDURE AddCustomer
-    @FullName varchar(50),
+    @FullName nvarchar(100),
     @Email varchar(100),
     @PhoneNumber varchar(15),
     @NewCustomerID int OUTPUT
@@ -183,7 +183,7 @@ GO
 -- 3.2. Cập nhật thông tin liên hệ của khách hàng
 CREATE PROCEDURE UpdateCustomerInfo
     @CustomerID INT,
-    @FullName VARCHAR(50),
+    @FullName NVARCHAR(100),
     @Email VARCHAR(100),
     @PhoneNumber VARCHAR(15)
 AS
@@ -208,7 +208,7 @@ GO
 
 -- 3.4 Tìm kiếm khách hàng theo tên và số điện thoại
 CREATE PROCEDURE GetCustomerByNameAndPhone
-    @Name VARCHAR(50) = NULL,
+    @Name NVARCHAR(100) = NULL,
     @PhoneNumber VARCHAR(15) = NULL
 AS
 BEGIN
@@ -488,10 +488,10 @@ GO
 
 -- 6.1. Thêm nhân viên mới
 CREATE PROCEDURE AddEmployee
-    @FullName VARCHAR(50),
+    @FullName NVARCHAR(100),
     @PhoneNumber VARCHAR(15),
     @Email VARCHAR(100),
-    @Position VARCHAR(50),
+    @Position NVARCHAR(100),
     @HireDate DATETIME
 AS
 BEGIN
@@ -502,10 +502,10 @@ GO
 
 -- 6.2. Cập nhật thông tin nhân viên
 CREATE PROCEDURE UpdateEmployee
-    @FullName VARCHAR(50),
+    @FullName NVARCHAR(100),
     @PhoneNumber VARCHAR(15),
     @Email VARCHAR(100),
-    @Position VARCHAR(50),
+    @Position NVARCHAR(100),
     @HireDate DATETIME
 AS
 BEGIN
@@ -519,7 +519,7 @@ GO
 
 -- 6.3. Xóa nhân viên
 CREATE PROCEDURE DeleteEmployee
-    @FullName VARCHAR(50),
+    @FullName NVARCHAR(100),
     @PhoneNumber VARCHAR(15)
 AS
 BEGIN
@@ -540,7 +540,7 @@ GO
 
 -- 6.5 Tìm kiếm nhân viên theo tên và số điện thoại
 CREATE PROCEDURE GetEmployeesByNameAndPhone
-    @FullName VARCHAR(50) = NULL,
+    @FullName NVARCHAR(100) = NULL,
     @PhoneNumber VARCHAR(15) = NULL
 AS
 BEGIN
