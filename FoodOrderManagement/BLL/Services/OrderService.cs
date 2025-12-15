@@ -413,7 +413,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 PaymentStatusCBox.ForeColor = Color.Red;
                 PaymentStatusCBox.BorderColor = Color.Red;
                 StatusBackgroundColor.CustomBorderColor = Color.Red;
-                StatusBackgroundColor.FillColor = Color.FromArgb(50, 255, 0, 0); // (Tùy chọn) Nền đỏ nhạt cho đẹp
 
                 TotalMoneyLabel.ForeColor = Color.Red;
             }
@@ -422,9 +421,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 PaymentStatusCBox.ForeColor = Color.LimeGreen;
                 PaymentStatusCBox.BorderColor = Color.LimeGreen;
 
-                StatusBackgroundColor.CustomBorderColor = Color.LimeGreen;
-                StatusBackgroundColor.FillColor = Color.FromArgb(50, 0, 255, 0); // (Tùy chọn) Nền xanh nhạt
-
+                StatusBackgroundColor.CustomBorderColor = Color.LimeGreen; 
                 TotalMoneyLabel.ForeColor = Color.LimeGreen;
             }
         }

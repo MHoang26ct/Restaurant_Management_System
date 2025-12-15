@@ -91,6 +91,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Transparent;
             Controls.Add(guna2GradientPanel1);
             Name = "UC_AddTableCard";
             Size = new Size(200, 230);

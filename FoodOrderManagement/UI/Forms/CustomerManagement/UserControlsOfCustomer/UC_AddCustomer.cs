@@ -94,6 +94,5 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
                 EmailTBox.BorderColor = Color.FromArgb(213, 218, 223);
             }
         }
-
     }
 }

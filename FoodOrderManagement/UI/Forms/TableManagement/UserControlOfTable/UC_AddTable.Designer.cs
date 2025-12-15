@@ -65,8 +65,8 @@
             // 
             doubleBufferedtlp1.ColumnCount = 3;
             doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.333334F));
-            doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 59F));
-            doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.302325F));
+            doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 57.6666679F));
+            doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11F));
             doubleBufferedtlp1.Controls.Add(CapacityNBox, 1, 0);
             doubleBufferedtlp1.Controls.Add(CapacityLabel, 0, 0);
             doubleBufferedtlp1.Controls.Add(AddButton, 0, 1);
@@ -96,7 +96,7 @@
             CapacityNBox.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             CapacityNBox.Name = "CapacityNBox";
             CapacityNBox.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            CapacityNBox.Size = new Size(168, 36);
+            CapacityNBox.Size = new Size(164, 36);
             CapacityNBox.TabIndex = 20;
             CapacityNBox.UpDownButtonFillColor = Color.Gray;
             CapacityNBox.Value = new decimal(new int[] { 1, 0, 0, 0 });
@@ -136,28 +136,30 @@
             AddButton.Size = new Size(294, 42);
             AddButton.TabIndex = 22;
             AddButton.Text = "Thêm bàn";
-            AddButton.Click += this.BtnSave_Click;
+            AddButton.Click += BtnSave_Click;
             // 
             // ExitButton
             // 
             ExitButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            ExitButton.BorderRadius = 5;
+            ExitButton.BorderRadius = 10;
             ExitButton.CustomizableEdges = customizableEdges5;
             ExitButton.DisabledState.BorderColor = Color.DarkGray;
             ExitButton.DisabledState.CustomBorderColor = Color.DarkGray;
             ExitButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             ExitButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            ExitButton.FillColor = Color.White;
-            ExitButton.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ExitButton.FillColor = Color.Transparent;
+            ExitButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ExitButton.ForeColor = Color.Black;
             ExitButton.HoverState.BorderColor = Color.Transparent;
             ExitButton.HoverState.CustomBorderColor = Color.Transparent;
             ExitButton.HoverState.FillColor = Color.Transparent;
-            ExitButton.Location = new Point(271, 0);
+            ExitButton.Location = new Point(267, 0);
             ExitButton.Margin = new Padding(0);
             ExitButton.Name = "ExitButton";
+            ExitButton.PressedColor = Color.Transparent;
+            ExitButton.PressedDepth = 0;
             ExitButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            ExitButton.Size = new Size(29, 21);
+            ExitButton.Size = new Size(33, 27);
             ExitButton.TabIndex = 21;
             ExitButton.Text = "X";
             ExitButton.TextAlign = HorizontalAlignment.Right;
@@ -167,7 +169,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Transparent;
+            BackColor = Color.FromArgb(80, 0, 0, 0);
             Controls.Add(Shadowpanel);
             Name = "UC_AddTable";
             Size = new Size(300, 120);
@@ -184,7 +186,7 @@
         private DoubleBufferedTLP doubleBufferedtlp1;
         private Label CapacityLabel;
         private Guna.UI2.WinForms.Guna2NumericUpDown CapacityNBox;
-        private Guna.UI2.WinForms.Guna2Button ExitButton;
         private Guna.UI2.WinForms.Guna2GradientButton AddButton;
+        private Guna.UI2.WinForms.Guna2Button ExitButton;
     }
 }

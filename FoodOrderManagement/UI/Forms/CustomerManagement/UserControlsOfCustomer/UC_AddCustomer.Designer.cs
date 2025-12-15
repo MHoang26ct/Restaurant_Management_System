@@ -66,6 +66,7 @@
             // 
             // BackGround
             // 
+            BackGround.BackColor = Color.Transparent;
             BackGround.BorderRadius = 10;
             BackGround.Controls.Add(doubleBufferedtlp1);
             BackGround.CustomizableEdges = customizableEdges15;
@@ -114,7 +115,7 @@
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 3F));
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             doubleBufferedtlp1.Size = new Size(500, 400);
-            doubleBufferedtlp1.TabIndex = 2;
+            doubleBufferedtlp1.TabIndex = 4;
             // 
             // ConfirmButton
             // 
@@ -137,7 +138,6 @@
             ConfirmButton.Size = new Size(447, 38);
             ConfirmButton.TabIndex = 34;
             ConfirmButton.Text = "Xác Nhận";
-            ConfirmButton.Click += ConfirmButton_Click;
             // 
             // CustomerNameTBox
             // 
@@ -222,7 +222,6 @@
             PhoneNumberTBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
             PhoneNumberTBox.Size = new Size(453, 40);
             PhoneNumberTBox.TabIndex = 17;
-            PhoneNumberTBox.KeyPress += PhoneNumberTBox_KeyPress;
             // 
             // doubleBufferedtlp3
             // 
@@ -339,7 +338,6 @@
             EmailTBox.ShadowDecoration.CustomizableEdges = customizableEdges12;
             EmailTBox.Size = new Size(453, 40);
             EmailTBox.TabIndex = 21;
-            EmailTBox.TextChanged += EmailTBox_TextChanged;
             // 
             // label2
             // 
@@ -376,7 +374,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Transparent;
+            BackColor = Color.FromArgb(100, 0, 0, 0);
             Controls.Add(BackGround);
             Name = "UC_AddCustomer";
             Size = new Size(500, 400);
@@ -392,6 +390,7 @@
 
         private Guna.UI2.WinForms.Guna2GradientPanel BackGround;
         private DoubleBufferedTLP doubleBufferedtlp1;
+        private Guna.UI2.WinForms.Guna2GradientButton ConfirmButton;
         private Guna.UI2.WinForms.Guna2TextBox CustomerNameTBox;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2TextBox PhoneNumberTBox;
@@ -401,7 +400,6 @@
         private Label label3;
         private Label label5;
         private Label label4;
-        private Guna.UI2.WinForms.Guna2GradientButton ConfirmButton;
         private Guna.UI2.WinForms.Guna2TextBox EmailTBox;
         private Label label2;
         private Guna.UI2.WinForms.Guna2DateTimePicker DateTimePicker;

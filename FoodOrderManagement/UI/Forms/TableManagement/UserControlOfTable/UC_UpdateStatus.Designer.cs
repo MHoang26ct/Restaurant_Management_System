@@ -64,6 +64,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             // 
             // Gradient
             // 
+            Gradient.BackColor = Color.Transparent;
             Gradient.BorderRadius = 20;
             Gradient.Controls.Add(doubleBufferedtlp1);
             Gradient.CustomizableEdges = customizableEdges11;
@@ -114,7 +115,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 8F));
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             doubleBufferedtlp1.Size = new Size(500, 500);
-            doubleBufferedtlp1.TabIndex = 0;
+            doubleBufferedtlp1.TabIndex = 1;
             // 
             // CustomerNameLabel
             // 
@@ -275,7 +276,6 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             AvailableButton.TabIndex = 10;
             AvailableButton.Text = "Còn trống";
             AvailableButton.TextAlign = HorizontalAlignment.Left;
-            AvailableButton.Click += AvailableButton_Click;
             // 
             // OccupiedButton
             // 
@@ -298,7 +298,6 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             OccupiedButton.TabIndex = 11;
             OccupiedButton.Text = "Đang sử dụng";
             OccupiedButton.TextAlign = HorizontalAlignment.Left;
-            OccupiedButton.Click += OccupiedButton_Click;
             // 
             // ReservedButton
             // 
@@ -321,7 +320,6 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             ReservedButton.TabIndex = 12;
             ReservedButton.Text = "Đã đặt bàn";
             ReservedButton.TextAlign = HorizontalAlignment.Left;
-            ReservedButton.Click += ReservedButton_Click;
             // 
             // ExitButton
             // 
@@ -361,7 +359,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Transparent;
+            BackColor = Color.FromArgb(110, 0, 0, 0);
             Controls.Add(Gradient);
             Name = "UC_UpdateStatus";
             Size = new Size(500, 500);
@@ -377,15 +375,15 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 
         private Guna.UI2.WinForms.Guna2GradientPanel Gradient;
         private DoubleBufferedTLP doubleBufferedtlp1;
+        private Label CustomerNameLabel;
         private Guna.UI2.WinForms.Guna2HtmlLabel TableIdLabel;
         private Label label1;
-        private Label CustomerNameLabel;
         private Label CapacityLabel;
-        private Label label2;
         private Label OrderIdLabel;
         private Label TimeReservedLabel;
         private DoubleBufferedTLP doubleBufferedtlp2;
         private Guna.UI2.WinForms.Guna2GradientButton StatusText;
+        private Label label2;
         private Label label3;
         private Guna.UI2.WinForms.Guna2Button AvailableButton;
         private Guna.UI2.WinForms.Guna2Button OccupiedButton;
