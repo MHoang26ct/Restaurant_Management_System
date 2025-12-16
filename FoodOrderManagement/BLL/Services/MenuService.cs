@@ -303,17 +303,28 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             FoodDesciptionLabel.Text = Description;
             FoodId = Id;
             Image img = LoadImageSafe(PicturePath);
-            string path = Path.Combine(Application.StartupPath, PicturePath);
-            if (File.Exists(path)) // Kiểm tra xem người dùng có truyền ảnh vào không
+            //string path = Path.Combine(Application.StartupPath, PicturePath);
+            //if (File.Exists(path)) // Kiểm tra xem người dùng có truyền ảnh vào không
+            //{
+            //    using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+            //    {
+            //        PictureFood.BackgroundImage = Image.FromStream(fs); // Đặt BackgroundImage là 1 ảnh từ máy
+            //    }
+            //}
+            //else
+            //{
+            //    PictureFood.BackgroundImage = null;
+            //}
+            if (img != null)
             {
-                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
-                {
-                    PictureFood.BackgroundImage = Image.FromStream(fs); // Đặt BackgroundImage là 1 ảnh từ máy
-                }
+                PictureFood.BackgroundImage = img;
+                PictureFood.BackgroundImageLayout = ImageLayout.Zoom; // Co giãn ảnh cho đẹp
             }
             else
             {
+                // Nếu không có ảnh hoặc ảnh lỗi -> Để trống hoặc gán ảnh mặc định
                 PictureFood.BackgroundImage = null;
+                // Hoặc: PictureFood.BackgroundImage = Properties.Resources.NoImage;
             }
         }
         public event EventHandler OnDeleteClicked; // Tạo sự kiện xóa
