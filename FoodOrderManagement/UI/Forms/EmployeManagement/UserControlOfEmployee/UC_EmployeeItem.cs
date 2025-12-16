@@ -52,7 +52,7 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
         {
             if (MessageBox.Show("Bạn chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                OnEditClicked?.Invoke(this, _currentEmp);
+                OnDeleteClicked?.Invoke(this, _currentEmp);
             }
         }
     }
