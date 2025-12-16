@@ -302,7 +302,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             FoodPriceLabel.Text = price;
             FoodDesciptionLabel.Text = Description;
             FoodId = Id;
-
+            Image img = LoadImageSafe(PicturePath);
             string path = Path.Combine(Application.StartupPath, PicturePath);
             if (File.Exists(path)) // Kiểm tra xem người dùng có truyền ảnh vào không
             {
@@ -325,6 +325,38 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         private void EditButton_Click(object sender, EventArgs e)
         {
             OnEditClicked?.Invoke(this, EventArgs.Empty);
+        }
+        private Image LoadImageSafe(string relativePath)
+        {
+            // 1. Kiểm tra chuỗi rỗng
+            if (string.IsNullOrEmpty(relativePath)) return null;
+
+            try
+            {
+                // 2. Tạo đường dẫn tuyệt đối
+                string fullPath = Path.Combine(Application.StartupPath, relativePath);
+
+                // 3. Kiểm tra file có tồn tại không
+                if (!File.Exists(fullPath)) return null;
+
+                // 4. Đọc file an toàn (Dùng FileStream để tránh lỗi "File in use" sau này)
+                using (FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                {
+                    // Copy sang MemoryStream để không khóa file gốc
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        fs.CopyTo(ms);
+                        ms.Position = 0;
+                        return Image.FromStream(ms);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // 5. Nếu file bị lỗi (corrupted) hoặc không phải ảnh -> Trả về null
+                // (Đây chính là chỗ giúp bạn tránh lỗi "Parameter is not valid")
+                return null;
+            }
         }
     }
 }

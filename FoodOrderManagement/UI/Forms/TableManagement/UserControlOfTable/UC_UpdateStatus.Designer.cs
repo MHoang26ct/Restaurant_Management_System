@@ -276,6 +276,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             AvailableButton.TabIndex = 10;
             AvailableButton.Text = "Còn trống";
             AvailableButton.TextAlign = HorizontalAlignment.Left;
+            AvailableButton.Click += AvailableButton_Click;
             // 
             // OccupiedButton
             // 
@@ -298,6 +299,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             OccupiedButton.TabIndex = 11;
             OccupiedButton.Text = "Đang sử dụng";
             OccupiedButton.TextAlign = HorizontalAlignment.Left;
+            OccupiedButton.Click += OccupiedButton_Click;
             // 
             // ReservedButton
             // 
@@ -320,6 +322,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             ReservedButton.TabIndex = 12;
             ReservedButton.Text = "Đã đặt bàn";
             ReservedButton.TextAlign = HorizontalAlignment.Left;
+            ReservedButton.Click += ReservedButton_Click;
             // 
             // ExitButton
             // 
