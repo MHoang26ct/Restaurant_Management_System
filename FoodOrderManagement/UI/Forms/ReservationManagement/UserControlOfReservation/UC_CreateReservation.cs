@@ -29,5 +29,17 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); // chỉ cho nhập số
         }
+
+        private void CreateOrderButton_Click(object sender, EventArgs e)
+        {
+            if (TimeReservationCBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn khung giờ đặt bàn",
+                                "Thông báo",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+        }
     }
 }
