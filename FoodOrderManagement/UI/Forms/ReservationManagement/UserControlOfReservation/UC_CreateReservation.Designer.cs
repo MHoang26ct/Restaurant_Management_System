@@ -189,6 +189,7 @@
             CreateOrderButton.Size = new Size(447, 42);
             CreateOrderButton.TabIndex = 18;
             CreateOrderButton.Text = "Tạo Lịch Đặt Bàn ";
+            CreateOrderButton.Click += CreateOrderButton_Click;
             // 
             // doubleBufferedtlp1
             // 
@@ -391,6 +392,7 @@
             PhoneNumberTBox.ShadowDecoration.CustomizableEdges = customizableEdges12;
             PhoneNumberTBox.Size = new Size(453, 43);
             PhoneNumberTBox.TabIndex = 21;
+            PhoneNumberTBox.KeyPress += PhoneNumberTBox_KeyPress;
             // 
             // label4
             // 
@@ -476,6 +478,7 @@
             TimeReservationCBox.Font = new Font("Segoe UI", 10F);
             TimeReservationCBox.ForeColor = Color.Black;
             TimeReservationCBox.ItemHeight = 40;
+            TimeReservationCBox.Items.AddRange(new object[] { "17:30 – 19:00", "19:00 – 20:30", "20:30 – 22:00" });
             TimeReservationCBox.Location = new Point(234, 2);
             TimeReservationCBox.Margin = new Padding(7, 2, 0, 0);
             TimeReservationCBox.Name = "TimeReservationCBox";
