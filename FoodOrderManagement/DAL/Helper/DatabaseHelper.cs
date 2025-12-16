@@ -74,5 +74,15 @@ namespace FoodOrderManagement.DAL.Helper
 
             return list;
         }
+
+        //
+
+        public SqlCommand CreateCommand(string query)
+        {
+            SqlConnection conn = new SqlConnection(_connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+            return cmd;
+        }
     }
 }

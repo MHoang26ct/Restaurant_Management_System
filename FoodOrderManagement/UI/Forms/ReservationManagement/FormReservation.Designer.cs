@@ -52,7 +52,7 @@
             doubleBufferedtlp4 = new DoubleBufferedTLP();
             SearchReservationTBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             DateTimePickerSearch = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            dgvReservations = new Guna.UI2.WinForms.Guna2DataGridView();
             doubleBufferedtlp1.SuspendLayout();
             doubleBufferedtlp2.SuspendLayout();
             doubleBufferedtlp3.SuspendLayout();
@@ -60,7 +60,7 @@
             doubleBufferedtlp6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ReservationIcon).BeginInit();
             doubleBufferedtlp4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvReservations).BeginInit();
             SuspendLayout();
             // 
             // doubleBufferedtlp1
@@ -70,7 +70,7 @@
             doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 84F));
             doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             doubleBufferedtlp1.Controls.Add(doubleBufferedtlp2, 1, 0);
-            doubleBufferedtlp1.Controls.Add(guna2DataGridView1, 1, 1);
+            doubleBufferedtlp1.Controls.Add(dgvReservations, 1, 1);
             doubleBufferedtlp1.Dock = DockStyle.Fill;
             doubleBufferedtlp1.Location = new Point(0, 0);
             doubleBufferedtlp1.Name = "doubleBufferedtlp1";
@@ -263,10 +263,10 @@
             DateTimePickerSearch.TabIndex = 1;
             DateTimePickerSearch.Value = new DateTime(2025, 12, 12, 16, 9, 47, 0);
             // 
-            // guna2DataGridView1
+            // dgvReservations
             // 
             dataGridViewCellStyle1.BackColor = Color.White;
-            guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvReservations.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -274,9 +274,9 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            guna2DataGridView1.ColumnHeadersHeight = 4;
-            guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvReservations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvReservations.ColumnHeadersHeight = 36;
+            dgvReservations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -284,35 +284,35 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            guna2DataGridView1.Dock = DockStyle.Fill;
-            guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.Location = new Point(94, 164);
-            guna2DataGridView1.Name = "guna2DataGridView1";
-            guna2DataGridView1.RowHeadersVisible = false;
-            guna2DataGridView1.Size = new Size(1274, 639);
-            guna2DataGridView1.TabIndex = 1;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 4;
-            guna2DataGridView1.ThemeStyle.ReadOnly = false;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            guna2DataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25;
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgvReservations.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvReservations.Dock = DockStyle.Fill;
+            dgvReservations.GridColor = Color.FromArgb(231, 229, 255);
+            dgvReservations.Location = new Point(94, 164);
+            dgvReservations.Name = "dgvReservations";
+            dgvReservations.RowHeadersVisible = false;
+            dgvReservations.Size = new Size(1274, 639);
+            dgvReservations.TabIndex = 1;
+            dgvReservations.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgvReservations.ThemeStyle.AlternatingRowsStyle.Font = null;
+            dgvReservations.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            dgvReservations.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            dgvReservations.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            dgvReservations.ThemeStyle.BackColor = Color.White;
+            dgvReservations.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dgvReservations.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgvReservations.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvReservations.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            dgvReservations.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgvReservations.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvReservations.ThemeStyle.HeaderStyle.Height = 36;
+            dgvReservations.ThemeStyle.ReadOnly = false;
+            dgvReservations.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dgvReservations.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvReservations.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            dgvReservations.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            dgvReservations.ThemeStyle.RowsStyle.Height = 25;
+            dgvReservations.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgvReservations.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // FormReservation
             // 
@@ -334,7 +334,7 @@
             doubleBufferedtlp6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ReservationIcon).EndInit();
             doubleBufferedtlp4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvReservations).EndInit();
             ResumeLayout(false);
         }
 
@@ -351,6 +351,6 @@
         private DoubleBufferedTLP doubleBufferedtlp4;
         private Guna.UI2.WinForms.Guna2TextBox SearchReservationTBox1;
         private Guna.UI2.WinForms.Guna2DateTimePicker DateTimePickerSearch;
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvReservations;
     }
 }

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.UI.Forms.ReservationManagement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FoodOrderManagement.DAL.Models.Entities;
 
 namespace FoodOrderManagement.DAL.Repositories.Interfaces {
     public interface IReservationsRepository {
@@ -47,5 +48,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
 
         // Thay đổi thông tin đặt bàn (dùng luôn cho hủy đặt bàn)
         public Task<bool> UpdateReservationAsync(Reservations reservation);
+        public Task<List<ReservationViewModel>> GetAllReservationsAsync();
     }
 }

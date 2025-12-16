@@ -221,7 +221,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             }
             CustomerNameTBox.Enabled = false;
             PhoneNumberTBox.Enabled = false;
-
+            label1.Text = "Cập nhật đơn hàng";
             CreateOrderButton.Text = "Cập Nhật Đơn Hàng";
             ListFoodFlowLayout.Controls.Clear();
             var oldDetails = await _orderDetailsRepository.GetOrderDetailsByOrderIdAsync(oldOrder.Id);

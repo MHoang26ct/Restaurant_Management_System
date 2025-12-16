@@ -106,7 +106,7 @@ namespace FoodOrderManagement.AdminControl
         //
         private void ReportPicture_Click(object sender, EventArgs e)
         {
-            FormReservation FormReport = new FormReservation();
+            FormReservation FormReport =_scope.Resolve<FormReservation>();
             FormMain.instance.ReservationButton.PerformClick();
         }
         //

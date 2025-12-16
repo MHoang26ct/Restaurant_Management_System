@@ -167,6 +167,7 @@
             AddFoodButton.Size = new Size(447, 38);
             AddFoodButton.TabIndex = 0;
             AddFoodButton.Text = "Thêm món ăn";
+            AddFoodButton.Click += btnAddFood_Click;
             // 
             // CreateOrderButton
             // 

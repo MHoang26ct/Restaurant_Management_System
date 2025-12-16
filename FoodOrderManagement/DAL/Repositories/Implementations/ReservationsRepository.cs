@@ -2,10 +2,12 @@
 using FoodOrderManagement.DAL.Models.Entities;
 using FoodOrderManagement.DAL.Repositories;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
+using FoodOrderManagement.UI.Forms.ReservationManagement;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,6 +110,53 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             };
             int rowsAffected = await _db.ExecuteNonQueryAsync("UpdateReservation", parameters);
             return rowsAffected > 0;
+        }
+        public async Task<List<ReservationViewModel>> GetAllReservationsAsync()
+        {
+            List<ReservationViewModel> list = new List<ReservationViewModel>();
+
+            string query = @"
+        SELECT 
+            r.ReservationID as Id, 
+            c.FullName, 
+            c.PhoneNumber, 
+            r.TableId, 
+            r.ReservationTime, 
+            r.NumberOfGuests, 
+            r.Status
+        FROM Reservations r
+        JOIN Customers c ON r.CustomerID = c.CustomerID 
+        ORDER BY r.ReservationTime DESC";
+
+            try
+            {
+                using (var command = _db.CreateCommand(query))
+                {
+                    using (var reader = await command.ExecuteReaderAsync(CommandBehavior.CloseConnection))
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            list.Add(new ReservationViewModel
+                            {
+                                Id = (int)reader["Id"],
+                                CustomerName = reader["FullName"].ToString(),
+                                PhoneNumber = reader["PhoneNumber"].ToString(),
+                                TableId = (int)reader["TableId"],
+                                ReservationTime = (DateTime)reader["ReservationTime"],
+                                NumberOfGuests = (int)reader["NumberOfGuests"],
+                                Status = reader["Status"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Có thể log lỗi hoặc ném ra ngoài
+                throw new Exception("Lỗi lấy danh sách đặt bàn: " + ex.Message);
+            }
+
+            return list;
         }
     }
 }
