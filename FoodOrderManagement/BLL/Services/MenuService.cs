@@ -318,7 +318,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             if (img != null)
             {
                 PictureFood.BackgroundImage = img;
-                PictureFood.BackgroundImageLayout = ImageLayout.Zoom; // Co giãn ảnh cho đẹp
+                PictureFood.BackgroundImageLayout = ImageLayout.Stretch; // Co giãn ảnh cho đẹp
             }
             else
             {
