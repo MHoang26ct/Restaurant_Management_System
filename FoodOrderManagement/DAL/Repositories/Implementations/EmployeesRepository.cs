@@ -27,7 +27,8 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         // Lấy thông tin nhân viên theo tên và số điện thoại
         public async Task<Employee?> GetEmployeeByNameAndPhoneAsync(string fullName, string phoneNumber) {
             var parameters = new SqlParameter[] {
-                new SqlParameter("@FullName", fullName),
+                // Sửa thành nvarchar
+                new SqlParameter("@FullName", System.Data.SqlDbType.NVarChar, 100) {Value = fullName},
                 new SqlParameter("@PhoneNumber", phoneNumber)
             };
             return await _db.QuerySingleAsync("GetEmployeesByNameAndPhone", Mapper, parameters);
