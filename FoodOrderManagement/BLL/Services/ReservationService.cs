@@ -11,7 +11,6 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
 {
     public partial class UC_CreateReservation : UserControl
     {
-        // ✅ SỰ KIỆN: 4 THAM SỐ (Tên, SĐT, Đơn đặt, Danh sách món)
         public event Action<string, string, Reservations, List<orderDetail>> OnCreateClicked;
         public event EventHandler OnExitClicked;
 
@@ -31,11 +30,9 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
             for (int i = 9; i <= 21; i++) { TimeReservationCBox.Items.Add($"{i}:00"); TimeReservationCBox.Items.Add($"{i}:30"); }
         }
 
-        // Nút "+ Thêm món"
+        // Nút + Thêm món
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            // Tạo dòng chọn món (Tận dụng UC_AddFoodOrder)
-            // Đảm bảo bạn đã kéo 1 cái FlowLayoutPanel tên là 'pnlFoodList' vào giao diện nhé!
             if (ListFoodFlowLayout == null) { MessageBox.Show("Thiếu FlowLayoutPanel 'pnlFoodList' trên giao diện!"); return; }
 
             var row = _scope.Resolve<UC_AddFoodOrder>();
@@ -45,7 +42,6 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
 
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
-            // 1. Validate
             if (string.IsNullOrEmpty(CustomerNameTBox.Text) || string.IsNullOrEmpty(PhoneNumberTBox.Text))
             {
                 MessageBox.Show("Vui lòng nhập Tên và SĐT!"); return;
@@ -54,8 +50,6 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
             {
                 MessageBox.Show("Vui lòng chọn khung giờ!"); return;
             }
-
-            // 2. Gom dữ liệu cơ bản
             string name = CustomerNameTBox.Text;
             string phone = PhoneNumberTBox.Text;
             DateTime fullDate = DateReservation.Value.Date + TimeSpan.Parse(TimeReservationCBox.SelectedItem.ToString());
@@ -69,8 +63,6 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
                 Status = "Pending",
                 customerId = 0
             };
-
-            // 3. GOM DANH SÁCH MÓN ĂN TỪ UI
             List<orderDetail> foodList = new List<orderDetail>();
 
             // Duyệt qua các dòng chọn món trong panel
@@ -88,8 +80,6 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
                     }
                 }
             }
-
-            // 4. Bắn RA NGOÀI (4 Tham số)
             OnCreateClicked?.Invoke(name, phone, res, foodList);
         }
 
@@ -152,49 +142,31 @@ namespace FoodOrderManagement.AdminControl
         }
         private void ApplyFilter()
         {
-            // Nếu danh sách chưa có dữ liệu thì thôi
             if (_originalList == null || _originalList.Count == 0) return;
-
-            // 1. Lấy từ khóa tìm kiếm (chuyển về chữ thường, bỏ khoảng trắng thừa)
-            // Giả sử Textbox tìm kiếm tên là: txtSearch
             string keyword = SearchReservationTBox1.Text.Trim().ToLower();
-
-            // 2. Lấy ngày được chọn (chỉ lấy phần Ngày/Tháng/Năm, bỏ giờ phút)
-            // Giả sử DatePicker tên là: dtpDateFilter
             DateTime selectedDate = DateTimePickerSearch.Value.Date;
-
-            // 3. Thực hiện Lọc (Dùng LINQ)
             var filteredList = _originalList.Where(r =>
             {
-                // A. Điều kiện Ngày: Ngày đặt phải trùng với ngày chọn
                 bool matchDate = r.ReservationTime.Date == selectedDate;
-
-                // B. Điều kiện Từ khóa (Tìm theo SĐT hoặc Mã bàn hoặc Mã Đơn)
-                bool matchKeyword = true; // Mặc định là đúng nếu không nhập gì
-                if (!string.IsNullOrEmpty(keyword) && keyword != "tìm kiếm...") // Bỏ qua placeholder
+                bool matchKeyword = true; 
+                if (!string.IsNullOrEmpty(keyword) && keyword != "tìm kiếm...") 
                 {
-                    matchKeyword = r.PhoneNumber.Contains(keyword) ||       // Tìm theo SĐT
-                                   r.TableId.ToString().Contains(keyword) || // Tìm theo ID Bàn
-                                   r.Id.ToString().Contains(keyword) ||      // Tìm theo Mã Đơn
-                                   r.CustomerName.ToLower().Contains(keyword); // Tìm theo Tên (Khuyến mãi thêm)
+                    matchKeyword = r.PhoneNumber.Contains(keyword) ||       
+                                   r.TableId.ToString().Contains(keyword) || 
+                                   r.Id.ToString().Contains(keyword) ||     
+                                   r.CustomerName.ToLower().Contains(keyword); 
                 }
-
-                // C. Kết hợp cả 2 điều kiện
                 return matchDate && matchKeyword;
 
             }).ToList();
-
-            // 4. Đổ dữ liệu đã lọc lên Grid
             RenderGrid(filteredList);
         }
 
-        // Tách hàm vẽ Grid ra riêng cho gọn
         private void RenderGrid(List<ReservationViewModel> list)
         {
             dgvReservations.DataSource = null;
             dgvReservations.DataSource = list;
 
-            // Format cột (như code cũ của bạn)
             if (dgvReservations.Columns["Id"] != null) dgvReservations.Columns["Id"].HeaderText = "Mã Đơn";
             if (dgvReservations.Columns["CustomerName"] != null) dgvReservations.Columns["CustomerName"].HeaderText = "Khách Hàng";
             if (dgvReservations.Columns["PhoneNumber"] != null) dgvReservations.Columns["PhoneNumber"].HeaderText = "SĐT";
@@ -211,15 +183,12 @@ namespace FoodOrderManagement.AdminControl
         {
             _overlayBackground.Show(this);
 
-            // Truyền _scope vào để UC con tạo được các dòng chọn món
             uc_CreateReservation = new UC_CreateReservation(_scope);
 
-            // ✅ HỨNG SỰ KIỆN: PHẢI ĐỦ 4 BIẾN (thêm foodList vào cuối)
             uc_CreateReservation.OnCreateClicked += async (name, phone, resData, foodList) =>
             {
                 try
                 {
-                    // 1. TÌM/TẠO KHÁCH HÀNG
                     var customer = await _customersRepository.GetCustomerByNameAndPhoneAsync(name, phone);
                     int cusId = 0;
                     if (customer != null)
@@ -233,26 +202,20 @@ namespace FoodOrderManagement.AdminControl
                     }
                     resData.customerId = cusId;
 
-                    // 2. TẠO RESERVATION (Lấy ID về)
                     int newResId = await _reservationsRepository.AddReservationAsync(resData);
 
-                    // 3. TẠO ORDER (Nếu có chọn món)
                     if (foodList != null && foodList.Count > 0)
                     {
                         Orders newOrder = new Orders
                         {
                             CustomerId = cusId,
                             TableId = resData.TableId,
-                            ReservationId = newResId, // Liên kết với lịch đặt
+                            ReservationId = newResId, 
                             OrderTime = DateTime.Now,
                             TotalAmount = 0,
                             NumberOfGuests = resData.NumberOfGuests
                         };
-
-                        // Tạo Order -> Lấy ID
                         int newOrderId = await _ordersRepository.AddOrderAsync(newOrder);
-
-                        // Lưu chi tiết món
                         foreach (var item in foodList)
                         {
                             item.OrderId = newOrderId;

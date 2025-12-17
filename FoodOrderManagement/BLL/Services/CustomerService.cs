@@ -34,7 +34,7 @@ namespace FoodOrderManagement.AdminControl
             // 2. Duyệt danh sách cần hiện
             foreach (var cus in listToShow)
             {
-                AddCustomerItemToUI(cus); // Hàm này bạn đã có sẵn, giữ nguyên
+                AddCustomerItemToUI(cus); 
             }
 
             // 3. Cho phép vẽ lại
@@ -42,15 +42,14 @@ namespace FoodOrderManagement.AdminControl
         }
         private void AddCustomerItemToUI(Customers cusData)
         {
-            // Sử dụng Resolve để tạo item (để Autofac quản lý nếu sau này item cần Repo)
-            var newItem = _scope.Resolve<UC_CustomerItem>(); // Hoặc new UC_CustomerItem() nếu item không cần DI
+            var newItem = _scope.Resolve<UC_CustomerItem>(); 
 
             newItem.SetCustomerData(cusData);
             newItem.OnEditClicked += HandleEditCustomer;
             newItem.OnDeleteClicked += HandleDeleteCustomer;
 
             FlowLayoutCustomer.Controls.Add(newItem);
-            FlowLayoutCustomer.Controls.SetChildIndex(newItem, 0); // Đưa lên đầu
+            FlowLayoutCustomer.Controls.SetChildIndex(newItem, 0);
         }
     }
 }
@@ -64,7 +63,6 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
     {
         private async void ConfirmButton_Click(object sender, EventArgs e)
         {
-            // Validate dữ liệu
             if (string.IsNullOrEmpty(CustomerNameTBox.Text) || string.IsNullOrEmpty(PhoneNumberTBox.Text))
             {
                 MessageBox.Show("Vui lòng nhập tên và số điện thoại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -73,13 +71,12 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
             if (!string.IsNullOrEmpty(EmailTBox.Text) && !IsValidEmail(EmailTBox.Text))
             {
                 MessageBox.Show("Email không đúng định dạng (VD: abc@gmail.com). Vui lòng kiểm tra lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                EmailTBox.Focus(); // Đưa con trỏ chuột về ô Email
-                return; // QUAN TRỌNG: Dừng hàm tại đây, không cho chạy xuống code lưu bên dưới
+                EmailTBox.Focus(); 
+                return;
             }
             //Kiểm tra xem đang THÊM hay đang SỬA
             if (_editingCustomer == null)
             {
-                // === TRƯỜNG HỢP THÊM MỚI ===
                 Customers newCus = new Customers
                 {
                     FullName = CustomerNameTBox.Text,
@@ -94,21 +91,16 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
                 int newId = await _customersRepository.AddCustomerAsync(newCus);
                 newCus.Id = newId;
 
-                OnCustomerAdded?.Invoke(this, newCus); // Báo Form cha: Đã thêm xong
+                OnCustomerAdded?.Invoke(this, newCus); 
                 MessageBox.Show("Thêm thành công!");
             }
             else
             {
-                // === TRƯỜNG HỢP CẬP NHẬT ===
-                // Cập nhật giá trị mới vào biến tạm
                 _editingCustomer.FullName = CustomerNameTBox.Text;
                 _editingCustomer.PhoneNumber = PhoneNumberTBox.Text;
                 _editingCustomer.Email = EmailTBox.Text;
-                // Không cập nhật TotalSpent và Rank ở đây (giữ nguyên cái cũ)
-
                 await _customersRepository.UpdateCustomerInfoAsync(_editingCustomer);
-
-                OnCustomerUpdated?.Invoke(this, _editingCustomer); // Báo Form cha: Đã sửa xong
+                OnCustomerUpdated?.Invoke(this, _editingCustomer); 
                 MessageBox.Show("Cập nhật thành công!");
             }
         }
@@ -116,12 +108,3 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
     }
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
-{
-    public partial class UC_CustomerItem : UserControl
-    {
-
-    }
-}

@@ -83,20 +83,15 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         }
         public async Task DeleteAllDetailsByOrderIdAsync(int orderId)
         {
-            // Lưu ý: Thay "ConnectionString" bằng chuỗi kết nối thực tế của bạn
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
 
-                // Câu lệnh SQL để xóa tất cả món của 1 đơn hàng
                 string query = "DELETE FROM OrderDetails WHERE OrderID = @OrderID";
 
                 using (var command = new SqlCommand(query, connection))
                 {
-                    // Truyền tham số để tránh lỗi SQL Injection
                     command.Parameters.AddWithValue("@OrderID", orderId);
-
-                    // Thực thi lệnh xóa
                     await command.ExecuteNonQueryAsync();
                 }
             }

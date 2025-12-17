@@ -19,7 +19,6 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
     public partial class FrmMenu : Form
     {
 
-        // Hàm này chỉ có nhiệm vụ: Nhận 1 danh sách -> Vẽ lên màn hình
         private OverlayBackground _overlayBackground;
         private void RenderFoodList(List<Foods> listToRender)
         {
@@ -122,7 +121,6 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             _uc_AddFood.Visible = false;
             this.Controls.Add(_uc_AddFood);
             _uc_AddFood.BringToFront();
-            //Khời tạo vị trí của AddFood
             _uc_AddFood.Location = new Point(
                 (this.Width - _uc_AddFood.Width) / 2,
                 (this.Height - _uc_AddFood.Height) / 4
@@ -132,7 +130,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             CatagorieFoodsCBox.SelectedIndexChanged += (s, args) => ApplyFilter();
             CatagorieFoodsCBox.Items.Clear();
             CatagorieFoodsCBox.Items.AddRange(new object[] { "Tất cả", "Món chính", "Khai vị", "Tráng miệng", "Đồ uống" });
-            CatagorieFoodsCBox.SelectedIndex = 0; // Chọn mặc định là Tất cả
+            CatagorieFoodsCBox.SelectedIndex = 0;
             _uc_AddFood.FoodAdded += (s, args) =>
             {
                 _uc_AddFood.Visible = false;
@@ -233,7 +231,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             Foods NewFood = new Foods();
             {
                 NewFood.Name = NameFoodTBox.Text;
-                NewFood.Category = CatagorieFoodsCBox.SelectedItem?.ToString() ?? "Tất cả"; // tránh báo lỗi, nếu là null trả về "Tất cả"
+                NewFood.Category = CatagorieFoodsCBox.SelectedItem?.ToString() ?? "Tất cả"; 
                 if (!decimal.TryParse(PriceTBox.Text, out decimal price))
                 {
                     MessageBox.Show("Giá tiền không hợp lệ.", "Lỗi Thông Tin");
@@ -321,16 +319,14 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             if (img != null)
             {
                 PictureFood.BackgroundImage = img;
-                PictureFood.BackgroundImageLayout = ImageLayout.Stretch; // Co giãn ảnh cho đẹp
+                PictureFood.BackgroundImageLayout = ImageLayout.Stretch; 
             }
             else
             {
-                // Nếu không có ảnh hoặc ảnh lỗi -> Để trống hoặc gán ảnh mặc định
                 PictureFood.BackgroundImage = null;
-                // Hoặc: PictureFood.BackgroundImage = Properties.Resources.NoImage;
             }
         }
-        public event EventHandler OnDeleteClicked; // Tạo sự kiện xóa
+        public event EventHandler OnDeleteClicked; 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             OnDeleteClicked?.Invoke(this, EventArgs.Empty);
@@ -342,21 +338,14 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         }
         private Image LoadImageSafe(string relativePath)
         {
-            // 1. Kiểm tra chuỗi rỗng
             if (string.IsNullOrEmpty(relativePath)) return null;
 
             try
             {
-                // 2. Tạo đường dẫn tuyệt đối
                 string fullPath = Path.Combine(Application.StartupPath, relativePath);
-
-                // 3. Kiểm tra file có tồn tại không
                 if (!File.Exists(fullPath)) return null;
-
-                // 4. Đọc file an toàn (Dùng FileStream để tránh lỗi "File in use" sau này)
                 using (FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
                 {
-                    // Copy sang MemoryStream để không khóa file gốc
                     using (MemoryStream ms = new MemoryStream())
                     {
                         fs.CopyTo(ms);
@@ -367,8 +356,6 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             }
             catch (Exception)
             {
-                // 5. Nếu file bị lỗi (corrupted) hoặc không phải ảnh -> Trả về null
-                // (Đây chính là chỗ giúp bạn tránh lỗi "Parameter is not valid")
                 return null;
             }
         }

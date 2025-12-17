@@ -152,7 +152,6 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             }
             catch (Exception ex)
             {
-                // Có thể log lỗi hoặc ném ra ngoài
                 throw new Exception("Lỗi lấy danh sách đặt bàn: " + ex.Message);
             }
 

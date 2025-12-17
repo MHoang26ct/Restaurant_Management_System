@@ -12,9 +12,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
     {
         private ITablesRepository _tablesRepository;
 
-        // Sự kiện báo thêm thành công
         public event EventHandler OnTableAdded;
-        // Hàm nhận Repo (Dependency Injection thủ công)
         public void SetRepository(ITablesRepository repo)
         {
             _tablesRepository = repo;
@@ -24,8 +22,6 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
         {
             try
             {
-                // Giả sử bạn có NumericUpDown tên numericCapacity
-                // Nếu chưa có, hãy vào Designer thêm vào nhé
                 int capacity = (int)CapacityNBox.Value;
 
                 if (_tablesRepository != null)
@@ -33,10 +29,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
                     await _tablesRepository.AddTableAsync(capacity, "Available");
                     MessageBox.Show("Thêm bàn mới thành công!");
 
-                    // Bắn sự kiện để Form cha load lại
                     OnTableAdded?.Invoke(this, EventArgs.Empty);
-
-                    // Đóng popup
                     this.Parent.Controls.Remove(this);
                     this.Dispose();
                 }
@@ -61,10 +54,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 {
     public partial class UC_TableItem : UserControl
     {
-        // Biến lưu dữ liệu bàn hiện tại
         public TableData CurrentData { get; private set; }
-
-        // Sự kiện Click truyền data ra ngoài
         public event EventHandler<TableData> OnTableClicked;
 
         private void TriggerClick(object sender, EventArgs e)
@@ -77,17 +67,13 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             CurrentData = data;
 
             NumberCircleLabel.Text = data.TableId.ToString();
-            NumberTableLabel.Text = data.TableName; // Hoặc "Bàn " + data.TableId
+            NumberTableLabel.Text = data.TableName; 
             CapacityLabel.Text = data.Capacity.ToString();
-
-            // Logic đổi màu (Giữ nguyên code giao diện cũ của bạn ở đây)
             UpdateUIByStatus(data.Status);
         }
 
         private void UpdateUIByStatus(string status)
         {
-            // ... Copy đoạn switch-case đổi màu GunaUI của bạn vào đây ...
-            // Ví dụ:
             switch (status)
             {
                 case "Available":
@@ -153,7 +139,6 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             if (_tablesRepository == null) return;
             try
             {
-                // Gọi Repo với tham số được truyền vào
                 await _tablesRepository.UpdateTableStatusAndOpenTimeAsync(_currentTableId, newStatus, openTime);
 
                 MessageBox.Show("Cập nhật trạng thái thành công!");
@@ -181,26 +166,15 @@ namespace FoodOrderManagement.AdminControl
         {
             try
             {
-                // 1. Xóa sạch màn hình trước khi vẽ
                 FlowLayoutTable.Controls.Clear();
-
-                // 2. Tạo Card "Thêm Bàn" (Dấu cộng)
                 var addCard = _scope.Resolve<UC_AddTableCard>();
-                // Hoặc: var addCard = new UC_AddTableCard();
-
                 addCard.OnCardClicked += (s, e) => ShowAddTablePopup();
-
                 FlowLayoutTable.Controls.Add(addCard);
-
-                // 3. Load danh sách bàn thật từ Database
                 var tables = await _tablesRepository.GetAllTablesAsync();
                 UpdateStatisticsUI(tables);
                 foreach (var t in tables)
-                {
-                    // Tạo item hiển thị bàn
-                    var item = _scope.Resolve<UC_TableItem>();
-
-                    // Chuyển dữ liệu từ DB sang DTO hiển thị
+                {                    
+                    var item = _scope.Resolve<UC_TableItem>();             
                     var data = new TableData
                     {
                         TableId = t.Id,
@@ -210,10 +184,7 @@ namespace FoodOrderManagement.AdminControl
                     };
 
                     item.SetData(data);
-
-                    // Gán sự kiện Click vào bàn -> Sửa trạng thái
                     item.OnTableClicked += (sender, tableData) => ShowUpdateStatusPopup(tableData);
-
                     FlowLayoutTable.Controls.Add(item);
                 }
             }
@@ -223,25 +194,20 @@ namespace FoodOrderManagement.AdminControl
             }
         }
 
-        // --- LOGIC HIỆN POPUP THÊM BÀN ---
+
         private void ShowAddTablePopup()
         {
             _overlayBackground.Show(this);
 
             var ucAdd = _scope.Resolve<UC_AddTable>();
-            ucAdd.SetRepository(_tablesRepository); // Nếu bạn chưa dùng DI Constructor cho UC
+            ucAdd.SetRepository(_tablesRepository); 
 
-            // Khi thêm xong -> Load lại danh sách (Để hiện bàn mới lên ngay)
             ucAdd.OnTableAdded += (s, args) =>
             {
-                LoadTableList(); // 👈 Quan trọng: Load lại từ DB
+                LoadTableList(); 
                 _overlayBackground.Hide(this);
             };
-
-            // Khi bấm hủy hoặc đóng
             ucAdd.Disposed += (s, args) => _overlayBackground.Hide(this);
-
-            // Căn giữa màn hình
             this.Controls.Add(ucAdd);
             ucAdd.Location = new Point(
                 (this.Width - ucAdd.Width) / 2,
@@ -250,7 +216,6 @@ namespace FoodOrderManagement.AdminControl
             ucAdd.BringToFront();
         }
 
-        // --- LOGIC HIỆN POPUP SỬA TRẠNG THÁI ---
         private void ShowUpdateStatusPopup(TableData data)
         {
             _overlayBackground.Show(this);
@@ -260,7 +225,7 @@ namespace FoodOrderManagement.AdminControl
 
             ucUpdate.OnStatusChanged += (s, args) =>
             {
-                LoadTableList(); // 👈 Load lại để cập nhật màu sắc mới
+                LoadTableList(); 
                 _overlayBackground.Hide(this);
             };
 
@@ -277,13 +242,11 @@ namespace FoodOrderManagement.AdminControl
         {
             if (tables == null) return;
 
-            // 1. Tính toán
             int total = tables.Count;
             int available = tables.Count(t => t.Status == "Available");
             int occupied = tables.Count(t => t.Status == "Occupied");
             int reserved = tables.Count(t => t.Status == "Reserved");
 
-            // 2. Hiển thị lên Label (Đảm bảo bạn đã đặt tên Label đúng như Bước 1)
             TotalTableLabel.Text = total.ToString();
             AvailableLabel.Text = available.ToString();
             OccupiedLabel.Text = occupied.ToString();

@@ -463,7 +463,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             dgvChiTiet.DataSource = null;
             dgvChiTiet.DataSource = listMonAn;
 
-            // 3. Tinh chỉnh giao diện cột (Tùy chọn cho đẹp)
             if (dgvChiTiet.Columns["TenMon"] != null) dgvChiTiet.Columns["TenMon"].HeaderText = "Tên Món";
             if (dgvChiTiet.Columns["SoLuong"] != null) dgvChiTiet.Columns["SoLuong"].HeaderText = "SL";
             if (dgvChiTiet.Columns["DonGia"] != null)

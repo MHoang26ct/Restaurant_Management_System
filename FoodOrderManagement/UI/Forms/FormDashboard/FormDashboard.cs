@@ -19,12 +19,14 @@ namespace FoodOrderManagement.AdminControl
         // Lưu lại toàn bộ control với địa chỉ của chúng ban đầu
         private Dictionary<Control, Padding> DiOriginalLocations = new Dictionary<Control, Padding>();
         private readonly ILifetimeScope _scope;
-        public FormDashboard(ILifetimeScope scope)
+        private readonly IStatisticsRepository _statisticsRepository;
+        public FormDashboard(ILifetimeScope scope, IStatisticsRepository statisticsRepository)
         {
 
             InitializeComponent();
             TimeShow();
             _scope = scope;
+            _statisticsRepository = statisticsRepository;
             //
             // MenuPicture
             //
@@ -57,7 +59,7 @@ namespace FoodOrderManagement.AdminControl
             BlurryEmployeePanel.Dock = DockStyle.Fill;
         }
         private void TimeShow()
-                {
+        {
             DateTime now = DateTime.Now;
             TimeLabel.Text = now.ToString("HH:mm:ss tt");
             DateLabel.Text = now.ToString("dddd, dd/MM/yyyy", new CultureInfo("vi-VN"));
@@ -106,7 +108,7 @@ namespace FoodOrderManagement.AdminControl
         //
         private void ReportPicture_Click(object sender, EventArgs e)
         {
-            FormReservation FormReport =_scope.Resolve<FormReservation>();
+            FormReservation FormReport = _scope.Resolve<FormReservation>();
             FormMain.instance.ReservationButton.PerformClick();
         }
         //
@@ -117,5 +119,6 @@ namespace FoodOrderManagement.AdminControl
             FormEmployee FormEmployee = _scope.Resolve<FormEmployee>();
             FormMain.instance.EmployeesButton.PerformClick();
         }
+
     }
 }

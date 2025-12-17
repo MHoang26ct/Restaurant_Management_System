@@ -93,16 +93,12 @@ public class CustomersRepository : ICustomersRepository {
         }
         public async Task DeleteCustomerAsync(int id)
         {
-            // Thay vì viết câu lệnh SQL, hãy gọi tên Stored Procedure
             string procedureName = "DeleteCustomer";
 
             var parameters = new SqlParameter[]
             {
-        // Tham số này phải trùng tên với tham số trong Stored Procedure ở Bước 1
         new SqlParameter("@CustomerID", id)
             };
-
-            // Gọi hàm ExecuteNonQueryAsync với tên Procedure
             await _db.ExecuteNonQueryAsync(procedureName, parameters);
         }
     }

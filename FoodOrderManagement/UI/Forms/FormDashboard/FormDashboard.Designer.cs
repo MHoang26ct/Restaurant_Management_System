@@ -136,8 +136,8 @@
             OrderGradientPanel = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             doubleBufferedtlp8 = new DoubleBufferedTLP();
             doubleBufferedtlp9 = new DoubleBufferedTLP();
-            LabelOfOrder3 = new Label();
             OrderIcon2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            LabelOfOrder3 = new Label();
             doubleBufferedtlp10 = new DoubleBufferedTLP();
             GradientPanelOfOrder = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             doubleBufferedtlp11 = new DoubleBufferedTLP();
@@ -563,8 +563,8 @@
             doubleBufferedtlp9.ColumnCount = 2;
             doubleBufferedtlp9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             doubleBufferedtlp9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
-            doubleBufferedtlp9.Controls.Add(LabelOfOrder3, 1, 0);
             doubleBufferedtlp9.Controls.Add(OrderIcon2, 0, 0);
+            doubleBufferedtlp9.Controls.Add(LabelOfOrder3, 1, 0);
             doubleBufferedtlp9.Dock = DockStyle.Fill;
             doubleBufferedtlp9.Location = new Point(16, 101);
             doubleBufferedtlp9.Name = "doubleBufferedtlp9";
@@ -572,18 +572,6 @@
             doubleBufferedtlp9.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             doubleBufferedtlp9.Size = new Size(243, 22);
             doubleBufferedtlp9.TabIndex = 0;
-            // 
-            // LabelOfOrder3
-            // 
-            LabelOfOrder3.AutoSize = true;
-            LabelOfOrder3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LabelOfOrder3.ForeColor = Color.Lime;
-            LabelOfOrder3.Location = new Point(25, 0);
-            LabelOfOrder3.Margin = new Padding(1, 0, 1, 0);
-            LabelOfOrder3.Name = "LabelOfOrder3";
-            LabelOfOrder3.Size = new Size(154, 21);
-            LabelOfOrder3.TabIndex = 3;
-            LabelOfOrder3.Text = "+30% (1 ngày trước)";
             // 
             // OrderIcon2
             // 
@@ -599,6 +587,18 @@
             OrderIcon2.SizeMode = PictureBoxSizeMode.StretchImage;
             OrderIcon2.TabIndex = 4;
             OrderIcon2.TabStop = false;
+            // 
+            // LabelOfOrder3
+            // 
+            LabelOfOrder3.AutoSize = true;
+            LabelOfOrder3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LabelOfOrder3.ForeColor = Color.Lime;
+            LabelOfOrder3.Location = new Point(25, 0);
+            LabelOfOrder3.Margin = new Padding(1, 0, 1, 0);
+            LabelOfOrder3.Name = "LabelOfOrder3";
+            LabelOfOrder3.Size = new Size(154, 21);
+            LabelOfOrder3.TabIndex = 3;
+            LabelOfOrder3.Text = "+30% (1 ngày trước)";
             // 
             // doubleBufferedtlp10
             // 
@@ -2249,6 +2249,7 @@
             Margin = new Padding(1);
             Name = "FormDashboard";
             StartPosition = FormStartPosition.CenterParent;
+            Load += FormHome_Load;
             TableGradientPanel.ResumeLayout(false);
             doubleBufferedtlp16.ResumeLayout(false);
             doubleBufferedtlp16.PerformLayout();
@@ -2369,7 +2370,6 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel TableGradientPanel;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel LabelOfCusstomer2;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel OrderGradientPanel;
-        private Guna.UI2.WinForms.Guna2PictureBox OrderIcon2;
         private Label LabelOfOrder3;
         private Guna.UI2.WinForms.Guna2HtmlLabel LabelOfOrder2;
         private Label LabelOfOrder1;
@@ -2494,5 +2494,6 @@
         private DoubleBufferedTLP doubleBufferedtlp48;
         private Label TimeLabel;
         private Label DateLabel;
+        private Guna.UI2.WinForms.Guna2PictureBox OrderIcon2;
     }
 }

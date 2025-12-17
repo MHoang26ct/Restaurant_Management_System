@@ -1,9 +1,10 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.UI.Forms.FormDashboard;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FoodOrderManagement.DAL.Models.Entities;
 
 namespace FoodOrderManagement.DAL.Repositories.Interfaces {
     public interface IStatisticsRepository {
@@ -14,5 +15,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="endDate"></param>
         /// <returns></returns>
         public Task<List<Statistics>> GetBusinessStatsByDateAsync(DateTime startDate, DateTime endDate);
+        Task<DashboardStatModel> GetDashboardStatsByDateAsync(DateTime date);
     }
 }

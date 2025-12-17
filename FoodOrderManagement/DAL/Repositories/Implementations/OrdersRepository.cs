@@ -19,34 +19,16 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         {
             return new Orders
             {
-                // Cột 0: ID (Luôn có)
                 Id = reader.GetInt32(0),
-
-
-                // Cột 1: ReservationId (Nếu Null trả về 0)
                 ReservationId = reader.IsDBNull(1) ? 0 : reader.GetInt32(1),
-
-                // Cột 2: TableId
                 TableId = reader.IsDBNull(2) ? 0 : reader.GetInt32(2),
-
-                // Cột 3: OrderTime (Thường không Null)
                 OrderTime = reader.GetDateTime(3),
-
-                // Cột 4: TotalAmount (HAY BỊ LỖI NHẤT -> Nếu Null trả về 0)
                 TotalAmount = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4),
-
-                // Cột 5: NumberOfGuests
                 NumberOfGuests = reader.IsDBNull(5) ? 1 : reader.GetInt32(5),
-
-                // Cột 6: CustomerId
                 CustomerId = reader.IsDBNull(6) ? 0 : reader.GetInt32(6),
-
-                // Cột 7: CheckoutTime (Nếu Null trả về null)
                 CheckoutTime = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
             };
         }
-
-        // Thêm order mới, trả về OrderID vừa tạo để dùng cho việc thêm OrderDetail sau đó
         public async Task<int> AddOrderAsync(Orders order)
         {
             var outputIdParam = new SqlParameter("@NewOrderID", System.Data.SqlDbType.Int)
@@ -124,8 +106,6 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         new SqlParameter("@OrderID", orderId),
         new SqlParameter("@TotalAmount", total)
             };
-
-            // Ví dụ Query: "UPDATE Orders SET TotalAmount = @TotalAmount WHERE Id = @OrderID"
             await _db.ExecuteNonQueryAsync("UpdateOrderTotal", parameters);
         }
     }
