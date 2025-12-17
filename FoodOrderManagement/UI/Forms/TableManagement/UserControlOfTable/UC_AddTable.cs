@@ -32,6 +32,5 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
         {
             this.Visible = false;
         }
-
     }
 }

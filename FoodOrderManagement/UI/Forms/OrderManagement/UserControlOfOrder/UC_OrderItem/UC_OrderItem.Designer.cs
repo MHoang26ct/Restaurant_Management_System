@@ -341,7 +341,7 @@
             AddFoodInOrderItem.Size = new Size(180, 38);
             AddFoodInOrderItem.TabIndex = 3;
             AddFoodInOrderItem.TabStop = false;
-            AddFoodInOrderItem.Text = "Thêm món ăn";
+            AddFoodInOrderItem.Text = "Chỉnh sửa đơn";
             AddFoodInOrderItem.Click += AddFoodInOrderItem_Click;
             // 
             // PaymentStatusCBox

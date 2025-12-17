@@ -36,5 +36,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
 
         // Xóa chi tiết order
         public Task DeleteOrderDetailAsync(int orderDetailId);
+        public Task DeleteAllDetailsByOrderIdAsync(int orderId);
     }
 }

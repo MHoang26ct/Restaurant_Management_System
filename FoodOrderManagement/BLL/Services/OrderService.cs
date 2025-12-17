@@ -120,9 +120,10 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 {
     public partial class UC_AddFoodOrder : UserControl
     {
+        public event EventHandler OnDeleteRequest;
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            this.Parent.Controls.Remove(this);
+            OnDeleteRequest?.Invoke(this, EventArgs.Empty);
         }
 
         private async Task LoadFoodToComboBox()
@@ -233,17 +234,27 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                     var row = _scope.Resolve<UC_AddFoodOrder>();
                     row.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                     row.Width = ListFoodFlowLayout.Width - 25;
+                    row.OnDeleteRequest += (sender, args) =>
+                    {
+                        ListFoodFlowLayout.Controls.Remove((Control)sender);
+                        ((UserControl)sender).Dispose();
+                    };
                     ListFoodFlowLayout.Controls.Add(row);
                     row.SetData(item.FoodId, item.Quantity);
+
                 }
             }
-            ThemDongMonAn();
         }
         private void ThemDongMonAn()
         {
             var newItem = _scope.Resolve<UC_AddFoodOrder>();
             newItem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             newItem.Width = ListFoodFlowLayout.Width - 25;
+            newItem.OnDeleteRequest += (sender, args) =>
+            {
+                ListFoodFlowLayout.Controls.Remove((Control)sender);
+                ((UserControl)sender).Dispose(); 
+            };
             ListFoodFlowLayout.Controls.Add(newItem);
         }
         private void AddFoodButton_Click(object sender, EventArgs e)
@@ -313,7 +324,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 else
                 {
                     targetOrderId = _currentOrderId.Value;
-                    await _orderDetailsRepository.DeleteOrderDetailAsync(targetOrderId);
+                    await _orderDetailsRepository.DeleteAllDetailsByOrderIdAsync(targetOrderId);
                 }
                 List<orderDetail> details = new List<orderDetail>();
                 decimal currentTotal = 0;
@@ -438,7 +449,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         public class OrderDetailDisplay
         {
             public string TenMon { get; set; } 
-            public int IdMon { get; set; }
             public int SoLuong { get; set; }   
             public decimal DonGia { get; set; }
             public decimal ThanhTien => DonGia * SoLuong; 

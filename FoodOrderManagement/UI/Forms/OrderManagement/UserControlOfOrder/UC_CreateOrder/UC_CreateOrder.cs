@@ -31,7 +31,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             _ordersRepository = ordersRepository;
             _orderDetailsRepository = orderDetailsRepository;
             _customersRepository = customersRepository;
-            ThemDongMonAn();
         }
         
         private void PhoneNumberTBox_KeyPress(object sender, KeyPressEventArgs e)

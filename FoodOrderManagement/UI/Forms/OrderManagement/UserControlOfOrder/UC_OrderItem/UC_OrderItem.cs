@@ -34,19 +34,23 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 
         private void PaymentStatusCBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_currentOrderData == null) return;
-
-            int index = PaymentStatusCBox.SelectedIndex;
-            UpdateUIStyle(index);
-            if (index == 0)
+            if (PaymentStatusCBox.SelectedIndex == 0)
             {
                 _currentOrderData.CheckoutTime = null;
             }
-            else if (index == 1) 
+            // Nếu chọn "Đã hoàn thành" (Index 1) -> Gán thời gian hiện tại (nếu chưa có)
+            else if (PaymentStatusCBox.SelectedIndex == 1)
             {
                 if (_currentOrderData.CheckoutTime == null)
+                {
                     _currentOrderData.CheckoutTime = DateTime.Now;
+                }
             }
+
+            // Cập nhật màu sắc giao diện ngay lập tức
+            UpdateUIStyle(PaymentStatusCBox.SelectedIndex);
+
+            // Bắn sự kiện ra Form cha để lưu xuống DB
             OnStatusChanged?.Invoke(this, _currentOrderData);
         }
 

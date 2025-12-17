@@ -204,8 +204,8 @@ namespace FoodOrderManagement.AdminControl
                 dgvReservations.Columns["ReservationTime"].HeaderText = "Thời Gian";
                 dgvReservations.Columns["ReservationTime"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             }
-            // Ẩn các cột không cần thiết nếu muốn
-            // if (dgvReservations.Columns["Status"] != null) dgvReservations.Columns["Status"].HeaderText = "Trạng Thái";
+            if (dgvReservations.Columns["Status"] != null) dgvReservations.Columns["Status"].HeaderText = "Trạng Thái";
+            if (dgvReservations.Columns["NumberOfGuests"] != null) dgvReservations.Columns["NumberOfGuests"].HeaderText = "Số khách hàng";
         }
         private void CreateReservationButton_Click(object sender, EventArgs e)
         {

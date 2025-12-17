@@ -77,7 +77,7 @@ namespace FoodOrderManagement.AdminControl
         private async void HandleViewDetailsClicked(object sender, Orders orderData)
         {
             _overlayBackground.Show(this);
-
+            FlowLayoutOrder.Enabled = false;
             _ucViewDetails = new UC_ViewDetails();
             var listMonAn = await _orderDetailsRepository.GetDetailsByOrderIdAsync(orderData.Id);
             _ucViewDetails.LoadDetailData(orderData, listMonAn);
@@ -90,7 +90,9 @@ namespace FoodOrderManagement.AdminControl
             _ucViewDetails.BringToFront();
             _ucViewDetails.Disposed += (s, e) =>
             {
-                _overlayBackground.Hide(this);
+                FlowLayoutOrder.Enabled = true;
+                _overlayBackground.Hide(this);               
+                LoadAllOrders();
             };
         }
         private async void HandleAddFoodClicked(object sender, Orders orderData)
