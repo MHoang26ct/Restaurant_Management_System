@@ -47,12 +47,10 @@ public class CustomersRepository : ICustomersRepository {
 
             var parameters = new SqlParameter[]
             {
-        new SqlParameter("@FullName", customer.FullName),
-
-        new SqlParameter("@Email", string.IsNullOrEmpty(customer.Email) ? (object)DBNull.Value : customer.Email),
-
-        new SqlParameter("@PhoneNumber", customer.PhoneNumber),
-        outputIdParam
+                new SqlParameter("@FullName", customer.FullName),
+                new SqlParameter("@Email", string.IsNullOrEmpty(customer.Email) ? (object)DBNull.Value : customer.Email),
+                new SqlParameter("@PhoneNumber", customer.PhoneNumber),
+                outputIdParam
             };
 
             await _db.ExecuteNonQueryAsync("AddCustomer", parameters);
@@ -93,16 +91,13 @@ public class CustomersRepository : ICustomersRepository {
         }
         public async Task DeleteCustomerAsync(int id)
         {
-            // Thay vì viết câu lệnh SQL, hãy gọi tên Stored Procedure
             string procedureName = "DeleteCustomer";
 
             var parameters = new SqlParameter[]
             {
-        // Tham số này phải trùng tên với tham số trong Stored Procedure ở Bước 1
-        new SqlParameter("@CustomerID", id)
+            new SqlParameter("@CustomerID", id)
             };
 
-            // Gọi hàm ExecuteNonQueryAsync với tên Procedure
             await _db.ExecuteNonQueryAsync(procedureName, parameters);
         }
     }
