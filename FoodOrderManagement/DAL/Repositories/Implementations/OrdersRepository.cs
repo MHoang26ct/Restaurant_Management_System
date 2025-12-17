@@ -103,8 +103,8 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         {
             var parameters = new SqlParameter[]
             {
-        new SqlParameter("@OrderID", orderId),
-        new SqlParameter("@TotalAmount", total)
+                new SqlParameter("@OrderID", orderId),
+                new SqlParameter("@TotalAmount", total)
             };
             await _db.ExecuteNonQueryAsync("UpdateOrderTotal", parameters);
         }

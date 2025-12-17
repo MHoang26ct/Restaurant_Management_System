@@ -47,12 +47,10 @@ public class CustomersRepository : ICustomersRepository {
 
             var parameters = new SqlParameter[]
             {
-        new SqlParameter("@FullName", customer.FullName),
-
-        new SqlParameter("@Email", string.IsNullOrEmpty(customer.Email) ? (object)DBNull.Value : customer.Email),
-
-        new SqlParameter("@PhoneNumber", customer.PhoneNumber),
-        outputIdParam
+                new SqlParameter("@FullName", customer.FullName),
+                new SqlParameter("@Email", string.IsNullOrEmpty(customer.Email) ? (object)DBNull.Value : customer.Email),
+                new SqlParameter("@PhoneNumber", customer.PhoneNumber),
+                outputIdParam
             };
 
             await _db.ExecuteNonQueryAsync("AddCustomer", parameters);
@@ -97,8 +95,9 @@ public class CustomersRepository : ICustomersRepository {
 
             var parameters = new SqlParameter[]
             {
-        new SqlParameter("@CustomerID", id)
+            new SqlParameter("@CustomerID", id)
             };
+
             await _db.ExecuteNonQueryAsync(procedureName, parameters);
         }
     }
