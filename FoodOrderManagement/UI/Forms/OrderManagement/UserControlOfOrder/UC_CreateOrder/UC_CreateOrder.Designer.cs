@@ -92,11 +92,11 @@
             doubleBufferedtlp4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             doubleBufferedtlp4.Controls.Add(ListFoodFlowLayout, 1, 0);
             doubleBufferedtlp4.Dock = DockStyle.Fill;
-            doubleBufferedtlp4.Location = new Point(0, 262);
+            doubleBufferedtlp4.Location = new Point(0, 225);
             doubleBufferedtlp4.Name = "doubleBufferedtlp4";
             doubleBufferedtlp4.RowCount = 1;
             doubleBufferedtlp4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            doubleBufferedtlp4.Size = new Size(600, 122);
+            doubleBufferedtlp4.Size = new Size(600, 159);
             doubleBufferedtlp4.TabIndex = 2;
             // 
             // ListFoodFlowLayout
@@ -105,7 +105,7 @@
             ListFoodFlowLayout.Dock = DockStyle.Fill;
             ListFoodFlowLayout.Location = new Point(22, 3);
             ListFoodFlowLayout.Name = "ListFoodFlowLayout";
-            ListFoodFlowLayout.Size = new Size(545, 116);
+            ListFoodFlowLayout.Size = new Size(545, 153);
             ListFoodFlowLayout.TabIndex = 0;
             // 
             // doubleBufferedtlp2
@@ -204,7 +204,7 @@
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.080661F));
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 17.1714058F));
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.080661F));
-            doubleBufferedtlp1.Size = new Size(600, 262);
+            doubleBufferedtlp1.Size = new Size(600, 225);
             doubleBufferedtlp1.TabIndex = 0;
             // 
             // CustomerNameTBox
@@ -225,14 +225,14 @@
             CustomerNameTBox.ForeColor = Color.Black;
             CustomerNameTBox.HoverState.BorderColor = Color.Black;
             CustomerNameTBox.HoverState.PlaceholderForeColor = Color.Black;
-            CustomerNameTBox.Location = new Point(25, 127);
+            CustomerNameTBox.Location = new Point(25, 109);
             CustomerNameTBox.Margin = new Padding(7, 0, 0, 0);
             CustomerNameTBox.Name = "CustomerNameTBox";
             CustomerNameTBox.PlaceholderForeColor = Color.Gray;
             CustomerNameTBox.PlaceholderText = "Nhập tên khách hàng...";
             CustomerNameTBox.SelectedText = "";
             CustomerNameTBox.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            CustomerNameTBox.Size = new Size(545, 44);
+            CustomerNameTBox.Size = new Size(545, 38);
             CustomerNameTBox.TabIndex = 17;
             // 
             // label2
@@ -240,10 +240,10 @@
             label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(23, 42);
+            label2.Location = new Point(23, 35);
             label2.Margin = new Padding(5, 0, 3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(67, 20);
+            label2.Size = new Size(67, 18);
             label2.TabIndex = 1;
             label2.Text = "Số Bàn *";
             // 
@@ -252,10 +252,10 @@
             label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(23, 107);
+            label3.Location = new Point(23, 91);
             label3.Margin = new Padding(5, 0, 3, 0);
             label3.Name = "label3";
-            label3.Size = new Size(131, 20);
+            label3.Size = new Size(131, 18);
             label3.TabIndex = 2;
             label3.Text = "Tên Khách Hàng *";
             // 
@@ -264,7 +264,7 @@
             label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(23, 242);
+            label4.Location = new Point(23, 205);
             label4.Margin = new Padding(5, 0, 3, 0);
             label4.Name = "label4";
             label4.Size = new Size(75, 20);
@@ -281,12 +281,12 @@
             TableID_NBox.Dock = DockStyle.Fill;
             TableID_NBox.FillColor = Color.Gainsboro;
             TableID_NBox.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TableID_NBox.Location = new Point(25, 64);
+            TableID_NBox.Location = new Point(25, 55);
             TableID_NBox.Margin = new Padding(7, 2, 0, 0);
             TableID_NBox.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             TableID_NBox.Name = "TableID_NBox";
             TableID_NBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            TableID_NBox.Size = new Size(545, 42);
+            TableID_NBox.Size = new Size(545, 36);
             TableID_NBox.TabIndex = 18;
             TableID_NBox.UpDownButtonFillColor = Color.Gray;
             TableID_NBox.Value = new decimal(new int[] { 1, 0, 0, 0 });
@@ -304,7 +304,7 @@
             doubleBufferedtlp3.RowCount = 1;
             doubleBufferedtlp3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             doubleBufferedtlp3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            doubleBufferedtlp3.Size = new Size(546, 31);
+            doubleBufferedtlp3.Size = new Size(546, 25);
             doubleBufferedtlp3.TabIndex = 19;
             // 
             // label1
@@ -312,9 +312,9 @@
             label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
-            label1.Location = new Point(3, 1);
+            label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(156, 30);
+            label1.Size = new Size(156, 25);
             label1.TabIndex = 1;
             label1.Text = "Tạo Đơn Hàng";
             // 
@@ -339,7 +339,7 @@
             ExitButton.PressedColor = Color.White;
             ExitButton.PressedDepth = 0;
             ExitButton.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            ExitButton.Size = new Size(35, 25);
+            ExitButton.Size = new Size(35, 19);
             ExitButton.TabIndex = 2;
             ExitButton.Text = "X";
             ExitButton.Click += ExitButton_Click;
@@ -349,10 +349,10 @@
             label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(23, 172);
+            label5.Location = new Point(23, 147);
             label5.Margin = new Padding(5, 0, 3, 0);
             label5.Name = "label5";
-            label5.Size = new Size(106, 20);
+            label5.Size = new Size(106, 18);
             label5.TabIndex = 20;
             label5.Text = "Số điện thoại*";
             // 
@@ -373,14 +373,14 @@
             PhoneNumberTBox.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PhoneNumberTBox.ForeColor = Color.Black;
             PhoneNumberTBox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            PhoneNumberTBox.Location = new Point(25, 192);
+            PhoneNumberTBox.Location = new Point(25, 165);
             PhoneNumberTBox.Margin = new Padding(7, 0, 0, 0);
             PhoneNumberTBox.Name = "PhoneNumberTBox";
             PhoneNumberTBox.PlaceholderForeColor = Color.Gray;
             PhoneNumberTBox.PlaceholderText = "Nhập số điện thoại...";
             PhoneNumberTBox.SelectedText = "";
             PhoneNumberTBox.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            PhoneNumberTBox.Size = new Size(545, 44);
+            PhoneNumberTBox.Size = new Size(545, 38);
             PhoneNumberTBox.TabIndex = 21;
             PhoneNumberTBox.KeyPress += PhoneNumberTBox_KeyPress;
             // 

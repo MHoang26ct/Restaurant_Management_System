@@ -20,6 +20,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
     {
 
         // Hàm này chỉ có nhiệm vụ: Nhận 1 danh sách -> Vẽ lên màn hình
+        private OverlayBackground _overlayBackground;
         private void RenderFoodList(List<Foods> listToRender)
         {
             FlowLayoutFood.Controls.Clear();
@@ -116,6 +117,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         }
         private async void FormMenu_Load(object sender, EventArgs e)
         {
+            _overlayBackground = new OverlayBackground();
             await LoadFoodAsync();
             _uc_AddFood.Visible = false;
             this.Controls.Add(_uc_AddFood);
@@ -135,6 +137,19 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             {
                 _uc_AddFood.Visible = false;
                 LoadFoodAsync();
+            };
+            _uc_AddFood.VisibleChanged += (s, args) =>
+            {
+                if (_uc_AddFood.Visible)
+                {
+                    _overlayBackground.Show(this); 
+                    _uc_AddFood.BringToFront(); 
+                }
+                else
+                {
+
+                    _overlayBackground.Hide(this); 
+                }
             };
         }
     }

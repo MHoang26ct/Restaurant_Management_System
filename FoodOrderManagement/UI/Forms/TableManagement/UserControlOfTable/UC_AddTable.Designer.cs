@@ -163,7 +163,7 @@
             ExitButton.TabIndex = 21;
             ExitButton.Text = "X";
             ExitButton.TextAlign = HorizontalAlignment.Right;
-            ExitButton.Click += ExitButton_Click;
+            ExitButton.Click += this.BtnCancel_Click;
             // 
             // UC_AddTable
             // 
