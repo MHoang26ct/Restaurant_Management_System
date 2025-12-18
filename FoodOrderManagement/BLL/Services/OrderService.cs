@@ -207,6 +207,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
     {
         private int? _currentOrderId = null;
         private Orders _existingOrderData = null;
+        public static bool IsInAddNewCustomerMode = false;
 
         public async void SetModeAddFood(Orders oldOrder)
         {
@@ -291,6 +292,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             newCus.FullName = name;
             newCus.Email = phone + name + "@gmail.com";
             int newId = await _customersRepository.AddCustomerAsync(newCus);
+            IsInAddNewCustomerMode = true;
             return newId;
         }
         private async void CreateOrderButton_Click(object sender, EventArgs e)

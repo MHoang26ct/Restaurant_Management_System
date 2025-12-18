@@ -5,6 +5,7 @@ using Guna.UI2.WinForms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
 
 namespace FoodOrderManagement
 {
@@ -116,6 +117,11 @@ namespace FoodOrderManagement
                 case "CustomerButton":
                     clickedButton.Image = Properties.Resources.CustomerWhite;
                     OpenChildForm(_formCustomer);
+                    if (UC_CreateOrder.IsInAddNewCustomerMode)
+                    {
+                        _formCustomer.LoadCustomerList();
+                        UC_CreateOrder.IsInAddNewCustomerMode = false;
+                    }
                     break;
                 case "ReservationButton":
                     clickedButton.Image = Properties.Resources.ReservedWhite;
