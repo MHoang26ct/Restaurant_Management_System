@@ -133,7 +133,7 @@
             HireDateDTP.ShadowDecoration.CustomizableEdges = customizableEdges2;
             HireDateDTP.Size = new Size(229, 36);
             HireDateDTP.TabIndex = 38;
-            HireDateDTP.Value = new DateTime(2025, 12, 14, 13, 4, 4, 713);
+            HireDateDTP.Value = DateTime.Now;
             // 
             // TitleLabel
             // 

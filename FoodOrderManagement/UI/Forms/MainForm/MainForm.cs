@@ -45,6 +45,7 @@ namespace FoodOrderManagement
             _formCustomer = formCustomer;
             _formReservation = formReservation;
             _formEmployee = formEmployee;
+            this.Load += async (s, e) => await PreloadFormEmployeeAsync();
 
             instance = this;
         }
@@ -177,6 +178,14 @@ namespace FoodOrderManagement
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        // Load truoc form employee de tranh lag khi mo form employee lan dau tien
+        private async Task PreloadFormEmployeeAsync()
+        {
+            // Truy cập Handle để buộc tạo cửa sổ ẩn
+            IntPtr forceCreateHandle = _formEmployee.Handle;
+            await _formEmployee.LoadListEmployee();
         }
     }
 }

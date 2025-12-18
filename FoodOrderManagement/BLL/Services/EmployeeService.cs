@@ -9,7 +9,7 @@ namespace FoodOrderManagement.AdminControl
     public partial class FormEmployee : Form
     {
         private List<Employee> _originalList = new List<Employee>();
-        private async void LoadListEmployee()
+        public async Task LoadListEmployee()
         {
             try
             {
