@@ -276,7 +276,7 @@
             DateTimePickerSearchHireDate.ShadowDecoration.CustomizableEdges = customizableEdges10;
             DateTimePickerSearchHireDate.Size = new Size(274, 45);
             DateTimePickerSearchHireDate.TabIndex = 1;
-            DateTimePickerSearchHireDate.Value = new DateTime(2025, 12, 12, 16, 9, 47, 0);
+            DateTimePickerSearchHireDate.Value = DateTime.Now;
             // 
             // BackgroundEmployee
             // 

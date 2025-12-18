@@ -261,7 +261,7 @@
             DateTimePickerSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
             DateTimePickerSearch.Size = new Size(272, 45);
             DateTimePickerSearch.TabIndex = 1;
-            DateTimePickerSearch.Value = new DateTime(2025, 12, 12, 16, 9, 47, 0);
+            DateTimePickerSearch.Value = DateTime.Now;
             // 
             // dgvReservations
             // 
