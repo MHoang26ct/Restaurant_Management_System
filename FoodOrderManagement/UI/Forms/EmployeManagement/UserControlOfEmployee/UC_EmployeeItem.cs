@@ -50,10 +50,7 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
                 OnDeleteClicked?.Invoke(this, _currentEmp);
-            }
         }
     }
 }

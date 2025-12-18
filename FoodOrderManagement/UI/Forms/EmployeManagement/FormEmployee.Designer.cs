@@ -36,12 +36,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             doubleBufferedtlp1 = new DoubleBufferedTLP();
             doubleBufferedtlp2 = new DoubleBufferedTLP();
             doubleBufferedtlp3 = new DoubleBufferedTLP();
@@ -52,7 +50,6 @@
             AddEmployeeButton = new Guna.UI2.WinForms.Guna2GradientButton();
             doubleBufferedtlp4 = new DoubleBufferedTLP();
             SearchEmployeeTBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            DateTimePickerSearchHireDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             BackgroundEmployee = new Guna.UI2.WinForms.Guna2Panel();
             FlowLayoutEmployee = new FlowLayoutPanel();
             EmployeeHeader = new Guna.UI2.WinForms.Guna2GradientPanel();
@@ -217,10 +214,9 @@
             // doubleBufferedtlp4
             // 
             doubleBufferedtlp4.ColumnCount = 2;
-            doubleBufferedtlp4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 78.37838F));
-            doubleBufferedtlp4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21.6216221F));
+            doubleBufferedtlp4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 99.37549F));
+            doubleBufferedtlp4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 0.6245121F));
             doubleBufferedtlp4.Controls.Add(SearchEmployeeTBox1, 0, 0);
-            doubleBufferedtlp4.Controls.Add(DateTimePickerSearchHireDate, 1, 0);
             doubleBufferedtlp4.Dock = DockStyle.Fill;
             doubleBufferedtlp4.Location = new Point(3, 96);
             doubleBufferedtlp4.Name = "doubleBufferedtlp4";
@@ -255,28 +251,12 @@
             SearchEmployeeTBox1.PlaceholderText = "Tìm kiếm nhân viên theo tên hoặc số điện thoại...";
             SearchEmployeeTBox1.SelectedText = "";
             SearchEmployeeTBox1.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            SearchEmployeeTBox1.Size = new Size(996, 43);
+            SearchEmployeeTBox1.Size = new Size(1265, 43);
             SearchEmployeeTBox1.TabIndex = 0;
             SearchEmployeeTBox1.TextChanged += SearchEmployeeTBox1_TextChanged;
             // 
             // DateTimePickerSearchHireDate
             // 
-            DateTimePickerSearchHireDate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            DateTimePickerSearchHireDate.BorderRadius = 5;
-            DateTimePickerSearchHireDate.Checked = true;
-            DateTimePickerSearchHireDate.CustomizableEdges = customizableEdges9;
-            DateTimePickerSearchHireDate.FillColor = Color.Silver;
-            DateTimePickerSearchHireDate.Font = new Font("Segoe UI", 9F);
-            DateTimePickerSearchHireDate.Format = DateTimePickerFormat.Long;
-            DateTimePickerSearchHireDate.Location = new Point(1007, 3);
-            DateTimePickerSearchHireDate.Margin = new Padding(3, 3, 0, 0);
-            DateTimePickerSearchHireDate.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-            DateTimePickerSearchHireDate.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-            DateTimePickerSearchHireDate.Name = "DateTimePickerSearchHireDate";
-            DateTimePickerSearchHireDate.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            DateTimePickerSearchHireDate.Size = new Size(274, 45);
-            DateTimePickerSearchHireDate.TabIndex = 1;
-            DateTimePickerSearchHireDate.Value = DateTime.Now;
             // 
             // BackgroundEmployee
             // 
@@ -284,11 +264,11 @@
             BackgroundEmployee.BackColor = Color.Transparent;
             BackgroundEmployee.Controls.Add(FlowLayoutEmployee);
             BackgroundEmployee.Controls.Add(EmployeeHeader);
-            BackgroundEmployee.CustomizableEdges = customizableEdges13;
+            BackgroundEmployee.CustomizableEdges = customizableEdges11;
             BackgroundEmployee.Dock = DockStyle.Fill;
             BackgroundEmployee.Location = new Point(95, 172);
             BackgroundEmployee.Name = "BackgroundEmployee";
-            BackgroundEmployee.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            BackgroundEmployee.ShadowDecoration.CustomizableEdges = customizableEdges12;
             BackgroundEmployee.Size = new Size(1287, 670);
             BackgroundEmployee.TabIndex = 1;
             // 
@@ -307,13 +287,13 @@
             // EmployeeHeader
             // 
             EmployeeHeader.Controls.Add(doubleBufferedtlp5);
-            EmployeeHeader.CustomizableEdges = customizableEdges11;
+            EmployeeHeader.CustomizableEdges = customizableEdges9;
             EmployeeHeader.Dock = DockStyle.Top;
             EmployeeHeader.FillColor = Color.AntiqueWhite;
             EmployeeHeader.FillColor2 = Color.AntiqueWhite;
             EmployeeHeader.Location = new Point(0, 0);
             EmployeeHeader.Name = "EmployeeHeader";
-            EmployeeHeader.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            EmployeeHeader.ShadowDecoration.CustomizableEdges = customizableEdges10;
             EmployeeHeader.Size = new Size(1287, 50);
             EmployeeHeader.TabIndex = 0;
             // 
@@ -454,7 +434,6 @@
         private Guna.UI2.WinForms.Guna2GradientButton AddEmployeeButton;
         private DoubleBufferedTLP doubleBufferedtlp4;
         private Guna.UI2.WinForms.Guna2TextBox SearchEmployeeTBox1;
-        private Guna.UI2.WinForms.Guna2DateTimePicker DateTimePickerSearchHireDate;
         private Guna.UI2.WinForms.Guna2Panel BackgroundEmployee;
         private FlowLayoutPanel FlowLayoutEmployee;
         private Guna.UI2.WinForms.Guna2GradientPanel EmployeeHeader;
