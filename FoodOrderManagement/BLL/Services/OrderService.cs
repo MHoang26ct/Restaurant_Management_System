@@ -330,6 +330,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                     order.NumberOfGuests = 1;
                     order.TotalAmount = 0;   
                     targetOrderId = await _ordersRepository.AddOrderAsync(order);
+                    _currentOrderId = targetOrderId;
                     _existingOrderData = order;
                     _existingOrderData.Id = targetOrderId;
                 }

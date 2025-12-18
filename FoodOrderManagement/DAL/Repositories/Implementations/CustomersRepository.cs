@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
 using FoodOrderManagement.DAL.Models.Entities;
 using Microsoft.Data.SqlClient;
@@ -14,16 +15,22 @@ public class CustomersRepository : ICustomersRepository {
         private readonly DatabaseHelper _db = new DatabaseHelper();
 
         //
-        private Customers Mapper(SqlDataReader reader) {
-            return new Customers {               
-                Id = reader.GetInt32(0),
-                FullName = reader.IsDBNull(1) ? null : reader.GetString(1),
-                Email = reader.IsDBNull(2) ? null : reader.GetString(2),
-                PhoneNumber = reader.IsDBNull(3) ? null : reader.GetString(3),
-                LastVisitDate = reader.IsDBNull(4) ? DateTime.MinValue : reader.GetDateTime(4),
-                TotalVisits = reader.GetInt32(5),
-                TotalSpent = reader.IsDBNull(6) ? 0 : reader.GetDecimal(6),
-                CustomerRank = reader.IsDBNull(7) ? null : reader.GetString(7)
+        private Customers Mapper(SqlDataReader reader)
+        {
+            return new Customers
+            {
+                Id = reader["CustomerID"] != DBNull.Value ? Convert.ToInt32(reader["CustomerID"]) : 0,
+
+                FullName = reader["FullName"] != DBNull.Value ? reader["FullName"].ToString() : "",
+
+                Email = reader["Email"] != DBNull.Value ? reader["Email"].ToString() : "",
+
+                PhoneNumber = reader["PhoneNumber"] != DBNull.Value ? reader["PhoneNumber"].ToString() : "",
+
+                LastVisitDate = reader["LastVisitDate"] != DBNull.Value ? Convert.ToDateTime(reader["LastVisitDate"]) : DateTime.MinValue,
+                TotalVisits = reader["TotalVisits"] != DBNull.Value ? Convert.ToInt32(reader["TotalVisits"]) : 0,
+                TotalSpent = reader["TotalSpent"] != DBNull.Value ? Convert.ToDecimal(reader["TotalSpent"]) : 0,
+                CustomerRank = reader["CustomerRank"] != DBNull.Value ? reader["CustomerRank"].ToString() : "Regular"
             };
         }
 
@@ -41,21 +48,18 @@ public class CustomersRepository : ICustomersRepository {
         public async Task<int> AddCustomerAsync(Customers customer)
         {
             var outputIdParam = new SqlParameter("@NewCustomerID", System.Data.SqlDbType.Int)
-            {
-                Direction = System.Data.ParameterDirection.Output
-            };
+            { Direction = System.Data.ParameterDirection.Output };
 
             var parameters = new SqlParameter[]
             {
-                new SqlParameter("@FullName", customer.FullName),
-                new SqlParameter("@Email", string.IsNullOrEmpty(customer.Email) ? (object)DBNull.Value : customer.Email),
-                new SqlParameter("@PhoneNumber", customer.PhoneNumber),
-                outputIdParam
+        // Thứ tự này phải khớp với PROCEDURE AddCustomer: Tên, Email, SĐT
+        new SqlParameter("@FullName", customer.FullName),
+        new SqlParameter("@Email", string.IsNullOrEmpty(customer.Email) ? (object)DBNull.Value : customer.Email),
+        new SqlParameter("@PhoneNumber", customer.PhoneNumber),
+        outputIdParam
             };
 
             await _db.ExecuteNonQueryAsync("AddCustomer", parameters);
-
-            // Kiểm tra an toàn khi return
             return outputIdParam.Value != DBNull.Value ? (int)outputIdParam.Value : 0;
         }
 
@@ -107,20 +111,24 @@ public class CustomersRepository : ICustomersRepository {
             string querySum = @"
                 SELECT ISNULL(SUM(TotalAmount), 0) 
                 FROM Orders 
-                WHERE CustomerID = @CusId AND CheckoutTime IS NOT NULL";
+                WHERE CustomerID = @CusId AND TimeCheckout IS NOT NULL";
 
             decimal totalSpent = 0;
             using (var cmd = _db.CreateCommand(querySum))
             {
                 cmd.Parameters.Add(new SqlParameter("@CusId", customerId));
-                object result = await cmd.ExecuteScalarAsync();
-
-                // Dùng Convert.ToDecimal an toàn cho mọi trường hợp
-                totalSpent = result != null ? Convert.ToDecimal(result) : 0;
+                try
+                {
+                    object result = await cmd.ExecuteScalarAsync();
+                    totalSpent = result != null ? Convert.ToDecimal(result) : 0;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Lỗi Update Rank (Check tên cột TimeCheckout): " + ex.Message);
+                }
             }
 
-            // Logic phân hạng (Mốc tiền khớp với UI)
-            string newRank = "Regular"; // Hoặc "Member" tùy bạn chọn
+            string newRank = "Regular";
             if (totalSpent >= 50000000) newRank = "Platinum";
             else if (totalSpent >= 10000000) newRank = "Gold";
             else if (totalSpent >= 2000000) newRank = "Silver";

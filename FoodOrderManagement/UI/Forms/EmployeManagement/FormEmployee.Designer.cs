@@ -257,22 +257,6 @@
             // 
             // DateTimePickerSearchHireDate
             // 
-            DateTimePickerSearchHireDate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            DateTimePickerSearchHireDate.BorderRadius = 5;
-            DateTimePickerSearchHireDate.Checked = true;
-            DateTimePickerSearchHireDate.CustomizableEdges = customizableEdges9;
-            DateTimePickerSearchHireDate.FillColor = Color.Silver;
-            DateTimePickerSearchHireDate.Font = new Font("Segoe UI", 9F);
-            DateTimePickerSearchHireDate.Format = DateTimePickerFormat.Long;
-            DateTimePickerSearchHireDate.Location = new Point(1007, 3);
-            DateTimePickerSearchHireDate.Margin = new Padding(3, 3, 0, 0);
-            DateTimePickerSearchHireDate.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-            DateTimePickerSearchHireDate.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-            DateTimePickerSearchHireDate.Name = "DateTimePickerSearchHireDate";
-            DateTimePickerSearchHireDate.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            DateTimePickerSearchHireDate.Size = new Size(274, 45);
-            DateTimePickerSearchHireDate.TabIndex = 1;
-            DateTimePickerSearchHireDate.Value = DateTime.Now;
             // 
             // BackgroundEmployee
             // 
