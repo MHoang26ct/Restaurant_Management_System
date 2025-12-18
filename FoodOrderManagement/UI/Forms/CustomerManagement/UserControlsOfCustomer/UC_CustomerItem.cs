@@ -49,7 +49,7 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
             // 2. LOGIC TÍNH RANK (Dựa trên số tiền chi tiêu)
             // ==========================================================
             string rank = "Regular"; // Mặc định
-            double spent = customer.TotalSpent;
+            decimal spent = customer.TotalSpent;
 
             if (spent >= 50000000) // 50 triệu
             {

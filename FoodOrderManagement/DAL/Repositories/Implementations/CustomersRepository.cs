@@ -22,7 +22,7 @@ public class CustomersRepository : ICustomersRepository {
                 PhoneNumber = reader.IsDBNull(3) ? null : reader.GetString(3),
                 LastVisitDate = reader.IsDBNull(4) ? DateTime.MinValue : reader.GetDateTime(4),
                 TotalVisits = reader.GetInt32(5),
-                TotalSpent = (float)reader.GetDecimal(6),
+                TotalSpent = reader.IsDBNull(6) ? 0 : reader.GetDecimal(6),
                 CustomerRank = reader.IsDBNull(7) ? null : reader.GetString(7)
             };
         }
@@ -99,6 +99,41 @@ public class CustomersRepository : ICustomersRepository {
             };
 
             await _db.ExecuteNonQueryAsync(procedureName, parameters);
+        }
+
+
+        public async Task UpdateCustomerRankAsync(int customerId)
+        {
+            string querySum = @"
+                SELECT ISNULL(SUM(TotalAmount), 0) 
+                FROM Orders 
+                WHERE CustomerID = @CusId AND CheckoutTime IS NOT NULL";
+
+            decimal totalSpent = 0;
+            using (var cmd = _db.CreateCommand(querySum))
+            {
+                cmd.Parameters.Add(new SqlParameter("@CusId", customerId));
+                object result = await cmd.ExecuteScalarAsync();
+
+                // Dùng Convert.ToDecimal an toàn cho mọi trường hợp
+                totalSpent = result != null ? Convert.ToDecimal(result) : 0;
+            }
+
+            // Logic phân hạng (Mốc tiền khớp với UI)
+            string newRank = "Regular"; // Hoặc "Member" tùy bạn chọn
+            if (totalSpent >= 50000000) newRank = "Platinum";
+            else if (totalSpent >= 10000000) newRank = "Gold";
+            else if (totalSpent >= 2000000) newRank = "Silver";
+
+            string queryUpdate = "UPDATE Customers SET CustomerRank = @Rank WHERE CustomerID = @CustomerID";
+
+            var p = new SqlParameter[]
+            {
+                new SqlParameter("@Rank", newRank),
+                new SqlParameter("@CustomerID", customerId)
+            };
+
+            await _db.ExecuteNonQueryAsync(queryUpdate, p);
         }
     }
 }
