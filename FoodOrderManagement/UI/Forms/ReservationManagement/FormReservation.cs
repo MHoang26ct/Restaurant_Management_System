@@ -19,6 +19,11 @@ namespace FoodOrderManagement.AdminControl
         {
 
         }
+
+        private void FormReservation_Load(object sender, EventArgs e)
+        {
+            DecorDataGridView(dgvReservations);
+        }
         //UC_CreateReservation uc_CreateReservation;
         //OverlayBackground _overlayBackground;
         //public FormReservation()

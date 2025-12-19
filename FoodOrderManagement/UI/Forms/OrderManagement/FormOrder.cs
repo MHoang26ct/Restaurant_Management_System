@@ -23,11 +23,12 @@ namespace FoodOrderManagement.AdminControl
         private readonly ILifetimeScope _scope;
         private readonly IOrdersRepository _ordersRepository;
         private readonly IOrderDetailsRepository _orderDetailsRepository;
+        private readonly IReservationsRepository _reservationsRepository;
         UC_CreateOrder _ucCreateOrder;
         UC_ViewDetails _ucViewDetails;
         public UC_OrderItem _uc_OrderItem;
         OverlayBackground _overlayBackground;
-        public FormOrder(ILifetimeScope scope, IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository)
+        public FormOrder(ILifetimeScope scope, IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository, IReservationsRepository reservationsRepository)
         {
             InitializeComponent();
             _scope = scope;
@@ -36,6 +37,7 @@ namespace FoodOrderManagement.AdminControl
             LoadAllOrders();
             _orderDetailsRepository = orderDetailsRepository;
             _overlayBackground = new OverlayBackground();
+            _reservationsRepository = reservationsRepository;
         }
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {

@@ -159,6 +159,11 @@ namespace FoodOrderManagement.AdminControl
             _orderDetailsRepository = orderDetailsRepository;
             _overlayBackground = new OverlayBackground();
             AddActionButtons();
+            DecorDataGridView(dgvReservations);
+            StyleActionHeader(dgvReservations);
+
+            // 4. Gắn sự kiện vẽ (để xóa vạch ngăn cách)
+            dgvReservations.CellPainting += dgvReservations_CellPainting;
             SearchReservationTBox1.TextChanged += (s, e) => ApplyFilter();
             DateTimePickerSearch.ValueChanged += (s, e) => ApplyFilter();
             LoadReservationList();
@@ -215,7 +220,8 @@ namespace FoodOrderManagement.AdminControl
                 dgvReservations.Columns["ReservationTime"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             }
             if (dgvReservations.Columns["Status"] != null) dgvReservations.Columns["Status"].HeaderText = "Trạng Thái";
-            if (dgvReservations.Columns["NumberOfGuests"] != null) dgvReservations.Columns["NumberOfGuests"].HeaderText = "Số khách hàng";
+            if (dgvReservations.Columns["NumberOfGuests"] != null) dgvReservations.Columns["NumberOfGuests"].HeaderText = "Lượng khách";
+            AdjustColumnWidths(dgvReservations);
         }
         private void CreateReservationButton_Click(object sender, EventArgs e)
         {
@@ -271,15 +277,10 @@ namespace FoodOrderManagement.AdminControl
                 }
             };
 
-            // Sự kiện thoát
             uc_CreateReservation.OnExitClicked += (s, args) => ClosePopup();
-
-            // Hiển thị
             this.Controls.Add(uc_CreateReservation);
             Helper.BoGoc(uc_CreateReservation, 5, true, true, true, true);
             uc_CreateReservation.BringToFront();
-
-            // Căn giữa
             uc_CreateReservation.Location = new Point(
                  (this.ClientSize.Width - uc_CreateReservation.Width) / 2,
                  (this.ClientSize.Height - uc_CreateReservation.Height) / 2
@@ -288,8 +289,6 @@ namespace FoodOrderManagement.AdminControl
         private async void dgvReservations_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-
-            // Lưu ý: Đảm bảo cột ID nằm ở Cells[0] hoặc dùng Cells["Id"]
             int reservationId = Convert.ToInt32(dgvReservations.Rows[e.RowIndex].Cells["Id"].Value);
 
             if (dgvReservations.Columns[e.ColumnIndex].Name == "btnEdit")
@@ -304,7 +303,6 @@ namespace FoodOrderManagement.AdminControl
                 {
                     try
                     {
-                        // Gọi Repository xóa (đã viết ở Phần 2)
                         await _reservationsRepository.DeleteReservationAsync(reservationId);
                         LoadReservationList();
                         MessageBox.Show("Xóa thành công!");
@@ -354,39 +352,166 @@ namespace FoodOrderManagement.AdminControl
             };
 
             uc_CreateReservation.OnExitClicked += (s, args) => ClosePopup();
-
-            // Hiển thị UC
             ShowPopupUC(uc_CreateReservation);
         }
         private void AddActionButtons()
         {
-            // 1. Tạo nút Sửa (nếu chưa có)
             if (dgvReservations.Columns["btnEdit"] == null)
             {
                 DataGridViewButtonColumn btnEdit = new DataGridViewButtonColumn();
                 btnEdit.Name = "btnEdit";
                 btnEdit.HeaderText = "";
                 btnEdit.Text = "Sửa";
-                btnEdit.UseColumnTextForButtonValue = true; // Hiển thị chữ "Sửa" lên nút
+                btnEdit.UseColumnTextForButtonValue = true; 
                 btnEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgvReservations.Columns.Add(btnEdit);
             }
-
-            // 2. Tạo nút Xóa (nếu chưa có)
             if (dgvReservations.Columns["btnDelete"] == null)
             {
                 DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
                 btnDelete.Name = "btnDelete";
                 btnDelete.HeaderText = "";
                 btnDelete.Text = "Xóa";
-                btnDelete.UseColumnTextForButtonValue = true; // Hiển thị chữ "Xóa" lên nút
+                btnDelete.UseColumnTextForButtonValue = true; 
                 btnDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                // Chỉnh màu đỏ cho nút Xóa (tùy chọn)
                 btnDelete.DefaultCellStyle.ForeColor = Color.Red;
                 btnDelete.DefaultCellStyle.SelectionForeColor = Color.Red;
 
                 dgvReservations.Columns.Add(btnDelete);
+            }
+        }
+        private void DecorDataGridView(DataGridView dgv)
+        {
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.BackgroundColor = Color.White;
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersHeight = 50;
+            dgv.RowTemplate.Height = 60;
+            dgv.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 255);
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            if (dgv.Columns.Contains("btnEdit"))
+                dgv.Columns["btnEdit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (dgv.Columns.Contains("btnDelete"))
+                dgv.Columns["btnDelete"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (dgv.Columns.Contains("Id"))
+                dgv.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        }
+        private void StyleActionHeader(DataGridView dgv)
+        {
+            Color blueColor = Color.FromArgb(0, 122, 204);
+
+            if (dgv.Columns.Contains("btnEdit"))
+            {
+                dgv.Columns["btnEdit"].HeaderCell.Style.BackColor = blueColor;
+                dgv.Columns["btnEdit"].HeaderCell.Style.ForeColor = Color.White;
+                dgv.Columns["btnEdit"].HeaderText = ""; 
+            }
+
+            if (dgv.Columns.Contains("btnDelete"))
+            {
+                dgv.Columns["btnDelete"].HeaderCell.Style.BackColor = blueColor;
+                dgv.Columns["btnDelete"].HeaderCell.Style.ForeColor = Color.White;
+                dgv.Columns["btnDelete"].HeaderText = "";
+            }
+        }
+        private void AdjustColumnWidths(DataGridView dgv)
+        {
+            // === 1. CÁC CỘT CẦN GIÃN RA (Dùng Fill và chia tỷ lệ) ===
+
+            // Tên Khách: Cho chiếm nhiều nhất (khoảng 35%)
+            if (dgv.Columns.Contains("CustomerName"))
+            {
+                dgv.Columns["CustomerName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns["CustomerName"].FillWeight = 35;
+            }
+
+            // SĐT: Cho giãn ra vừa phải (20%)
+            if (dgv.Columns.Contains("PhoneNumber"))
+            {
+                dgv.Columns["PhoneNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns["PhoneNumber"].FillWeight = 20;
+            }
+
+            // Thời gian: Cần rộng để hiện đủ ngày giờ (25%)
+            if (dgv.Columns.Contains("ReservationTime"))
+            {
+                dgv.Columns["ReservationTime"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns["ReservationTime"].FillWeight = 25;
+            }
+
+            // Trạng thái: Giãn nốt phần còn lại (20%)
+            if (dgv.Columns.Contains("Status"))
+            {
+                dgv.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns["Status"].FillWeight = 20;
+            }
+
+            // === 2. CÁC CỘT SỐ NHỎ (Giữ gọn gàng - AllCells) ===
+
+            // Cột Bàn
+            if (dgv.Columns.Contains("TableId"))
+            {
+                dgv.Columns["TableId"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                // Căn giữa nội dung cột bàn cho đẹp
+                dgv.Columns["TableId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Columns["TableId"].DefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
+            }
+
+            // Cột Lượng khách
+            if (dgv.Columns.Contains("NumberOfGuests"))
+            {
+                dgv.Columns["NumberOfGuests"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgv.Columns["NumberOfGuests"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Columns["NumberOfGuests"].DefaultCellStyle.Padding = new Padding(50, 0, 0, 0);
+            }
+
+            // === 3. XỬ LÝ CỘT MÃ ĐƠN (Khoảng cách với nút bấm) ===
+            if (dgv.Columns.Contains("Id"))
+            {
+                dgv.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgv.Columns["Id"].DefaultCellStyle.Padding = new Padding(20, 0, 0, 0); // Cách ra 20px
+            }
+        }
+        private void dgvReservations_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                if (dgvReservations.Columns[e.ColumnIndex].Name == "btnEdit")
+                {
+                    Rectangle rect = e.CellBounds;
+                    rect.Width += dgvReservations.Columns["btnDelete"].Width;
+                    var oldClip = e.Graphics.Clip;
+                    e.Graphics.SetClip(e.CellBounds.IntersectsWith(new Rectangle(0, 0, dgvReservations.Width, dgvReservations.Height))
+                        ? new Rectangle(0, 0, dgvReservations.Width, dgvReservations.Height) : e.CellBounds);
+                    using (Brush brush = new SolidBrush(Color.FromArgb(0, 122, 204)))
+                    {
+                        e.Graphics.FillRectangle(brush, rect);
+                    }
+                    using (Brush textBrush = new SolidBrush(Color.White))
+                    {
+                        StringFormat sf = new StringFormat();
+                        sf.Alignment = StringAlignment.Center;     
+                        sf.LineAlignment = StringAlignment.Center;  
+                        e.Graphics.DrawString("Thao tác", new Font("Segoe UI", 12F, FontStyle.Bold), textBrush, rect, sf);
+                    }
+                    e.Graphics.Clip = oldClip;
+                    e.Handled = true;
+                }
+                else if (dgvReservations.Columns[e.ColumnIndex].Name == "btnDelete")
+                {
+                    e.Handled = true;
+                }
             }
         }
         private void ShowPopupUC(UserControl uc)

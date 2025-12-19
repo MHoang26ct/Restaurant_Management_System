@@ -98,6 +98,21 @@ namespace FoodOrderManagement.AdminControl
                 {
                     orderInList.CheckoutTime = updatedOrder.CheckoutTime;
                 }
+                if (updatedOrder.CheckoutTime != null && updatedOrder.ReservationId > 0)
+                {
+                    // Lấy thông tin phiếu đặt bàn đó lên
+                    var reservation = await _reservationsRepository.GetReservationByReservationIdAsync(updatedOrder.ReservationId);
+
+                    // Nếu tìm thấy phiếu đặt bàn
+                    if (reservation != null)
+                    {
+                        // Đổi trạng thái thành Completed
+                        reservation.Status = "Completed";
+
+                        // Lưu xuống database
+                        await _reservationsRepository.UpdateReservationAsync(reservation);
+                    }
+                }
                 ApplyFilters();
             }
             catch (Exception ex)
@@ -368,12 +383,12 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                     decimal discountAmount = currentTotal * discountRate;
                     decimal finalTotal = currentTotal - discountAmount;
                     string msg = $"Khách hàng: {currentCus?.FullName} ({rank})\n" +
-                         $"Tổng món: {currentTotal:N0} VND\n" +
+                         $"Tổng tiền: {currentTotal:N0} VND\n" +
                          $"Giảm giá ({discountRate * 100}%): -{discountAmount:N0} VND\n" +
                          $"--------------------------\n" +
                          $"THÀNH TIỀN: {finalTotal:N0} VND";
 
-                    MessageBox.Show(msg, "Xác nhận thanh toán", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(msg, "Xác nhận thay đổi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await _orderDetailsRepository.AddListOrderDetailAsync(details);
                     if (_existingOrderData != null)
                     {

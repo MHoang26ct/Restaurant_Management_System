@@ -327,6 +327,7 @@
             Name = "FormReservation";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormReservation";
+            Load += FormReservation_Load;
             doubleBufferedtlp1.ResumeLayout(false);
             doubleBufferedtlp2.ResumeLayout(false);
             doubleBufferedtlp3.ResumeLayout(false);
