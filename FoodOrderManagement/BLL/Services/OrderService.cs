@@ -233,16 +233,14 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 foreach (var item in oldDetails)
                 {
                     var row = _scope.Resolve<UC_AddFoodOrder>();
-                    row.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    row.Width = ListFoodFlowLayout.Width - 25;
+                    row.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+                    row.Width = ListFoodFlowLayout.ClientSize.Width - 50;
                     row.OnDeleteRequest += (sender, args) =>
                     {
                         ListFoodFlowLayout.Controls.Remove((Control)sender);
                         ((UserControl)sender).Dispose();
                     };
                     ListFoodFlowLayout.Controls.Add(row);
-                    row.SetData(item.FoodId, item.Quantity);
-
                 }
             }
         }
@@ -289,7 +287,13 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 CustomerNameTBox.Focus(); 
                 return false;
             }
-            return true;
+            if (string.IsNullOrWhiteSpace(PhoneNumberTBox.Text))
+            {
+                MessageBox.Show("Vui lòng nhập số điện thoại khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                PhoneNumberTBox.Focus();
+                return false;
+            }
+                return true;
         }
         private async Task<int> GetOrCreateCustomerAsync(string name, string phone)
         {

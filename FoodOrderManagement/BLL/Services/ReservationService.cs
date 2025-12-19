@@ -118,7 +118,7 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
             }
 
             // Đổi tên nút
-            CreateOrderButton.Text = "Cập Nhật Đặt Bàn";
+            CreateReservationButton.Text = "Cập Nhật Đặt Bàn";
         }
         private void ExitButton_Click(object sender, EventArgs e)
         {

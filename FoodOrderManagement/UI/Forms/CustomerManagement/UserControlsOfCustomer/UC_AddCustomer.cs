@@ -76,7 +76,35 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
                 e.Handled = true;
             }
         }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            // Mở lên thì focus ngay vào dòng đầu
+            this.Focus();
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Kiểm tra nếu phím bấm là ESC
+            if (keyData == Keys.Escape)
+            {
+                // Gọi hàm đóng 
+                ExitButton_Click(null, null);
+                return true;
+            }
+            // Tạo vòng lặp tab không cho tab nhảy lung tung ra ngoài form cha
+            if (keyData == Keys.Tab && ConfirmButton.Focused)
+            {
+                // Ép nhảy về ô đầu tiên (TableID)
+                CustomerNameTBox.Focus();
+                CustomerNameTBox.Select();
 
+                // Trả về true để chặn Windows không tự nhảy đi lung tung nữa
+                return true;
+            }
+
+            // Nếu không phải các phím trên thì hành xử như bình thường
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void EmailTBox_TextChanged(object sender, EventArgs e)
         {
             if (EmailTBox.Text.Length > 0)
@@ -97,5 +125,16 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
             }
         }
 
+        private void ConfirmButton_Enter(object sender, EventArgs e)
+        {
+            ConfirmButton.FillColor = Color.Chocolate;
+            ConfirmButton.FillColor2 = Color.FromArgb(255, 128, 0);
+        }
+
+        private void ConfirmButton_Leave(object sender, EventArgs e)
+        {
+            ConfirmButton.FillColor = Color.FromArgb(255, 128, 0);
+            ConfirmButton.FillColor2 = Color.Chocolate;
+        }
     }
 }

@@ -126,6 +126,7 @@
             // 
             // PasswordTextbox
             // 
+            resources.ApplyResources(PasswordTextbox, "PasswordTextbox");
             PasswordTextbox.BorderColor = Color.Silver;
             PasswordTextbox.BorderRadius = 10;
             PasswordTextbox.BorderThickness = 2;
@@ -135,9 +136,8 @@
             PasswordTextbox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             PasswordTextbox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             PasswordTextbox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            resources.ApplyResources(PasswordTextbox, "PasswordTextbox");
             PasswordTextbox.FillColor = Color.Black;
-            PasswordTextbox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            PasswordTextbox.FocusedState.BorderColor = Color.DarkOrange;
             PasswordTextbox.ForeColor = Color.White;
             PasswordTextbox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             PasswordTextbox.IconLeft = (Image)resources.GetObject("PasswordTextbox.IconLeft");
@@ -154,6 +154,7 @@
             // 
             // UsernameTextbox
             // 
+            resources.ApplyResources(UsernameTextbox, "UsernameTextbox");
             UsernameTextbox.BorderColor = Color.Silver;
             UsernameTextbox.BorderRadius = 10;
             UsernameTextbox.BorderThickness = 2;
@@ -163,9 +164,8 @@
             UsernameTextbox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             UsernameTextbox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             UsernameTextbox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            resources.ApplyResources(UsernameTextbox, "UsernameTextbox");
             UsernameTextbox.FillColor = Color.Black;
-            UsernameTextbox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            UsernameTextbox.FocusedState.BorderColor = Color.DarkOrange;
             UsernameTextbox.ForeColor = Color.White;
             UsernameTextbox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             UsernameTextbox.IconLeft = (Image)resources.GetObject("UsernameTextbox.IconLeft");
@@ -277,7 +277,7 @@
             // LoginGadient1
             // 
             LoginGadient1.BackColor = Color.Transparent;
-            LoginGadient1.BorderRadius = 15;
+            LoginGadient1.BorderRadius = 10;
             LoginGadient1.Controls.Add(doubleBufferedtlp4);
             LoginGadient1.CustomizableEdges = customizableEdges11;
             resources.ApplyResources(LoginGadient1, "LoginGadient1");
@@ -351,10 +351,10 @@
         private Guna.UI2.WinForms.Guna2TextBox UsernameTextbox;
         private Guna.UI2.WinForms.Guna2HtmlLabel PasswordLabel;
         private DoubleBufferedTLP doubleBufferedtlp7;
-        private Guna.UI2.WinForms.Guna2Button ContinueButton;
         private Guna.UI2.WinForms.Guna2HtmlLabel LoginLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel UsernameLabel;
         private CheckBox RememberBox;
         private CheckBox ShowPWBox;
+        private Guna.UI2.WinForms.Guna2Button ContinueButton;
     }
 }

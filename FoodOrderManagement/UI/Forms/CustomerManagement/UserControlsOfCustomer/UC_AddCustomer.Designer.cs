@@ -115,7 +115,7 @@
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 3F));
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             doubleBufferedtlp1.Size = new Size(500, 400);
-            doubleBufferedtlp1.TabIndex = 4;
+            doubleBufferedtlp1.TabIndex = 0;
             // 
             // ConfirmButton
             // 
@@ -135,16 +135,17 @@
             ConfirmButton.Margin = new Padding(10, 3, 3, 3);
             ConfirmButton.Name = "ConfirmButton";
             ConfirmButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            ConfirmButton.Size = new Size(447, 38);
-            ConfirmButton.TabIndex = 34;
+            ConfirmButton.Size = new Size(447, 44);
+            ConfirmButton.TabIndex = 4;
             ConfirmButton.Text = "Xác Nhận";
-            ConfirmButton.Click += this.ConfirmButton_Click;
+            ConfirmButton.Click += ConfirmButton_Click;
+            ConfirmButton.Enter += ConfirmButton_Enter;
+            ConfirmButton.Leave += ConfirmButton_Leave;
             // 
             // CustomerNameTBox
             // 
             CustomerNameTBox.BorderColor = Color.Silver;
             CustomerNameTBox.BorderRadius = 8;
-            CustomerNameTBox.BorderThickness = 0;
             CustomerNameTBox.CustomizableEdges = customizableEdges3;
             CustomerNameTBox.DefaultText = "";
             CustomerNameTBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -153,7 +154,7 @@
             CustomerNameTBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             CustomerNameTBox.Dock = DockStyle.Fill;
             CustomerNameTBox.FillColor = Color.Gainsboro;
-            CustomerNameTBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            CustomerNameTBox.FocusedState.BorderColor = Color.DarkOrange;
             CustomerNameTBox.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CustomerNameTBox.ForeColor = Color.Black;
             CustomerNameTBox.HoverState.BorderColor = Color.Black;
@@ -166,7 +167,7 @@
             CustomerNameTBox.SelectedText = "";
             CustomerNameTBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
             CustomerNameTBox.Size = new Size(453, 40);
-            CustomerNameTBox.TabIndex = 33;
+            CustomerNameTBox.TabIndex = 0;
             // 
             // guna2TextBox1
             // 
@@ -200,7 +201,6 @@
             // 
             PhoneNumberTBox.BorderColor = Color.Silver;
             PhoneNumberTBox.BorderRadius = 8;
-            PhoneNumberTBox.BorderThickness = 0;
             PhoneNumberTBox.CustomizableEdges = customizableEdges7;
             PhoneNumberTBox.DefaultText = "";
             PhoneNumberTBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -209,7 +209,7 @@
             PhoneNumberTBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             PhoneNumberTBox.Dock = DockStyle.Fill;
             PhoneNumberTBox.FillColor = Color.Gainsboro;
-            PhoneNumberTBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            PhoneNumberTBox.FocusedState.BorderColor = Color.DarkOrange;
             PhoneNumberTBox.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PhoneNumberTBox.ForeColor = Color.Black;
             PhoneNumberTBox.HoverState.BorderColor = Color.Black;
@@ -222,7 +222,7 @@
             PhoneNumberTBox.SelectedText = "";
             PhoneNumberTBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
             PhoneNumberTBox.Size = new Size(453, 40);
-            PhoneNumberTBox.TabIndex = 17;
+            PhoneNumberTBox.TabIndex = 1;
             // 
             // doubleBufferedtlp3
             // 
@@ -317,7 +317,6 @@
             // 
             EmailTBox.BorderColor = Color.Silver;
             EmailTBox.BorderRadius = 8;
-            EmailTBox.BorderThickness = 0;
             EmailTBox.CustomizableEdges = customizableEdges11;
             EmailTBox.DefaultText = "";
             EmailTBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -326,7 +325,7 @@
             EmailTBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             EmailTBox.Dock = DockStyle.Fill;
             EmailTBox.FillColor = Color.Gainsboro;
-            EmailTBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            EmailTBox.FocusedState.BorderColor = Color.DarkOrange;
             EmailTBox.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             EmailTBox.ForeColor = Color.Black;
             EmailTBox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
@@ -338,7 +337,7 @@
             EmailTBox.SelectedText = "";
             EmailTBox.ShadowDecoration.CustomizableEdges = customizableEdges12;
             EmailTBox.Size = new Size(453, 40);
-            EmailTBox.TabIndex = 21;
+            EmailTBox.TabIndex = 2;
             // 
             // label2
             // 
@@ -368,8 +367,8 @@
             DateTimePicker.Name = "DateTimePicker";
             DateTimePicker.ShadowDecoration.CustomizableEdges = customizableEdges14;
             DateTimePicker.Size = new Size(453, 40);
-            DateTimePicker.TabIndex = 36;
-            DateTimePicker.Value = DateTime.Now;
+            DateTimePicker.TabIndex = 3;
+            DateTimePicker.Value = new DateTime(2025, 12, 19, 19, 14, 32, 851);
             // 
             // UC_AddCustomer
             // 
