@@ -58,7 +58,7 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             {
                 new SqlParameter("@ReservationID", reservationId)
             };
-            return await _db.QuerySingleAsync("GetReservationByReservationId", Mapper, parameters);
+            return await _db.QuerySingleAsync("GetReservationByID", Mapper, parameters);
         }
 
         // Truy vấn theo ngày để tránh đặt trùng
@@ -106,7 +106,8 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 new SqlParameter("@TableID", reservation.TableId),
                 new SqlParameter("@ReservationTime", reservation.ReservationTime),
                 new SqlParameter("@ComingTime", reservation.ComingTime),
-                new SqlParameter("@NumberOfGuests", reservation.NumberOfGuests)
+                new SqlParameter("@NumberOfGuests", reservation.NumberOfGuests),
+                new SqlParameter("@Status", reservation.Status)
             };
             int rowsAffected = await _db.ExecuteNonQueryAsync("UpdateReservation", parameters);
             return rowsAffected > 0;
@@ -156,6 +157,19 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             }
 
             return list;
+        }
+        public async Task<bool> DeleteReservationAsync(int reservationId)
+        {
+            var parameters = new SqlParameter[]
+            {
+        new SqlParameter("@ReservationID", reservationId)
+            };
+
+            // Gọi thủ tục vừa tạo ở trên
+            int rowsAffected = await _db.ExecuteNonQueryAsync("DeleteReservation", parameters);
+
+            // Trả về true nếu xóa thành công (có ít nhất 1 dòng bị ảnh hưởng)
+            return rowsAffected > 0;
         }
     }
 }

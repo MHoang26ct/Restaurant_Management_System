@@ -261,7 +261,7 @@
             DateTimePickerSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
             DateTimePickerSearch.Size = new Size(272, 45);
             DateTimePickerSearch.TabIndex = 1;
-            DateTimePickerSearch.Value = DateTime.Now;
+            DateTimePickerSearch.Value = new DateTime(2025, 12, 19, 17, 57, 11, 509);
             // 
             // dgvReservations
             // 
@@ -313,6 +313,7 @@
             dgvReservations.ThemeStyle.RowsStyle.Height = 25;
             dgvReservations.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvReservations.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgvReservations.CellContentClick += dgvReservations_CellContentClick;
             // 
             // FormReservation
             // 
