@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Implementations;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
 using FoodOrderManagement.UI;
 using FoodOrderManagement.UI.Forms.MenuManagement;
@@ -15,7 +16,8 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
         public event EventHandler OnExitClicked;
 
         private readonly ILifetimeScope _scope;
-
+        public event Action<int, string, string, Reservations> OnUpdateClicked;
+        private int _editingReservationId = 0;
         public UC_CreateReservation(ILifetimeScope scope)
         {
             InitializeComponent();
@@ -52,10 +54,13 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
             }
             string name = CustomerNameTBox.Text;
             string phone = PhoneNumberTBox.Text;
-            DateTime fullDate = DateReservation.Value.Date + TimeSpan.Parse(TimeReservationCBox.SelectedItem.ToString());
-
+            string selectedTime = TimeReservationCBox.SelectedItem.ToString();
+            DateTime datePart = DateReservation.Value.Date;
+            TimeSpan timePart = TimeSpan.Parse(selectedTime);
+            DateTime fullDate = datePart.Add(timePart);
             Reservations res = new Reservations
             {
+                Id = _editingReservationId,
                 TableId = (int)TableID_NBox.Value,
                 NumberOfGuests = (int)NumberOfGuest.Value,
                 ReservationTime = fullDate,
@@ -63,26 +68,58 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
                 Status = "Pending",
                 customerId = 0
             };
-            List<orderDetail> foodList = new List<orderDetail>();
-
-            // Duyệt qua các dòng chọn món trong panel
-            if (ListFoodFlowLayout != null)
+            if (_editingReservationId == 0)
             {
-                foreach (Control c in ListFoodFlowLayout.Controls)
+                List<orderDetail> foodList = new List<orderDetail>();
+                if (ListFoodFlowLayout != null)
                 {
-                    if (c is UC_AddFoodOrder row && row.SelectedFoodId > 0 && row.Quantity > 0)
+                    foreach (Control c in ListFoodFlowLayout.Controls)
                     {
-                        foodList.Add(new orderDetail
+                        if (c is UC_AddFoodOrder row && row.SelectedFoodId > 0 && row.Quantity > 0)
                         {
-                            FoodId = row.SelectedFoodId,
-                            Quantity = row.Quantity
-                        });
+                            foodList.Add(new orderDetail
+                            {
+                                FoodId = row.SelectedFoodId,
+                                Quantity = row.Quantity
+                            });
+                        }
                     }
                 }
+                OnCreateClicked?.Invoke(name, phone, res, foodList);
             }
-            OnCreateClicked?.Invoke(name, phone, res, foodList);
+            else
+            {
+                OnUpdateClicked?.Invoke(_editingReservationId, name, phone, res);
+            }
         }
+        public void SetReservationData(Reservations res, string cusName, string cusPhone)
+        {
+            _editingReservationId = res.Id; // Đánh dấu là đang sửa ID này
 
+            // Điền thông tin khách
+            CustomerNameTBox.Text = cusName;
+            PhoneNumberTBox.Text = cusPhone;
+
+            // Điền thông tin bàn
+            TableID_NBox.Value = res.TableId;
+            NumberOfGuest.Value = res.NumberOfGuests;
+
+            // Xử lý ngày giờ
+            DateReservation.Value = res.ReservationTime;
+
+            // Tìm và chọn giờ trong ComboBox (VD: 14:30)
+            string timeString = res.ReservationTime.ToString("H:mm");
+            // Cần format H:mm để khớp với chuỗi "9:30", "14:00" trong ComboBox
+
+            int index = TimeReservationCBox.FindStringExact(timeString);
+            if (index != -1)
+            {
+                TimeReservationCBox.SelectedIndex = index;
+            }
+
+            // Đổi tên nút
+            CreateOrderButton.Text = "Cập Nhật Đặt Bàn";
+        }
         private void ExitButton_Click(object sender, EventArgs e)
         {
             OnExitClicked?.Invoke(this, EventArgs.Empty);
@@ -121,6 +158,7 @@ namespace FoodOrderManagement.AdminControl
             _ordersRepository = ordersRepository;
             _orderDetailsRepository = orderDetailsRepository;
             _overlayBackground = new OverlayBackground();
+            AddActionButtons();
             SearchReservationTBox1.TextChanged += (s, e) => ApplyFilter();
             DateTimePickerSearch.ValueChanged += (s, e) => ApplyFilter();
             LoadReservationList();
@@ -247,7 +285,119 @@ namespace FoodOrderManagement.AdminControl
                  (this.ClientSize.Height - uc_CreateReservation.Height) / 2
             );
         }
+        private async void dgvReservations_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
 
+            // Lưu ý: Đảm bảo cột ID nằm ở Cells[0] hoặc dùng Cells["Id"]
+            int reservationId = Convert.ToInt32(dgvReservations.Rows[e.RowIndex].Cells["Id"].Value);
+
+            if (dgvReservations.Columns[e.ColumnIndex].Name == "btnEdit")
+            {
+                HandleEditBooking(reservationId);
+            }
+
+            if (dgvReservations.Columns[e.ColumnIndex].Name == "btnDelete")
+            {
+                if (MessageBox.Show("Bạn có chắc chắn muốn xóa đơn đặt bàn này?", "Xác nhận",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        // Gọi Repository xóa (đã viết ở Phần 2)
+                        await _reservationsRepository.DeleteReservationAsync(reservationId);
+                        LoadReservationList();
+                        MessageBox.Show("Xóa thành công!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi xóa: " + ex.Message);
+                    }
+                }
+            }
+        }
+        private async void HandleEditBooking(int reservationId)
+        {
+            var booking = await _reservationsRepository.GetReservationByReservationIdAsync(reservationId);
+            if (booking == null) return;
+
+            var customer = await _customersRepository.GetCustomerByIdAsync(booking.customerId);
+            string cusName = customer != null ? customer.FullName : "";
+            string cusPhone = customer != null ? customer.PhoneNumber : "";
+
+            _overlayBackground.Show(this);
+            uc_CreateReservation = new UC_CreateReservation(_scope);
+
+            uc_CreateReservation.SetReservationData(booking, cusName, cusPhone);
+
+            uc_CreateReservation.OnUpdateClicked += async (id, name, phone, updatedRes) =>
+            {
+                try
+                {
+                    if (customer != null)
+                    {
+                        customer.FullName = name;
+                        customer.PhoneNumber = phone;
+                        await _customersRepository.UpdateCustomerInfoAsync(customer);
+                    }
+
+                    await _reservationsRepository.UpdateReservationAsync(updatedRes);
+
+                    MessageBox.Show("Cập nhật thành công!");
+                    ClosePopup();
+                    LoadReservationList(); 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi cập nhật: " + ex.Message);
+                }
+            };
+
+            uc_CreateReservation.OnExitClicked += (s, args) => ClosePopup();
+
+            // Hiển thị UC
+            ShowPopupUC(uc_CreateReservation);
+        }
+        private void AddActionButtons()
+        {
+            // 1. Tạo nút Sửa (nếu chưa có)
+            if (dgvReservations.Columns["btnEdit"] == null)
+            {
+                DataGridViewButtonColumn btnEdit = new DataGridViewButtonColumn();
+                btnEdit.Name = "btnEdit";
+                btnEdit.HeaderText = "";
+                btnEdit.Text = "Sửa";
+                btnEdit.UseColumnTextForButtonValue = true; // Hiển thị chữ "Sửa" lên nút
+                btnEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvReservations.Columns.Add(btnEdit);
+            }
+
+            // 2. Tạo nút Xóa (nếu chưa có)
+            if (dgvReservations.Columns["btnDelete"] == null)
+            {
+                DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
+                btnDelete.Name = "btnDelete";
+                btnDelete.HeaderText = "";
+                btnDelete.Text = "Xóa";
+                btnDelete.UseColumnTextForButtonValue = true; // Hiển thị chữ "Xóa" lên nút
+                btnDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                // Chỉnh màu đỏ cho nút Xóa (tùy chọn)
+                btnDelete.DefaultCellStyle.ForeColor = Color.Red;
+                btnDelete.DefaultCellStyle.SelectionForeColor = Color.Red;
+
+                dgvReservations.Columns.Add(btnDelete);
+            }
+        }
+        private void ShowPopupUC(UserControl uc)
+        {
+            this.Controls.Add(uc);
+            uc.BringToFront();
+            uc.Location = new Point(
+                 (this.ClientSize.Width - uc.Width) / 2,
+                 (this.ClientSize.Height - uc.Height) / 2
+            );
+        }
         private void ClosePopup()
         {
             if (uc_CreateReservation != null)

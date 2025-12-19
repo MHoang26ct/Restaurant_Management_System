@@ -49,5 +49,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         // Thay đổi thông tin đặt bàn (dùng luôn cho hủy đặt bàn)
         public Task<bool> UpdateReservationAsync(Reservations reservation);
         public Task<List<ReservationViewModel>> GetAllReservationsAsync();
+        public Task<bool> DeleteReservationAsync(int reservationId);
     }
 }
