@@ -32,14 +32,15 @@ namespace FoodOrderManagement.AdminControl {
             // 2. Đăng ký Form chính (Rất quan trọng)
             // Autofac cần biết cách tạo MainForm
             builder.RegisterType<FormLogin>();
-            builder.RegisterType<FormMain>();
-            builder.RegisterType<FormDashboard>();
-            builder.RegisterType<FrmMenu>();
-            builder.RegisterType<FormOrder>();
-            builder.RegisterType<FormTable>();
-            builder.RegisterType<FormCustomer>();
-            builder.RegisterType<FormReservation>();
-            builder.RegisterType<FormEmployee>();
+            builder.RegisterType<FormMain>().SingleInstance();
+            builder.RegisterType<FormDashboard>().SingleInstance();
+            builder.RegisterType<FrmMenu>().SingleInstance();
+            builder.RegisterType<FormOrder>().SingleInstance();
+            builder.RegisterType<FormTable>().SingleInstance();
+            builder.RegisterType<FormCustomer>().SingleInstance();
+            builder.RegisterType<FormReservation>().SingleInstance();
+            builder.RegisterType<FormEmployee>().SingleInstance();
+            builder.RegisterType<FormCustomer>().SingleInstance();
             builder.RegisterType<UC_AddFood>();
             builder.RegisterType<UC_FoodItem>();
             builder.RegisterType<UC_CreateOrder>();
@@ -50,7 +51,6 @@ namespace FoodOrderManagement.AdminControl {
             builder.RegisterType<UC_AddTable>();
             builder.RegisterType<UC_UpdateStatus>();
             builder.RegisterType<UC_AddTableCard>();
-            builder.RegisterType<FormCustomer>();
             builder.RegisterType<UC_AddCustomer>();
             builder.RegisterType<UC_CustomerItem>();
 

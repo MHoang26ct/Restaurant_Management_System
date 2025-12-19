@@ -1,177 +1,191 @@
 ﻿using Autofac;
 using FoodOrderManagement.AdminControl;
-using FoodOrderManagement.DAL.Repositories.Implementations;
-using FoodOrderManagement.DAL.Repositories.Interfaces;
 using FoodOrderManagement.UI.Forms.MenuManagement;
+using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Formats.Asn1.AsnWriter;
+using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
 
 namespace FoodOrderManagement
 {
     public partial class FormMain : Form
     {
         private readonly ILifetimeScope _scope;
-        private readonly IUsersRepository _usersRepository;
-        public static FormMain instance { get; private set; }
+
+        // Inject tất cả các Form con vào đây để quản lý Singleton
+        private readonly FormDashboard _formDashboard;
+        private readonly FrmMenu _formMenu;
+        private readonly FormOrder _formOrder;
+        private readonly FormTable _formTable;
+        private readonly FormCustomer _formCustomer;
+        private readonly FormReservation _formReservation;
+        private readonly FormEmployee _formEmployee;
+
         private Form CurrentChildForm;
-        public FormMain(ILifetimeScope scope)
+        public static FormMain instance { get; private set; }
+
+        // Constructor nhận tất cả các Form từ Autofac
+        public FormMain(
+            ILifetimeScope scope,
+            FormDashboard formDashboard,
+            FrmMenu frmMenu,
+            FormOrder formOrder,
+            FormTable formTable,
+            FormCustomer formCustomer,
+            FormReservation formReservation,
+            FormEmployee formEmployee)
         {
             InitializeComponent();
             _scope = scope;
+            _formDashboard = formDashboard;
+            _formMenu = frmMenu;
+            _formOrder = formOrder;
+            _formTable = formTable;
+            _formCustomer = formCustomer;
+            _formReservation = formReservation;
+            _formEmployee = formEmployee;
+            this.Load += async (s, e) => await PreloadFormEmployeeAsync();
+
             instance = this;
         }
+
         private void FormMain_Load(object sender, EventArgs e)
         {
-            DashboardButton.PerformClick();// Bắt đầu vào giao diện nút Dasdboard được hiện lên
+            // Mặc định mở Dashboard khi vừa vào
+            DashboardButton.PerformClick();
         }
 
-        public void OpenChildForm(Form ChilForm) // Mở Form con trên MainPanel
+        public void OpenChildForm(Form childForm)
         {
+            // Nếu form đang chọn đã hiển thị rồi thì không làm gì cả
+            if (CurrentChildForm == childForm) return;
+
+            // Ẩn form cũ thay vì Close để giữ RAM ổn định (Singleton)
             if (CurrentChildForm != null)
             {
-                CurrentChildForm.Close(); // Đóng form con đang mở 
+                CurrentChildForm.Hide();
             }
-            CurrentChildForm = ChilForm; // Gán form con đang mở = form con vừa thao tác
 
-            ChilForm.TopLevel = false; // Chuyển form từ độc lập thành nằm trong một thứ khác  
-            ChilForm.FormBorderStyle = FormBorderStyle.None; // Bỏ toàn bộ viền của cửa sổ
-            ChilForm.Dock = DockStyle.Fill; // Lắp đầy không gian của vật chứa
+            CurrentChildForm = childForm;
 
-            MainPanel.Controls.Add(ChilForm); // Thêm ChillForm vào danh sách control con của MainPanel
-            MainPanel.Tag = ChilForm; // Lưu Tag MainPanel 
-            ChilForm.BringToFront(); // MainPanel chứa nhiều control con, đảm bảo ChillForm này được đưa lên đầu
-            ChilForm.Show(); // Hiển thị ChillForm
+            // Thiết lập các thuộc tính để nhúng vào Panel
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+
+            // Chỉ thêm vào Controls nếu chưa có
+            if (!MainPanel.Controls.Contains(childForm))
+            {
+                MainPanel.Controls.Add(childForm);
+            }
+
+            childForm.BringToFront();
+            childForm.Show();
+
+            // Nếu bạn có Interface IRefreshable, có thể gọi cập nhật dữ liệu ở đây:
+            // if (childForm is IRefreshable f) f.RefreshData();
         }
+
+        public void NavigationButton_Click(object sender, EventArgs e)
+        {
+            ResetAllButton();
+            Guna2Button clickedButton = (Guna2Button)sender;
+
+            // Cập nhật giao diện nút được nhấn
+            clickedButton.FillColor = Color.FromArgb(255, 128, 0);
+            clickedButton.ForeColor = Color.White;
+
+            // Điều hướng dựa trên tên nút
+            switch (clickedButton.Name)
+            {
+                case "DashboardButton":
+                    clickedButton.Image = Properties.Resources.DashboardWhite;
+                    OpenChildForm(_formDashboard);
+                    break;
+                case "MenuButton":
+                    clickedButton.Image = Properties.Resources.Menuwhite;
+                    OpenChildForm(_formMenu);
+                    break;
+                case "OrderButton":
+                    clickedButton.Image = Properties.Resources.OrderWhite;
+                    OpenChildForm(_formOrder);
+                    break;
+                case "TableButton":
+                    clickedButton.Image = Properties.Resources.TableWhite;
+                    OpenChildForm(_formTable);
+                    break;
+                case "CustomerButton":
+                    clickedButton.Image = Properties.Resources.CustomerWhite;
+                    OpenChildForm(_formCustomer);
+                    if (UC_CreateOrder.IsInAddNewCustomerMode)
+                    {
+                        _formCustomer.LoadCustomerList();
+                        UC_CreateOrder.IsInAddNewCustomerMode = false;
+                    }
+                    break;
+                case "ReservationButton":
+                    clickedButton.Image = Properties.Resources.ReservedWhite;
+                    OpenChildForm(_formReservation);
+                    break;
+                case "EmployeesButton":
+                    clickedButton.Image = Properties.Resources.EmployeesWhite;
+                    OpenChildForm(_formEmployee);
+                    break;
+            }
+        }
+
         public void ResetAllButton()
         {
-            //
-            // DashBoardButton
-            //
-            DashboardButton.BackColor = Color.White;
+            // Hàm này giữ nguyên logic của bạn hoặc tối ưu bằng cách dùng List<Guna2Button>
             DashboardButton.FillColor = Color.White;
             DashboardButton.ForeColor = Color.Black;
-            DashboardButton.Image = Properties.Resources.DashboardBlack; // Icon lúc chưa click
-            //
-            // MenuButton
-            //
-            MenuButton.BackColor = Color.White;
+            DashboardButton.Image = Properties.Resources.DashboardBlack;
+
             MenuButton.FillColor = Color.White;
             MenuButton.ForeColor = Color.Black;
-            MenuButton.Image = Properties.Resources.Menublack; // Icon lúc chưa click
-            //
-            // OrderButton
-            //
-            OrderButton.BackColor = Color.White;
+            MenuButton.Image = Properties.Resources.Menublack;
+
             OrderButton.FillColor = Color.White;
             OrderButton.ForeColor = Color.Black;
             OrderButton.Image = Properties.Resources.OderBlack;
-            // Icon lúc chưa click
-            //
-            // TableButton
-            //
-            TableButton.BackColor = Color.White;
+
             TableButton.FillColor = Color.White;
             TableButton.ForeColor = Color.Black;
-            TableButton.Image = Properties.Resources.TableBlack; // Icon lúc chưa click
-            //
-            // CustomerButton
-            //
-            CustomerButton.BackColor = Color.White;
+            TableButton.Image = Properties.Resources.TableBlack;
+
             CustomerButton.FillColor = Color.White;
             CustomerButton.ForeColor = Color.Black;
-            CustomerButton.Image = Properties.Resources.CustomerBlack; // Icon lúc chưa click
-            //
-            // ReportsButton
-            //
-            ReservationButton.BackColor = Color.White;
+            CustomerButton.Image = Properties.Resources.CustomerBlack;
+
             ReservationButton.FillColor = Color.White;
             ReservationButton.ForeColor = Color.Black;
-            ReservationButton.Image = Properties.Resources.Reserved; // Icon lúc chưa click
-            //
-            // EmployeesButton
-            //
-            EmployeesButton.BackColor = Color.White;
+            ReservationButton.Image = Properties.Resources.Reserved;
+
             EmployeesButton.FillColor = Color.White;
             EmployeesButton.ForeColor = Color.Black;
-            EmployeesButton.Image = Properties.Resources.EmployeesBlack; // Icon lúc chưa click
-        }
-        public void NavigationButton_Click(object sender, EventArgs e)
-        {
-            ResetAllButton(); // Đặt lại toàn bộ trạng thái của các nút
-
-            Guna.UI2.WinForms.Guna2Button ClickedButton = (Guna.UI2.WinForms.Guna2Button)sender;
-            ClickedButton.FillColor = Color.FromArgb(255, 128, 0);
-            ClickedButton.ForeColor = Color.White;
-            //Dashboard
-            if (ClickedButton.Name == "DashboardButton")
-            {
-                ClickedButton.Image = Properties.Resources.DashboardWhite;
-                FormDashboard FormDashboard = _scope.Resolve<FormDashboard>();
-                OpenChildForm(FormDashboard); // Mở FormDashBoard
-            }
-            //Menu
-            else if (ClickedButton.Name == "MenuButton")
-            {
-                ClickedButton.Image = Properties.Resources.Menuwhite;
-                FrmMenu FormMenu = _scope.Resolve<FrmMenu>();
-                OpenChildForm(FormMenu); // Mở FormMenu
-            }
-            //Order
-            else if (ClickedButton.Name == "OrderButton")
-            {
-                ClickedButton.Image = Properties.Resources.OrderWhite;
-                FormOrder FormOrder = _scope.Resolve<FormOrder>();
-                OpenChildForm(FormOrder); // Mở FormOrder
-            }
-            //Table
-            else if (ClickedButton.Name == "TableButton")
-            {
-                ClickedButton.Image = Properties.Resources.TableWhite;
-                FormTable FormTable = _scope.Resolve<FormTable>();
-                OpenChildForm(FormTable); // Mở FormTable
-            }
-            //Customer
-            else if (ClickedButton.Name == "CustomerButton")
-            {
-                ClickedButton.Image = Properties.Resources.CustomerWhite;
-                FormCustomer FormCustomer = _scope.Resolve<FormCustomer>();
-                OpenChildForm(FormCustomer);// Mở FormCustomer
-            }
-            //Reports 
-            else if (ClickedButton.Name == "ReservationButton")
-            {
-                ClickedButton.Image = Properties.Resources.ReservedWhite;
-                FormReservation FormReservation = _scope.Resolve<FormReservation>();
-                OpenChildForm(FormReservation);// Mở FormRersevation
-            }
-            //Employees
-            else if (ClickedButton.Name == "EmployeesButton")
-            {
-                ClickedButton.Image = Properties.Resources.EmployeesWhite;
-                FormEmployee FormEmployee = _scope.Resolve<FormEmployee>();
-                OpenChildForm(FormEmployee);// Mở FormEmployees
-            }
-
+            EmployeesButton.Image = Properties.Resources.EmployeesBlack;
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormLogin formLogin = _scope.Resolve<FormLogin>();
+            // Resolve FormLogin vì thường Login không cần Singleton (để reset trạng thái mỗi lần đăng xuất)
+            var formLogin = _scope.Resolve<FormLogin>();
             formLogin.Show();
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        // Load truoc form employee de tranh lag khi mo form employee lan dau tien
+        private async Task PreloadFormEmployeeAsync()
+        {
+            // Truy cập Handle để buộc tạo cửa sổ ẩn
+            IntPtr forceCreateHandle = _formEmployee.Handle;
+            await _formEmployee.LoadListEmployee();
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)

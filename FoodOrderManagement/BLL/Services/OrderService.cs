@@ -207,6 +207,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
     {
         private int? _currentOrderId = null;
         private Orders _existingOrderData = null;
+        public static bool IsInAddNewCustomerMode = false;
 
         public async void SetModeAddFood(Orders oldOrder)
         {
@@ -243,6 +244,18 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                     row.SetData(item.FoodId, item.Quantity);
 
                 }
+            }
+        }
+        private decimal GetDiscountRate(string rank)
+        {
+            if (string.IsNullOrEmpty(rank)) return 0;
+
+            switch (rank.Trim().ToLower())
+            {
+                case "silver": return 0.01m;  
+                case "gold": return 0.02m;     
+                case "platinum": return 0.05m; 
+                default: return 0;        
             }
         }
         private void ThemDongMonAn()
@@ -291,6 +304,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             newCus.FullName = name;
             newCus.Email = phone + name + "@gmail.com";
             int newId = await _customersRepository.AddCustomerAsync(newCus);
+            IsInAddNewCustomerMode = true;
             return newId;
         }
         private async void CreateOrderButton_Click(object sender, EventArgs e)
@@ -300,11 +314,11 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             try
             {
                 int targetOrderId;
-
+                int customerId = 0;
                 if (_currentOrderId == null)
                 {
                     string phone = string.IsNullOrEmpty(PhoneNumberTBox.Text) ? "Unknown" : PhoneNumberTBox.Text;
-                    int customerId = await GetOrCreateCustomerAsync(CustomerNameTBox.Text, phone);
+                    customerId = await GetOrCreateCustomerAsync(CustomerNameTBox.Text, phone);
                     if (customerId <= 0)
                     {
                         MessageBox.Show("Lỗi: Không tạo được khách hàng hợp lệ. Vui lòng kiểm tra lại!");
@@ -318,12 +332,14 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                     order.NumberOfGuests = 1;
                     order.TotalAmount = 0;   
                     targetOrderId = await _ordersRepository.AddOrderAsync(order);
+                    _currentOrderId = targetOrderId;
                     _existingOrderData = order;
                     _existingOrderData.Id = targetOrderId;
                 }
                 else
                 {
                     targetOrderId = _currentOrderId.Value;
+                    customerId = _existingOrderData.CustomerId;
                     await _orderDetailsRepository.DeleteAllDetailsByOrderIdAsync(targetOrderId);
                 }
                 List<orderDetail> details = new List<orderDetail>();
@@ -346,13 +362,25 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 }
                 if (details.Count > 0)
                 {
+                    var currentCus = await _customersRepository.GetCustomerByIdAsync(customerId);
+                    string rank = currentCus != null ? currentCus.CustomerRank : "Regular";
+                    decimal discountRate = GetDiscountRate(rank);
+                    decimal discountAmount = currentTotal * discountRate;
+                    decimal finalTotal = currentTotal - discountAmount;
+                    string msg = $"Khách hàng: {currentCus?.FullName} ({rank})\n" +
+                         $"Tổng món: {currentTotal:N0} VND\n" +
+                         $"Giảm giá ({discountRate * 100}%): -{discountAmount:N0} VND\n" +
+                         $"--------------------------\n" +
+                         $"THÀNH TIỀN: {finalTotal:N0} VND";
+
+                    MessageBox.Show(msg, "Xác nhận thanh toán", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await _orderDetailsRepository.AddListOrderDetailAsync(details);
                     if (_existingOrderData != null)
                     {
-                        _existingOrderData.TotalAmount = currentTotal;
-                        await _ordersRepository.UpdateOrderTotalAsync(targetOrderId, currentTotal);
+                        _existingOrderData.TotalAmount = finalTotal;
+                        await _ordersRepository.UpdateOrderTotalAsync(targetOrderId, finalTotal);
                     }
-
+                    await CheckAndUpgradeRank(customerId);
                     OnOrderCreated?.Invoke(this, _existingOrderData);
                     MessageBox.Show("Cập nhật đơn hàng thành công!");
 
@@ -367,6 +395,19 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
+        private async Task CheckAndUpgradeRank(int customerId)
+        {
+            try
+            {
+                // Gọi hàm bên Repository để tính toán và update lại Rank
+                await _customersRepository.UpdateCustomerRankAsync(customerId);
+            }
+            catch (Exception ex)
+            {
+                // Lỗi thăng hạng thì log lại thôi, không nên chặn quy trình bán hàng
+                Console.WriteLine("Lỗi thăng hạng: " + ex.Message);
             }
         }
     }

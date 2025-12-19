@@ -9,7 +9,7 @@ namespace FoodOrderManagement.AdminControl
     public partial class FormCustomer : Form
     {
         private List<Customers> _originalCustomerList = new List<Customers>();
-        private async void LoadCustomerList()
+        public async void LoadCustomerList()
         {
             try
             {

@@ -369,7 +369,7 @@
             DateTimePicker.ShadowDecoration.CustomizableEdges = customizableEdges14;
             DateTimePicker.Size = new Size(453, 40);
             DateTimePicker.TabIndex = 36;
-            DateTimePicker.Value = new DateTime(2025, 12, 14, 13, 4, 4, 713);
+            DateTimePicker.Value = DateTime.Now;
             // 
             // UC_AddCustomer
             // 
