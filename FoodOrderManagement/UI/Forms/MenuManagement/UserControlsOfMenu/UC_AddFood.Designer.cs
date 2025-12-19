@@ -157,7 +157,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             PriceTBox.SelectedText = "";
             PriceTBox.ShadowDecoration.CustomizableEdges = customizableEdges2;
             PriceTBox.Size = new Size(432, 35);
-            PriceTBox.TabIndex = 1;
+            PriceTBox.TabIndex = 3;
             PriceTBox.Enter += PriceTBox_Enter;
             PriceTBox.Leave += PriceTBox_Leave;
             // 
@@ -211,7 +211,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             CatagorieFoodsCBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
             CatagorieFoodsCBox.Size = new Size(438, 46);
             CatagorieFoodsCBox.StartIndex = 0;
-            CatagorieFoodsCBox.TabIndex = 5;
+            CatagorieFoodsCBox.TabIndex = 2;
             // 
             // Label3
             // 
@@ -321,7 +321,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             DescriptionTBox.SelectedText = "";
             DescriptionTBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
             DescriptionTBox.Size = new Size(432, 63);
-            DescriptionTBox.TabIndex = 2;
+            DescriptionTBox.TabIndex = 4;
             // 
             // Label5
             // 
@@ -376,7 +376,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             ChoosePictureButton.Name = "ChoosePictureButton";
             ChoosePictureButton.ShadowDecoration.CustomizableEdges = customizableEdges10;
             ChoosePictureButton.Size = new Size(438, 45);
-            ChoosePictureButton.TabIndex = 2;
+            ChoosePictureButton.TabIndex = 5;
             ChoosePictureButton.Text = "Chọn ảnh ";
             ChoosePictureButton.Click += ChoosePictureButton_Click;
             // 
@@ -443,7 +443,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             AddFoodButton.Name = "AddFoodButton";
             AddFoodButton.ShadowDecoration.CustomizableEdges = customizableEdges13;
             AddFoodButton.Size = new Size(346, 43);
-            AddFoodButton.TabIndex = 16;
+            AddFoodButton.TabIndex = 6;
             AddFoodButton.Text = "Thêm Món Ăn";
             AddFoodButton.Click += AddFoodButton_Click;
             // 
@@ -451,6 +451,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(105, 0, 0, 0);
             Controls.Add(ShadowPanel);
             Name = "UC_AddFood";
             Size = new Size(500, 600);

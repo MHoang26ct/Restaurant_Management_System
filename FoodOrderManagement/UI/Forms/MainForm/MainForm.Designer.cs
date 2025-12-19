@@ -448,6 +448,7 @@
             WindowState = FormWindowState.Maximized;
             FormClosed += FormMain_FormClosed;
             Load += FormMain_Load;
+            KeyDown += FormMain_KeyDown;
             BackgroundIcon.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)IconPictureBox).EndInit();

@@ -148,7 +148,7 @@
             AddFoodButton.PressedColor = Color.DarkGray;
             AddFoodButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
             AddFoodButton.Size = new Size(539, 39);
-            AddFoodButton.TabIndex = 0;
+            AddFoodButton.TabIndex = 4;
             AddFoodButton.Text = "Thêm món ăn";
             AddFoodButton.Click += AddFoodButton_Click;
             // 
@@ -171,7 +171,7 @@
             CreateOrderButton.Name = "CreateOrderButton";
             CreateOrderButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
             CreateOrderButton.Size = new Size(539, 43);
-            CreateOrderButton.TabIndex = 18;
+            CreateOrderButton.TabIndex = 5;
             CreateOrderButton.Text = "Tạo Hóa Đơn";
             CreateOrderButton.Click += CreateOrderButton_Click;
             // 
@@ -233,7 +233,7 @@
             CustomerNameTBox.SelectedText = "";
             CustomerNameTBox.ShadowDecoration.CustomizableEdges = customizableEdges6;
             CustomerNameTBox.Size = new Size(545, 38);
-            CustomerNameTBox.TabIndex = 17;
+            CustomerNameTBox.TabIndex = 2;
             // 
             // label2
             // 
@@ -287,7 +287,7 @@
             TableID_NBox.Name = "TableID_NBox";
             TableID_NBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
             TableID_NBox.Size = new Size(545, 36);
-            TableID_NBox.TabIndex = 18;
+            TableID_NBox.TabIndex = 1;
             TableID_NBox.UpDownButtonFillColor = Color.Gray;
             TableID_NBox.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
@@ -381,7 +381,7 @@
             PhoneNumberTBox.SelectedText = "";
             PhoneNumberTBox.ShadowDecoration.CustomizableEdges = customizableEdges12;
             PhoneNumberTBox.Size = new Size(545, 38);
-            PhoneNumberTBox.TabIndex = 21;
+            PhoneNumberTBox.TabIndex = 3;
             PhoneNumberTBox.KeyPress += PhoneNumberTBox_KeyPress;
             // 
             // UC_CreateOrder
