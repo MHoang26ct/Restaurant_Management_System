@@ -45,6 +45,8 @@
             // 
             // doubleBufferedtlp1
             // 
+            doubleBufferedtlp1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            doubleBufferedtlp1.AutoSize = true;
             doubleBufferedtlp1.ColumnCount = 3;
             doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65F));
             doubleBufferedtlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -52,12 +54,11 @@
             doubleBufferedtlp1.Controls.Add(QuantityFoodNBox, 1, 0);
             doubleBufferedtlp1.Controls.Add(NameFoodCBox, 0, 0);
             doubleBufferedtlp1.Controls.Add(DeleteButton, 2, 0);
-            doubleBufferedtlp1.Dock = DockStyle.Fill;
             doubleBufferedtlp1.Location = new Point(0, 0);
             doubleBufferedtlp1.Name = "doubleBufferedtlp1";
             doubleBufferedtlp1.RowCount = 1;
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            doubleBufferedtlp1.Size = new Size(500, 45);
+            doubleBufferedtlp1.Size = new Size(495, 45);
             doubleBufferedtlp1.TabIndex = 0;
             // 
             // QuantityFoodNBox
@@ -70,12 +71,12 @@
             QuantityFoodNBox.Dock = DockStyle.Fill;
             QuantityFoodNBox.FillColor = Color.Gainsboro;
             QuantityFoodNBox.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            QuantityFoodNBox.Location = new Point(332, 5);
-            QuantityFoodNBox.Margin = new Padding(7, 5, 2, 9);
+            QuantityFoodNBox.Location = new Point(325, 0);
+            QuantityFoodNBox.Margin = new Padding(4, 0, 2, 13);
             QuantityFoodNBox.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             QuantityFoodNBox.Name = "QuantityFoodNBox";
             QuantityFoodNBox.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            QuantityFoodNBox.Size = new Size(116, 31);
+            QuantityFoodNBox.Size = new Size(117, 32);
             QuantityFoodNBox.TabIndex = 19;
             QuantityFoodNBox.UpDownButtonFillColor = Color.Gray;
             QuantityFoodNBox.Value = new decimal(new int[] { 1, 0, 0, 0 });
@@ -91,12 +92,12 @@
             NameFoodCBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             NameFoodCBox.Font = new Font("Segoe UI", 10F);
             NameFoodCBox.ForeColor = Color.Black;
-            NameFoodCBox.ItemHeight = 30;
-            NameFoodCBox.Location = new Point(0, 4);
-            NameFoodCBox.Margin = new Padding(0, 4, 0, 0);
+            NameFoodCBox.ItemHeight = 35;
+            NameFoodCBox.Location = new Point(0, 1);
+            NameFoodCBox.Margin = new Padding(0, 1, 0, 0);
             NameFoodCBox.Name = "NameFoodCBox";
             NameFoodCBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            NameFoodCBox.Size = new Size(325, 36);
+            NameFoodCBox.Size = new Size(321, 41);
             NameFoodCBox.TabIndex = 0;
             // 
             // DeleteButton
@@ -111,11 +112,11 @@
             DeleteButton.Font = new Font("Segoe UI", 9F);
             DeleteButton.ForeColor = Color.White;
             DeleteButton.Image = (Image)resources.GetObject("DeleteButton.Image");
-            DeleteButton.Location = new Point(453, 0);
-            DeleteButton.Margin = new Padding(3, 0, 3, 3);
+            DeleteButton.Location = new Point(447, 0);
+            DeleteButton.Margin = new Padding(3, 0, 3, 10);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            DeleteButton.Size = new Size(44, 42);
+            DeleteButton.Size = new Size(45, 35);
             DeleteButton.TabIndex = 20;
             DeleteButton.Click += DeleteButton_Click;
             // 
@@ -130,6 +131,7 @@
             doubleBufferedtlp1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)QuantityFoodNBox).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

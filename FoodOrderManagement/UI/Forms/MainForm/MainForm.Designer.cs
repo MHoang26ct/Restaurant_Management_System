@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -42,29 +42,29 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            ReservationButton = new Guna.UI2.WinForms.Guna2Button();
-            EmployeesButton = new Guna.UI2.WinForms.Guna2Button();
-            CustomerButton = new Guna.UI2.WinForms.Guna2Button();
-            DashboardButton = new Guna.UI2.WinForms.Guna2Button();
-            TableButton = new Guna.UI2.WinForms.Guna2Button();
             TextLabel1 = new Label();
-            OrderButton = new Guna.UI2.WinForms.Guna2Button();
-            MenuButton = new Guna.UI2.WinForms.Guna2Button();
             BackgroundIcon = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             tableLayoutPanel4 = new TableLayoutPanel();
             IconPictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             MainPanel = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
+            CustomerButton = new Guna.UI2.WinForms.Guna2GradientButton();
+            EmployeesButton = new Guna.UI2.WinForms.Guna2GradientButton();
+            ReservationButton = new Guna.UI2.WinForms.Guna2GradientButton();
+            TableButton = new Guna.UI2.WinForms.Guna2GradientButton();
+            OrderButton = new Guna.UI2.WinForms.Guna2GradientButton();
+            MenuButton = new Guna.UI2.WinForms.Guna2GradientButton();
             ExitButton = new Guna.UI2.WinForms.Guna2Button();
             tableLayoutPanel3 = new TableLayoutPanel();
+            DashboardButton = new Guna.UI2.WinForms.Guna2GradientButton();
             BackgroundIcon.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)IconPictureBox).BeginInit();
@@ -72,138 +72,6 @@
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             SuspendLayout();
-            // 
-            // ReservationButton
-            // 
-            ReservationButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            ReservationButton.BackColor = Color.White;
-            ReservationButton.BorderColor = Color.Transparent;
-            ReservationButton.BorderRadius = 20;
-            ReservationButton.CustomizableEdges = customizableEdges1;
-            ReservationButton.DisabledState.BorderColor = Color.White;
-            ReservationButton.DisabledState.CustomBorderColor = Color.White;
-            ReservationButton.DisabledState.FillColor = Color.White;
-            ReservationButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            ReservationButton.FillColor = Color.White;
-            ReservationButton.FocusedColor = Color.Transparent;
-            ReservationButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ReservationButton.ForeColor = Color.Black;
-            ReservationButton.Image = Properties.Resources.Reserved;
-            ReservationButton.Location = new Point(810, 5);
-            ReservationButton.Margin = new Padding(1);
-            ReservationButton.Name = "ReservationButton";
-            ReservationButton.PressedColor = Color.White;
-            ReservationButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            ReservationButton.Size = new Size(131, 50);
-            ReservationButton.TabIndex = 15;
-            ReservationButton.Text = "Đặt Bàn";
-            ReservationButton.Click += NavigationButton_Click;
-            // 
-            // EmployeesButton
-            // 
-            EmployeesButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            EmployeesButton.BackColor = Color.White;
-            EmployeesButton.BorderColor = Color.Transparent;
-            EmployeesButton.BorderRadius = 20;
-            EmployeesButton.CustomizableEdges = customizableEdges3;
-            EmployeesButton.DisabledState.BorderColor = Color.White;
-            EmployeesButton.DisabledState.CustomBorderColor = Color.White;
-            EmployeesButton.DisabledState.FillColor = Color.White;
-            EmployeesButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            EmployeesButton.FillColor = Color.Transparent;
-            EmployeesButton.FocusedColor = Color.Transparent;
-            EmployeesButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            EmployeesButton.ForeColor = Color.Black;
-            EmployeesButton.Image = Properties.Resources.EmployeesBlack;
-            EmployeesButton.Location = new Point(943, 5);
-            EmployeesButton.Margin = new Padding(1);
-            EmployeesButton.Name = "EmployeesButton";
-            EmployeesButton.PressedColor = Color.White;
-            EmployeesButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            EmployeesButton.Size = new Size(131, 50);
-            EmployeesButton.TabIndex = 16;
-            EmployeesButton.Text = "Nhân Viên";
-            EmployeesButton.Click += NavigationButton_Click;
-            // 
-            // CustomerButton
-            // 
-            CustomerButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            CustomerButton.BackColor = Color.White;
-            CustomerButton.BorderColor = Color.Transparent;
-            CustomerButton.BorderRadius = 20;
-            CustomerButton.CustomizableEdges = customizableEdges5;
-            CustomerButton.DisabledState.BorderColor = Color.White;
-            CustomerButton.DisabledState.CustomBorderColor = Color.White;
-            CustomerButton.DisabledState.FillColor = Color.White;
-            CustomerButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            CustomerButton.FillColor = Color.White;
-            CustomerButton.FocusedColor = Color.Transparent;
-            CustomerButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CustomerButton.ForeColor = Color.Black;
-            CustomerButton.Image = Properties.Resources.CustomerBlack;
-            CustomerButton.ImageSize = new Size(40, 40);
-            CustomerButton.Location = new Point(1076, 5);
-            CustomerButton.Margin = new Padding(1);
-            CustomerButton.Name = "CustomerButton";
-            CustomerButton.PressedColor = SystemColors.HighlightText;
-            CustomerButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            CustomerButton.Size = new Size(131, 50);
-            CustomerButton.TabIndex = 14;
-            CustomerButton.Text = "Khách Hàng";
-            CustomerButton.Click += NavigationButton_Click;
-            // 
-            // DashboardButton
-            // 
-            DashboardButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            DashboardButton.BackColor = Color.White;
-            DashboardButton.BorderColor = Color.Transparent;
-            DashboardButton.BorderRadius = 20;
-            DashboardButton.CustomizableEdges = customizableEdges7;
-            DashboardButton.DisabledState.BorderColor = Color.White;
-            DashboardButton.DisabledState.CustomBorderColor = Color.White;
-            DashboardButton.DisabledState.FillColor = Color.White;
-            DashboardButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            DashboardButton.FillColor = Color.FromArgb(255, 128, 0);
-            DashboardButton.FocusedColor = Color.Transparent;
-            DashboardButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DashboardButton.ForeColor = Color.White;
-            DashboardButton.Image = Properties.Resources.DashboardWhite;
-            DashboardButton.Location = new Point(278, 5);
-            DashboardButton.Margin = new Padding(1);
-            DashboardButton.Name = "DashboardButton";
-            DashboardButton.PressedColor = Color.White;
-            DashboardButton.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            DashboardButton.Size = new Size(131, 50);
-            DashboardButton.TabIndex = 9;
-            DashboardButton.Text = "Trang Chủ";
-            DashboardButton.Click += NavigationButton_Click;
-            // 
-            // TableButton
-            // 
-            TableButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            TableButton.BackColor = Color.White;
-            TableButton.BorderColor = Color.Transparent;
-            TableButton.BorderRadius = 20;
-            TableButton.CustomizableEdges = customizableEdges9;
-            TableButton.DisabledState.BorderColor = Color.White;
-            TableButton.DisabledState.CustomBorderColor = Color.White;
-            TableButton.DisabledState.FillColor = Color.White;
-            TableButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            TableButton.FillColor = Color.Transparent;
-            TableButton.FocusedColor = Color.Transparent;
-            TableButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TableButton.ForeColor = Color.Black;
-            TableButton.Image = Properties.Resources.TableBlack;
-            TableButton.ImageSize = new Size(35, 35);
-            TableButton.Location = new Point(677, 5);
-            TableButton.Margin = new Padding(1);
-            TableButton.Name = "TableButton";
-            TableButton.PressedColor = Color.White;
-            TableButton.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            TableButton.Size = new Size(131, 50);
-            TableButton.TabIndex = 13;
-            TableButton.Text = "Sơ Đồ Bàn";
-            TableButton.Click += NavigationButton_Click;
             // 
             // TextLabel1
             // 
@@ -219,65 +87,13 @@
             TextLabel1.TabIndex = 6;
             TextLabel1.Text = "Restaurant Manager";
             // 
-            // OrderButton
-            // 
-            OrderButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            OrderButton.BackColor = Color.Transparent;
-            OrderButton.BorderColor = Color.Transparent;
-            OrderButton.BorderRadius = 20;
-            OrderButton.CustomizableEdges = customizableEdges11;
-            OrderButton.DisabledState.BorderColor = Color.White;
-            OrderButton.DisabledState.CustomBorderColor = Color.White;
-            OrderButton.DisabledState.FillColor = Color.White;
-            OrderButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            OrderButton.FillColor = Color.Transparent;
-            OrderButton.FocusedColor = Color.Transparent;
-            OrderButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            OrderButton.ForeColor = Color.Black;
-            OrderButton.Image = Properties.Resources.OderBlack;
-            OrderButton.Location = new Point(411, 5);
-            OrderButton.Margin = new Padding(1);
-            OrderButton.Name = "OrderButton";
-            OrderButton.PressedColor = Color.White;
-            OrderButton.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            OrderButton.Size = new Size(131, 50);
-            OrderButton.TabIndex = 12;
-            OrderButton.Text = "Đơn Hàng";
-            OrderButton.Click += NavigationButton_Click;
-            // 
-            // MenuButton
-            // 
-            MenuButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            MenuButton.BackColor = Color.White;
-            MenuButton.BorderColor = Color.Transparent;
-            MenuButton.BorderRadius = 20;
-            MenuButton.CustomizableEdges = customizableEdges13;
-            MenuButton.DisabledState.BorderColor = Color.White;
-            MenuButton.DisabledState.CustomBorderColor = Color.White;
-            MenuButton.DisabledState.FillColor = Color.White;
-            MenuButton.DisabledState.ForeColor = Color.FromArgb(0, 192, 0);
-            MenuButton.FillColor = Color.Transparent;
-            MenuButton.FocusedColor = Color.Transparent;
-            MenuButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            MenuButton.ForeColor = Color.Black;
-            MenuButton.Image = Properties.Resources.Menublack;
-            MenuButton.Location = new Point(544, 5);
-            MenuButton.Margin = new Padding(1);
-            MenuButton.Name = "MenuButton";
-            MenuButton.PressedColor = Color.White;
-            MenuButton.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            MenuButton.Size = new Size(131, 50);
-            MenuButton.TabIndex = 10;
-            MenuButton.Text = "Thực Đơn";
-            MenuButton.Click += NavigationButton_Click;
-            // 
             // BackgroundIcon
             // 
             BackgroundIcon.BackColor = Color.White;
             BackgroundIcon.BorderColor = Color.White;
             BackgroundIcon.BorderRadius = 10;
             BackgroundIcon.Controls.Add(tableLayoutPanel4);
-            BackgroundIcon.CustomizableEdges = customizableEdges17;
+            BackgroundIcon.CustomizableEdges = customizableEdges3;
             BackgroundIcon.Dock = DockStyle.Fill;
             BackgroundIcon.FillColor = Color.FromArgb(255, 128, 0);
             BackgroundIcon.FillColor2 = Color.FromArgb(255, 128, 0);
@@ -287,7 +103,7 @@
             BackgroundIcon.Location = new Point(12, 9);
             BackgroundIcon.Margin = new Padding(1);
             BackgroundIcon.Name = "BackgroundIcon";
-            BackgroundIcon.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            BackgroundIcon.ShadowDecoration.CustomizableEdges = customizableEdges4;
             BackgroundIcon.Size = new Size(52, 37);
             BackgroundIcon.TabIndex = 4;
             // 
@@ -313,7 +129,7 @@
             // IconPictureBox
             // 
             IconPictureBox.BackColor = Color.Transparent;
-            IconPictureBox.CustomizableEdges = customizableEdges15;
+            IconPictureBox.CustomizableEdges = customizableEdges1;
             IconPictureBox.Dock = DockStyle.Fill;
             IconPictureBox.FillColor = Color.Transparent;
             IconPictureBox.Image = Properties.Resources.manager__3_;
@@ -322,7 +138,7 @@
             IconPictureBox.Location = new Point(7, 6);
             IconPictureBox.Margin = new Padding(1);
             IconPictureBox.Name = "IconPictureBox";
-            IconPictureBox.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            IconPictureBox.ShadowDecoration.CustomizableEdges = customizableEdges2;
             IconPictureBox.Size = new Size(37, 23);
             IconPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             IconPictureBox.TabIndex = 5;
@@ -369,16 +185,16 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.90991F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.90991F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.90991F));
-            tableLayoutPanel2.Controls.Add(ExitButton, 9, 0);
-            tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 0);
+            tableLayoutPanel2.Controls.Add(CustomerButton, 8, 0);
             tableLayoutPanel2.Controls.Add(EmployeesButton, 7, 0);
             tableLayoutPanel2.Controls.Add(ReservationButton, 6, 0);
-            tableLayoutPanel2.Controls.Add(DashboardButton, 2, 0);
             tableLayoutPanel2.Controls.Add(TableButton, 5, 0);
-            tableLayoutPanel2.Controls.Add(MenuButton, 4, 0);
-            tableLayoutPanel2.Controls.Add(OrderButton, 3, 0);
-            tableLayoutPanel2.Controls.Add(CustomerButton, 8, 0);
+            tableLayoutPanel2.Controls.Add(OrderButton, 4, 0);
+            tableLayoutPanel2.Controls.Add(MenuButton, 3, 0);
+            tableLayoutPanel2.Controls.Add(ExitButton, 9, 0);
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 0);
             tableLayoutPanel2.Controls.Add(TextLabel1, 1, 0);
+            tableLayoutPanel2.Controls.Add(DashboardButton, 2, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(1, 1);
             tableLayoutPanel2.Margin = new Padding(1);
@@ -388,13 +204,157 @@
             tableLayoutPanel2.Size = new Size(1342, 61);
             tableLayoutPanel2.TabIndex = 18;
             // 
+            // CustomerButton
+            // 
+            CustomerButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            CustomerButton.BorderRadius = 15;
+            CustomerButton.CustomizableEdges = customizableEdges5;
+            CustomerButton.DisabledState.BorderColor = Color.DarkGray;
+            CustomerButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            CustomerButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            CustomerButton.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            CustomerButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            CustomerButton.FillColor = Color.Transparent;
+            CustomerButton.FillColor2 = Color.Transparent;
+            CustomerButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CustomerButton.ForeColor = Color.Black;
+            CustomerButton.Image = Properties.Resources.CustomerBlack;
+            CustomerButton.ImageSize = new Size(30, 30);
+            CustomerButton.Location = new Point(1078, 4);
+            CustomerButton.Name = "CustomerButton";
+            CustomerButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            CustomerButton.Size = new Size(127, 53);
+            CustomerButton.TabIndex = 24;
+            CustomerButton.Text = "Khách Hàng";
+            CustomerButton.Click += NavigationButton_Click;
+            // 
+            // EmployeesButton
+            // 
+            EmployeesButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            EmployeesButton.BorderRadius = 15;
+            EmployeesButton.CustomizableEdges = customizableEdges7;
+            EmployeesButton.DisabledState.BorderColor = Color.DarkGray;
+            EmployeesButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            EmployeesButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            EmployeesButton.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            EmployeesButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            EmployeesButton.FillColor = Color.Transparent;
+            EmployeesButton.FillColor2 = Color.Transparent;
+            EmployeesButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EmployeesButton.ForeColor = Color.Black;
+            EmployeesButton.Image = Properties.Resources.EmployeesBlack;
+            EmployeesButton.ImageSize = new Size(25, 25);
+            EmployeesButton.Location = new Point(945, 4);
+            EmployeesButton.Name = "EmployeesButton";
+            EmployeesButton.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            EmployeesButton.Size = new Size(127, 53);
+            EmployeesButton.TabIndex = 23;
+            EmployeesButton.Text = "Nhân Viên";
+            EmployeesButton.Click += NavigationButton_Click;
+            // 
+            // ReservationButton
+            // 
+            ReservationButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            ReservationButton.BorderRadius = 15;
+            ReservationButton.CustomizableEdges = customizableEdges9;
+            ReservationButton.DisabledState.BorderColor = Color.DarkGray;
+            ReservationButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            ReservationButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            ReservationButton.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            ReservationButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            ReservationButton.FillColor = Color.Transparent;
+            ReservationButton.FillColor2 = Color.Transparent;
+            ReservationButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ReservationButton.ForeColor = Color.Black;
+            ReservationButton.Image = Properties.Resources.Reserved;
+            ReservationButton.ImageSize = new Size(25, 25);
+            ReservationButton.Location = new Point(812, 4);
+            ReservationButton.Name = "ReservationButton";
+            ReservationButton.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            ReservationButton.Size = new Size(127, 53);
+            ReservationButton.TabIndex = 22;
+            ReservationButton.Text = "Đặt Bàn";
+            ReservationButton.Click += NavigationButton_Click;
+            // 
+            // TableButton
+            // 
+            TableButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            TableButton.BorderRadius = 15;
+            TableButton.CustomizableEdges = customizableEdges11;
+            TableButton.DisabledState.BorderColor = Color.DarkGray;
+            TableButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            TableButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            TableButton.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            TableButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            TableButton.FillColor = Color.Transparent;
+            TableButton.FillColor2 = Color.Transparent;
+            TableButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TableButton.ForeColor = Color.Black;
+            TableButton.Image = Properties.Resources.TableBlack1;
+            TableButton.ImageSize = new Size(30, 30);
+            TableButton.Location = new Point(679, 4);
+            TableButton.Name = "TableButton";
+            TableButton.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            TableButton.Size = new Size(127, 53);
+            TableButton.TabIndex = 21;
+            TableButton.Text = "Bàn Trống";
+            TableButton.Click += NavigationButton_Click;
+            // 
+            // OrderButton
+            // 
+            OrderButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            OrderButton.BorderRadius = 15;
+            OrderButton.CustomizableEdges = customizableEdges13;
+            OrderButton.DisabledState.BorderColor = Color.DarkGray;
+            OrderButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            OrderButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            OrderButton.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            OrderButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            OrderButton.FillColor = Color.Transparent;
+            OrderButton.FillColor2 = Color.Transparent;
+            OrderButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            OrderButton.ForeColor = Color.Black;
+            OrderButton.Image = Properties.Resources.OderBlack;
+            OrderButton.ImageSize = new Size(25, 25);
+            OrderButton.Location = new Point(546, 4);
+            OrderButton.Name = "OrderButton";
+            OrderButton.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            OrderButton.Size = new Size(127, 53);
+            OrderButton.TabIndex = 20;
+            OrderButton.Text = "Đơn Hàng";
+            OrderButton.Click += NavigationButton_Click;
+            // 
+            // MenuButton
+            // 
+            MenuButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            MenuButton.BorderRadius = 15;
+            MenuButton.CustomizableEdges = customizableEdges15;
+            MenuButton.DisabledState.BorderColor = Color.DarkGray;
+            MenuButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            MenuButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            MenuButton.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            MenuButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            MenuButton.FillColor = Color.Transparent;
+            MenuButton.FillColor2 = Color.Transparent;
+            MenuButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            MenuButton.ForeColor = Color.Black;
+            MenuButton.Image = Properties.Resources.Menublack;
+            MenuButton.ImageSize = new Size(25, 25);
+            MenuButton.Location = new Point(413, 4);
+            MenuButton.Name = "MenuButton";
+            MenuButton.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            MenuButton.Size = new Size(127, 53);
+            MenuButton.TabIndex = 19;
+            MenuButton.Text = "Thực Đơn";
+            MenuButton.Click += NavigationButton_Click;
+            // 
             // ExitButton
             // 
             ExitButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             ExitButton.BackColor = Color.White;
             ExitButton.BorderColor = Color.Transparent;
             ExitButton.BorderRadius = 20;
-            ExitButton.CustomizableEdges = customizableEdges19;
+            ExitButton.CustomizableEdges = customizableEdges17;
             ExitButton.DisabledState.BorderColor = Color.White;
             ExitButton.DisabledState.CustomBorderColor = Color.White;
             ExitButton.DisabledState.FillColor = Color.White;
@@ -408,7 +368,7 @@
             ExitButton.Margin = new Padding(1);
             ExitButton.Name = "ExitButton";
             ExitButton.PressedColor = SystemColors.HighlightText;
-            ExitButton.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            ExitButton.ShadowDecoration.CustomizableEdges = customizableEdges18;
             ExitButton.Size = new Size(132, 49);
             ExitButton.TabIndex = 17;
             ExitButton.Text = "Đăng Xuất";
@@ -432,6 +392,30 @@
             tableLayoutPanel3.Size = new Size(78, 57);
             tableLayoutPanel3.TabIndex = 6;
             // 
+            // DashboardButton
+            // 
+            DashboardButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            DashboardButton.BorderRadius = 20;
+            DashboardButton.CustomizableEdges = customizableEdges19;
+            DashboardButton.DisabledState.BorderColor = Color.DarkGray;
+            DashboardButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            DashboardButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            DashboardButton.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            DashboardButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            DashboardButton.FillColor = Color.FromArgb(255, 128, 0);
+            DashboardButton.FillColor2 = Color.Chocolate;
+            DashboardButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DashboardButton.ForeColor = Color.White;
+            DashboardButton.Image = Properties.Resources.DashboardWhite;
+            DashboardButton.ImageSize = new Size(25, 25);
+            DashboardButton.Location = new Point(280, 4);
+            DashboardButton.Name = "DashboardButton";
+            DashboardButton.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            DashboardButton.Size = new Size(127, 53);
+            DashboardButton.TabIndex = 18;
+            DashboardButton.Text = "Trang Chủ";
+            DashboardButton.Click += NavigationButton_Click;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -441,6 +425,7 @@
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
             Margin = new Padding(1);
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
@@ -448,6 +433,7 @@
             WindowState = FormWindowState.Maximized;
             FormClosed += FormMain_FormClosed;
             Load += FormMain_Load;
+            KeyDown += FormMain_KeyDown;
             BackgroundIcon.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)IconPictureBox).EndInit();
@@ -460,14 +446,7 @@
 
         #endregion
         private TableLayoutPanel tableLayoutPanel1;
-        public Guna.UI2.WinForms.Guna2Button ReservationButton;
-        public Guna.UI2.WinForms.Guna2Button EmployeesButton;
-        public Guna.UI2.WinForms.Guna2Button CustomerButton;
-        private Guna.UI2.WinForms.Guna2Button DashboardButton;
-        public Guna.UI2.WinForms.Guna2Button TableButton;
         private Label TextLabel1;
-        public Guna.UI2.WinForms.Guna2Button OrderButton;
-        public Guna.UI2.WinForms.Guna2Button MenuButton;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel BackgroundIcon;
         private Panel MainPanel;
         private Guna.UI2.WinForms.Guna2PictureBox IconPictureBox;
@@ -475,5 +454,12 @@
         private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel tableLayoutPanel4;
         public Guna.UI2.WinForms.Guna2Button ExitButton;
+        private Guna.UI2.WinForms.Guna2GradientButton DashboardButton;
+        public Guna.UI2.WinForms.Guna2GradientButton CustomerButton;
+        public Guna.UI2.WinForms.Guna2GradientButton EmployeesButton;
+        public Guna.UI2.WinForms.Guna2GradientButton ReservationButton;
+        public Guna.UI2.WinForms.Guna2GradientButton TableButton;
+        public Guna.UI2.WinForms.Guna2GradientButton OrderButton;
+        public Guna.UI2.WinForms.Guna2GradientButton MenuButton;
     }
 }

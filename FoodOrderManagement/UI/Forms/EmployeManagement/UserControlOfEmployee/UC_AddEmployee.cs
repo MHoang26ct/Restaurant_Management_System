@@ -41,7 +41,7 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
         }
         public void SetModeEdit(Employee emp)
         {
-            _editingEmp = emp; 
+            _editingEmp = emp;
 
             TitleLabel.Text = "CẬP NHẬT THÔNG TIN";
             NameTbox.Text = emp.FullName;
@@ -53,6 +53,47 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
             // NameTbox.Enabled = false;
             NameTbox.Enabled = false;
             PhoneNumberTBox.Enabled = false;
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            // Mở lên thì focus ngay vào dòng đầu
+            this.Focus();
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Kiểm tra nếu phím bấm là ESC
+            if (keyData == Keys.Escape)
+            {
+                // Gọi hàm đóng 
+                ExitButton_Click(null, null);
+                return true;
+            }
+            // Tạo vòng lặp tab không cho tab nhảy lung tung ra ngoài form cha
+            if (keyData == Keys.Tab && ConfirmButton.Focused)
+            {
+                // Ép nhảy về ô đầu tiên (TableID)
+                NameTbox.Focus();
+                NameTbox.Select();
+
+                // Trả về true để chặn Windows không tự nhảy đi lung tung nữa
+                return true;
+            }
+
+            // Nếu không phải các phím trên thì hành xử như bình thường
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void ConfirmButton_Enter(object sender, EventArgs e)
+        {
+            ConfirmButton.FillColor = Color.Chocolate;
+            ConfirmButton.FillColor2 = Color.FromArgb(255, 128, 0);
+        }
+
+        private void ConfirmButton_Leave(object sender, EventArgs e)
+        {
+            ConfirmButton.FillColor = Color.FromArgb(255, 128, 0);
+            ConfirmButton.FillColor2 = Color.Chocolate;
         }
     }
 }

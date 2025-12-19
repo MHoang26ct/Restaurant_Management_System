@@ -97,7 +97,7 @@
             doubleBufferedtlp4.RowCount = 1;
             doubleBufferedtlp4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             doubleBufferedtlp4.Size = new Size(600, 159);
-            doubleBufferedtlp4.TabIndex = 2;
+            doubleBufferedtlp4.TabIndex = 1000;
             // 
             // ListFoodFlowLayout
             // 
@@ -124,11 +124,11 @@
             doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 3.960396F));
             doubleBufferedtlp2.RowStyles.Add(new RowStyle(SizeType.Percent, 56.4356422F));
             doubleBufferedtlp2.Size = new Size(600, 116);
-            doubleBufferedtlp2.TabIndex = 1;
+            doubleBufferedtlp2.TabIndex = 1001;
             // 
             // AddFoodButton
             // 
-            AddFoodButton.BorderColor = Color.Gainsboro;
+            AddFoodButton.BorderColor = Color.Silver;
             AddFoodButton.BorderRadius = 8;
             AddFoodButton.BorderThickness = 1;
             AddFoodButton.CustomizableEdges = customizableEdges1;
@@ -137,9 +137,11 @@
             AddFoodButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             AddFoodButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             AddFoodButton.Dock = DockStyle.Fill;
-            AddFoodButton.FillColor = Color.White;
+            AddFoodButton.FillColor = Color.Transparent;
+            AddFoodButton.FocusedColor = Color.FromArgb(255, 128, 0);
             AddFoodButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             AddFoodButton.ForeColor = Color.Black;
+            AddFoodButton.HoverState.BorderColor = Color.FromArgb(255, 128, 0);
             AddFoodButton.Image = Properties.Resources.add__1_;
             AddFoodButton.ImageSize = new Size(18, 18);
             AddFoodButton.Location = new Point(28, 3);
@@ -148,9 +150,11 @@
             AddFoodButton.PressedColor = Color.DarkGray;
             AddFoodButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
             AddFoodButton.Size = new Size(539, 39);
-            AddFoodButton.TabIndex = 0;
+            AddFoodButton.TabIndex = 3;
             AddFoodButton.Text = "Thêm món ăn";
             AddFoodButton.Click += AddFoodButton_Click;
+            AddFoodButton.Enter += AddFoodButton_Enter;
+            AddFoodButton.Leave += AddFoodButton_Leave;
             // 
             // CreateOrderButton
             // 
@@ -171,9 +175,11 @@
             CreateOrderButton.Name = "CreateOrderButton";
             CreateOrderButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
             CreateOrderButton.Size = new Size(539, 43);
-            CreateOrderButton.TabIndex = 18;
+            CreateOrderButton.TabIndex = 4;
             CreateOrderButton.Text = "Tạo Hóa Đơn";
             CreateOrderButton.Click += CreateOrderButton_Click;
+            CreateOrderButton.Enter += CreateOrderButton_Enter;
+            CreateOrderButton.Leave += CreateOrderButton_Leave;
             // 
             // doubleBufferedtlp1
             // 
@@ -205,13 +211,12 @@
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 17.1714058F));
             doubleBufferedtlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.080661F));
             doubleBufferedtlp1.Size = new Size(600, 225);
-            doubleBufferedtlp1.TabIndex = 0;
+            doubleBufferedtlp1.TabIndex = 1000;
             // 
             // CustomerNameTBox
             // 
             CustomerNameTBox.BorderColor = Color.Silver;
             CustomerNameTBox.BorderRadius = 8;
-            CustomerNameTBox.BorderThickness = 0;
             CustomerNameTBox.CustomizableEdges = customizableEdges5;
             CustomerNameTBox.DefaultText = "";
             CustomerNameTBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -220,7 +225,7 @@
             CustomerNameTBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             CustomerNameTBox.Dock = DockStyle.Fill;
             CustomerNameTBox.FillColor = Color.Gainsboro;
-            CustomerNameTBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            CustomerNameTBox.FocusedState.BorderColor = Color.DarkOrange;
             CustomerNameTBox.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CustomerNameTBox.ForeColor = Color.Black;
             CustomerNameTBox.HoverState.BorderColor = Color.Black;
@@ -233,7 +238,7 @@
             CustomerNameTBox.SelectedText = "";
             CustomerNameTBox.ShadowDecoration.CustomizableEdges = customizableEdges6;
             CustomerNameTBox.Size = new Size(545, 38);
-            CustomerNameTBox.TabIndex = 17;
+            CustomerNameTBox.TabIndex = 1;
             // 
             // label2
             // 
@@ -256,7 +261,7 @@
             label3.Margin = new Padding(5, 0, 3, 0);
             label3.Name = "label3";
             label3.Size = new Size(131, 18);
-            label3.TabIndex = 2;
+            label3.TabIndex = 0;
             label3.Text = "Tên Khách Hàng *";
             // 
             // label4
@@ -274,12 +279,12 @@
             // TableID_NBox
             // 
             TableID_NBox.BackColor = Color.Transparent;
-            TableID_NBox.BorderColor = Color.White;
+            TableID_NBox.BorderColor = Color.Gray;
             TableID_NBox.BorderRadius = 8;
-            TableID_NBox.BorderThickness = 0;
             TableID_NBox.CustomizableEdges = customizableEdges7;
             TableID_NBox.Dock = DockStyle.Fill;
             TableID_NBox.FillColor = Color.Gainsboro;
+            TableID_NBox.FocusedState.BorderColor = Color.DarkOrange;
             TableID_NBox.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TableID_NBox.Location = new Point(25, 55);
             TableID_NBox.Margin = new Padding(7, 2, 0, 0);
@@ -287,7 +292,7 @@
             TableID_NBox.Name = "TableID_NBox";
             TableID_NBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
             TableID_NBox.Size = new Size(545, 36);
-            TableID_NBox.TabIndex = 18;
+            TableID_NBox.TabIndex = 0;
             TableID_NBox.UpDownButtonFillColor = Color.Gray;
             TableID_NBox.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
@@ -340,7 +345,8 @@
             ExitButton.PressedDepth = 0;
             ExitButton.ShadowDecoration.CustomizableEdges = customizableEdges10;
             ExitButton.Size = new Size(35, 19);
-            ExitButton.TabIndex = 2;
+            ExitButton.TabIndex = 0;
+            ExitButton.TabStop = false;
             ExitButton.Text = "X";
             ExitButton.Click += ExitButton_Click;
             // 
@@ -353,14 +359,13 @@
             label5.Margin = new Padding(5, 0, 3, 0);
             label5.Name = "label5";
             label5.Size = new Size(106, 18);
-            label5.TabIndex = 20;
+            label5.TabIndex = 0;
             label5.Text = "Số điện thoại*";
             // 
             // PhoneNumberTBox
             // 
             PhoneNumberTBox.BorderColor = Color.Silver;
             PhoneNumberTBox.BorderRadius = 8;
-            PhoneNumberTBox.BorderThickness = 0;
             PhoneNumberTBox.CustomizableEdges = customizableEdges11;
             PhoneNumberTBox.DefaultText = "";
             PhoneNumberTBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -369,7 +374,7 @@
             PhoneNumberTBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             PhoneNumberTBox.Dock = DockStyle.Fill;
             PhoneNumberTBox.FillColor = Color.Gainsboro;
-            PhoneNumberTBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            PhoneNumberTBox.FocusedState.BorderColor = Color.DarkOrange;
             PhoneNumberTBox.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PhoneNumberTBox.ForeColor = Color.Black;
             PhoneNumberTBox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
@@ -381,7 +386,7 @@
             PhoneNumberTBox.SelectedText = "";
             PhoneNumberTBox.ShadowDecoration.CustomizableEdges = customizableEdges12;
             PhoneNumberTBox.Size = new Size(545, 38);
-            PhoneNumberTBox.TabIndex = 21;
+            PhoneNumberTBox.TabIndex = 2;
             PhoneNumberTBox.KeyPress += PhoneNumberTBox_KeyPress;
             // 
             // UC_CreateOrder

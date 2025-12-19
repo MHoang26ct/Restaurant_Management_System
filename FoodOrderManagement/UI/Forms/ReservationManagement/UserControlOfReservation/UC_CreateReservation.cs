@@ -12,7 +12,58 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
 {
     public partial class UC_CreateReservation : UserControl
 
-{ 
+    {
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            // Mở lên thì focus ngay vào dòng đầu
+            this.Focus();
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Kiểm tra nếu phím bấm là ESC
+            if (keyData == Keys.Escape)
+            {
+                // Gọi hàm đóng 
+                ExitButton_Click(null, null);
+                return true;
+            }
+            // Tạo vòng lặp tab không cho tab nhảy lung tung ra ngoài form cha
+            if (keyData == Keys.Tab && CreateReservationButton.Focused)
+            {
+                // Ép nhảy về ô đầu tiên (TableID)
+                TableID_NBox.Focus();
+                TableID_NBox.Select();
+
+                // Trả về true để chặn Windows không tự nhảy đi lung tung nữa
+                return true;
+            }
+
+            // Nếu không phải các phím trên thì hành xử như bình thường
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        private void AddFoodButton_Enter(object sender, EventArgs e)
+        {
+            AddFoodButton.BorderColor = Color.DarkOrange;
+            AddFoodButton.FillColor = Color.DarkGray;
+        }
+
+        private void AddFoodButton_Leave(object sender, EventArgs e)
+        {
+            AddFoodButton.BorderColor = Color.Silver;
+            AddFoodButton.FillColor = Color.Transparent;
+        }
+        private void CreateReservationButton_Enter(object sender, EventArgs e)
+        {
+            CreateReservationButton.FillColor = Color.DarkOrange;
+            CreateReservationButton.FillColor2 = Color.FromArgb(255, 128, 0);
+        }
+        private void CreateReservationButton_Leave(object sender, EventArgs e)
+        {
+            CreateReservationButton.FillColor = Color.FromArgb(255, 128, 0);
+            CreateReservationButton.FillColor2 = Color.Chocolate;
+        }
+
         //public event EventHandler OnExitClicked;
         //public UC_CreateReservation()
         //{

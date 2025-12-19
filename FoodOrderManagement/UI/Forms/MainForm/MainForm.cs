@@ -90,10 +90,11 @@ namespace FoodOrderManagement
         public void NavigationButton_Click(object sender, EventArgs e)
         {
             ResetAllButton();
-            Guna2Button clickedButton = (Guna2Button)sender;
+            Guna2GradientButton clickedButton = (Guna2GradientButton)sender;
 
             // Cập nhật giao diện nút được nhấn
             clickedButton.FillColor = Color.FromArgb(255, 128, 0);
+            clickedButton.FillColor2 = Color.Chocolate;
             clickedButton.ForeColor = Color.White;
 
             // Điều hướng dựa trên tên nút
@@ -139,32 +140,40 @@ namespace FoodOrderManagement
         {
             // Hàm này giữ nguyên logic của bạn hoặc tối ưu bằng cách dùng List<Guna2Button>
             DashboardButton.FillColor = Color.White;
+            DashboardButton.FillColor2 = Color.White;
             DashboardButton.ForeColor = Color.Black;
             DashboardButton.Image = Properties.Resources.DashboardBlack;
 
             MenuButton.FillColor = Color.White;
+            MenuButton.FillColor2 = Color.White;
             MenuButton.ForeColor = Color.Black;
             MenuButton.Image = Properties.Resources.Menublack;
 
             OrderButton.FillColor = Color.White;
+            OrderButton.FillColor2 = Color.White;
             OrderButton.ForeColor = Color.Black;
             OrderButton.Image = Properties.Resources.OderBlack;
 
             TableButton.FillColor = Color.White;
+            TableButton.FillColor2 = Color.White;
             TableButton.ForeColor = Color.Black;
             TableButton.Image = Properties.Resources.TableBlack;
 
-            CustomerButton.FillColor = Color.White;
-            CustomerButton.ForeColor = Color.Black;
-            CustomerButton.Image = Properties.Resources.CustomerBlack;
-
             ReservationButton.FillColor = Color.White;
+            ReservationButton.FillColor2 = Color.White;
             ReservationButton.ForeColor = Color.Black;
             ReservationButton.Image = Properties.Resources.Reserved;
 
             EmployeesButton.FillColor = Color.White;
+            EmployeesButton.FillColor2 = Color.White;
             EmployeesButton.ForeColor = Color.Black;
             EmployeesButton.Image = Properties.Resources.EmployeesBlack;
+
+
+            CustomerButton.FillColor = Color.White;
+            CustomerButton.FillColor2 = Color.White;
+            CustomerButton.ForeColor = Color.Black;
+            CustomerButton.Image = Properties.Resources.CustomerBlack;
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -186,6 +195,19 @@ namespace FoodOrderManagement
             // Truy cập Handle để buộc tạo cửa sổ ẩn
             IntPtr forceCreateHandle = _formEmployee.Handle;
             await _formEmployee.LoadListEmployee();
+        }
+
+        private void FormMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn đóng ứng dụng?", "Thông báo",
+                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    Application.Exit();
+                }
+            }
         }
     }
 }

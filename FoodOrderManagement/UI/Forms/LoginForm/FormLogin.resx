@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -123,6 +123,10 @@
   </data>
   <data name="doubleBufferedtlp5.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="PasswordTextbox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="PasswordTextbox.Font" type="System.Drawing.Font, System.Drawing">
@@ -311,8 +315,8 @@
   <data name="&gt;&gt;PasswordTextbox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="UsernameTextbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="UsernameTextbox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="UsernameTextbox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10.2pt</value>
@@ -609,16 +613,16 @@
     <value>Bottom, Left</value>
   </data>
   <data name="PasswordLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.2pt, style=Bold</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="PasswordLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 173</value>
+    <value>26, 171</value>
   </data>
   <data name="PasswordLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 0</value>
   </data>
   <data name="PasswordLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
+    <value>75, 23</value>
   </data>
   <data name="PasswordLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -642,7 +646,7 @@
     <value>True</value>
   </data>
   <data name="RememberBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.2pt, style=Bold</value>
+    <value>Segoe UI, 10.8pt, style=Bold</value>
   </data>
   <data name="RememberBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -654,7 +658,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="RememberBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 23</value>
+    <value>161, 24</value>
   </data>
   <data name="RememberBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -681,19 +685,19 @@
     <value>True</value>
   </data>
   <data name="ShowPWBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.2pt, style=Bold</value>
+    <value>Segoe UI, 10.8pt, style=Bold</value>
   </data>
   <data name="ShowPWBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="ShowPWBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>292, 2</value>
+    <value>287, 2</value>
   </data>
   <data name="ShowPWBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="ShowPWBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 23</value>
+    <value>130, 24</value>
   </data>
   <data name="ShowPWBox.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -723,7 +727,7 @@
     <value>1</value>
   </data>
   <data name="doubleBufferedtlp7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>420, 41</value>
+    <value>420, 40</value>
   </data>
   <data name="doubleBufferedtlp7.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -747,16 +751,16 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="ContinueButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.2pt, style=Bold</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="ContinueButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 296</value>
+    <value>26, 295</value>
   </data>
   <data name="ContinueButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="ContinueButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>420, 43</value>
+    <value>420, 44</value>
   </data>
   <data name="ContinueButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -780,16 +784,16 @@
     <value>Bottom, Left</value>
   </data>
   <data name="LoginLabel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 16.2pt, style=Bold</value>
+    <value>Segoe UI, 18pt, style=Bold</value>
   </data>
   <data name="LoginLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 32</value>
+    <value>26, 30</value>
   </data>
   <data name="LoginLabel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="LoginLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 32</value>
+    <value>128, 34</value>
   </data>
   <data name="LoginLabel1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -813,16 +817,16 @@
     <value>Bottom, Left</value>
   </data>
   <data name="UsernameLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.2pt, style=Bold</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="UsernameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 74</value>
+    <value>26, 72</value>
   </data>
   <data name="UsernameLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 0</value>
   </data>
   <data name="UsernameLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 21</value>
+    <value>117, 23</value>
   </data>
   <data name="UsernameLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -870,7 +874,7 @@
     <value>0</value>
   </data>
   <data name="doubleBufferedtlp5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="PasswordTextbox" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="UsernameTextbox" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="PasswordLabel" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="doubleBufferedtlp7" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ContinueButton" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LoginLabel1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="UsernameLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,5,Percent,90,Percent,5" /&gt;&lt;Rows Styles="Percent,17.23238,Percent,7.571802,Percent,14,Percent,12,Percent,14,Percent,12.27154,Percent,22.45431" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="PasswordTextbox" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="UsernameTextbox" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="PasswordLabel" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="doubleBufferedtlp7" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ContinueButton" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LoginLabel1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="UsernameLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,5,Percent,90,Percent,5" /&gt;&lt;Rows Styles="Percent,17.314766,Percent,7.608002,Percent,14.066933,Percent,12.057371,Percent,14.066933,Percent,12.057371,Percent,22.828623" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="LoginGadient2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1196,9 +1200,9 @@
   <data name="&gt;&gt;BackgroundPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 15</value>
   </data>

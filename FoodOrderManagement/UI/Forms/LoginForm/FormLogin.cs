@@ -154,6 +154,11 @@ namespace FoodOrderManagement
                     Application.Exit();
                 }
             }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                ContinueButton_Click(sender, e);
+            }
         }
     }
 }
