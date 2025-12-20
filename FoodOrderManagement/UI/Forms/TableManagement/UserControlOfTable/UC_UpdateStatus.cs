@@ -75,7 +75,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 
             if (result == DialogResult.Yes)
             {
-                UpdateStatus("Reserved", DateTime.Now);
+                UpdateStatus("Reserved", null);
             }
         }
 
@@ -86,7 +86,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 
         private void OccupiedButton_Click(object sender, EventArgs e)
         {
-            UpdateStatus("Occupied", null);
+            UpdateStatus("Occupied", DateTime.Now);
         }
 
         private void ExitButton_Click(object sender, EventArgs e)

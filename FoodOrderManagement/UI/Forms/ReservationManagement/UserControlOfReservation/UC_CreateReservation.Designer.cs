@@ -495,12 +495,13 @@
             DateReservation.BorderRadius = 8;
             DateReservation.BorderThickness = 1;
             DateReservation.Checked = true;
+            DateReservation.CustomFormat = "dd/MM/yyyy";
             DateReservation.CustomizableEdges = customizableEdges15;
             DateReservation.Dock = DockStyle.Fill;
             DateReservation.FillColor = Color.FromArgb(224, 224, 224);
             DateReservation.FocusedColor = Color.Silver;
             DateReservation.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DateReservation.Format = DateTimePickerFormat.Short;
+            DateReservation.Format = DateTimePickerFormat.Custom;
             DateReservation.HoverState.BorderColor = Color.Transparent;
             DateReservation.Location = new Point(7, 2);
             DateReservation.Margin = new Padding(7, 2, 0, 0);
@@ -510,7 +511,7 @@
             DateReservation.ShadowDecoration.CustomizableEdges = customizableEdges16;
             DateReservation.Size = new Size(220, 35);
             DateReservation.TabIndex = 5;
-            DateReservation.Value = DateTime.Now;
+            DateReservation.Value = new DateTime(2025, 12, 20, 23, 13, 14, 448);
             // 
             // label8
             // 
