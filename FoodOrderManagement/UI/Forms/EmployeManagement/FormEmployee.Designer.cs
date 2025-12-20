@@ -255,9 +255,6 @@
             SearchEmployeeTBox1.TabIndex = 0;
             SearchEmployeeTBox1.TextChanged += SearchEmployeeTBox1_TextChanged;
             // 
-            // DateTimePickerSearchHireDate
-            // 
-            // 
             // BackgroundEmployee
             // 
             BackgroundEmployee.AutoSize = true;

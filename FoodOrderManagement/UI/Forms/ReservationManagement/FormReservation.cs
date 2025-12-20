@@ -14,12 +14,8 @@ using FoodOrderManagement.UI.Forms.MenuManagement;
 namespace FoodOrderManagement.AdminControl
 {
     public partial class FormReservation : Form
+
     {
-        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void FormReservation_Load(object sender, EventArgs e)
         {
             DecorDataGridView(dgvReservations);

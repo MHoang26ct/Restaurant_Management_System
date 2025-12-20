@@ -161,7 +161,6 @@ namespace FoodOrderManagement.AdminControl
             AddActionButtons();
             DecorDataGridView(dgvReservations);
             StyleActionHeader(dgvReservations);
-
             // 4. Gắn sự kiện vẽ (để xóa vạch ngăn cách)
             dgvReservations.CellPainting += dgvReservations_CellPainting;
             SearchReservationTBox1.TextChanged += (s, e) => ApplyFilter();
@@ -365,6 +364,7 @@ namespace FoodOrderManagement.AdminControl
                 btnEdit.UseColumnTextForButtonValue = true; 
                 btnEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgvReservations.Columns.Add(btnEdit);
+                btnEdit.DisplayIndex = dgvReservations.Columns.Count - 1;
             }
             if (dgvReservations.Columns["btnDelete"] == null)
             {
@@ -378,6 +378,7 @@ namespace FoodOrderManagement.AdminControl
                 btnDelete.DefaultCellStyle.SelectionForeColor = Color.Red;
 
                 dgvReservations.Columns.Add(btnDelete);
+                btnDelete.DisplayIndex = dgvReservations.Columns.Count - 1;
             }
         }
         private void DecorDataGridView(DataGridView dgv)
@@ -388,15 +389,15 @@ namespace FoodOrderManagement.AdminControl
             dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgv.EnableHeadersVisualStyles = false;
             dgv.ColumnHeadersHeight = 50;
-            dgv.RowTemplate.Height = 60;
+            dgv.RowTemplate.Height = 50;
             dgv.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 12F);
             dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(100, 88, 255);
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 255);
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.AntiqueWhite;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon;
+            dgv.DefaultCellStyle.SelectionBackColor = Color.White;
+            dgv.DefaultCellStyle.SelectionForeColor = Color.Black;
+            //dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 255);
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             if (dgv.Columns.Contains("btnEdit"))
                 dgv.Columns["btnEdit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -409,19 +410,19 @@ namespace FoodOrderManagement.AdminControl
         }
         private void StyleActionHeader(DataGridView dgv)
         {
-            Color blueColor = Color.FromArgb(0, 122, 204);
+            //Color blueColor = Color.FromArgb(0, 122, 204);
 
             if (dgv.Columns.Contains("btnEdit"))
             {
-                dgv.Columns["btnEdit"].HeaderCell.Style.BackColor = blueColor;
-                dgv.Columns["btnEdit"].HeaderCell.Style.ForeColor = Color.White;
+                dgv.Columns["btnEdit"].HeaderCell.Style.BackColor = Color.AntiqueWhite;
+                dgv.Columns["btnEdit"].HeaderCell.Style.ForeColor = Color.Maroon;
                 dgv.Columns["btnEdit"].HeaderText = ""; 
             }
 
             if (dgv.Columns.Contains("btnDelete"))
             {
-                dgv.Columns["btnDelete"].HeaderCell.Style.BackColor = blueColor;
-                dgv.Columns["btnDelete"].HeaderCell.Style.ForeColor = Color.White;
+                dgv.Columns["btnDelete"].HeaderCell.Style.BackColor = Color.AntiqueWhite;
+                dgv.Columns["btnDelete"].HeaderCell.Style.ForeColor = Color.Maroon;
                 dgv.Columns["btnDelete"].HeaderText = "";
             }
         }
@@ -455,6 +456,7 @@ namespace FoodOrderManagement.AdminControl
             {
                 dgv.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgv.Columns["Status"].FillWeight = 20;
+                dgv.Columns["Status"].DefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
             }
 
             // === 2. CÁC CỘT SỐ NHỎ (Giữ gọn gàng - AllCells) ===
@@ -489,16 +491,17 @@ namespace FoodOrderManagement.AdminControl
             {
                 if (dgvReservations.Columns[e.ColumnIndex].Name == "btnEdit")
                 {
+                    if (!dgvReservations.Columns.Contains("btnDelete")) return;
                     Rectangle rect = e.CellBounds;
                     rect.Width += dgvReservations.Columns["btnDelete"].Width;
                     var oldClip = e.Graphics.Clip;
                     e.Graphics.SetClip(e.CellBounds.IntersectsWith(new Rectangle(0, 0, dgvReservations.Width, dgvReservations.Height))
                         ? new Rectangle(0, 0, dgvReservations.Width, dgvReservations.Height) : e.CellBounds);
-                    using (Brush brush = new SolidBrush(Color.FromArgb(0, 122, 204)))
+                    using (Brush brush = new SolidBrush(Color.AntiqueWhite))
                     {
                         e.Graphics.FillRectangle(brush, rect);
                     }
-                    using (Brush textBrush = new SolidBrush(Color.White))
+                    using (Brush textBrush = new SolidBrush(Color.Maroon))
                     {
                         StringFormat sf = new StringFormat();
                         sf.Alignment = StringAlignment.Center;     
