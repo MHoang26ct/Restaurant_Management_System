@@ -510,7 +510,7 @@
             DateReservation.ShadowDecoration.CustomizableEdges = customizableEdges16;
             DateReservation.Size = new Size(220, 35);
             DateReservation.TabIndex = 5;
-            DateReservation.Value = new DateTime(2025, 12, 13, 19, 53, 25, 983);
+            DateReservation.Value = DateTime.Now;
             // 
             // label8
             // 

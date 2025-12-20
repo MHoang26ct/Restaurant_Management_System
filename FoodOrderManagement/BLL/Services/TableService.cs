@@ -162,7 +162,7 @@ namespace FoodOrderManagement.AdminControl
 {
     public partial class FormTable : Form
     {
-        private async void LoadTableList()
+        public async Task LoadTableList()
         {
             try
             {

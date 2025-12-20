@@ -142,6 +142,8 @@ namespace FoodOrderManagement.AdminControl
         private readonly ICustomersRepository _customersRepository;
         private readonly IOrdersRepository _ordersRepository;
         private readonly IOrderDetailsRepository _orderDetailsRepository;
+        private readonly ITablesRepository _tablesRepository;
+        private readonly FormTable _formTable;
         private OverlayBackground _overlayBackground;
         private UC_CreateReservation uc_CreateReservation;
         private List<ReservationViewModel> _originalList = new List<ReservationViewModel>();
@@ -149,7 +151,9 @@ namespace FoodOrderManagement.AdminControl
                                IReservationsRepository reservationsRepository,
                                ICustomersRepository customersRepository,
                                IOrdersRepository ordersRepository,
-                               IOrderDetailsRepository orderDetailsRepository)
+                               IOrderDetailsRepository orderDetailsRepository,
+                               ITablesRepository tablesRepository,
+                               FormTable formTable)
         {
             InitializeComponent();
             _scope = scope;
@@ -157,6 +161,10 @@ namespace FoodOrderManagement.AdminControl
             _customersRepository = customersRepository;
             _ordersRepository = ordersRepository;
             _orderDetailsRepository = orderDetailsRepository;
+            _tablesRepository = tablesRepository;
+
+            _formTable = formTable;
+
             _overlayBackground = new OverlayBackground();
             AddActionButtons();
             DecorDataGridView(dgvReservations);
@@ -167,7 +175,7 @@ namespace FoodOrderManagement.AdminControl
             DateTimePickerSearch.ValueChanged += (s, e) => ApplyFilter();
             LoadReservationList();
         }
-        public async void LoadReservationList()
+        public async Task LoadReservationList()
         {
             try
             {

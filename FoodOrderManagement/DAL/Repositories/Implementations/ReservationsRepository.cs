@@ -171,5 +171,10 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             // Trả về true nếu xóa thành công (có ít nhất 1 dòng bị ảnh hưởng)
             return rowsAffected > 0;
         }
+
+        public async Task<List<Reservations>> GetAllReservationsEntityAsync()
+        {
+            return await _db.GetListAsync("GetAllReservations", Mapper);
+        }
     }
 }

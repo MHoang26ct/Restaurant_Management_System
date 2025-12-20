@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            components = new System.ComponentModel.Container();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             doubleBufferedtlp1 = new DoubleBufferedTLP();
             doubleBufferedtlp2 = new DoubleBufferedTLP();
             doubleBufferedtlp3 = new DoubleBufferedTLP();
@@ -53,6 +54,7 @@
             SearchReservationTBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             DateTimePickerSearch = new Guna.UI2.WinForms.Guna2DateTimePicker();
             dgvReservations = new Guna.UI2.WinForms.Guna2DataGridView();
+            timer1 = new System.Windows.Forms.Timer(components);
             doubleBufferedtlp1.SuspendLayout();
             doubleBufferedtlp2.SuspendLayout();
             doubleBufferedtlp3.SuspendLayout();
@@ -121,13 +123,13 @@
             OrderGradient1.BackColor = SystemColors.Control;
             OrderGradient1.BorderRadius = 15;
             OrderGradient1.Controls.Add(doubleBufferedtlp6);
-            OrderGradient1.CustomizableEdges = customizableEdges3;
+            OrderGradient1.CustomizableEdges = customizableEdges11;
             OrderGradient1.Dock = DockStyle.Fill;
             OrderGradient1.FillColor = Color.FromArgb(255, 128, 0);
             OrderGradient1.FillColor2 = Color.Chocolate;
             OrderGradient1.Location = new Point(3, 13);
             OrderGradient1.Name = "OrderGradient1";
-            OrderGradient1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            OrderGradient1.ShadowDecoration.CustomizableEdges = customizableEdges12;
             OrderGradient1.Size = new Size(57, 58);
             OrderGradient1.TabIndex = 5;
             // 
@@ -151,14 +153,14 @@
             // 
             // ReservationIcon
             // 
-            ReservationIcon.CustomizableEdges = customizableEdges1;
+            ReservationIcon.CustomizableEdges = customizableEdges13;
             ReservationIcon.Dock = DockStyle.Fill;
             ReservationIcon.FillColor = Color.Transparent;
             ReservationIcon.Image = Properties.Resources.ReservedWhite;
             ReservationIcon.ImageRotate = 0F;
             ReservationIcon.Location = new Point(8, 8);
             ReservationIcon.Name = "ReservationIcon";
-            ReservationIcon.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            ReservationIcon.ShadowDecoration.CustomizableEdges = customizableEdges14;
             ReservationIcon.Size = new Size(40, 40);
             ReservationIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             ReservationIcon.TabIndex = 0;
@@ -178,7 +180,7 @@
             // CreateReservationButton
             // 
             CreateReservationButton.BorderRadius = 15;
-            CreateReservationButton.CustomizableEdges = customizableEdges5;
+            CreateReservationButton.CustomizableEdges = customizableEdges15;
             CreateReservationButton.DisabledState.BorderColor = Color.DarkGray;
             CreateReservationButton.DisabledState.CustomBorderColor = Color.DarkGray;
             CreateReservationButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -194,7 +196,7 @@
             CreateReservationButton.ImageSize = new Size(15, 15);
             CreateReservationButton.Location = new Point(1075, 13);
             CreateReservationButton.Name = "CreateReservationButton";
-            CreateReservationButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            CreateReservationButton.ShadowDecoration.CustomizableEdges = customizableEdges16;
             CreateReservationButton.Size = new Size(190, 58);
             CreateReservationButton.TabIndex = 7;
             CreateReservationButton.Text = "Tạo mới";
@@ -222,7 +224,7 @@
             SearchReservationTBox1.BorderColor = Color.Silver;
             SearchReservationTBox1.BorderRadius = 8;
             SearchReservationTBox1.BorderThickness = 2;
-            SearchReservationTBox1.CustomizableEdges = customizableEdges7;
+            SearchReservationTBox1.CustomizableEdges = customizableEdges17;
             SearchReservationTBox1.DefaultText = "";
             SearchReservationTBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             SearchReservationTBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -240,7 +242,7 @@
             SearchReservationTBox1.PlaceholderForeColor = Color.Gray;
             SearchReservationTBox1.PlaceholderText = "Tìm kiếm mã đặt bàn hoặc số điện thoại khách hàng...";
             SearchReservationTBox1.SelectedText = "";
-            SearchReservationTBox1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            SearchReservationTBox1.ShadowDecoration.CustomizableEdges = customizableEdges18;
             SearchReservationTBox1.Size = new Size(985, 43);
             SearchReservationTBox1.TabIndex = 0;
             // 
@@ -249,7 +251,7 @@
             DateTimePickerSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             DateTimePickerSearch.BorderRadius = 5;
             DateTimePickerSearch.Checked = true;
-            DateTimePickerSearch.CustomizableEdges = customizableEdges9;
+            DateTimePickerSearch.CustomizableEdges = customizableEdges19;
             DateTimePickerSearch.FillColor = Color.Silver;
             DateTimePickerSearch.Font = new Font("Segoe UI", 9F);
             DateTimePickerSearch.Format = DateTimePickerFormat.Long;
@@ -258,33 +260,33 @@
             DateTimePickerSearch.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             DateTimePickerSearch.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             DateTimePickerSearch.Name = "DateTimePickerSearch";
-            DateTimePickerSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            DateTimePickerSearch.ShadowDecoration.CustomizableEdges = customizableEdges20;
             DateTimePickerSearch.Size = new Size(272, 45);
             DateTimePickerSearch.TabIndex = 1;
-            DateTimePickerSearch.Value = new DateTime(2025, 12, 19, 17, 57, 11, 509);
+            DateTimePickerSearch.Value = DateTime.Now;
             // 
             // dgvReservations
             // 
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dgvReservations.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvReservations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgvReservations.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvReservations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvReservations.ColumnHeadersHeight = 36;
             dgvReservations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvReservations.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvReservations.DefaultCellStyle = dataGridViewCellStyle6;
             dgvReservations.Dock = DockStyle.Fill;
             dgvReservations.GridColor = Color.FromArgb(231, 229, 255);
             dgvReservations.Location = new Point(94, 164);
@@ -314,6 +316,12 @@
             dgvReservations.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvReservations.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dgvReservations.CellContentClick += dgvReservations_CellContentClick;
+            // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 300000;
+            timer1.Tick += timer1_Tick;
             // 
             // FormReservation
             // 
@@ -354,5 +362,6 @@
         private Guna.UI2.WinForms.Guna2TextBox SearchReservationTBox1;
         private Guna.UI2.WinForms.Guna2DateTimePicker DateTimePickerSearch;
         private Guna.UI2.WinForms.Guna2DataGridView dgvReservations;
+        private System.Windows.Forms.Timer timer1;
     }
 }
