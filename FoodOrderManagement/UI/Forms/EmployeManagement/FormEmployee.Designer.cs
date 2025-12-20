@@ -323,11 +323,11 @@
             // 
             label7.Anchor = AnchorStyles.Left;
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label7.ForeColor = Color.Maroon;
             label7.Location = new Point(1139, 14);
             label7.Name = "label7";
-            label7.Size = new Size(73, 21);
+            label7.Size = new Size(77, 21);
             label7.TabIndex = 6;
             label7.Text = "Thao Tác";
             // 
@@ -335,11 +335,11 @@
             // 
             label6.Anchor = AnchorStyles.Left;
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label6.ForeColor = Color.Maroon;
             label6.Location = new Point(934, 14);
             label6.Name = "label6";
-            label6.Size = new Size(113, 21);
+            label6.Size = new Size(120, 21);
             label6.TabIndex = 5;
             label6.Text = "Ngày Vào Làm";
             // 
@@ -347,11 +347,11 @@
             // 
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label5.ForeColor = Color.Maroon;
             label5.Location = new Point(767, 14);
             label5.Name = "label5";
-            label5.Size = new Size(50, 21);
+            label5.Size = new Size(53, 21);
             label5.TabIndex = 4;
             label5.Text = "Vị Trí ";
             // 
@@ -359,11 +359,11 @@
             // 
             label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label4.ForeColor = Color.Maroon;
             label4.Location = new Point(420, 14);
             label4.Name = "label4";
-            label4.Size = new Size(48, 21);
+            label4.Size = new Size(53, 21);
             label4.TabIndex = 3;
             label4.Text = "Email";
             // 
@@ -371,11 +371,11 @@
             // 
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label3.ForeColor = Color.Maroon;
             label3.Location = new Point(221, 14);
             label3.Name = "label3";
-            label3.Size = new Size(114, 21);
+            label3.Size = new Size(120, 21);
             label3.TabIndex = 2;
             label3.Text = "Số Điện Thoại ";
             // 
@@ -383,11 +383,11 @@
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label1.ForeColor = Color.Maroon;
             label1.Location = new Point(28, 14);
             label1.Name = "label1";
-            label1.Size = new Size(61, 21);
+            label1.Size = new Size(63, 21);
             label1.TabIndex = 0;
             label1.Text = "Họ Tên";
             // 
