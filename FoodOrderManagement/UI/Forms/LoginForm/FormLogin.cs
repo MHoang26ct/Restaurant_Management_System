@@ -89,6 +89,7 @@ namespace FoodOrderManagement
             else
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng, vui lòng nhập lại", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                UsernameLabel.Focus();
             }
         }
 
@@ -153,11 +154,6 @@ namespace FoodOrderManagement
                 {
                     Application.Exit();
                 }
-            }
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                ContinueButton_Click(sender, e);
             }
         }
     }
