@@ -301,9 +301,9 @@
             doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.5F));
             doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27F));
-            doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10.5F));
-            doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.5F));
-            doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 13F));
+            doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16F));
+            doubleBufferedtlp5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.5F));
             doubleBufferedtlp5.Controls.Add(label7, 6, 0);
             doubleBufferedtlp5.Controls.Add(label6, 5, 0);
             doubleBufferedtlp5.Controls.Add(label5, 4, 0);
@@ -311,6 +311,7 @@
             doubleBufferedtlp5.Controls.Add(label3, 2, 0);
             doubleBufferedtlp5.Controls.Add(label1, 1, 0);
             doubleBufferedtlp5.Dock = DockStyle.Fill;
+            doubleBufferedtlp5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             doubleBufferedtlp5.Location = new Point(0, 0);
             doubleBufferedtlp5.Name = "doubleBufferedtlp5";
             doubleBufferedtlp5.RowCount = 1;
@@ -322,9 +323,9 @@
             // 
             label7.Anchor = AnchorStyles.Left;
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label7.ForeColor = Color.Maroon;
-            label7.Location = new Point(1127, 14);
+            label7.Location = new Point(1139, 14);
             label7.Name = "label7";
             label7.Size = new Size(73, 21);
             label7.TabIndex = 6;
@@ -334,9 +335,9 @@
             // 
             label6.Anchor = AnchorStyles.Left;
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label6.ForeColor = Color.Maroon;
-            label6.Location = new Point(902, 14);
+            label6.Location = new Point(934, 14);
             label6.Name = "label6";
             label6.Size = new Size(113, 21);
             label6.TabIndex = 5;
@@ -346,7 +347,7 @@
             // 
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label5.ForeColor = Color.Maroon;
             label5.Location = new Point(767, 14);
             label5.Name = "label5";
@@ -358,7 +359,7 @@
             // 
             label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label4.ForeColor = Color.Maroon;
             label4.Location = new Point(420, 14);
             label4.Name = "label4";
@@ -370,7 +371,7 @@
             // 
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label3.ForeColor = Color.Maroon;
             label3.Location = new Point(221, 14);
             label3.Name = "label3";
@@ -382,7 +383,7 @@
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label1.ForeColor = Color.Maroon;
             label1.Location = new Point(28, 14);
             label1.Name = "label1";
