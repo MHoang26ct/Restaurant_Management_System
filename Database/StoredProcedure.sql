@@ -117,17 +117,17 @@ END
 GO
 
 -- 2.2. Cập nhật trạng thái bàn và thời gian mở bàn (Check-in/Check-out bàn)
-CREATE PROCEDURE UpdateTableStatusAndOpenTime
+create Procedure UpdateTableStatusAndOpenTime
     @TableID int,
     @NewStatus varchar(20),
     @OpenTime datetime null
-AS
-BEGIN
-    UPDATE Tables
-    SET TableStatus = @NewStatus,
+as
+begin
+    update Tables
+    set TableStatus = @NewStatus,
         OpenTime = @OpenTime
-    WHERE TableID = @TableID
-END
+    where TableID = @TableID
+end
 GO
 
 -- 2.3. Xóa bàn ăn
@@ -333,6 +333,33 @@ BEGIN
 END
 GO
 
+-- 4.8 Lấy tất cả phiếu đặt bàn cho hiển thị
+CREATE PROCEDURE GetAllReservationsForDisplay
+AS
+BEGIN
+    SELECT 
+        r.ReservationID as Id, 
+        c.FullName, 
+        c.PhoneNumber, 
+        r.TableId, 
+        r.ReservationTime, 
+        r.NumberOfGuests, 
+        r.Status
+    FROM Reservations r
+    JOIN Customers c ON r.CustomerID = c.CustomerID 
+    ORDER BY r.ReservationTime DESC
+END
+GO
+
+-- Xóa đặt bàn
+CREATE PROCEDURE DeleteReservation
+    @ReservationID INT
+AS
+BEGIN
+    DELETE FROM Reservations
+    WHERE ReservationID = @ReservationID
+END
+
 -- =============================================
 -- NHÓM 5: QUẢN LÝ ĐƠN HÀNG & CHI TIẾT (ORDERS & ORDER DETAILS)
 
@@ -481,6 +508,15 @@ BEGIN
     WHERE OrderDetailID = @OrderDetailID
 END
 GO
+
+-- 5.13 Xóa tất cả chi tiết order theo OrderID
+CREATE PROCEDURE DeleteOrderDetailsByOrderID
+    @OrderID INT
+AS
+BEGIN
+    DELETE FROM OrderDetails
+    WHERE OrderID = @OrderID
+END
 
 -- =============================================
 -- NHÓM 6: QUẢN LÝ NHÂN VIÊN (EMPLOYEES)
@@ -637,5 +673,45 @@ BEGIN
         AND TimeCheckout IS NOT NULL
     GROUP BY CAST(OrderTime AS DATE)
     ORDER BY Date
+END
+GO
+
+-- 8.2. Lấy số liệu tổng hợp cho dashboard
+CREATE PROCEDURE GetDashboardStats
+    @FromDate DATETIME,
+    @ToDate DATETIME
+AS
+BEGIN
+    -- 1. Tổng doanh thu (Chỉ tính đơn đã thanh toán - CheckoutTime không null)
+    DECLARE @TotalRevenue DECIMAL(18,2) = 0;
+    SELECT @TotalRevenue = ISNULL(SUM(TotalAmount), 0)
+    FROM Orders 
+    WHERE TimeCheckout BETWEEN @FromDate AND @ToDate;
+
+    -- 2. Tổng số đơn hàng (Đã thanh toán)
+    DECLARE @TotalOrders INT = 0;
+    SELECT @TotalOrders = COUNT(*)
+    FROM Orders
+    WHERE TimeCheckout BETWEEN @FromDate AND @ToDate;
+
+    -- 3. Tổng lượt đặt bàn (Dựa vào ngày khách đến - ComingTime)
+    DECLARE @TotalReservations INT = 0;
+    SELECT @TotalReservations = COUNT(*)
+    FROM Reservations
+    WHERE ComingTime BETWEEN @FromDate AND @ToDate
+    AND Status != 'Cancelled'; -- Không tính đơn hủy
+
+    -- 4. Tổng khách hàng (Đếm số khách duy nhất đã ăn hôm nay)
+    DECLARE @TotalCustomers INT = 0;
+    SELECT @TotalCustomers = COUNT(DISTINCT CustomerId)
+    FROM Orders
+    WHERE TimeCheckout BETWEEN @FromDate AND @ToDate;
+
+    -- Trả về kết quả 1 dòng chứa 4 cột
+    SELECT 
+        @TotalRevenue AS TotalRevenue,
+        @TotalOrders AS TotalOrders,
+        @TotalReservations AS TotalReservations,
+        @TotalCustomers AS TotalCustomers;
 END
 GO

@@ -81,20 +81,12 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             var param = new SqlParameter("@OrderDetailID", orderDetailId);
             await _db.ExecuteNonQueryAsync("DeleteOrderDetail", param);
         }
+
+        // Xóa tất cả chi tiết order theo OrderID
         public async Task DeleteAllDetailsByOrderIdAsync(int orderId)
         {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
-
-                string query = "DELETE FROM OrderDetails WHERE OrderID = @OrderID";
-
-                using (var command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@OrderID", orderId);
-                    await command.ExecuteNonQueryAsync();
-                }
-            }
+            var param = new SqlParameter("@OrderID", orderId);
+            await _db.ExecuteNonQueryAsync("DeleteAllOrderDetailsByOrderID", param);
         }
     }
 }

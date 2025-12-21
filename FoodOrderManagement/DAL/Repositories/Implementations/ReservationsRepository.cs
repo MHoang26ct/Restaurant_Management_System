@@ -112,80 +112,44 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             int rowsAffected = await _db.ExecuteNonQueryAsync("UpdateReservation", parameters);
             return rowsAffected > 0;
         }
+
+        // Lấy danh sách tất cả đặt bàn để hiển thị
         public async Task<List<ReservationViewModel>> GetAllReservationsAsync()
         {
-            List<ReservationViewModel> list = new List<ReservationViewModel>();
-
-            string query = @"
-        SELECT 
-            r.ReservationID as Id, 
-            c.FullName, 
-            c.PhoneNumber, 
-            r.TableId, 
-            r.ReservationTime, 
-            r.NumberOfGuests, 
-            r.Status
-        FROM Reservations r
-        JOIN Customers c ON r.CustomerID = c.CustomerID 
-        ORDER BY r.ReservationTime DESC";
-
-            try
+            return await _db.GetListAsync<ReservationViewModel>("GetAllReservationsForDisplay", reader => new ReservationViewModel
             {
-                using (var command = _db.CreateCommand(query))
-                {
-                    using (var reader = await command.ExecuteReaderAsync(CommandBehavior.CloseConnection))
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            list.Add(new ReservationViewModel
-                            {
-                                Id = (int)reader["Id"],
-                                CustomerName = reader["FullName"].ToString(),
-                                PhoneNumber = reader["PhoneNumber"].ToString(),
-                                TableId = (int)reader["TableId"],
-                                ReservationTime = (DateTime)reader["ReservationTime"],
-                                NumberOfGuests = (int)reader["NumberOfGuests"],
-                                Status = reader["Status"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi lấy danh sách đặt bàn: " + ex.Message);
-            }
-
-            return list;
+                Id = reader.GetInt32(0),
+                CustomerName = reader.GetString(1),
+                PhoneNumber = reader.GetString(2),
+                TableId = reader.GetInt32(3),
+                ReservationTime = reader.GetDateTime(4),
+                NumberOfGuests = reader.GetInt32(5),
+                Status = reader.GetString(6)
+            });
         }
+
+        // Xóa đặt bàn
         public async Task<bool> DeleteReservationAsync(int reservationId)
         {
             var parameters = new SqlParameter[]
             {
-        new SqlParameter("@ReservationID", reservationId)
+                new SqlParameter("@ReservationID", reservationId)
             };
-
-            // Gọi thủ tục vừa tạo ở trên
             int rowsAffected = await _db.ExecuteNonQueryAsync("DeleteReservation", parameters);
-
-            // Trả về true nếu xóa thành công (có ít nhất 1 dòng bị ảnh hưởng)
             return rowsAffected > 0;
         }
 
+        // Lấy danh sách tất cả đặt bàn dưới dạng entity
         public async Task<List<Reservations>> GetAllReservationsEntityAsync()
         {
             return await _db.GetListAsync("GetAllReservations", Mapper);
         }
+
+        // Lấy đặt bàn sắp tới theo TableId
         public async Task<Reservations> GetUpcomingReservationByTableIdAsync(int tableId)
         {
-            // 1. Gọi Procedure "GetAllUpcomingReservations" (không cần tham số đầu vào)
-            // Lưu ý: Truyền mảng rỗng nếu hàm _db yêu cầu
             var parameters = new SqlParameter[] { };
-
-            // Gọi hàm GetListAsync qua lớp _db của bạn
             var allReservations = await _db.GetListAsync("GetAllUpcomingReservations", Mapper, parameters);
-
-            // 2. Lọc bằng C# để lấy đúng cái bàn mình cần
             if (allReservations != null)
             {
                 return allReservations.FirstOrDefault(r => r.TableId == tableId);

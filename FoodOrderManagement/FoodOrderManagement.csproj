@@ -29,6 +29,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Include="Resources\download (1).ico" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Autofac" Version="9.0.0" />
 		<PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.7" />
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
@@ -59,6 +63,13 @@
 
 	<ItemGroup>
 	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>

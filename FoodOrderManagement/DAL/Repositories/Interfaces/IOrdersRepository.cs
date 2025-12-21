@@ -46,14 +46,23 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <returns></returns>
         public Task<List<Orders>> GetAllUnpaidOrdersAsync();
 
-        // Xóa order theo mã order (cho trường hợp khách hủy đặt bàn)
+        /// <summary>
+        /// Xóa order theo mã order (cho trường hợp khách hủy đặt bàn)
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         public Task DeleteOrderByIdAsync(int orderId);
 
-        // Lấy các order hoàn thành để hiển thị trong quản lý order
+        /// <summary>
+        /// Lấy các order hoàn thành để hiển thị trong quản lý order
+        /// </summary>
+        /// <returns></returns>
         public Task<List<Orders>> GetAllCompletedOrdersAsync();
 
-        // Lấy tất cả order
+        /// <summary>
+        /// Lấy tất cả order
+        /// </summary>
+        /// <returns></returns>
         public Task<List<Orders>> GetAllOrdersAsync();
-        public Task UpdateOrderTotalAsync(int orderId, decimal total);
     }
 }

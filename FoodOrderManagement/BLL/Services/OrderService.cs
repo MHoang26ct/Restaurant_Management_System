@@ -391,7 +391,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                     if (_existingOrderData != null)
                     {
                         _existingOrderData.TotalAmount = finalTotal;
-                        await _ordersRepository.UpdateOrderTotalAsync(targetOrderId, finalTotal);
                     }
                     OnOrderCreated?.Invoke(this, _existingOrderData);
                     MessageBox.Show("Cập nhật đơn hàng thành công!");

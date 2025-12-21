@@ -15,6 +15,12 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <param name="endDate"></param>
         /// <returns></returns>
         public Task<List<Statistics>> GetBusinessStatsByDateAsync(DateTime startDate, DateTime endDate);
+
+        /// <summary>
+        /// Lấy thống kê tổng quan cho dashboard theo ngày
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         Task<DashboardStatModel> GetDashboardStatsByDateAsync(DateTime date);
     }
 }

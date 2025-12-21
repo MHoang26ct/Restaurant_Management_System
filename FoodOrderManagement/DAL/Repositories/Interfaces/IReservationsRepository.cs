@@ -46,11 +46,37 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// <returns></returns>
         public Task<List<Reservations>> GetAllUpcomingReservationsAsync();
 
-        // Thay đổi thông tin đặt bàn (dùng luôn cho hủy đặt bàn)
+        /// <summary>
+        /// Thay đổi thông tin đặt bàn (dùng luôn cho hủy đặt bàn)
+        /// </summary>
+        /// <param name="reservation"></param>
+        /// <returns></returns>
         public Task<bool> UpdateReservationAsync(Reservations reservation);
+
+        /// <summary>
+        /// Lấy danh sách tất cả đặt bàn cho hiển thị
+        /// </summary>
+        /// <returns></returns>
         public Task<List<ReservationViewModel>> GetAllReservationsAsync();
+
+        /// <summary>
+        /// Lấy danh sách tất cả đặt bàn dưới dạng entity
+        /// </summary>
+        /// <returns></returns>
         public Task<List<Reservations>> GetAllReservationsEntityAsync();
+
+        /// <summary>
+        /// Xóa đặt bàn
+        /// </summary>
+        /// <param name="reservationId"></param>
+        /// <returns></returns>
         public Task<bool> DeleteReservationAsync(int reservationId);
+
+        /// <summary>
+        /// Lấy đặt bàn sắp tới theo mã bàn
+        /// </summary>
+        /// <param name="tableId"></param>
+        /// <returns></returns>
         public Task<Reservations> GetUpcomingReservationByTableIdAsync(int tableId);
     }
 }
