@@ -11,8 +11,8 @@
         {
             try
             {
-                var todayStats = await _statisticsRepository.GetDashboardStatsByDateAsync(DateTime.Now);
-                var yesterdayStats = await _statisticsRepository.GetDashboardStatsByDateAsync(DateTime.Now.AddDays(-1));
+                var todayStats = await _statisticsRepository.GetDashboardStatsByDateAsync(DateTime.Today);
+                var yesterdayStats = await _statisticsRepository.GetDashboardStatsByDateAsync(DateTime.Today.AddDays(-1));
 
 
                 LabelOfOrder2.Text = todayStats.TotalOrders.ToString();

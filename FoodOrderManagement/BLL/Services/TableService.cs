@@ -72,7 +72,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             UpdateUIByStatus(data.Status);
         }
 
-        private void UpdateUIByStatus(string status)
+        public void UpdateUIByStatus(string status)
         {
             switch (status)
             {
@@ -152,9 +152,41 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
+    private void UpdateStatusUI(string status)
+        {
+            switch (status)
+            {
+                case "Available":
+                    this.StatusText.FillColor = Color.FromArgb(220, 255, 220);
+                    this.StatusText.FillColor2 = Color.FromArgb(220, 255, 220);
+                    this.StatusText.HoverState.FillColor = Color.FromArgb(220, 255, 220);
+                    this.StatusText.HoverState.FillColor2 = Color.FromArgb(220, 255, 220);
+                    this.StatusText.BorderColor = Color.DarkGreen;
+                    this.StatusText.ForeColor = Color.DarkGreen;
+                    this.StatusText.Text = "Available"; 
+                    break;
+                case "Occupied":
+                    this.StatusText.FillColor = Color.FromArgb(255, 192, 192);
+                    this.StatusText.FillColor2 = Color.FromArgb(255, 192, 192);
+                    this.StatusText.HoverState.FillColor = Color.FromArgb(255, 192, 192);
+                    this.StatusText.HoverState.FillColor2 = Color.FromArgb(255, 192, 192);
+                    this.StatusText.BorderColor = Color.DarkRed;
+                    this.StatusText.ForeColor = Color.DarkRed;
+                    this.StatusText.Text = "Occupied"; 
+                    break;
+                case "Reserved":
+                    this.StatusText.FillColor = Color.FromArgb(255, 255, 128);
+                    this.StatusText.FillColor2 = Color.FromArgb(255, 255, 128);
+                    this.StatusText.HoverState.FillColor = Color.FromArgb(255, 255, 128);
+                    this.StatusText.HoverState.FillColor2 = Color.FromArgb(255, 255, 128);
+                    this.StatusText.BorderColor = Color.SaddleBrown;
+                    this.StatusText.ForeColor = Color.SaddleBrown;
+                    this.StatusText.Text = "Reserved"; 
+                    break;
+            }
+        }
     }
 }
-
 
 
 

@@ -51,5 +51,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         public Task<List<ReservationViewModel>> GetAllReservationsAsync();
         public Task<List<Reservations>> GetAllReservationsEntityAsync();
         public Task<bool> DeleteReservationAsync(int reservationId);
+        public Task<Reservations> GetUpcomingReservationByTableIdAsync(int tableId);
     }
 }

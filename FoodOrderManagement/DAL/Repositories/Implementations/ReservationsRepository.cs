@@ -176,5 +176,22 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         {
             return await _db.GetListAsync("GetAllReservations", Mapper);
         }
+        public async Task<Reservations> GetUpcomingReservationByTableIdAsync(int tableId)
+        {
+            // 1. Gọi Procedure "GetAllUpcomingReservations" (không cần tham số đầu vào)
+            // Lưu ý: Truyền mảng rỗng nếu hàm _db yêu cầu
+            var parameters = new SqlParameter[] { };
+
+            // Gọi hàm GetListAsync qua lớp _db của bạn
+            var allReservations = await _db.GetListAsync("GetAllUpcomingReservations", Mapper, parameters);
+
+            // 2. Lọc bằng C# để lấy đúng cái bàn mình cần
+            if (allReservations != null)
+            {
+                return allReservations.FirstOrDefault(r => r.TableId == tableId);
+            }
+
+            return null;
+        }
     }
 }

@@ -1,98 +1,104 @@
-﻿using Autofac;
-using FoodOrderManagement.DAL.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿    using Autofac;
+    using FoodOrderManagement.DAL.Repositories.Interfaces;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+    using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
-{
-    public partial class UC_UpdateStatus : UserControl
+    namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
     {
-        private int _currentTableId;
-        public void LoadTableData(TableData data)
+        public partial class UC_UpdateStatus : UserControl
+        {
+            private readonly IOrdersRepository _ordersRepository;
+            private readonly IReservationsRepository _reservationsRepository;
+            private readonly ICustomersRepository _customersRepository;
+            private int _currentTableId;
+            public UC_UpdateStatus(ITablesRepository tablesRepo, IOrdersRepository ordersRepo, IReservationsRepository resRepo, ICustomersRepository cusRepo)
+            {
+            InitializeComponent();
+            _tablesRepository = tablesRepo;
+            _ordersRepository = ordersRepo;
+            _reservationsRepository = resRepo;
+            _customersRepository = cusRepo;
+             }
+        public async void LoadTableData(TableData data)
         {
             _currentTableId = data.TableId;
-
-            // Gán dữ liệu lên giao diện 
-            TableIdLabel.Text = data.TableName; // Ví dụ: Thông tin bàn 5
-            CustomerNameLabel.Text = "Khách hàng: " + (string.IsNullOrEmpty(data.CustomerName) ? "Chưa có" : data.CustomerName);
-            OrderIdLabel.Text = "Đơn hàng: " + (string.IsNullOrEmpty(data.OrderId) ? "Chưa có" : "#" + data.OrderId);
-            TimeReservedLabel.Text = "Thời gian đặt: " + (data.ReservationTime.HasValue ? data.ReservationTime.Value.ToString("HH:mm") : "Không có");
-
-            switch (data.Status)
+            TableIdLabel.Text = data.TableName; 
+            CustomerNameLabel.Text = "Khách hàng: Chưa có";
+            OrderIdLabel.Text = "Đơn hàng: Chưa có";
+            TimeReservedLabel.Text = "Thời gian: --";
+            try
             {
-                case "Available":
-                    this.StatusText.FillColor = Color.FromArgb(220, 255, 220);
-                    this.StatusText.FillColor2 = Color.FromArgb(220, 255, 220);
-                    this.StatusText.HoverState.FillColor = Color.FromArgb(220, 255, 220);
-                    this.StatusText.HoverState.FillColor2 = Color.FromArgb(220, 255, 220);
-                    this.StatusText.BorderColor = Color.DarkGreen;
-                    this.StatusText.ForeColor = Color.DarkGreen;
-                    this.StatusText.Text = data.Status;
-                    break;
-                case "Occupied":
-                    this.StatusText.FillColor = Color.FromArgb(255, 192, 192);
-                    this.StatusText.FillColor2 = Color.FromArgb(255, 192, 192);
-                    this.StatusText.HoverState.FillColor = Color.FromArgb(255, 192, 192);
-                    this.StatusText.HoverState.FillColor2 = Color.FromArgb(255, 192, 192);
-                    this.StatusText.BorderColor = Color.DarkRed;
-                    this.StatusText.ForeColor = Color.DarkRed;
-                    this.StatusText.Text = data.Status;
-                    break;
-                case "Reserved":
-                    this.StatusText.FillColor = Color.FromArgb(255, 255, 128);
-                    this.StatusText.FillColor2 = Color.FromArgb(255, 255, 128);
-                    this.StatusText.HoverState.FillColor = Color.FromArgb(255, 255, 128);
-                    this.StatusText.HoverState.FillColor2 = Color.FromArgb(255, 255, 128);
-                    this.StatusText.BorderColor = Color.SaddleBrown;
-                    this.StatusText.ForeColor = Color.SaddleBrown;
-                    this.StatusText.Text = data.Status;
-                    break;
+                if (data.Status == "Occupied") 
+                {
+                    // Get the active order for this table (not paid yet)
+                    var order = await _ordersRepository.GetOrdersByTableIdAsync(_currentTableId);
+
+                    if (order != null)
+                    {
+                        var cus = await _customersRepository.GetCustomerByIdAsync(order.CustomerId);
+                        CustomerNameLabel.Text = "Khách hàng: " + (cus != null ? cus.FullName : "Khách vãng lai");
+                        OrderIdLabel.Text = "Đơn hàng: #" + order.Id;
+                        TimeReservedLabel.Text = "Giờ vào: " + order.OrderTime.ToString("HH:mm");
+                    }
+                }
+                else if (data.Status == "Reserved")
+                {
+                    // Get the upcoming reservation (Pending status)
+                    var booking = await _reservationsRepository.GetUpcomingReservationByTableIdAsync(_currentTableId);
+
+                    if (booking != null)
+                    {
+                        var cus = await _customersRepository.GetCustomerByIdAsync(booking.customerId);
+                        CustomerNameLabel.Text = "Khách hàng: " + (cus != null ? cus.FullName : "Unknown");
+                        OrderIdLabel.Text = "Mã đặt: #" + booking.Id;
+                        TimeReservedLabel.Text = "Giờ hẹn: " + booking.ReservationTime.ToString("HH:mm dd/MM");
+                    }
+                }
             }
-        }
-        public UC_UpdateStatus(ILifetimeScope scope, ITablesRepository tablesRepository)
-        {
-            InitializeComponent();
-            _tablesRepository = tablesRepository;
-            _scope = scope;
-        }
-
-        private void ReservedButton_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                "Bạn có chắc chắn muốn chuyển trạng thái bàn này sang 'Đã đặt trước' (Reserved)?",
-                "Xác nhận đặt bàn",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.Yes)
+            catch (Exception ex)
             {
-                UpdateStatus("Reserved", null);
+                MessageBox.Show("Lỗi tải thông tin chi tiết: " + ex.Message);
             }
-        }
 
-        private void AvailableButton_Click(object sender, EventArgs e)
-        {
-            UpdateStatus("Available", null);
+            UpdateStatusUI(data.Status);
         }
+            private void ReservedButton_Click(object sender, EventArgs e)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Bạn có chắc chắn muốn chuyển trạng thái bàn này sang 'Đã đặt trước' (Reserved)?",
+                    "Xác nhận đặt bàn",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
-        private void OccupiedButton_Click(object sender, EventArgs e)
-        {
-            UpdateStatus("Occupied", DateTime.Now);
-        }
+                if (result == DialogResult.Yes)
+                {
+                    UpdateStatus("Reserved", null);
+                }
+            }
 
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            this.Parent.Controls.Remove(this);
-            this.Dispose();
+            private void AvailableButton_Click(object sender, EventArgs e)
+            {
+                UpdateStatus("Available", null);
+            }
+
+            private void OccupiedButton_Click(object sender, EventArgs e)
+            {
+                UpdateStatus("Occupied", DateTime.Now);
+            }
+
+            private void ExitButton_Click(object sender, EventArgs e)
+            {
+                this.Parent.Controls.Remove(this);
+                this.Dispose();
+            }
         }
     }
-}

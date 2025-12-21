@@ -27,6 +27,7 @@ namespace FoodOrderManagement.AdminControl
             TimeShow();
             _scope = scope;
             _statisticsRepository = statisticsRepository;
+            this.Load  += FormHome_Load;
             //
             // MenuPicture
             //
@@ -58,6 +59,12 @@ namespace FoodOrderManagement.AdminControl
             EmployeePicture.Controls.Add(BlurryEmployeePanel);
             BlurryEmployeePanel.Dock = DockStyle.Fill;
         }
+
+        private void FormDashboard_Load(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void TimeShow()
         {
             DateTime now = DateTime.Now;

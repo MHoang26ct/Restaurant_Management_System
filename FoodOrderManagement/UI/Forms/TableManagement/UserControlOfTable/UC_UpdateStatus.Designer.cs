@@ -356,7 +356,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             TimeStart.Name = "TimeStart";
             TimeStart.Size = new Size(154, 21);
             TimeStart.TabIndex = 14;
-            TimeStart.Text = "Thời gian vào : 16:00";
+            TimeStart.Text = "Thời gian vào : Không có";
             // 
             // UC_UpdateStatus
             // 
