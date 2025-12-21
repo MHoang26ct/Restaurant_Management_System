@@ -252,6 +252,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                         ((UserControl)sender).Dispose();
                     };
                     ListFoodFlowLayout.Controls.Add(row);
+                    row.SetData(item.FoodId, item.Quantity);
                 }
             }
         }

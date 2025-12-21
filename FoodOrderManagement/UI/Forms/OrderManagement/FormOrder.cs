@@ -82,7 +82,6 @@ namespace FoodOrderManagement.AdminControl
             {
                 FlowLayoutOrder.Enabled = true;
                 _overlayBackground.Hide(this);               
-                LoadAllOrders();
             };
         }
 
