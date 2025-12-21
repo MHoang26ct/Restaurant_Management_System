@@ -1,216 +1,161 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Helper;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using FoodOrderManagement.UI.Forms.ReservationManagement;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FoodOrderManagement.DAL.Models.Entities;
-using FoodOrderManagement.DAL.Repositories;
-using Microsoft.Data.SqlClient;
-using System.Configuration;
-using FoodOrderManagement.DAL.Repositories.Interfaces;
 
 namespace FoodOrderManagement.DAL.Repositories.Implementations {
     internal class ReservationsRepository : IReservationsRepository
     {
-        private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private readonly DatabaseHelper _db = new DatabaseHelper();
 
-        // Thêm đặt bàn mới và trả về ID đặt bàn mới tạo để thực hiện các order nếu cần
+        //
+        private Reservations Mapper(SqlDataReader reader)
+        {
+            return new Reservations
+            {
+                Id = reader.GetInt32(0),
+                customerId = reader.GetInt32(1),
+                TableId = reader.GetInt32(2),
+                ReservationTime = reader.GetDateTime(3),
+                ComingTime = reader.GetDateTime(4),
+                NumberOfGuests = reader.GetInt32(5)
+            };
+        }
+
+        // Thêm đặt bàn mới và trả về ID đặt bàn mới tạo
         public async Task<int> AddReservationAsync(Reservations reservation)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            var outputIdParam = new SqlParameter("@NewReservationID", System.Data.SqlDbType.Int)
             {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("AddReservation", connection))
-                {
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@CustomerID", reservation.customerId);
-                    command.Parameters.AddWithValue("@TableID", reservation.TableId);
-                    command.Parameters.AddWithValue("@ReservationTime", reservation.ReservationTime);
-                    command.Parameters.AddWithValue("@ComingTime", reservation.ComingTime);
-                    command.Parameters.AddWithValue("@NumberOfGuests", reservation.NumberOfGuests);
-                    var outputIdParam = new SqlParameter("@NewReservationID", System.Data.SqlDbType.Int)
-                    {
-                        Direction = System.Data.ParameterDirection.Output
-                    };
-                    command.Parameters.Add(outputIdParam);
-                    await command.ExecuteNonQueryAsync();
-                    return (int)outputIdParam.Value;
-                }
-            }
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@CustomerID", reservation.customerId),
+                new SqlParameter("@TableID", reservation.TableId),
+                new SqlParameter("@ReservationTime", reservation.ReservationTime),
+                new SqlParameter("@ComingTime", reservation.ComingTime),
+                new SqlParameter("@NumberOfGuests", reservation.NumberOfGuests),
+                outputIdParam
+            };
+            await _db.ExecuteNonQueryAsync("AddReservation", parameters);
+            return (int)outputIdParam.Value;
         }
 
         // Truy vấn bằng mã đặt bàn
         public async Task<Reservations?> GetReservationByReservationIdAsync(int reservationId)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            var parameters = new SqlParameter[]
             {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("SELECT * FROM orderDetail WHERE reservationId = @reservationId", connection))
-                {
-                    command.Parameters.AddWithValue("@ReservationId", reservationId);
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            return new Reservations
-                            {
-                                Id = reader.GetInt32(0),
-                                customerId = reader.GetInt32(1),
-                                TableId = reader.GetInt32(2),
-                                ReservationTime = reader.GetDateTime(3),
-                                ComingTime = reader.GetDateTime(4),
-                                NumberOfGuests = reader.GetInt32(5)
-                            };
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                }
-            }
-        }
-
-        // Truy vấn bằng mã khách hàng và thời gian đến 
-        public async Task<List<Reservations>> GetReservationsByCustomerIdAndComingTimeAsync(int customerId, DateTime currentTime)
-        {
-            var reservations = new List<Reservations>();
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("SELECT * FROM Reservations WHERE CustomerId = @CustomerId AND ComingTime >= @CurrentTime", connection))
-                {
-                    command.Parameters.AddWithValue("@CustomerId", customerId);
-                    command.Parameters.AddWithValue("@ComingTime", currentTime);
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            reservations.Add(new Reservations
-                            {
-                                Id = reader.GetInt32(0),
-                                customerId = reader.GetInt32(1),
-                                TableId = reader.GetInt32(2),
-                                ReservationTime = reader.GetDateTime(3),
-                                ComingTime = reader.GetDateTime(4),
-                                NumberOfGuests = reader.GetInt32(5)
-                            });
-                        }
-                    }
-                }
-            }
-            return reservations;
+                new SqlParameter("@ReservationID", reservationId)
+            };
+            return await _db.QuerySingleAsync("GetReservationByID", Mapper, parameters);
         }
 
         // Truy vấn theo ngày để tránh đặt trùng
         public async Task<List<Reservations>> GetReservationsByDateAsync(DateTime date)
         {
-            var reservations = new List<Reservations>();
-            using (var connection = new SqlConnection(_connectionString))
+            var parameters = new SqlParameter[]
             {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("SELECT * FROM Reservations WHERE CAST(ComingTime AS DATE) = @Date", connection))
-                {
-                    command.Parameters.AddWithValue("@Date", date.Date);
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            reservations.Add(new Reservations
-                            {
-                                Id = reader.GetInt32(0),
-                                customerId = reader.GetInt32(1),
-                                TableId = reader.GetInt32(2),
-                                ReservationTime = reader.GetDateTime(3),
-                                ComingTime = reader.GetDateTime(4),
-                                NumberOfGuests = reader.GetInt32(5)
-                            });
-                        }
-                    }
-                }
-            }
-            return reservations;
+                new SqlParameter("@Date", date.Date)
+            };
+            return await _db.GetListAsync("GetReservationsByDate", Mapper, parameters);
         }
 
-        // Truy vấn đặt bàn theo mã khách hàng và thời gian đặt
-        public async Task<List<Reservations>> GetReservationsByCustomerIdAndReservationTimeAsync(int customerId, DateTime reservationTime)
+        // Truy xuất phiếu đặt bàn theo số điện thoại trong tương lai
+        public async Task<List<Reservations>> GetUpcomingReservationsByPhoneNumberAsync(string phoneNumber)
         {
-            var reservations = new List<Reservations>();
-            using (var connection = new SqlConnection(_connectionString))
+            var parameters = new SqlParameter[]
             {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("SELECT * FROM Reservations WHERE CustomerId = @CustomerId AND ReservationTime = @ReservationTime", connection))
-                {
-                    command.Parameters.AddWithValue("@CustomerId", customerId);
-                    command.Parameters.AddWithValue("@ReservationTime", reservationTime);
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            reservations.Add(new Reservations
-                            {
-                                Id = reader.GetInt32(0),
-                                customerId = reader.GetInt32(1),
-                                TableId = reader.GetInt32(2),
-                                ReservationTime = reader.GetDateTime(3),
-                                ComingTime = reader.GetDateTime(4),
-                                NumberOfGuests = reader.GetInt32(5)
-                            });
-                        }
-                    }
-                }
-            }
-            return reservations;
+                new SqlParameter("@PhoneNumber", phoneNumber)
+            };
+            return await _db.GetListAsync("GetUpcomingReservationsByPhoneNumber", Mapper, parameters);
+        }
+
+        // Truy xuất phiếu đặt bàn theo số điện thoại (bao gồm cả quá khứ)
+        public async Task<List<Reservations>> GetReservationsByPhoneNumberAsync(string phoneNumber)
+        {
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@PhoneNumber", phoneNumber)
+            };
+            return await _db.GetListAsync("GetReservationsByPhoneNumber", Mapper, parameters);
         }
 
         // Lấy danh sách tất cả đặt bàn (thời gian đặt bàn trong tương lai)
         public async Task<List<Reservations>> GetAllUpcomingReservationsAsync()
         {
-            var reservations = new List<Reservations>();
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("GetAllUpcomingReservations", connection))
-                {
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            reservations.Add(new Reservations
-                            {
-                                Id = reader.GetInt32(0),
-                                customerId = reader.GetInt32(1),
-                                TableId = reader.GetInt32(2),
-                                ReservationTime = reader.GetDateTime(3),
-                                ComingTime = reader.GetDateTime(4),
-                                NumberOfGuests = reader.GetInt32(5)
-                            });
-                        }
-                    }
-                }
-            }
-            return reservations;
+            return await _db.GetListAsync("GetAllUpcomingReservations", Mapper);
         }
-        // Cập nhật thông tin đặt bàn (dùng luôn cho hủy đặt bàn)
+
+        // Cập nhật thông tin đặt bàn (dùng luôn cho hủy đặt bàn - thay đổi trạng thái)
         public async Task<bool> UpdateReservationAsync(Reservations reservation)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            var parameters = new SqlParameter[]
             {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("UpdateReservation", connection))
-                {
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@ReservationID", reservation.Id);
-                    command.Parameters.AddWithValue("@TableID", reservation.TableId);
-                    command.Parameters.AddWithValue("@ReservationTime", reservation.ReservationTime);
-                    command.Parameters.AddWithValue("@ComingTime", reservation.ComingTime);
-                    command.Parameters.AddWithValue("@NumberOfGuests", reservation.NumberOfGuests);
-                    command.Parameters.AddWithValue("@Status", reservation.Status);
-                    var rowsAffected = await command.ExecuteNonQueryAsync();
-                    return rowsAffected > 0;
-                }
+                new SqlParameter("@ReservationID", reservation.Id),
+                new SqlParameter("@TableID", reservation.TableId),
+                new SqlParameter("@ReservationTime", reservation.ReservationTime),
+                new SqlParameter("@ComingTime", reservation.ComingTime),
+                new SqlParameter("@NumberOfGuests", reservation.NumberOfGuests),
+                new SqlParameter("@Status", reservation.Status)
+            };
+            int rowsAffected = await _db.ExecuteNonQueryAsync("UpdateReservation", parameters);
+            return rowsAffected > 0;
+        }
+
+        // Lấy danh sách tất cả đặt bàn để hiển thị
+        public async Task<List<ReservationViewModel>> GetAllReservationsAsync()
+        {
+            return await _db.GetListAsync<ReservationViewModel>("GetAllReservationsForDisplay", reader => new ReservationViewModel
+            {
+                Id = reader.GetInt32(0),
+                CustomerName = reader.GetString(1),
+                PhoneNumber = reader.GetString(2),
+                TableId = reader.GetInt32(3),
+                ReservationTime = reader.GetDateTime(4),
+                NumberOfGuests = reader.GetInt32(5),
+                Status = reader.GetString(6)
+            });
+        }
+
+        // Xóa đặt bàn
+        public async Task<bool> DeleteReservationAsync(int reservationId)
+        {
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ReservationID", reservationId)
+            };
+            int rowsAffected = await _db.ExecuteNonQueryAsync("DeleteReservation", parameters);
+            return rowsAffected > 0;
+        }
+
+        // Lấy danh sách tất cả đặt bàn dưới dạng entity
+        public async Task<List<Reservations>> GetAllReservationsEntityAsync()
+        {
+            return await _db.GetListAsync("GetAllReservations", Mapper);
+        }
+
+        // Lấy đặt bàn sắp tới theo TableId
+        public async Task<Reservations> GetUpcomingReservationByTableIdAsync(int tableId)
+        {
+            var parameters = new SqlParameter[] { };
+            var allReservations = await _db.GetListAsync("GetAllUpcomingReservations", Mapper, parameters);
+            if (allReservations != null)
+            {
+                return allReservations.FirstOrDefault(r => r.TableId == tableId);
             }
+
+            return null;
         }
     }
 }

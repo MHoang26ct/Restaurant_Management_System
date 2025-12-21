@@ -30,6 +30,59 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             InitializeComponent();
             _foodsRepository = foodsRepository;
         }
+        //
+        // TAB INDEX 
+        //
+
+        // Sự kiện khi load UC_AddFood sẽ focus vào UC này
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+
+            // Kiểm tra: Nếu nó vừa được hiện lên (Visible = true)
+            if (this.Visible)
+            {
+                // Ép Focus vào ô nhập liệu đầu tiên ngay lập tức
+                NameFoodTBox.Focus();
+                NameFoodTBox.Select();
+            }
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Kiểm tra nếu phím bấm là ESC
+            if (keyData == Keys.Escape)
+            {
+                // Gọi hàm đóng 
+                ExitButton_Click(null, null);
+                return true;
+            }
+            // Tạo vòng lặp tab không cho tab nhảy lung tung ra ngoài form cha
+            if (keyData == Keys.Tab && AddFoodButton.Focused)
+            {
+                // Ép nhảy về ô đầu tiên 
+                NameFoodTBox.Focus();
+                // Trả về true để chặn Windows không tự nhảy lung tung 
+                return true;
+            }
+
+            // Nếu không phải các phím trên thì hành xử như bình thường
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void AddFoodButton_Enter(object sender, EventArgs e)
+        {
+            AddFoodButton.FillColor = Color.Chocolate;
+            AddFoodButton.FillColor2 = Color.FromArgb(255, 128, 0);
+        }
+
+        private void AddFoodButton_Leave(object sender, EventArgs e)
+        {
+            AddFoodButton.FillColor = Color.FromArgb(255, 128, 0);
+            AddFoodButton.FillColor2 = Color.Chocolate;
+        }
+        //
+        //
+        //
         private void NameFoodTBox_Enter(object sender, EventArgs e)
         {
             if (NameFoodTBox.Text == "Nhập tên món ăn...")

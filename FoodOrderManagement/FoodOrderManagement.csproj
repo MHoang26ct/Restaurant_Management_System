@@ -9,12 +9,17 @@
 
 		<ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
 		<ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
+		<ApplicationIcon>Resources\download (1).ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <Compile Remove="Foodmages\**" />
 	  <EmbeddedResource Remove="Foodmages\**" />
 	  <None Remove="Foodmages\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Resources\download (1).ico" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -37,13 +42,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Update="Properties\Resources.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Update="App.config">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>
@@ -60,6 +58,13 @@
 	<ItemGroup>
 	  <Folder Include="BLL\Validators\" />
 	  <Folder Include="UI\Forms\MenuManagement\Images\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>

@@ -1,4 +1,10 @@
-﻿using System;
+﻿using Autofac;
+using FoodOrderManagement.DAL.Repositories.Implementations;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using FoodOrderManagement.UI;
+using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
+using FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +13,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using static System.Formats.Asn1.AsnWriter;
 namespace FoodOrderManagement.AdminControl
 {
+
     public partial class FormTable : Form
-    {
-        public FormTable()
+    {   
+        UC_AddTableCard uc_AddTableCard;
+        UC_AddTable uc_AddTable;
+        private int TableCount = 0;
+        private readonly ILifetimeScope _scope;
+        private readonly ITablesRepository _tablesRepository;
+        private OverlayBackground _overlayBackground = new OverlayBackground();
+        public FormTable(ILifetimeScope scope, ITablesRepository tablesRepository)
         {
             InitializeComponent();
+            _scope = scope;
+            _tablesRepository = tablesRepository;
+
+            LoadTableList();
+        }
+        private void ShowAddTable()
+        {
+            uc_AddTable.ResetData();
+            uc_AddTable.Location = new Point(
+                (this.Width - uc_AddTable.Width) / 2,
+                (this.Height - uc_AddTable.Height) / 2
+            );
+            uc_AddTable.Visible = true;
+            uc_AddTable.BringToFront();
         }
     }
 }

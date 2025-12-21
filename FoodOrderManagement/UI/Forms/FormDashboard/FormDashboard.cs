@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Autofac;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
+using System.Globalization; // Xài tiếng việt cho ngày 
 namespace FoodOrderManagement.AdminControl
 {
     public partial class FormDashboard : Form
@@ -18,184 +19,113 @@ namespace FoodOrderManagement.AdminControl
         // Lưu lại toàn bộ control với địa chỉ của chúng ban đầu
         private Dictionary<Control, Padding> DiOriginalLocations = new Dictionary<Control, Padding>();
         private readonly ILifetimeScope _scope;
-        public FormDashboard(ILifetimeScope scope)
+        private readonly IStatisticsRepository _statisticsRepository;
+        public FormDashboard(ILifetimeScope scope, IStatisticsRepository statisticsRepository)
         {
 
             InitializeComponent();
+            TimeShow();
             _scope = scope;
+            _statisticsRepository = statisticsRepository;
+            this.Load  += FormHome_Load;
             //
             // MenuPicture
             //
-            MenuPicture.Controls.Add(BlurryMenuPanel); // Làm tối hình
+            MenuPicture.Controls.Add(BlurryMenuPanel);
             BlurryMenuPanel.Dock = DockStyle.Fill;
-            //    BlurryMenuPanel.Controls.Add(MenuGradient);
-            //    BlurryMenuPanel.Controls.Add(MenuLabel);
-            //    MenuGradient.Location = new Point(150, 150); // Đặt vị trí mới so với cha 
-            //    MenuLabel.Location = new Point(110, 270);   // Đặt vị trí mới so với cha 
-
-
             //
-            //OrderPicture
+            // OrderPicture
             //
-            OrderPicture.Controls.Add(BlurryOrderPanel); // Thêm panel làm tối hình 
-            BlurryOrderPanel.Dock = DockStyle.Fill; // Chèn full vào cha
-                                                    //BlurryOrderPanel.Controls.Add(OrderGradient);
-                                                    //BlurryOrderPanel.Controls.Add(OrderLabel);
-                                                    //    OrderGradient.Location = new Point(150, 150); // Đặt vị trí mới so với cha 
-                                                    //    OrderLabel.Location = new Point(93, 270);   // Đặt vị trí mới so với cha 
-                                                    //    //
-                                                    //    //TablePicture
-                                                    //    //
-            TablePicture.Controls.Add(BlurryTablePanel); // Thêm panel làm tối hình 
-            BlurryTablePanel.Dock = DockStyle.Fill; // Chèn full vào cha
-                                                    //    BlurryTablePanel.Controls.Add(TableGradient);
-                                                    //    BlurryTablePanel.Controls.Add(TableLabel);
-                                                    //    TableGradient.Location = new Point(150, 150); // Đặt vị trí mới so với cha 
-                                                    //    TableLabel.Location = new Point(93, 270);   // Đặt vị trí mới so với cha 
-                                                    //    //
-                                                    //    //CustomerPicture
-                                                    //   
-            CustomerPicture.Controls.Add(BlurryCustomerPanel); // Thêm panel làm tối hình 
-            BlurryCustomerPanel.Dock = DockStyle.Fill; // Chèn full vào cha
-                                                       //    BlurryCustomerPanel.Controls.Add(CustomerGradient);
-                                                       //    BlurryCustomerPanel.Controls.Add(CustomerLabel);
-                                                       //    CustomerGradient.Location = new Point(150, 150); // Đặt vị trí mới so với cha 
-                                                       //    CustomerLabel.Location = new Point(85, 270);   // Đặt vị trí mới so với cha 
-                                                       //    //
-                                                       //    //ReportPicture
-                                                       // 
-            ReportPicture.Controls.Add(BlurryReportPanel); // Thêm panel làm tối hình 
-            BlurryReportPanel.Dock = DockStyle.Fill; // Chèn full vào cha
-                                                     //    BlurryReportPanel.Controls.Add(ReportGradient);
-
-            //    //
-            //    //EmployeePicture
-
-            EmployeePicture.Controls.Add(BlurryEmployeePanel); // Thêm panel làm tối hình 
-            BlurryEmployeePanel.Dock = DockStyle.Fill; // Chèn full vào cha
-            //    BlurryEmployeePanel.Controls.Add(EmployeeGradient);
-            //    BlurryEmployeePanel.Controls.Add(EmployeeLabel);
-            //    EmployeeGradient.Location = new Point(150, 150); // Đặt vị trí mới so với cha 
-            //    EmployeeLabel.Location = new Point(90, 270);   // Đặt vị trí mới so với cha 
+            OrderPicture.Controls.Add(BlurryOrderPanel);
+            BlurryOrderPanel.Dock = DockStyle.Fill;
+            //
+            // TablePicture
+            //
+            TablePicture.Controls.Add(BlurryTablePanel);
+            BlurryTablePanel.Dock = DockStyle.Fill;
+            //   
+            // CustomerPicture
+            // 
+            CustomerPicture.Controls.Add(BlurryCustomerPanel);
+            BlurryCustomerPanel.Dock = DockStyle.Fill;
+            //
+            // ReportPicture
+            //
+            ReportPicture.Controls.Add(BlurryReportPanel);
+            BlurryReportPanel.Dock = DockStyle.Fill;
+            //
+            // EmployeePicture
+            //
+            EmployeePicture.Controls.Add(BlurryEmployeePanel);
+            BlurryEmployeePanel.Dock = DockStyle.Fill;
         }
-        //
-        //Hiệu ứng bật lên
-        //
-        private Control FindHoverContainer(Control StarControl)// Tìm container cha chứa control
+
+        private void FormDashboard_Load(object? sender, EventArgs e)
         {
-            Control Current = StarControl;
-            // Duyệt vòng lặp ngược để tìm cha
-            while (Current != null)
-            {
-                if (Current.Tag?.ToString() == "HoverContainer") // Nếu vế trước ? là
-                {                                                 // Null thì chương trình        
-                    return Current;                               // sẽ trả về null và không gây 
-                }                                                 // ra lỗi NullReferenException 
-                Current = Current.Parent; // tiếp tuc chạy vòng lặp
-            }
-            ; // trả về null nếu không tìm thấy
-            return null;
+            throw new NotImplementedException();
         }
-        private void Control_MouseEnter(object sender, EventArgs e)
+
+        private void TimeShow()
         {
-            Control MainContainer = FindHoverContainer((Control)sender); // HoverContainer
-
-            if (MainContainer != null)
-            {
-                if (!DiOriginalLocations.ContainsKey(MainContainer))
-                {
-                    DiOriginalLocations[MainContainer] = MainContainer.Margin; // Lưu vào dictionary địa chỉ của HoverContainer
-                }
-                Padding OriginalLocation = DiOriginalLocations[MainContainer]; //// Lấy ra vị trí gốc ĐÃ LƯU của HoverContainer từ Dictionary
-
-                if (MainContainer.Margin == OriginalLocation) // // Chỉ thực hiện hiệu ứng NẾU vị trí hiện tại
-                                                              // của HoverContainer vẫn là vị trí gốc (chưa di chuyển)
-                {
-                    MainContainer.BringToFront();
-                    MainContainer.Margin = new Padding(
-                        OriginalLocation.Left,
-                        OriginalLocation.Top,
-                        OriginalLocation.Right,
-                        OriginalLocation.Bottom + 10);
-                }
-            }
-        }
-        private void Control_MouseLeave(object sender, EventArgs e)
-        {
-            Control MainContainer = FindHoverContainer((Control)sender); // HoverContainer
-
-            if (MainContainer != null && DiOriginalLocations.ContainsKey(MainContainer)) // Có HoverContainer và
-                                                                                         // HoverCointainer của Control có
-                                                                                         // trong Dictionary
-            {
-                Padding OriginalLocation = DiOriginalLocations[MainContainer];
-                Point MousePosition = MainContainer.PointToClient(Cursor.Position); // Địa chỉ chuột đang trỏ đến
-
-                if (!MainContainer.ClientRectangle.Contains(MousePosition)) // Nếu chuột nằm ngoài vùng MainContainer
-                {
-                    MainContainer.Margin = OriginalLocation; // Trả về vị trí ban đầu
-                }
-            }
+            DateTime now = DateTime.Now;
+            TimeLabel.Text = now.ToString("HH:mm:ss tt");
+            DateLabel.Text = now.ToString("dddd, dd/MM/yyyy", new CultureInfo("vi-VN"));
         }
         //
         // Lấy thời gian đồng hồ
         //
         private void timer1_Tick(object sender, EventArgs e)
         {
-            TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss tt");
+            TimeShow();
         }
         //
         // Sự kiện click Ảnh Menu
         //
         private void MenuPicture_Click(object sender, EventArgs e)
         {
-            FrmMenu frmMenu = _scope.Resolve<FrmMenu>();
-            frmMain.instance.MenuButton.PerformClick(); // Chỉnh modifiers của Menubutton thành public rồi gọi 
+            FrmMenu FormMenu = _scope.Resolve<FrmMenu>();
+            FormMain.instance.MenuButton.PerformClick(); // Chỉnh modifiers của Menubutton thành public rồi gọi 
         }
         //
         // Sự kiện click Ảnh Order
         //
         private void OrderPicture_Click(object sender, EventArgs e)
         {
-            FormOrder frmOrder = new FormOrder();
-            frmMain.instance.OrderButton.PerformClick();
+            FormOrder FormOrder = _scope.Resolve<FormOrder>();
+            FormMain.instance.OrderButton.PerformClick();
         }
         //
         // Sự kiện click Ảnh Table
         //
         private void TablePicture_Click(object sender, EventArgs e)
         {
-            FormTable frmTable = new FormTable();
-            frmMain.instance.TableButton.PerformClick();
+            FormTable FormTable = _scope.Resolve<FormTable>();
+            FormMain.instance.TableButton.PerformClick();
         }
         //
         // Sự kiện click Ảnh Customer
         //
         private void CustomerPicture_Click(object sender, EventArgs e)
         {
-            FormCustomer frmCustomer = new FormCustomer();
-            frmMain.instance.CustomerButton.PerformClick();
+            FormCustomer FormCustomer = _scope.Resolve<FormCustomer>();
+            FormMain.instance.CustomerButton.PerformClick();
         }
         //
         // Sự kiện click Ảnh Report
         //
         private void ReportPicture_Click(object sender, EventArgs e)
         {
-            FormReport frmReport = new FormReport();
-            frmMain.instance.ReportsButton.PerformClick();
+            FormReservation FormReport = _scope.Resolve<FormReservation>();
+            FormMain.instance.ReservationButton.PerformClick();
         }
         //
         // Sự kiện click Ảnh Employee
         //
         private void EmployeePicture_Click(object sender, EventArgs e)
         {
-            FormEmployee frmEmployee = new FormEmployee();
-            frmMain.instance.EmployeesButton.PerformClick();
+            FormEmployee FormEmployee = _scope.Resolve<FormEmployee>();
+            FormMain.instance.EmployeesButton.PerformClick();
         }
 
-        private void doubleBufferedtlp6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
