@@ -118,396 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+  <data name="doubleBufferedtlp1.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="doubleBufferedtlp5.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="PasswordTextbox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 12pt</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 109</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 21</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Hệ thống quản lý nhà hàng chuyên nghiệp </value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="IconPicture.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="IconPicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 13</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="IconPicture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="IconPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 29</value>
-  </data>
-  <data name="IconPicture.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="IconPicture.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;IconPicture.Name" xml:space="preserve">
-    <value>IconPicture</value>
-  </data>
-  <data name="&gt;&gt;IconPicture.Type" xml:space="preserve">
-    <value>Guna.UI2.WinForms.Guna2PictureBox, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
-  </data>
-  <data name="&gt;&gt;IconPicture.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;IconPicture.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tableLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="tableLayoutPanel4.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 55</value>
-  </data>
-  <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
-    <value>IconPanel</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="IconPicture" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,19.878296,Percent,62.88032,Percent,17.241379" /&gt;&lt;Rows Styles="Percent,20,Percent,60,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="IconPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="IconPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 8</value>
-  </data>
-  <data name="IconPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="IconPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 55</value>
-  </data>
-  <data name="IconPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;IconPanel.Name" xml:space="preserve">
-    <value>IconPanel</value>
-  </data>
-  <data name="&gt;&gt;IconPanel.Type" xml:space="preserve">
-    <value>Guna.UI2.WinForms.Guna2GradientPanel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
-  </data>
-  <data name="&gt;&gt;IconPanel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;IconPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 2</value>
-  </data>
-  <data name="tableLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="tableLayoutPanel3.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>468, 78</value>
-  </data>
-  <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="IconPanel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,41.100323,Percent,16.504854,Percent,42.39482" /&gt;&lt;Rows Styles="Percent,8.244022,Percent,76.66941,Percent,15.086562" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="TextLabel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="TextLabel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TextLabel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 13.8pt</value>
-  </data>
-  <data name="TextLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 82</value>
-  </data>
-  <data name="TextLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 25</value>
-  </data>
-  <data name="TextLabel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TextLabel1.Text" xml:space="preserve">
-    <value>Restaurant HHH System</value>
-  </data>
-  <data name="&gt;&gt;TextLabel1.Name" xml:space="preserve">
-    <value>TextLabel1</value>
-  </data>
-  <data name="&gt;&gt;TextLabel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextLabel1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;TextLabel1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 2</value>
-  </data>
-  <data name="tableLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 137</value>
-  </data>
-  <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label1" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel3" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TextLabel1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,60,Percent,20,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tableLayoutPanel5.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tableLayoutPanel6.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tableLayoutPanel7.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="LoginLabel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="LoginLabel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 16.2pt, style=Bold</value>
-  </data>
-  <data name="LoginLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 13</value>
-  </data>
-  <data name="LoginLabel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="LoginLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 32</value>
-  </data>
-  <data name="LoginLabel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="LoginLabel1.Text" xml:space="preserve">
-    <value>Đăng nhập</value>
-  </data>
-  <data name="&gt;&gt;LoginLabel1.Name" xml:space="preserve">
-    <value>LoginLabel1</value>
-  </data>
-  <data name="&gt;&gt;LoginLabel1.Type" xml:space="preserve">
-    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
-  </data>
-  <data name="&gt;&gt;LoginLabel1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;LoginLabel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 13.8pt</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 50</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 25</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Chào mừng bạn trở lại!</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 2</value>
-  </data>
-  <data name="tableLayoutPanel7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="tableLayoutPanel7.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 79</value>
-  </data>
-  <data name="tableLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel7.Name" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel7.Parent" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LoginLabel1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,Absolute,18" /&gt;&lt;Rows Styles="Percent,60.526318,Percent,39.473682" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tableLayoutPanel8.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel10.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="PasswordLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.2pt, style=Bold</value>
-  </data>
-  <data name="PasswordLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 2</value>
-  </data>
-  <data name="PasswordLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="PasswordLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
-  </data>
-  <data name="PasswordLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="PasswordLabel.Text" xml:space="preserve">
-    <value>Mật khẩu</value>
-  </data>
-  <data name="&gt;&gt;PasswordLabel.Name" xml:space="preserve">
-    <value>PasswordLabel</value>
-  </data>
-  <data name="&gt;&gt;PasswordLabel.Type" xml:space="preserve">
-    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
-  </data>
-  <data name="&gt;&gt;PasswordLabel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel10</value>
-  </data>
-  <data name="&gt;&gt;PasswordLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PasswordTextbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="PasswordTextbox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10.2pt</value>
   </data>
@@ -670,13 +291,14 @@
 </value>
   </data>
   <data name="PasswordTextbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 38</value>
+    <value>26, 196</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="PasswordTextbox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>3, 2, 3, 4</value>
   </data>
   <data name="PasswordTextbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 45</value>
+    <value>420, 47</value>
   </data>
   <data name="PasswordTextbox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -688,79 +310,13 @@
     <value>Guna.UI2.WinForms.Guna2TextBox, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
   </data>
   <data name="&gt;&gt;PasswordTextbox.Parent" xml:space="preserve">
-    <value>tableLayoutPanel10</value>
+    <value>doubleBufferedtlp5</value>
   </data>
   <data name="&gt;&gt;PasswordTextbox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel10.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 92</value>
-  </data>
-  <data name="tableLayoutPanel10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="tableLayoutPanel10.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 87</value>
-  </data>
-  <data name="tableLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel10.Name" xml:space="preserve">
-    <value>tableLayoutPanel10</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel10.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel10.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tableLayoutPanel10.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="PasswordLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="PasswordTextbox" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,40,Percent,60" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tableLayoutPanel9.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="UsernameLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.2pt, style=Bold</value>
-  </data>
-  <data name="UsernameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 2</value>
-  </data>
-  <data name="UsernameLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="UsernameLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 21</value>
-  </data>
-  <data name="UsernameLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="UsernameLabel.Text" xml:space="preserve">
-    <value>Tên đăng nhập</value>
-  </data>
-  <data name="&gt;&gt;UsernameLabel.Name" xml:space="preserve">
-    <value>UsernameLabel</value>
-  </data>
-  <data name="&gt;&gt;UsernameLabel.Type" xml:space="preserve">
-    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
-  </data>
-  <data name="&gt;&gt;UsernameLabel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel9</value>
-  </data>
-  <data name="&gt;&gt;UsernameLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="UsernameTextbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="UsernameTextbox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="UsernameTextbox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10.2pt</value>
@@ -1030,13 +586,13 @@
 </value>
   </data>
   <data name="UsernameTextbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 38</value>
+    <value>26, 97</value>
   </data>
   <data name="UsernameTextbox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>3, 2, 3, 4</value>
   </data>
   <data name="UsernameTextbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 44</value>
+    <value>420, 47</value>
   </data>
   <data name="UsernameTextbox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1048,157 +604,49 @@
     <value>Guna.UI2.WinForms.Guna2TextBox, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
   </data>
   <data name="&gt;&gt;UsernameTextbox.Parent" xml:space="preserve">
-    <value>tableLayoutPanel9</value>
+    <value>doubleBufferedtlp5</value>
   </data>
   <data name="&gt;&gt;UsernameTextbox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tableLayoutPanel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="PasswordLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
-  <data name="tableLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 2</value>
+  <data name="PasswordLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
-  <data name="tableLayoutPanel9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="PasswordLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 171</value>
   </data>
-  <data name="tableLayoutPanel9.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="PasswordLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 0</value>
   </data>
-  <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 86</value>
+  <data name="PasswordLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="tableLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
+  <data name="PasswordLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel9.Name" xml:space="preserve">
-    <value>tableLayoutPanel9</value>
+  <data name="PasswordLabel.Text" xml:space="preserve">
+    <value>Mật khẩu</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;PasswordLabel.Name" xml:space="preserve">
+    <value>PasswordLabel</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel9.Parent" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
+  <data name="&gt;&gt;PasswordLabel.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel9.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;PasswordLabel.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp5</value>
   </data>
-  <data name="tableLayoutPanel9.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="UsernameLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="UsernameTextbox" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,40,Percent,60" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tableLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 85</value>
-  </data>
-  <data name="tableLayoutPanel8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="tableLayoutPanel8.RowCount" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;PasswordLabel.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 181</value>
-  </data>
-  <data name="tableLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Name" xml:space="preserve">
-    <value>tableLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.Parent" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel8.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel8.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel10" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="ContinueButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="ContinueButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.2pt, style=Bold</value>
-  </data>
-  <data name="ContinueButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 308</value>
-  </data>
-  <data name="ContinueButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="ContinueButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 42</value>
-  </data>
-  <data name="ContinueButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="ContinueButton.Text" xml:space="preserve">
-    <value>Đăng nhập</value>
-  </data>
-  <data name="&gt;&gt;ContinueButton.Name" xml:space="preserve">
-    <value>ContinueButton</value>
-  </data>
-  <data name="&gt;&gt;ContinueButton.Type" xml:space="preserve">
-    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
-  </data>
-  <data name="&gt;&gt;ContinueButton.Parent" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;ContinueButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel11.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ShowPWBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="ShowPWBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ShowPWBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.2pt, style=Bold</value>
-  </data>
-  <data name="ShowPWBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ShowPWBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>244, 2</value>
-  </data>
-  <data name="ShowPWBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="ShowPWBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 23</value>
-  </data>
-  <data name="ShowPWBox.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="ShowPWBox.Text" xml:space="preserve">
-    <value>Hiện mật khẩu</value>
-  </data>
-  <data name="&gt;&gt;ShowPWBox.Name" xml:space="preserve">
-    <value>ShowPWBox</value>
-  </data>
-  <data name="&gt;&gt;ShowPWBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ShowPWBox.Parent" xml:space="preserve">
-    <value>tableLayoutPanel11</value>
-  </data>
-  <data name="&gt;&gt;ShowPWBox.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="RememberBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="RememberBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.2pt, style=Bold</value>
+    <value>Segoe UI, 10.8pt, style=Bold</value>
   </data>
   <data name="RememberBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1210,7 +658,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="RememberBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 23</value>
+    <value>161, 24</value>
   </data>
   <data name="RememberBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1225,169 +673,505 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;RememberBox.Parent" xml:space="preserve">
-    <value>tableLayoutPanel11</value>
+    <value>doubleBufferedtlp7</value>
   </data>
   <data name="&gt;&gt;RememberBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
-  <data name="tableLayoutPanel11.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="ShowPWBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
-  <data name="tableLayoutPanel11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 270</value>
+  <data name="ShowPWBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="tableLayoutPanel11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="ShowPWBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.8pt, style=Bold</value>
+  </data>
+  <data name="ShowPWBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ShowPWBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>287, 2</value>
+  </data>
+  <data name="ShowPWBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
-  <data name="tableLayoutPanel11.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="ShowPWBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 24</value>
   </data>
-  <data name="tableLayoutPanel11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 34</value>
-  </data>
-  <data name="tableLayoutPanel11.TabIndex" type="System.Int32, mscorlib">
+  <data name="ShowPWBox.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel11.Name" xml:space="preserve">
-    <value>tableLayoutPanel11</value>
+  <data name="ShowPWBox.Text" xml:space="preserve">
+    <value>Hiện mật khẩu</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ShowPWBox.Name" xml:space="preserve">
+    <value>ShowPWBox</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel11.Parent" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
+  <data name="&gt;&gt;ShowPWBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel11.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ShowPWBox.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp7</value>
+  </data>
+  <data name="&gt;&gt;ShowPWBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="doubleBufferedtlp7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="doubleBufferedtlp7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 250</value>
+  </data>
+  <data name="doubleBufferedtlp7.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="doubleBufferedtlp7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>420, 40</value>
+  </data>
+  <data name="doubleBufferedtlp7.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp7.Name" xml:space="preserve">
+    <value>doubleBufferedtlp7</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp7.Type" xml:space="preserve">
+    <value>FoodOrderManagement.DoubleBufferedTLP, FoodOrderManagement, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp7.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp5</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp7.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tableLayoutPanel11.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="ShowPWBox" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="RememberBox" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,100,Absolute,34" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="doubleBufferedtlp7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="RememberBox" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ShowPWBox" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="tableLayoutPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="ContinueButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="tableLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="ContinueButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
-  <data name="tableLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="ContinueButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 295</value>
+  </data>
+  <data name="ContinueButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
-  <data name="tableLayoutPanel6.RowCount" type="System.Int32, mscorlib">
+  <data name="ContinueButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>420, 44</value>
+  </data>
+  <data name="ContinueButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>420, 384</value>
+  <data name="ContinueButton.Text" xml:space="preserve">
+    <value>Đăng nhập</value>
   </data>
-  <data name="tableLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;ContinueButton.Name" xml:space="preserve">
+    <value>ContinueButton</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel6.Name" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
+  <data name="&gt;&gt;ContinueButton.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ContinueButton.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp5</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel6.Parent" xml:space="preserve">
-    <value>LoginPanel</value>
+  <data name="&gt;&gt;ContinueButton.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel6.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="LoginLabel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
-  <data name="tableLayoutPanel6.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel7" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel8" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ContinueButton" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel11" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,5,Percent,90,Percent,5" /&gt;&lt;Rows Styles="Percent,21.614584,Percent,48.177082,Percent,10,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="LoginLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 18pt, style=Bold</value>
   </data>
-  <data name="LoginPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="LoginLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 30</value>
   </data>
-  <data name="LoginPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 2</value>
-  </data>
-  <data name="LoginPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="LoginLabel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
-  <data name="LoginPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>420, 384</value>
+  <data name="LoginLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 34</value>
   </data>
-  <data name="LoginPanel.TabIndex" type="System.Int32, mscorlib">
+  <data name="LoginLabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="LoginLabel1.Text" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="&gt;&gt;LoginLabel1.Name" xml:space="preserve">
+    <value>LoginLabel1</value>
+  </data>
+  <data name="&gt;&gt;LoginLabel1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;LoginLabel1.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp5</value>
+  </data>
+  <data name="&gt;&gt;LoginLabel1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="UsernameLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="UsernameLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt, style=Bold</value>
+  </data>
+  <data name="UsernameLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 72</value>
+  </data>
+  <data name="UsernameLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 0</value>
+  </data>
+  <data name="UsernameLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 23</value>
+  </data>
+  <data name="UsernameLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;LoginPanel.Name" xml:space="preserve">
-    <value>LoginPanel</value>
+  <data name="UsernameLabel.Text" xml:space="preserve">
+    <value>Tên đăng nhập</value>
   </data>
-  <data name="&gt;&gt;LoginPanel.Type" xml:space="preserve">
+  <data name="&gt;&gt;UsernameLabel.Name" xml:space="preserve">
+    <value>UsernameLabel</value>
+  </data>
+  <data name="&gt;&gt;UsernameLabel.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;UsernameLabel.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp5</value>
+  </data>
+  <data name="&gt;&gt;UsernameLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="doubleBufferedtlp5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="doubleBufferedtlp5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="doubleBufferedtlp5.RowCount" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="doubleBufferedtlp5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 383</value>
+  </data>
+  <data name="doubleBufferedtlp5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp5.Name" xml:space="preserve">
+    <value>doubleBufferedtlp5</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp5.Type" xml:space="preserve">
+    <value>FoodOrderManagement.DoubleBufferedTLP, FoodOrderManagement, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp5.Parent" xml:space="preserve">
+    <value>LoginGadient2</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="doubleBufferedtlp5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="PasswordTextbox" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="UsernameTextbox" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="PasswordLabel" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="doubleBufferedtlp7" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ContinueButton" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LoginLabel1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="UsernameLabel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,5,Percent,90,Percent,5" /&gt;&lt;Rows Styles="Percent,17.314766,Percent,7.608002,Percent,14.066933,Percent,12.057371,Percent,14.066933,Percent,12.057371,Percent,22.828623" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="LoginGadient2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="LoginGadient2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>363, 130</value>
+  </data>
+  <data name="LoginGadient2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 383</value>
+  </data>
+  <data name="LoginGadient2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;LoginGadient2.Name" xml:space="preserve">
+    <value>LoginGadient2</value>
+  </data>
+  <data name="&gt;&gt;LoginGadient2.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2CustomGradientPanel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
   </data>
-  <data name="&gt;&gt;LoginPanel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
+  <data name="&gt;&gt;LoginGadient2.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp1</value>
   </data>
-  <data name="&gt;&gt;LoginPanel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;LoginGadient2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tableLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="TextLabel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="tableLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 143</value>
+  <data name="TextLabel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="tableLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="TextLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
   </data>
-  <data name="tableLayoutPanel5.RowCount" type="System.Int32, mscorlib">
+  <data name="TextLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="TextLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 60</value>
+  </data>
+  <data name="TextLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 25</value>
+  </data>
+  <data name="TextLabel1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 388</value>
+  <data name="TextLabel1.Text" xml:space="preserve">
+    <value>Restaurant HHH System</value>
   </data>
-  <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;TextLabel1.Name" xml:space="preserve">
+    <value>TextLabel1</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel5.Name" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
+  <data name="&gt;&gt;TextLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;TextLabel1.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp2</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel5.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="&gt;&gt;TextLabel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel5.ZOrder" xml:space="preserve">
+  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 90</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>379, 25</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Ứng dụng quản lí nhà hàng chuyên nghiệp </value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp2</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LoginPanel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,5,Percent,90,Percent,5" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+  <data name="doubleBufferedtlp3.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="doubleBufferedtlp4.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="LoginIcon1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="LoginIcon1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 7</value>
+  </data>
+  <data name="LoginIcon1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 32</value>
+  </data>
+  <data name="LoginIcon1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="LoginIcon1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;LoginIcon1.Name" xml:space="preserve">
+    <value>LoginIcon1</value>
+  </data>
+  <data name="&gt;&gt;LoginIcon1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2PictureBox, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;LoginIcon1.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp4</value>
+  </data>
+  <data name="&gt;&gt;LoginIcon1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="doubleBufferedtlp4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="doubleBufferedtlp4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="doubleBufferedtlp4.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="doubleBufferedtlp4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 48</value>
+  </data>
+  <data name="doubleBufferedtlp4.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp4.Name" xml:space="preserve">
+    <value>doubleBufferedtlp4</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp4.Type" xml:space="preserve">
+    <value>FoodOrderManagement.DoubleBufferedTLP, FoodOrderManagement, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp4.Parent" xml:space="preserve">
+    <value>LoginGadient1</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="doubleBufferedtlp4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LoginIcon1" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,10,Percent,82,Percent,8" /&gt;&lt;Rows Styles="Percent,10,Percent,80,Percent,10" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="LoginGadient1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="LoginGadient1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="LoginGadient1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 48</value>
+  </data>
+  <data name="LoginGadient1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;LoginGadient1.Name" xml:space="preserve">
+    <value>LoginGadient1</value>
+  </data>
+  <data name="&gt;&gt;LoginGadient1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2GradientPanel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;LoginGadient1.Parent" xml:space="preserve">
+    <value>guna2GradientPanel1</value>
+  </data>
+  <data name="&gt;&gt;LoginGadient1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="guna2GradientPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="guna2GradientPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 3</value>
+  </data>
+  <data name="guna2GradientPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 48</value>
+  </data>
+  <data name="guna2GradientPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;guna2GradientPanel1.Name" xml:space="preserve">
+    <value>guna2GradientPanel1</value>
+  </data>
+  <data name="&gt;&gt;guna2GradientPanel1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2GradientPanel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;guna2GradientPanel1.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp3</value>
+  </data>
+  <data name="&gt;&gt;guna2GradientPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="doubleBufferedtlp3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="doubleBufferedtlp3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="doubleBufferedtlp3.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="doubleBufferedtlp3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>468, 54</value>
+  </data>
+  <data name="doubleBufferedtlp3.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp3.Name" xml:space="preserve">
+    <value>doubleBufferedtlp3</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp3.Type" xml:space="preserve">
+    <value>FoodOrderManagement.DoubleBufferedTLP, FoodOrderManagement, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp3.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp2</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="doubleBufferedtlp3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="guna2GradientPanel1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,42.5,Percent,15,Percent,42.5" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="doubleBufferedtlp2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="doubleBufferedtlp2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>363, 3</value>
+  </data>
+  <data name="doubleBufferedtlp2.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="doubleBufferedtlp2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 121</value>
+  </data>
+  <data name="doubleBufferedtlp2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp2.Name" xml:space="preserve">
+    <value>doubleBufferedtlp2</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp2.Type" xml:space="preserve">
+    <value>FoodOrderManagement.DoubleBufferedTLP, FoodOrderManagement, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp2.Parent" xml:space="preserve">
+    <value>doubleBufferedtlp1</value>
+  </data>
+  <data name="&gt;&gt;doubleBufferedtlp2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="doubleBufferedtlp2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="TextLabel1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="doubleBufferedtlp3" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,50,Percent,25,Percent,25" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="doubleBufferedtlp1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="doubleBufferedtlp1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="doubleBufferedtlp1.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="doubleBufferedtlp1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1200, 556</value>
   </data>
-  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="doubleBufferedtlp1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="&gt;&gt;doubleBufferedtlp1.Name" xml:space="preserve">
+    <value>doubleBufferedtlp1</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;doubleBufferedtlp1.Type" xml:space="preserve">
+    <value>FoodOrderManagement.DoubleBufferedTLP, FoodOrderManagement, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;doubleBufferedtlp1.Parent" xml:space="preserve">
     <value>BackgroundPanel</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;doubleBufferedtlp1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel2" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel5" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,30,Percent,40,Percent,30" /&gt;&lt;Rows Styles="Percent,25.376034,Percent,70.59152,Percent,4.0324507" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="doubleBufferedtlp1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LoginGadient2" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="doubleBufferedtlp2" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,30,Percent,40,Percent,30" /&gt;&lt;Rows Styles="Percent,22.84173,Percent,69.96403,Percent,7.014389" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="BackgroundPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

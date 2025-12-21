@@ -1,6 +1,9 @@
 ﻿using Autofac;
+using FoodOrderManagement.UI.Forms;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
 using Guna.UI2.WinForms;
-using FoodOrderManagement.AdminControl.FormMenu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +14,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Autofac;
-using FoodOrderManagement.DAL.Repositories.Interfaces;
-using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.UI.Forms.MenuManagement;
+using System.Windows.Forms;
 namespace FoodOrderManagement.UI.Forms.MenuManagement
 {
     public partial class FrmMenu : Form
@@ -22,7 +24,44 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         private readonly IFoodsRepository _foodsRepository;
         public UC_AddFood _uc_AddFood;
         private List<Foods> OriginalFoodList = new List<Foods>();
-        public static class Helper
+        public FrmMenu(ILifetimeScope scope, IFoodsRepository foodsRepository)
+        {
+            InitializeComponent();
+            _scope = scope;
+            _foodsRepository = foodsRepository;
+            _uc_AddFood = _scope.Resolve<UC_AddFood>();
+        }
+
+        //Sự kiện nhấn nút thêm món ăn
+        private void AddFoodButton_Click(object sender, EventArgs e)
+        {
+            _uc_AddFood.ResetForm();
+            _uc_AddFood.Location = new Point(
+                 (this.Width - _uc_AddFood.Width) / 2,
+                 (this.Height - _uc_AddFood.Height) / 2
+            );
+            _uc_AddFood.Visible = true;
+            _uc_AddFood.BringToFront();
+        }
+
+
+        //Sự kiện chọn và rời thanh tìm kiếm
+        private void SearchFoodTBox1_Enter(object sender, EventArgs e)
+        {
+            if (SearchFoodTBox1.PlaceholderText == "Tìm kiếm món ăn...")
+            {
+                SearchFoodTBox1.Text = "";
+            }
+        }
+        private void SearchFoodTBox1_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(SearchFoodTBox1.Text))
+            {
+                SearchFoodTBox1.PlaceholderText = "Tìm kiếm món ăn...";
+            }
+        }
+    }
+    public static class Helper
         {
             // Hàm bo góc tuỳ chỉnh (Cắt Region - Viền sẽ hơi răng cưa)
             public static void BoGoc(Control control, int radius, bool topLeft, bool topRight, bool bottomRight, bool bottomLeft)
@@ -72,34 +111,4 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 control.Region = new Region(path);
             }
         }
-
-        public FrmMenu(ILifetimeScope scope, IFoodsRepository foodsRepository)
-        {
-            InitializeComponent();
-            _scope = scope;
-            _foodsRepository = foodsRepository;
-        }
-        private void AddFoodButton_Click(object sender, EventArgs e)
-        {
-            _uc_AddFood.ResetForm();
-            _uc_AddFood.Visible = true;
-            _uc_AddFood.BringToFront();
-        }
-
-        private void SearchFoodTBox1_Enter(object sender, EventArgs e)
-        {
-            if (SearchFoodTBox1.PlaceholderText == "Search menu items...")
-            {
-                SearchFoodTBox1.Text = "";
-            }
-        }
-
-        private void SearchFoodTBox1_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(SearchFoodTBox1.Text))
-            {
-                SearchFoodTBox1.PlaceholderText = "Search menu items...";
-            }    
-        }
-    }
 }

@@ -28,224 +28,116 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             BackgroundPanel = new Guna.UI2.WinForms.Guna2GradientPanel();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            label1 = new Label();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            IconPanel = new Guna.UI2.WinForms.Guna2GradientPanel();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            IconPicture = new Guna.UI2.WinForms.Guna2PictureBox();
-            TextLabel1 = new Label();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            LoginPanel = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            tableLayoutPanel6 = new TableLayoutPanel();
-            tableLayoutPanel7 = new TableLayoutPanel();
-            LoginLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            label2 = new Label();
-            tableLayoutPanel8 = new TableLayoutPanel();
-            tableLayoutPanel10 = new TableLayoutPanel();
-            PasswordLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            doubleBufferedtlp1 = new DoubleBufferedTLP();
+            LoginGadient2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            doubleBufferedtlp5 = new DoubleBufferedTLP();
             PasswordTextbox = new Guna.UI2.WinForms.Guna2TextBox();
-            tableLayoutPanel9 = new TableLayoutPanel();
-            UsernameLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             UsernameTextbox = new Guna.UI2.WinForms.Guna2TextBox();
-            ContinueButton = new Guna.UI2.WinForms.Guna2Button();
-            tableLayoutPanel11 = new TableLayoutPanel();
-            ShowPWBox = new CheckBox();
+            PasswordLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            doubleBufferedtlp7 = new DoubleBufferedTLP();
             RememberBox = new CheckBox();
+            ShowPWBox = new CheckBox();
+            ContinueButton = new Guna.UI2.WinForms.Guna2Button();
+            LoginLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            UsernameLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            doubleBufferedtlp2 = new DoubleBufferedTLP();
+            TextLabel1 = new Label();
+            label2 = new Label();
+            doubleBufferedtlp3 = new DoubleBufferedTLP();
+            guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            LoginGadient1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            doubleBufferedtlp4 = new DoubleBufferedTLP();
+            LoginIcon1 = new Guna.UI2.WinForms.Guna2PictureBox();
             BackgroundPanel.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
-            IconPanel.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)IconPicture).BeginInit();
-            tableLayoutPanel5.SuspendLayout();
-            LoginPanel.SuspendLayout();
-            tableLayoutPanel6.SuspendLayout();
-            tableLayoutPanel7.SuspendLayout();
-            tableLayoutPanel8.SuspendLayout();
-            tableLayoutPanel10.SuspendLayout();
-            tableLayoutPanel9.SuspendLayout();
-            tableLayoutPanel11.SuspendLayout();
+            doubleBufferedtlp1.SuspendLayout();
+            LoginGadient2.SuspendLayout();
+            doubleBufferedtlp5.SuspendLayout();
+            doubleBufferedtlp7.SuspendLayout();
+            doubleBufferedtlp2.SuspendLayout();
+            doubleBufferedtlp3.SuspendLayout();
+            guna2GradientPanel1.SuspendLayout();
+            LoginGadient1.SuspendLayout();
+            doubleBufferedtlp4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)LoginIcon1).BeginInit();
             SuspendLayout();
             // 
             // BackgroundPanel
             // 
             BackgroundPanel.BackColor = Color.Transparent;
-            BackgroundPanel.Controls.Add(tableLayoutPanel1);
-            BackgroundPanel.CustomizableEdges = customizableEdges13;
+            BackgroundPanel.Controls.Add(doubleBufferedtlp1);
+            BackgroundPanel.CustomizableEdges = customizableEdges15;
             resources.ApplyResources(BackgroundPanel, "BackgroundPanel");
             BackgroundPanel.FillColor = Color.FromArgb(200, 0, 0, 0);
             BackgroundPanel.FillColor2 = Color.FromArgb(200, 0, 0, 0);
             BackgroundPanel.Name = "BackgroundPanel";
-            BackgroundPanel.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            BackgroundPanel.ShadowDecoration.CustomizableEdges = customizableEdges16;
             // 
-            // tableLayoutPanel1
+            // doubleBufferedtlp1
             // 
-            resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 0);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel5, 1, 1);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            resources.ApplyResources(doubleBufferedtlp1, "doubleBufferedtlp1");
+            doubleBufferedtlp1.Controls.Add(LoginGadient2, 1, 1);
+            doubleBufferedtlp1.Controls.Add(doubleBufferedtlp2, 1, 0);
+            doubleBufferedtlp1.Name = "doubleBufferedtlp1";
             // 
-            // tableLayoutPanel2
+            // LoginGadient2
             // 
-            resources.ApplyResources(tableLayoutPanel2, "tableLayoutPanel2");
-            tableLayoutPanel2.Controls.Add(label1, 0, 2);
-            tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 0);
-            tableLayoutPanel2.Controls.Add(TextLabel1, 0, 1);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            LoginGadient2.BackColor = Color.Transparent;
+            LoginGadient2.BorderColor = Color.White;
+            LoginGadient2.BorderRadius = 20;
+            LoginGadient2.Controls.Add(doubleBufferedtlp5);
+            LoginGadient2.CustomizableEdges = customizableEdges7;
+            resources.ApplyResources(LoginGadient2, "LoginGadient2");
+            LoginGadient2.FillColor = Color.FromArgb(200, 0, 0, 0);
+            LoginGadient2.FillColor2 = Color.Gray;
+            LoginGadient2.FillColor3 = Color.FromArgb(200, 0, 0, 0);
+            LoginGadient2.FillColor4 = Color.Gray;
+            LoginGadient2.Name = "LoginGadient2";
+            LoginGadient2.ShadowDecoration.CustomizableEdges = customizableEdges8;
             // 
-            // label1
+            // doubleBufferedtlp5
             // 
-            resources.ApplyResources(label1, "label1");
-            label1.ForeColor = Color.BurlyWood;
-            label1.Name = "label1";
-            // 
-            // tableLayoutPanel3
-            // 
-            resources.ApplyResources(tableLayoutPanel3, "tableLayoutPanel3");
-            tableLayoutPanel3.Controls.Add(IconPanel, 1, 1);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            // 
-            // IconPanel
-            // 
-            IconPanel.BackColor = Color.Transparent;
-            IconPanel.BorderRadius = 25;
-            IconPanel.Controls.Add(tableLayoutPanel4);
-            IconPanel.CustomizableEdges = customizableEdges3;
-            resources.ApplyResources(IconPanel, "IconPanel");
-            IconPanel.FillColor = Color.FromArgb(255, 128, 0);
-            IconPanel.FillColor2 = Color.FromArgb(255, 128, 0);
-            IconPanel.Name = "IconPanel";
-            IconPanel.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            // 
-            // tableLayoutPanel4
-            // 
-            resources.ApplyResources(tableLayoutPanel4, "tableLayoutPanel4");
-            tableLayoutPanel4.Controls.Add(IconPicture, 1, 1);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.Paint += tableLayoutPanel4_Paint;
-            // 
-            // IconPicture
-            // 
-            IconPicture.CustomizableEdges = customizableEdges1;
-            resources.ApplyResources(IconPicture, "IconPicture");
-            IconPicture.ErrorImage = Properties.Resources.AddFood;
-            IconPicture.FillColor = Color.Transparent;
-            IconPicture.Image = Properties.Resources.Menuwhite;
-            IconPicture.ImageRotate = 0F;
-            IconPicture.Name = "IconPicture";
-            IconPicture.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            IconPicture.TabStop = false;
-            // 
-            // TextLabel1
-            // 
-            resources.ApplyResources(TextLabel1, "TextLabel1");
-            TextLabel1.ForeColor = Color.White;
-            TextLabel1.Name = "TextLabel1";
-            // 
-            // tableLayoutPanel5
-            // 
-            resources.ApplyResources(tableLayoutPanel5, "tableLayoutPanel5");
-            tableLayoutPanel5.Controls.Add(LoginPanel, 1, 0);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            // 
-            // LoginPanel
-            // 
-            LoginPanel.BackColor = Color.Transparent;
-            LoginPanel.BorderColor = Color.White;
-            LoginPanel.BorderRadius = 20;
-            LoginPanel.Controls.Add(tableLayoutPanel6);
-            LoginPanel.CustomizableEdges = customizableEdges11;
-            resources.ApplyResources(LoginPanel, "LoginPanel");
-            LoginPanel.FillColor = Color.FromArgb(200, 0, 0, 0);
-            LoginPanel.FillColor2 = Color.Gray;
-            LoginPanel.FillColor3 = Color.FromArgb(200, 0, 0, 0);
-            LoginPanel.FillColor4 = Color.Gray;
-            LoginPanel.Name = "LoginPanel";
-            LoginPanel.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            // 
-            // tableLayoutPanel6
-            // 
-            resources.ApplyResources(tableLayoutPanel6, "tableLayoutPanel6");
-            tableLayoutPanel6.Controls.Add(tableLayoutPanel7, 1, 0);
-            tableLayoutPanel6.Controls.Add(tableLayoutPanel8, 1, 1);
-            tableLayoutPanel6.Controls.Add(ContinueButton, 1, 3);
-            tableLayoutPanel6.Controls.Add(tableLayoutPanel11, 1, 2);
-            tableLayoutPanel6.Name = "tableLayoutPanel6";
-            // 
-            // tableLayoutPanel7
-            // 
-            resources.ApplyResources(tableLayoutPanel7, "tableLayoutPanel7");
-            tableLayoutPanel7.Controls.Add(LoginLabel1, 0, 0);
-            tableLayoutPanel7.Controls.Add(label2, 0, 1);
-            tableLayoutPanel7.Name = "tableLayoutPanel7";
-            // 
-            // LoginLabel1
-            // 
-            resources.ApplyResources(LoginLabel1, "LoginLabel1");
-            LoginLabel1.BackColor = Color.Transparent;
-            LoginLabel1.ForeColor = Color.White;
-            LoginLabel1.Name = "LoginLabel1";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            label2.ForeColor = Color.BurlyWood;
-            label2.Name = "label2";
-            // 
-            // tableLayoutPanel8
-            // 
-            resources.ApplyResources(tableLayoutPanel8, "tableLayoutPanel8");
-            tableLayoutPanel8.Controls.Add(tableLayoutPanel10, 0, 1);
-            tableLayoutPanel8.Controls.Add(tableLayoutPanel9, 0, 0);
-            tableLayoutPanel8.Name = "tableLayoutPanel8";
-            // 
-            // tableLayoutPanel10
-            // 
-            resources.ApplyResources(tableLayoutPanel10, "tableLayoutPanel10");
-            tableLayoutPanel10.Controls.Add(PasswordLabel, 0, 0);
-            tableLayoutPanel10.Controls.Add(PasswordTextbox, 0, 1);
-            tableLayoutPanel10.Name = "tableLayoutPanel10";
-            // 
-            // PasswordLabel
-            // 
-            PasswordLabel.BackColor = Color.Transparent;
-            resources.ApplyResources(PasswordLabel, "PasswordLabel");
-            PasswordLabel.ForeColor = Color.White;
-            PasswordLabel.Name = "PasswordLabel";
+            resources.ApplyResources(doubleBufferedtlp5, "doubleBufferedtlp5");
+            doubleBufferedtlp5.Controls.Add(PasswordTextbox, 1, 4);
+            doubleBufferedtlp5.Controls.Add(UsernameTextbox, 1, 2);
+            doubleBufferedtlp5.Controls.Add(PasswordLabel, 1, 3);
+            doubleBufferedtlp5.Controls.Add(doubleBufferedtlp7, 1, 5);
+            doubleBufferedtlp5.Controls.Add(ContinueButton, 1, 6);
+            doubleBufferedtlp5.Controls.Add(LoginLabel1, 1, 0);
+            doubleBufferedtlp5.Controls.Add(UsernameLabel, 1, 1);
+            doubleBufferedtlp5.Name = "doubleBufferedtlp5";
             // 
             // PasswordTextbox
             // 
+            resources.ApplyResources(PasswordTextbox, "PasswordTextbox");
             PasswordTextbox.BorderColor = Color.Silver;
             PasswordTextbox.BorderRadius = 10;
             PasswordTextbox.BorderThickness = 2;
-            PasswordTextbox.CustomizableEdges = customizableEdges5;
+            PasswordTextbox.CustomizableEdges = customizableEdges1;
             PasswordTextbox.DefaultText = "";
             PasswordTextbox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             PasswordTextbox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             PasswordTextbox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             PasswordTextbox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            resources.ApplyResources(PasswordTextbox, "PasswordTextbox");
             PasswordTextbox.FillColor = Color.Black;
-            PasswordTextbox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            PasswordTextbox.FocusedState.BorderColor = Color.DarkOrange;
             PasswordTextbox.ForeColor = Color.White;
             PasswordTextbox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             PasswordTextbox.IconLeft = (Image)resources.GetObject("PasswordTextbox.IconLeft");
@@ -255,38 +147,25 @@
             PasswordTextbox.PasswordChar = '*';
             PasswordTextbox.PlaceholderText = "Password";
             PasswordTextbox.SelectedText = "";
-            PasswordTextbox.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            PasswordTextbox.ShadowDecoration.CustomizableEdges = customizableEdges2;
             PasswordTextbox.Enter += TextPassword_Enter;
-            PasswordTextbox.Leave += TextPassword_Leave;
-            // 
-            // tableLayoutPanel9
-            // 
-            resources.ApplyResources(tableLayoutPanel9, "tableLayoutPanel9");
-            tableLayoutPanel9.Controls.Add(UsernameLabel, 0, 0);
-            tableLayoutPanel9.Controls.Add(UsernameTextbox, 0, 1);
-            tableLayoutPanel9.Name = "tableLayoutPanel9";
-            // 
-            // UsernameLabel
-            // 
-            UsernameLabel.BackColor = Color.Transparent;
-            resources.ApplyResources(UsernameLabel, "UsernameLabel");
-            UsernameLabel.ForeColor = Color.White;
-            UsernameLabel.Name = "UsernameLabel";
+            PasswordTextbox.KeyDown += PasswordTextbox_KeyDown;
+            PasswordTextbox.Leave += TextUsername_Leave;
             // 
             // UsernameTextbox
             // 
+            resources.ApplyResources(UsernameTextbox, "UsernameTextbox");
             UsernameTextbox.BorderColor = Color.Silver;
             UsernameTextbox.BorderRadius = 10;
             UsernameTextbox.BorderThickness = 2;
-            UsernameTextbox.CustomizableEdges = customizableEdges7;
+            UsernameTextbox.CustomizableEdges = customizableEdges3;
             UsernameTextbox.DefaultText = "";
             UsernameTextbox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             UsernameTextbox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             UsernameTextbox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             UsernameTextbox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            resources.ApplyResources(UsernameTextbox, "UsernameTextbox");
             UsernameTextbox.FillColor = Color.Black;
-            UsernameTextbox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            UsernameTextbox.FocusedState.BorderColor = Color.DarkOrange;
             UsernameTextbox.ForeColor = Color.White;
             UsernameTextbox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             UsernameTextbox.IconLeft = (Image)resources.GetObject("UsernameTextbox.IconLeft");
@@ -295,17 +174,48 @@
             UsernameTextbox.Name = "UsernameTextbox";
             UsernameTextbox.PlaceholderText = "Username";
             UsernameTextbox.SelectedText = "";
-            UsernameTextbox.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            UsernameTextbox.TextChanged += UsernameTextbox_TextChanged;
+            UsernameTextbox.ShadowDecoration.CustomizableEdges = customizableEdges4;
             UsernameTextbox.Enter += TextUsername_Enter;
+            UsernameTextbox.KeyDown += UsernameTextbox_KeyDown;
             UsernameTextbox.Leave += TextUsername_Leave;
+            // 
+            // PasswordLabel
+            // 
+            resources.ApplyResources(PasswordLabel, "PasswordLabel");
+            PasswordLabel.BackColor = Color.Transparent;
+            PasswordLabel.ForeColor = Color.White;
+            PasswordLabel.Name = "PasswordLabel";
+            // 
+            // doubleBufferedtlp7
+            // 
+            doubleBufferedtlp7.Controls.Add(RememberBox, 0, 0);
+            doubleBufferedtlp7.Controls.Add(ShowPWBox, 1, 0);
+            resources.ApplyResources(doubleBufferedtlp7, "doubleBufferedtlp7");
+            doubleBufferedtlp7.Name = "doubleBufferedtlp7";
+            // 
+            // RememberBox
+            // 
+            resources.ApplyResources(RememberBox, "RememberBox");
+            RememberBox.ForeColor = Color.White;
+            RememberBox.Name = "RememberBox";
+            RememberBox.TabStop = false;
+            RememberBox.UseVisualStyleBackColor = true;
+            // 
+            // ShowPWBox
+            // 
+            resources.ApplyResources(ShowPWBox, "ShowPWBox");
+            ShowPWBox.ForeColor = Color.White;
+            ShowPWBox.Name = "ShowPWBox";
+            ShowPWBox.TabStop = false;
+            ShowPWBox.UseVisualStyleBackColor = true;
+            ShowPWBox.CheckedChanged += ShowPWBox_CheckedChanged;
             // 
             // ContinueButton
             // 
             resources.ApplyResources(ContinueButton, "ContinueButton");
             ContinueButton.BackColor = Color.Transparent;
             ContinueButton.BorderRadius = 10;
-            ContinueButton.CustomizableEdges = customizableEdges9;
+            ContinueButton.CustomizableEdges = customizableEdges5;
             ContinueButton.DisabledState.BorderColor = Color.DarkGray;
             ContinueButton.DisabledState.CustomBorderColor = Color.DarkGray;
             ContinueButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -313,92 +223,138 @@
             ContinueButton.FillColor = Color.FromArgb(255, 128, 0);
             ContinueButton.ForeColor = Color.White;
             ContinueButton.Name = "ContinueButton";
-            ContinueButton.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            ContinueButton.Click += ContinueButton_Click;
+            ContinueButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            ContinueButton.Enter += ContinueButton_Click;
             // 
-            // tableLayoutPanel11
+            // LoginLabel1
             // 
-            resources.ApplyResources(tableLayoutPanel11, "tableLayoutPanel11");
-            tableLayoutPanel11.Controls.Add(ShowPWBox, 1, 0);
-            tableLayoutPanel11.Controls.Add(RememberBox, 0, 0);
-            tableLayoutPanel11.Name = "tableLayoutPanel11";
+            resources.ApplyResources(LoginLabel1, "LoginLabel1");
+            LoginLabel1.BackColor = Color.Transparent;
+            LoginLabel1.ForeColor = Color.White;
+            LoginLabel1.Name = "LoginLabel1";
             // 
-            // ShowPWBox
+            // UsernameLabel
             // 
-            resources.ApplyResources(ShowPWBox, "ShowPWBox");
-            ShowPWBox.ForeColor = Color.White;
-            ShowPWBox.Name = "ShowPWBox";
-            ShowPWBox.UseVisualStyleBackColor = true;
-            ShowPWBox.CheckedChanged += ShowPWBox_CheckedChanged;
+            resources.ApplyResources(UsernameLabel, "UsernameLabel");
+            UsernameLabel.BackColor = Color.Transparent;
+            UsernameLabel.ForeColor = Color.White;
+            UsernameLabel.Name = "UsernameLabel";
             // 
-            // RememberBox
+            // doubleBufferedtlp2
             // 
-            resources.ApplyResources(RememberBox, "RememberBox");
-            RememberBox.ForeColor = Color.White;
-            RememberBox.Name = "RememberBox";
-            RememberBox.UseVisualStyleBackColor = true;
+            doubleBufferedtlp2.Controls.Add(TextLabel1, 0, 1);
+            doubleBufferedtlp2.Controls.Add(label2, 0, 2);
+            doubleBufferedtlp2.Controls.Add(doubleBufferedtlp3, 0, 0);
+            resources.ApplyResources(doubleBufferedtlp2, "doubleBufferedtlp2");
+            doubleBufferedtlp2.Name = "doubleBufferedtlp2";
+            // 
+            // TextLabel1
+            // 
+            resources.ApplyResources(TextLabel1, "TextLabel1");
+            TextLabel1.ForeColor = Color.White;
+            TextLabel1.Name = "TextLabel1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.ForeColor = Color.BurlyWood;
+            label2.Name = "label2";
+            // 
+            // doubleBufferedtlp3
+            // 
+            resources.ApplyResources(doubleBufferedtlp3, "doubleBufferedtlp3");
+            doubleBufferedtlp3.Controls.Add(guna2GradientPanel1, 1, 0);
+            doubleBufferedtlp3.Name = "doubleBufferedtlp3";
+            // 
+            // guna2GradientPanel1
+            // 
+            guna2GradientPanel1.Controls.Add(LoginGadient1);
+            guna2GradientPanel1.CustomizableEdges = customizableEdges13;
+            resources.ApplyResources(guna2GradientPanel1, "guna2GradientPanel1");
+            guna2GradientPanel1.Name = "guna2GradientPanel1";
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            // 
+            // LoginGadient1
+            // 
+            LoginGadient1.BackColor = Color.Transparent;
+            LoginGadient1.BorderRadius = 10;
+            LoginGadient1.Controls.Add(doubleBufferedtlp4);
+            LoginGadient1.CustomizableEdges = customizableEdges11;
+            resources.ApplyResources(LoginGadient1, "LoginGadient1");
+            LoginGadient1.FillColor = Color.FromArgb(255, 128, 0);
+            LoginGadient1.FillColor2 = Color.Chocolate;
+            LoginGadient1.Name = "LoginGadient1";
+            LoginGadient1.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            // 
+            // doubleBufferedtlp4
+            // 
+            doubleBufferedtlp4.BackColor = Color.Transparent;
+            resources.ApplyResources(doubleBufferedtlp4, "doubleBufferedtlp4");
+            doubleBufferedtlp4.Controls.Add(LoginIcon1, 1, 1);
+            doubleBufferedtlp4.Name = "doubleBufferedtlp4";
+            // 
+            // LoginIcon1
+            // 
+            LoginIcon1.CustomizableEdges = customizableEdges9;
+            resources.ApplyResources(LoginIcon1, "LoginIcon1");
+            LoginIcon1.FillColor = Color.Transparent;
+            LoginIcon1.Image = Properties.Resources.Menuwhite;
+            LoginIcon1.ImageRotate = 0F;
+            LoginIcon1.Name = "LoginIcon1";
+            LoginIcon1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            LoginIcon1.TabStop = false;
             // 
             // FormLogin
             // 
-            AcceptButton = ContinueButton;
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(BackgroundPanel);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            KeyPreview = true;
             Name = "FormLogin";
             FormClosed += FormLogin_FormClosed;
             Load += FormLogin_FormLoad;
+            KeyDown += FormLogin_KeyDown;
             BackgroundPanel.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
-            tableLayoutPanel3.ResumeLayout(false);
-            IconPanel.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)IconPicture).EndInit();
-            tableLayoutPanel5.ResumeLayout(false);
-            LoginPanel.ResumeLayout(false);
-            tableLayoutPanel6.ResumeLayout(false);
-            tableLayoutPanel7.ResumeLayout(false);
-            tableLayoutPanel7.PerformLayout();
-            tableLayoutPanel8.ResumeLayout(false);
-            tableLayoutPanel10.ResumeLayout(false);
-            tableLayoutPanel10.PerformLayout();
-            tableLayoutPanel9.ResumeLayout(false);
-            tableLayoutPanel9.PerformLayout();
-            tableLayoutPanel11.ResumeLayout(false);
-            tableLayoutPanel11.PerformLayout();
+            doubleBufferedtlp1.ResumeLayout(false);
+            LoginGadient2.ResumeLayout(false);
+            doubleBufferedtlp5.ResumeLayout(false);
+            doubleBufferedtlp5.PerformLayout();
+            doubleBufferedtlp7.ResumeLayout(false);
+            doubleBufferedtlp7.PerformLayout();
+            doubleBufferedtlp2.ResumeLayout(false);
+            doubleBufferedtlp2.PerformLayout();
+            doubleBufferedtlp3.ResumeLayout(false);
+            guna2GradientPanel1.ResumeLayout(false);
+            LoginGadient1.ResumeLayout(false);
+            doubleBufferedtlp4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)LoginIcon1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Guna.UI2.WinForms.Guna2GradientPanel BackgroundPanel;
-        private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private TableLayoutPanel tableLayoutPanel3;
-        private Guna.UI2.WinForms.Guna2GradientPanel IconPanel;
-        private TableLayoutPanel tableLayoutPanel4;
-        private Guna.UI2.WinForms.Guna2PictureBox IconPicture;
+        private DoubleBufferedTLP doubleBufferedtlp1;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel LoginGadient2;
+        private DoubleBufferedTLP doubleBufferedtlp2;
         private Label TextLabel1;
-        private Label label1;
-        private TableLayoutPanel tableLayoutPanel5;
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel LoginPanel;
-        private TableLayoutPanel tableLayoutPanel6;
-        private TableLayoutPanel tableLayoutPanel7;
-        private Guna.UI2.WinForms.Guna2HtmlLabel LoginLabel1;
         private Label label2;
-        private TableLayoutPanel tableLayoutPanel8;
-        private TableLayoutPanel tableLayoutPanel9;
-        private Guna.UI2.WinForms.Guna2HtmlLabel UsernameLabel;
+        private DoubleBufferedTLP doubleBufferedtlp3;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private Guna.UI2.WinForms.Guna2GradientPanel LoginGadient1;
+        private DoubleBufferedTLP doubleBufferedtlp4;
+        private Guna.UI2.WinForms.Guna2PictureBox LoginIcon1;
+        private DoubleBufferedTLP doubleBufferedtlp5;
+        private Guna.UI2.WinForms.Guna2TextBox PasswordTextbox;
         private Guna.UI2.WinForms.Guna2TextBox UsernameTextbox;
         private Guna.UI2.WinForms.Guna2HtmlLabel PasswordLabel;
-        private Guna.UI2.WinForms.Guna2TextBox PasswordTextbox;
-        private Guna.UI2.WinForms.Guna2Button ContinueButton;
-        private TableLayoutPanel tableLayoutPanel10;
-        private TableLayoutPanel tableLayoutPanel11;
-        private CheckBox ShowPWBox;
+        private DoubleBufferedTLP doubleBufferedtlp7;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LoginLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel UsernameLabel;
         private CheckBox RememberBox;
+        private CheckBox ShowPWBox;
+        private Guna.UI2.WinForms.Guna2Button ContinueButton;
     }
 }

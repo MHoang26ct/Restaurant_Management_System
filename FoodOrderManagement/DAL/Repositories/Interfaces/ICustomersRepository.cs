@@ -41,5 +41,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// </summary>
         /// <returns></returns>
         Task<List<Customers>> GetAllCustomersAsync();
+        Task DeleteCustomerAsync(int id);
     }
 }

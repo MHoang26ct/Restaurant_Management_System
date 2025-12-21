@@ -1,107 +1,97 @@
-﻿using System;
+﻿using FoodOrderManagement.DAL.Helper;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading.Tasks;
-using FoodOrderManagement.DAL.Repositories.Interfaces;
-using FoodOrderManagement.DAL.Models.Entities;
-using Microsoft.Data.SqlClient;
-using System.Configuration;
+using static FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder.UC_ViewDetails;
 
 namespace FoodOrderManagement.DAL.Repositories.Implementations {
     public class OrderDetailsRepository : IOrderDetailsRepository {
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
+        private readonly DatabaseHelper _db = new DatabaseHelper();
+
+        //
+        private orderDetail Mapper(SqlDataReader reader) {
+            return new orderDetail {
+                Id = reader.GetInt32(0),
+                OrderId = reader.GetInt32(1),
+                FoodId = reader.GetInt32(2),
+                Quantity = reader.GetInt32(3),
+                Notes = reader.IsDBNull(4) ? string.Empty : reader.GetString(4)
+            };
+        }
+
         // Thêm chi tiết order mới
         public async Task AddOrderDetailAsync(orderDetail orderDetail) {
-            using (var connection = new SqlConnection(_connectionString)) {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("AddOrderDetail", connection)) {
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@OrderID", orderDetail.OrderId);
-                    command.Parameters.AddWithValue("@FoodID", orderDetail.FoodId);
-                    command.Parameters.AddWithValue("@Quantity", orderDetail.Quantity);
-                    command.Parameters.AddWithValue("@Notes", orderDetail.Notes);
-                    command.Parameters.AddWithValue("@OrderStatus", orderDetail.OrderStatus);
-                    await command.ExecuteNonQueryAsync();
-                }
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderID", orderDetail.OrderId),
+                new SqlParameter("@FoodID", orderDetail.FoodId),
+                new SqlParameter("@Quantity", orderDetail.Quantity),
+                new SqlParameter("@Notes", orderDetail.Notes)
+            };
+            await _db.ExecuteNonQueryAsync("AddOrderDetail", parameters);
+        }
+
+        // Lấy chi tiết order theo OrderID (kèm thông tin món ăn)
+        public async Task<List<OrderDetailDisplay>> GetDetailsByOrderIdAsync(int orderId) {
+            var orderDetails = new List<OrderDetailDisplay>();
+            using SqlConnection connection = new SqlConnection(_connectionString);
+            using SqlCommand command = new SqlCommand("GetOrderDetailsWithFoodInfoByOrderID", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@OrderID", orderId);
+
+            await connection.OpenAsync();
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync()) {
+                orderDetails.Add(new OrderDetailDisplay {
+                    TenMon = reader.GetString(0),
+                    SoLuong = reader.GetInt32(1),
+                    DonGia = reader.GetDecimal(2)
+                });
             }
+            
+            return orderDetails;
         }
 
         // Thêm nhiều chi tiết order cùng lúc
         public async Task AddListOrderDetailAsync(List<orderDetail> orderDetails) {
-            using (var connection = new SqlConnection(_connectionString)) {
-                await connection.OpenAsync();
-                foreach (var orderDetail in orderDetails) {
-                    using (var command = new SqlCommand("AddOrderDetail", connection)) {
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@OrderID", orderDetail.OrderId);
-                        command.Parameters.AddWithValue("@FoodID", orderDetail.FoodId);
-                        command.Parameters.AddWithValue("@Quantity", orderDetail.Quantity);
-                        command.Parameters.AddWithValue("@Notes", orderDetail.Notes);
-                        command.Parameters.AddWithValue("@OrderStatus", orderDetail.OrderStatus);
-                        await command.ExecuteNonQueryAsync();
-                    }
-                }
+            foreach (var orderDetail in orderDetails) {
+                await AddOrderDetailAsync(orderDetail);
             }
-        }
-
-        // Lấy chi tiết order theo OrderID
-        public async Task<List<orderDetail>> GetorderDetailByOrderIdAsync(int orderId) {
-            var orderDetailList = new List<orderDetail>();
-            using (var connection = new SqlConnection(_connectionString)) {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("SELECT * FROM orderDetail WHERE OrderId = @OrderId", connection)) {
-                    command.Parameters.AddWithValue("@OrderId", orderId);
-                    using (var reader = await command.ExecuteReaderAsync()) {
-                        while (await reader.ReadAsync()) {
-                            orderDetailList.Add(new orderDetail {
-                                Id = reader.GetInt32(0),
-                                OrderId = reader.GetInt32(1),
-                                FoodId = reader.GetInt32(2),
-                                Quantity = reader.GetInt32(3),
-                                Notes = reader.GetString(4),
-                                OrderStatus = reader.GetString(5)
-                            });
-                        }
-                    }
-                }
-            }
-            return orderDetailList;
         }
 
         // Lấy các chi tiết order đã hoàn thành để tính tổng hóa đơn
-        public async Task<List<orderDetail>> GetCompletedOrderDetailsByOrderIdAsync(int orderId) {
-            var completedOrderDetails = new List<orderDetail>();
-            using (var connection = new SqlConnection(_connectionString)) {
-                await connection.OpenAsync();
-                using (var command = new SqlCommand("SELECT * FROM orderDetail WHERE OrderId = @OrderId AND OrderStatus = 'Completed'", connection)) {
-                    command.Parameters.AddWithValue("@OrderId", orderId);
-                    using (var reader = await command.ExecuteReaderAsync()) {
-                        while (await reader.ReadAsync()) {
-                            completedOrderDetails.Add(new orderDetail {
-                                Id = reader.GetInt32(0),
-                                OrderId = reader.GetInt32(1),
-                                FoodId = reader.GetInt32(2),
-                                Quantity = reader.GetInt32(3),
-                                Notes = reader.GetString(4),
-                                OrderStatus = reader.GetString(5)
-                            });
-                        }
-                    }
-                }
-            }
-            return completedOrderDetails;
+        public async Task<List<orderDetail>> GetOrderDetailsByOrderIdAsync(int orderId) {
+            var param = new SqlParameter("@OrderID", orderId);
+            return await _db.GetListAsync("GetOrderDetailsByOrderID", Mapper, param);
         }
 
-        // Cập nhật trạng thái của order
-        public async Task UpdateOrderStatusAsync(int orderDetailId, string newStatus) {
-            using (var connection = new SqlConnection(_connectionString)) {
+        // Xóa chi tiết order
+        public async Task DeleteOrderDetailAsync(int orderDetailId) {
+            var param = new SqlParameter("@OrderDetailID", orderDetailId);
+            await _db.ExecuteNonQueryAsync("DeleteOrderDetail", param);
+        }
+        public async Task DeleteAllDetailsByOrderIdAsync(int orderId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
                 await connection.OpenAsync();
-                using (var command = new SqlCommand("UpdateOrderStatus", connection)) {
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters[0].Value = orderDetailId;
-                    command.Parameters[1].Value = newStatus;
+
+                string query = "DELETE FROM OrderDetails WHERE OrderID = @OrderID";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@OrderID", orderId);
                     await command.ExecuteNonQueryAsync();
                 }
             }

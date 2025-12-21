@@ -14,11 +14,18 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         Task<List<Foods>> GetAllFoodsAsync();
 
         /// <summary>
-        /// Lấy tất cả món ăn
+        /// Lấy món ăn theo ID
         /// </summary>
         /// <param name="foodId"></param>
         /// <returns></returns>
         Task<Foods?> GetFoodByIdAsync(int foodId);
+
+        /// <summary>
+        /// Lấy món ăn theo tên
+        /// </summary>
+        /// <param name="foodName"></param>
+        /// <returns></returns>
+        Task<Foods?> GetFoodByNameAsync(string foodName);
 
         /// <summary>
         /// Truy xuất món ăn theo ID

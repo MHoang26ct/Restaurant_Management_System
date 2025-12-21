@@ -15,10 +15,5 @@ namespace FoodOrderManagement.DAL.Models.Entities {
         /// Lưu ý đặc biệt cho món ăn trong đơn hàng.
         /// </summary>
         public string Notes { get; set; }
-
-        /// <summary>
-        /// Trạng thái đơn hàng: "Pending", "In Progress", "Completed", "Cancelled".
-        /// </summary>
-        public string OrderStatus { get; set; }
     }
 }

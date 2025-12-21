@@ -1,4 +1,4 @@
-﻿namespace FoodOrderManagement.AdminControl.FormMenu
+﻿namespace FoodOrderManagement.UI.Forms.MenuManagement
 {
     partial class UC_FoodItem
     {

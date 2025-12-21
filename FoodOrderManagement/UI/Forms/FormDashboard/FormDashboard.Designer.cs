@@ -136,8 +136,8 @@
             OrderGradientPanel = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             doubleBufferedtlp8 = new DoubleBufferedTLP();
             doubleBufferedtlp9 = new DoubleBufferedTLP();
-            LabelOfOrder3 = new Label();
             OrderIcon2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            LabelOfOrder3 = new Label();
             doubleBufferedtlp10 = new DoubleBufferedTLP();
             GradientPanelOfOrder = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             doubleBufferedtlp11 = new DoubleBufferedTLP();
@@ -350,8 +350,6 @@
             TableGradientPanel.Size = new Size(277, 140);
             TableGradientPanel.TabIndex = 3;
             TableGradientPanel.Tag = "HoverContainer";
-            TableGradientPanel.MouseEnter += Control_MouseEnter;
-            TableGradientPanel.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp16
             // 
@@ -538,8 +536,6 @@
             OrderGradientPanel.Size = new Size(277, 141);
             OrderGradientPanel.TabIndex = 6;
             OrderGradientPanel.Tag = "HoverContainer";
-            OrderGradientPanel.MouseEnter += Control_MouseEnter;
-            OrderGradientPanel.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp8
             // 
@@ -567,8 +563,8 @@
             doubleBufferedtlp9.ColumnCount = 2;
             doubleBufferedtlp9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             doubleBufferedtlp9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
-            doubleBufferedtlp9.Controls.Add(LabelOfOrder3, 1, 0);
             doubleBufferedtlp9.Controls.Add(OrderIcon2, 0, 0);
+            doubleBufferedtlp9.Controls.Add(LabelOfOrder3, 1, 0);
             doubleBufferedtlp9.Dock = DockStyle.Fill;
             doubleBufferedtlp9.Location = new Point(16, 101);
             doubleBufferedtlp9.Name = "doubleBufferedtlp9";
@@ -576,20 +572,6 @@
             doubleBufferedtlp9.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             doubleBufferedtlp9.Size = new Size(243, 22);
             doubleBufferedtlp9.TabIndex = 0;
-            // 
-            // LabelOfOrder3
-            // 
-            LabelOfOrder3.AutoSize = true;
-            LabelOfOrder3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LabelOfOrder3.ForeColor = Color.Lime;
-            LabelOfOrder3.Location = new Point(25, 0);
-            LabelOfOrder3.Margin = new Padding(1, 0, 1, 0);
-            LabelOfOrder3.Name = "LabelOfOrder3";
-            LabelOfOrder3.Size = new Size(154, 21);
-            LabelOfOrder3.TabIndex = 3;
-            LabelOfOrder3.Text = "+30% (1 ngày trước)";
-            LabelOfOrder3.MouseEnter += Control_MouseEnter;
-            LabelOfOrder3.MouseLeave += Control_MouseLeave;
             // 
             // OrderIcon2
             // 
@@ -605,8 +587,18 @@
             OrderIcon2.SizeMode = PictureBoxSizeMode.StretchImage;
             OrderIcon2.TabIndex = 4;
             OrderIcon2.TabStop = false;
-            OrderIcon2.MouseEnter += Control_MouseEnter;
-            OrderIcon2.MouseLeave += Control_MouseLeave;
+            // 
+            // LabelOfOrder3
+            // 
+            LabelOfOrder3.AutoSize = true;
+            LabelOfOrder3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LabelOfOrder3.ForeColor = Color.Lime;
+            LabelOfOrder3.Location = new Point(25, 0);
+            LabelOfOrder3.Margin = new Padding(1, 0, 1, 0);
+            LabelOfOrder3.Name = "LabelOfOrder3";
+            LabelOfOrder3.Size = new Size(154, 21);
+            LabelOfOrder3.TabIndex = 3;
+            LabelOfOrder3.Text = "+30% (1 ngày trước)";
             // 
             // doubleBufferedtlp10
             // 
@@ -640,8 +632,6 @@
             GradientPanelOfOrder.ShadowDecoration.CustomizableEdges = customizableEdges14;
             GradientPanelOfOrder.Size = new Size(40, 34);
             GradientPanelOfOrder.TabIndex = 1;
-            GradientPanelOfOrder.MouseEnter += Control_MouseEnter;
-            GradientPanelOfOrder.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp11
             // 
@@ -688,8 +678,6 @@
             LabelOfOrder1.Size = new Size(81, 21);
             LabelOfOrder1.TabIndex = 0;
             LabelOfOrder1.Text = "Đơn Hàng";
-            LabelOfOrder1.MouseEnter += Control_MouseEnter;
-            LabelOfOrder1.MouseLeave += Control_MouseLeave;
             // 
             // LabelOfOrder2
             // 
@@ -703,8 +691,6 @@
             LabelOfOrder2.Size = new Size(27, 32);
             LabelOfOrder2.TabIndex = 2;
             LabelOfOrder2.Text = " 70";
-            LabelOfOrder2.MouseEnter += Control_MouseEnter;
-            LabelOfOrder2.MouseLeave += Control_MouseLeave;
             // 
             // LabelOfCusstomer2
             // 
@@ -722,8 +708,6 @@
             LabelOfCusstomer2.Size = new Size(277, 140);
             LabelOfCusstomer2.TabIndex = 5;
             LabelOfCusstomer2.Tag = "HoverContainer";
-            LabelOfCusstomer2.MouseEnter += Control_MouseEnter;
-            LabelOfCusstomer2.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp20
             // 
@@ -897,8 +881,6 @@
             ReportsGradientPanel.Size = new Size(277, 141);
             ReportsGradientPanel.TabIndex = 7;
             ReportsGradientPanel.Tag = "HoverContainer";
-            ReportsGradientPanel.MouseEnter += Control_MouseEnter;
-            ReportsGradientPanel.MouseLeave += Control_MouseLeave;
             // 
             // doubleBufferedtlp12
             // 
@@ -1202,7 +1184,6 @@
             doubleBufferedtlp6.RowStyles.Add(new RowStyle(SizeType.Percent, 50.8771935F));
             doubleBufferedtlp6.Size = new Size(239, 140);
             doubleBufferedtlp6.TabIndex = 0;
-            doubleBufferedtlp6.Paint += doubleBufferedtlp6_Paint;
             // 
             // DateLabel
             // 
@@ -1214,7 +1195,6 @@
             DateLabel.Name = "DateLabel";
             DateLabel.Size = new Size(233, 68);
             DateLabel.TabIndex = 11;
-            DateLabel.Text = "Monday ,17/28/2025";
             DateLabel.TextAlign = ContentAlignment.BottomCenter;
             // 
             // doubleBufferedtlp48
@@ -2269,6 +2249,7 @@
             Margin = new Padding(1);
             Name = "FormDashboard";
             StartPosition = FormStartPosition.CenterParent;
+            Load += FormHome_Load;
             TableGradientPanel.ResumeLayout(false);
             doubleBufferedtlp16.ResumeLayout(false);
             doubleBufferedtlp16.PerformLayout();
@@ -2389,7 +2370,6 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel TableGradientPanel;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel LabelOfCusstomer2;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel OrderGradientPanel;
-        private Guna.UI2.WinForms.Guna2PictureBox OrderIcon2;
         private Label LabelOfOrder3;
         private Guna.UI2.WinForms.Guna2HtmlLabel LabelOfOrder2;
         private Label LabelOfOrder1;
@@ -2514,5 +2494,6 @@
         private DoubleBufferedTLP doubleBufferedtlp48;
         private Label TimeLabel;
         private Label DateLabel;
+        private Guna.UI2.WinForms.Guna2PictureBox OrderIcon2;
     }
 }

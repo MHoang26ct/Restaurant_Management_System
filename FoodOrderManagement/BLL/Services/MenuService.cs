@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Guna.UI2.WinForms;
-using FoodOrderManagement.AdminControl.FormMenu;
+using FoodOrderManagement.UI.Forms;
 using FoodOrderManagement.DAL.Models.Entities;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
 using System;
@@ -14,13 +14,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static FoodOrderManagement.UI.Forms.MenuManagement.FrmMenu;
 namespace FoodOrderManagement.UI.Forms.MenuManagement
 {
     public partial class FrmMenu : Form
     {
 
-        // Hàm này chỉ có nhiệm vụ: Nhận 1 danh sách -> Vẽ lên màn hình
+        private OverlayBackground _overlayBackground;
+
+        //Hiện thị các món ăn đã chọn lên UI
         private void RenderFoodList(List<Foods> listToRender)
         {
             FlowLayoutFood.Controls.Clear();
@@ -45,6 +46,8 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             }
             FlowLayoutFood.ResumeLayout();
         }
+
+        //Lọc các món ăn
         public void ApplyFilter()
         {
             string keyword = SearchFoodTBox1.Text.ToLower().Trim();
@@ -54,7 +57,6 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
 
                 bool matchName = string.IsNullOrEmpty(keyword) || food.Name.ToLower().Contains(keyword);
                 bool matchCategory = false;
-
                 if (selectedCategory == "Tất cả")
                 {
                     matchCategory = true;
@@ -69,9 +71,10 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
 
                 return matchName && matchCategory;
             }).ToList();
-
             RenderFoodList(filteredList);
         }
+
+        //Tải các món ăn lên UI
         public async Task LoadFoodAsync()
         {
             try
@@ -86,15 +89,13 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             }
 
         }
+
+        //Sự kiện xóa món ăn
         private async void FoodItem_OnDeleteClicked(object sender, EventArgs e)
         {
             if (sender is UC_FoodItem foodItem)
             {
-                var result = MessageBox.Show("Bạn có chắc muốn xóa món này không?",
-                                             "Xác nhận xóa",
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
-
+                var result = MessageBox.Show("Bạn có chắc muốn xóa món này không?","Xác nhận xóa",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     try
@@ -115,14 +116,15 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 }
             }
         }
-        private async void FrmMenu_Load(object sender, EventArgs e)
+
+        //Sự kiện Load FormMenu
+        private async void FormMenu_Load(object sender, EventArgs e)
         {
-            LoadFoodAsync();
-            _uc_AddFood = _scope.Resolve<UC_AddFood>();
+            _overlayBackground = new OverlayBackground();
+            await LoadFoodAsync();
             _uc_AddFood.Visible = false;
             this.Controls.Add(_uc_AddFood);
             _uc_AddFood.BringToFront();
-            //Khời tạo vị trí của AddFood
             _uc_AddFood.Location = new Point(
                 (this.Width - _uc_AddFood.Width) / 2,
                 (this.Height - _uc_AddFood.Height) / 4
@@ -132,11 +134,24 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             CatagorieFoodsCBox.SelectedIndexChanged += (s, args) => ApplyFilter();
             CatagorieFoodsCBox.Items.Clear();
             CatagorieFoodsCBox.Items.AddRange(new object[] { "Tất cả", "Món chính", "Khai vị", "Tráng miệng", "Đồ uống" });
-            CatagorieFoodsCBox.SelectedIndex = 0; // Chọn mặc định là Tất cả
+            CatagorieFoodsCBox.SelectedIndex = 0;
             _uc_AddFood.FoodAdded += (s, args) =>
             {
                 _uc_AddFood.Visible = false;
                 LoadFoodAsync();
+            };
+            _uc_AddFood.VisibleChanged += (s, args) =>
+            {
+                if (_uc_AddFood.Visible)
+                {
+                    _overlayBackground.Show(this); 
+                    _uc_AddFood.BringToFront(); 
+                }
+                else
+                {
+
+                    _overlayBackground.Hide(this); 
+                }
             };
         }
     }
@@ -149,6 +164,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
     public partial class UC_AddFood : UserControl
     {
        
+        //Sự kiện chọn ảnh của món ăn
         private void ChoosePictureButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog op = new OpenFileDialog();
@@ -170,17 +186,18 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 }
             }
         }
-        // Lưu món ăn
+        // Sự kiện nhấn nút thêm món ăn 
         private async void AddFoodButton_Click(object sender, EventArgs e)
         {
+
+            //Kiểm tra thông tin món ăn có đầy đủ chưa 
             if (string.IsNullOrEmpty(NameFoodTBox.Text) || string.IsNullOrEmpty(PriceTBox.Text))
             {
                 MessageBox.Show("Vui lòng nhập tên món và giá tiền!", "Lỗi Thông Tin",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            if (CatagorieFoodsCBox.SelectedItem.ToString() == "Tất cả")
+            if ( CatagorieFoodsCBox.SelectedItem.ToString() == "Tất cả")
             {
                 MessageBox.Show("Vui lòng chọn danh mục cụ thể (Ví dụ: Món chính/Món phụ...)" +
                     "\nKhông được chọn 'Tất cả'. ", "Lỗi Danh Mục",
@@ -194,6 +211,8 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 MessageBox.Show("Vui lòng chọn ảnh!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            //Copy ảnh và lấy đường dẫn của ảnh
             string FinalImagePath = OldImagePath;
             if (!string.IsNullOrEmpty(CurrentImagePath) && !string.IsNullOrEmpty(TempImageName))
             {
@@ -217,10 +236,11 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 FinalImagePath = Path.Combine("Images", TempImageName);
             }
 
+            //Lưu thông tin món ăn vào database
             Foods NewFood = new Foods();
             {
                 NewFood.Name = NameFoodTBox.Text;
-                NewFood.Category = CatagorieFoodsCBox.SelectedItem?.ToString() ?? "Tất cả"; // tránh báo lỗi, nếu là null trả về "Tất cả"
+                NewFood.Category = CatagorieFoodsCBox.SelectedItem?.ToString() ?? "Tất cả"; 
                 if (!decimal.TryParse(PriceTBox.Text, out decimal price))
                 {
                     MessageBox.Show("Giá tiền không hợp lệ.", "Lỗi Thông Tin");
@@ -253,6 +273,8 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 MessageBox.Show("Lỗi khi thêm món ăn vào CSDL: " + ex.Message);
             }
         }
+
+        //Chỉnh UC thành UC chỉnh sửa thông tin
         public void SetEditData(Foods food)
         {
             EditingFoodId = food.Id;
@@ -286,16 +308,18 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         // Sự kiện nút exit
         private void ExitButton_Click(object sender, EventArgs e)
         {
+            ResetForm();
             this.Visible = false;
         }
 
     }
 }
 ///-----------------------------------------------------------------------------------------------------------------------------------------------
-namespace FoodOrderManagement.AdminControl.FormMenu
+namespace FoodOrderManagement.UI.Forms.MenuManagement
 {
     public partial class UC_FoodItem : UserControl
     {
+        //Lấy thông tin của món ăn từ và hiển thị lên UI
         public void SetData(int Id, string name, string price, string Catagories, string PicturePath, string Description)
         {
             FoodNameLabel.Text = name;
@@ -303,29 +327,55 @@ namespace FoodOrderManagement.AdminControl.FormMenu
             FoodPriceLabel.Text = price;
             FoodDesciptionLabel.Text = Description;
             FoodId = Id;
-
-            string path = Path.Combine(Application.StartupPath, PicturePath);
-            if (File.Exists(path)) // Kiểm tra xem người dùng có truyền ảnh vào không
+            Image img = LoadImageSafe(PicturePath);
+            if (img != null)
             {
-                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
-                {
-                    PictureFood.BackgroundImage = Image.FromStream(fs); // Đặt BackgroundImage là 1 ảnh từ máy
-                }
+                PictureFood.BackgroundImage = img;
+                PictureFood.BackgroundImageLayout = ImageLayout.Stretch; 
             }
             else
             {
                 PictureFood.BackgroundImage = null;
             }
         }
-        public event EventHandler OnDeleteClicked; // Tạo sự kiện xóa
+
+        //Sự kiện xóa món ăn
+        public event EventHandler OnDeleteClicked; 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             OnDeleteClicked?.Invoke(this, EventArgs.Empty);
         }
+
+        //Sự kiện chỉnh sửa món ăn
         public event EventHandler OnEditClicked;
         private void EditButton_Click(object sender, EventArgs e)
         {
             OnEditClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        //Sự kiện hiển thị hình ảnh của món ăn
+        private Image LoadImageSafe(string relativePath)
+        {
+            if (string.IsNullOrEmpty(relativePath)) return null;
+
+            try
+            {
+                string fullPath = Path.Combine(Application.StartupPath, relativePath);
+                if (!File.Exists(fullPath)) return null;
+                using (FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        fs.CopyTo(ms);
+                        ms.Position = 0;
+                        return Image.FromStream(ms);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }
