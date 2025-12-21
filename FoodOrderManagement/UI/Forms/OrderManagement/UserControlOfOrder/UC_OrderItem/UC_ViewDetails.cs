@@ -18,5 +18,18 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         {
             InitializeComponent();
         }
+        public class OrderDetailDisplay
+        {
+            public string TenMon { get; set; } 
+            public int SoLuong { get; set; }   
+            public decimal DonGia { get; set; }
+            public decimal ThanhTien => DonGia * SoLuong; 
+        }
+        //Sự kiện đóng xem chi tiết
+        private void ClosedButton_Click(object sender, EventArgs e)
+        {
+            this.Parent.Controls.Remove(this);
+            this.Dispose();
+        }
     }
 }

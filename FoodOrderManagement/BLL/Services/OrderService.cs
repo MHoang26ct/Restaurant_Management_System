@@ -136,11 +136,8 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
     public partial class UC_AddFoodOrder : UserControl
     {
         public event EventHandler OnDeleteRequest;
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            OnDeleteRequest?.Invoke(this, EventArgs.Empty);
-        }
 
+        //Lấy các món ăn trong database vào databox chọn món ăn
         private async Task LoadFoodToComboBox()
         {
             try
@@ -156,6 +153,8 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 MessageBox.Show("Lỗi load món: " + ex.Message);
             }
         }
+
+        //Load chi tiết đã lưu ra UI
         public async void SetData(int foodId, int quantity)
         {
             if (NameFoodCBox.DataSource == null || NameFoodCBox.Items.Count == 0)
@@ -169,10 +168,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 if (selectedFood != null)
                 {
                     NameFoodCBox.SelectedItem = selectedFood; 
-                }
-                else
-                {
-
                 }
             }
             else
@@ -224,6 +219,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         private Orders _existingOrderData = null;
         public static bool IsInAddNewCustomerMode = false;
 
+        //Chỉnh UC thành chế độ thêm món ăn
         public async void SetModeAddFood(Orders oldOrder)
         {
             _currentOrderId = oldOrder.Id;
@@ -259,6 +255,8 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 }
             }
         }
+
+        //Lấy mức giảm giá
         private decimal GetDiscountRate(string rank)
         {
             if (string.IsNullOrEmpty(rank)) return 0;
@@ -271,6 +269,8 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 default: return 0;        
             }
         }
+
+        //Thêm các dòng món ăn
         private void ThemDongMonAn()
         {
             var newItem = _scope.Resolve<UC_AddFoodOrder>();
@@ -283,17 +283,8 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             };
             ListFoodFlowLayout.Controls.Add(newItem);
         }
-        private void AddFoodButton_Click(object sender, EventArgs e)
-        {
-            ThemDongMonAn();
-        }
 
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            this.Parent.Controls.Remove(this);
-            this.Dispose();
-        }
-
+        //Kiểm tra thông tin đầu vào
         private bool KiemTraDauVao()
         {
             if (string.IsNullOrWhiteSpace(CustomerNameTBox.Text))
@@ -310,6 +301,8 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             }
                 return true;
         }
+        
+        //Tạo mới hoặc lấy thông tin khách hàng
         private async Task<int> GetOrCreateCustomerAsync(string name, string phone)
         {
             var existingCustomer = await _customersRepository.GetCustomerByNameAndPhoneAsync(name, phone);
@@ -326,10 +319,11 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             IsInAddNewCustomerMode = true;
             return newId;
         }
+
+        //Sự kiện nhấn nút tạo đơn 
         private async void CreateOrderButton_Click(object sender, EventArgs e)
         {
             if (_currentOrderId == null && KiemTraDauVao() == false) return;
-
             try
             {
                 int targetOrderId;
@@ -399,7 +393,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                         _existingOrderData.TotalAmount = finalTotal;
                         await _ordersRepository.UpdateOrderTotalAsync(targetOrderId, finalTotal);
                     }
-                    await CheckAndUpgradeRank(customerId);
                     OnOrderCreated?.Invoke(this, _existingOrderData);
                     MessageBox.Show("Cập nhật đơn hàng thành công!");
 
@@ -416,19 +409,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
-        private async Task CheckAndUpgradeRank(int customerId)
-        {
-            try
-            {
-                // Gọi hàm bên Repository để tính toán và update lại Rank
-                await _customersRepository.UpdateCustomerRankAsync(customerId);
-            }
-            catch (Exception ex)
-            {
-                // Lỗi thăng hạng thì log lại thôi, không nên chặn quy trình bán hàng
-                Console.WriteLine("Lỗi thăng hạng: " + ex.Message);
-            }
-        }
     }
 }
 
@@ -443,17 +423,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 {
     public partial class UC_OrderItem : UserControl
     {
-        private void ViewDetailsButton_Click(object sender, EventArgs e)
-        {
-            if (_currentOrderData != null)
-            {
-                OnViewDetailsClicked?.Invoke(this, _currentOrderData);
-            }
-            else
-            {
-                MessageBox.Show("Lỗi: Không tìm thấy dữ liệu đơn hàng!");
-            }
-        }
+        //Gán thông tin lên UI
         public async void SetOrderData(Orders order)
         {
             _currentOrderData = order;
@@ -470,6 +440,8 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             UpdateUIStyle(index);
             PaymentStatusCBox.SelectedIndexChanged += PaymentStatusCBox_SelectedIndexChanged;
         }
+
+        //Cập nhật UI dựa trên trạng thái thanh toán
         private void UpdateUIStyle(int index)
         {
             if (index == 0)
@@ -489,13 +461,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 TotalMoneyLabel.ForeColor = Color.LimeGreen;
             }
         }
-        private void AddFoodButton_Click(object sender, EventArgs e)
-        {
-            if (_currentOrderData != null)
-            {
-                OnAddFoodClicked?.Invoke(this, _currentOrderData);
-            }
-        }
     }
 }
 
@@ -506,13 +471,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
 {
     public partial class UC_ViewDetails : UserControl
     {
-        public class OrderDetailDisplay
-        {
-            public string TenMon { get; set; } 
-            public int SoLuong { get; set; }   
-            public decimal DonGia { get; set; }
-            public decimal ThanhTien => DonGia * SoLuong; 
-        }
+        //Hiển thị thông tin chi tiết đơn hàng vào datagridview
         public void LoadDetailData(Orders order, List<OrderDetailDisplay> listMonAn)
         {
             OrderIDLabel.Text ="Đơn hàng #" + order.Id.ToString(); 
@@ -535,11 +494,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 dgvChiTiet.Columns["ThanhTien"].HeaderText = "Thành Tiền";
                 dgvChiTiet.Columns["ThanhTien"].DefaultCellStyle.Format = "N0";
             }
-        }
-        private void ClosedButton_Click(object sender, EventArgs e)
-        {
-            this.Parent.Controls.Remove(this);
-            this.Dispose();
         }
     }
 }

@@ -104,44 +104,5 @@ public class CustomersRepository : ICustomersRepository {
 
             await _db.ExecuteNonQueryAsync(procedureName, parameters);
         }
-
-
-        public async Task UpdateCustomerRankAsync(int customerId)
-        {
-            string querySum = @"
-                SELECT ISNULL(SUM(TotalAmount), 0) 
-                FROM Orders 
-                WHERE CustomerID = @CusId AND TimeCheckout IS NOT NULL";
-
-            decimal totalSpent = 0;
-            using (var cmd = _db.CreateCommand(querySum))
-            {
-                cmd.Parameters.Add(new SqlParameter("@CusId", customerId));
-                try
-                {
-                    object result = await cmd.ExecuteScalarAsync();
-                    totalSpent = result != null ? Convert.ToDecimal(result) : 0;
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Lỗi Update Rank (Check tên cột TimeCheckout): " + ex.Message);
-                }
-            }
-
-            string newRank = "Regular";
-            if (totalSpent >= 50000000) newRank = "Platinum";
-            else if (totalSpent >= 10000000) newRank = "Gold";
-            else if (totalSpent >= 2000000) newRank = "Silver";
-
-            string queryUpdate = "UPDATE Customers SET CustomerRank = @Rank WHERE CustomerID = @CustomerID";
-
-            var p = new SqlParameter[]
-            {
-                new SqlParameter("@Rank", newRank),
-                new SqlParameter("@CustomerID", customerId)
-            };
-
-            await _db.ExecuteNonQueryAsync(queryUpdate, p);
-        }
     }
 }

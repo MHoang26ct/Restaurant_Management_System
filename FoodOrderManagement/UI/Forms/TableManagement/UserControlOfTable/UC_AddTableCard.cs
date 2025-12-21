@@ -22,6 +22,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
            
         }
 
+        //Sự kiện nhấn nút thêm bàn
         private void AddTableButton_Click(object sender, EventArgs e)
         {
             OnCardClicked?.Invoke(this, EventArgs.Empty);

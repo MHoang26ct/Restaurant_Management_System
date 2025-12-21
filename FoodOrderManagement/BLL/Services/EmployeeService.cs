@@ -9,6 +9,8 @@ namespace FoodOrderManagement.AdminControl
     public partial class FormEmployee : Form
     {
         private List<Employee> _originalList = new List<Employee>();
+
+        //Lấy thông tin nhân viên tự Database
         public async Task LoadListEmployee()
         {
             try
@@ -22,6 +24,7 @@ namespace FoodOrderManagement.AdminControl
             }
         }
 
+        //Hiển thị thông tin các nhân viên lên UI
         private void RenderList(List<Employee> list)
         {
             FlowLayoutEmployee.SuspendLayout();
@@ -38,14 +41,8 @@ namespace FoodOrderManagement.AdminControl
             }
             FlowLayoutEmployee.ResumeLayout();
         }
-        private void AddEmployeeButton_Click(object sender, EventArgs e)
-        {
-            ShowPopup(null); 
-        }
-        private void Item_OnEditClicked(object sender, Employee empToEdit)
-        {
-            ShowPopup(empToEdit); 
-        }
+
+        //Hiển thị pop up để cập nhập, thêm nhân viên
         private void ShowPopup(Employee empToEdit)
         {
             _overlayBackground.Show(this);
@@ -85,12 +82,27 @@ namespace FoodOrderManagement.AdminControl
             popup.OnCancelClicked += (s, args) => ClosePopup(popup);
         }
 
+        //Sự kiện nhấn nút thêm nhân viên
+        private void AddEmployeeButton_Click(object sender, EventArgs e)
+        {
+            ShowPopup(null);
+        }
+
+        //Sự kiện nhấn nút sửa thông tin nhân viên
+        private void Item_OnEditClicked(object sender, Employee empToEdit)
+        {
+            ShowPopup(empToEdit);
+        }
+
+        //Đóng pop up
         private void ClosePopup(Control popup)
         {
             this.Controls.Remove(popup);
             popup.Dispose();
             _overlayBackground.Hide(this);
         }
+
+        //Sự kiện xóa nhân viên
         private async void Item_OnDeleteClicked(object sender, Employee emp)
         {
             var confirm = MessageBox.Show(
@@ -114,6 +126,7 @@ namespace FoodOrderManagement.AdminControl
             }
         }
 
+        //Sự kiện thay đổi ở thanh tìm kiếm
         private void SearchEmployeeTBox1_TextChanged(object sender, EventArgs e)
         {
             string keyword = SearchEmployeeTBox1.Text.Trim().ToLower();

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Autofac;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
-using System.Globalization; // Xài tiếng việt cho ngày 
+using System.Globalization;
 namespace FoodOrderManagement.AdminControl
 {
     public partial class FormDashboard : Form

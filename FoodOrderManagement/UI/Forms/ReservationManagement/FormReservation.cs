@@ -1,4 +1,10 @@
-﻿using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
+﻿using Autofac;
+using FoodOrderManagement.DAL.Models.Entities;
+using FoodOrderManagement.DAL.Repositories.Interfaces;
+using FoodOrderManagement.UI;
+using FoodOrderManagement.UI.Forms.MenuManagement;
+using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
+using FoodOrderManagement.UI.Forms.ReservationManagement;
 using FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReservation;
 using System;
 using System.Collections.Generic;
@@ -9,16 +15,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FoodOrderManagement.UI;
-using FoodOrderManagement.UI.Forms.MenuManagement;
-using Autofac;
-using FoodOrderManagement.DAL.Repositories.Interfaces;
-using FoodOrderManagement.DAL.Models.Entities;
 namespace FoodOrderManagement.AdminControl
 {
     public partial class FormReservation : Form
 
     {
+        private readonly ILifetimeScope _scope;
+        private readonly IReservationsRepository _reservationsRepository;
+        private readonly ICustomersRepository _customersRepository;
+        private readonly IOrdersRepository _ordersRepository;
+        private readonly IOrderDetailsRepository _orderDetailsRepository;
+        private readonly ITablesRepository _tablesRepository;
+        private readonly FormTable _formTable;
+        private OverlayBackground _overlayBackground;
+        private UC_CreateReservation uc_CreateReservation;
+        private List<ReservationViewModel> _originalList = new List<ReservationViewModel>();
+        public FormReservation(ILifetimeScope scope, IReservationsRepository reservationsRepository, ICustomersRepository customersRepository,
+                               IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository, ITablesRepository tablesRepository, FormTable formTable)
+        {
+            InitializeComponent();
+            _scope = scope;
+            _reservationsRepository = reservationsRepository;
+            _customersRepository = customersRepository;
+            _ordersRepository = ordersRepository;
+            _orderDetailsRepository = orderDetailsRepository;
+            _tablesRepository = tablesRepository;
+
+            _formTable = formTable;
+
+            _overlayBackground = new OverlayBackground();
+            AddActionButtons();
+            DecorDataGridView(dgvReservations);
+            StyleActionHeader(dgvReservations);
+            dgvReservations.CellPainting += dgvReservations_CellPainting;
+            SearchReservationTBox1.TextChanged += (s, e) => ApplyFilter();
+            DateTimePickerSearch.ValueChanged += (s, e) => ApplyFilter();
+            LoadReservationList();
+        }
         private void FormReservation_Load(object sender, EventArgs e)
         {
             DecorDataGridView(dgvReservations);
@@ -44,9 +77,7 @@ namespace FoodOrderManagement.AdminControl
                     {
                         ifChanged = true;
                         upcomingIds.Add(reservation.Id);
-                        // Cập nhật trạng thái bàn
                         await _tablesRepository.UpdateTableStatusAndOpenTimeAsync(reservation.TableId, "Reserved", null);
-                        // Cập nhật trạng thái đơn đặt
                         reservation.Status = "Upcoming";
                         await _reservationsRepository.UpdateReservationAsync(reservation);
                     }
@@ -54,23 +85,168 @@ namespace FoodOrderManagement.AdminControl
 
                 if (ifChanged)
                 {
-                    // 2. Hiện thông báo gom (Tránh hiện nhiều MessageBox cùng lúc)
                     string msg = $"Có {upcomingIds.Count} đơn đặt bàn sắp đến trong 1 tiếng tới (Mã: {string.Join(", ", upcomingIds)})";
                     MessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // 3. Cập nhật UI
                     await LoadReservationList();
                     await _formTable.LoadTableList();
                 }
             }
             catch (Exception ex)
             {
-                // Ghi log lỗi để debug trên Mac/Windows dễ dàng hơn
                 Console.WriteLine($"Lỗi Timer: {ex.Message}");
             }
             finally
             {
                 timer1.Start();
+            }
+        }
+
+        //Thêm nút Sửa, Xóa
+        private void AddActionButtons()
+        {
+            if (dgvReservations.Columns["btnEdit"] == null)
+            {
+                DataGridViewButtonColumn btnEdit = new DataGridViewButtonColumn();
+                btnEdit.Name = "btnEdit";
+                btnEdit.HeaderText = "";
+                btnEdit.Text = "Sửa";
+                btnEdit.UseColumnTextForButtonValue = true;
+                btnEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvReservations.Columns.Add(btnEdit);
+                btnEdit.DisplayIndex = dgvReservations.Columns.Count - 1;
+            }
+            if (dgvReservations.Columns["btnDelete"] == null)
+            {
+                DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
+                btnDelete.Name = "btnDelete";
+                btnDelete.HeaderText = "";
+                btnDelete.Text = "Xóa";
+                btnDelete.UseColumnTextForButtonValue = true;
+                btnDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                btnDelete.DefaultCellStyle.ForeColor = Color.Red;
+                btnDelete.DefaultCellStyle.SelectionForeColor = Color.Red;
+
+                dgvReservations.Columns.Add(btnDelete);
+                btnDelete.DisplayIndex = dgvReservations.Columns.Count - 1;
+            }
+        }
+
+        //
+        // Decor datagridview
+        //
+        private void DecorDataGridView(DataGridView dgv)
+        {
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.BackgroundColor = Color.White;
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersHeight = 50;
+            dgv.RowTemplate.Height = 50;
+            dgv.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 12F);
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.AntiqueWhite;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon;
+            dgv.DefaultCellStyle.SelectionBackColor = Color.White;
+            dgv.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            if (dgv.Columns.Contains("btnEdit"))
+                dgv.Columns["btnEdit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (dgv.Columns.Contains("btnDelete"))
+                dgv.Columns["btnDelete"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (dgv.Columns.Contains("Id"))
+                dgv.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        }
+        private void StyleActionHeader(DataGridView dgv)
+        {
+            if (dgv.Columns.Contains("btnEdit"))
+            {
+                dgv.Columns["btnEdit"].HeaderCell.Style.BackColor = Color.AntiqueWhite;
+                dgv.Columns["btnEdit"].HeaderCell.Style.ForeColor = Color.Maroon;
+                dgv.Columns["btnEdit"].HeaderText = "";
+            }
+
+            if (dgv.Columns.Contains("btnDelete"))
+            {
+                dgv.Columns["btnDelete"].HeaderCell.Style.BackColor = Color.AntiqueWhite;
+                dgv.Columns["btnDelete"].HeaderCell.Style.ForeColor = Color.Maroon;
+                dgv.Columns["btnDelete"].HeaderText = "";
+            }
+        }
+        private void AdjustColumnWidths(DataGridView dgv)
+        {
+            if (dgv.Columns.Contains("CustomerName"))
+            {
+                dgv.Columns["CustomerName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns["CustomerName"].FillWeight = 35;
+            }
+            if (dgv.Columns.Contains("PhoneNumber"))
+            {
+                dgv.Columns["PhoneNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns["PhoneNumber"].FillWeight = 20;
+            }
+            if (dgv.Columns.Contains("ReservationTime"))
+            {
+                dgv.Columns["ReservationTime"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns["ReservationTime"].FillWeight = 25;
+            }
+            if (dgv.Columns.Contains("Status"))
+            {
+                dgv.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns["Status"].FillWeight = 20;
+                dgv.Columns["Status"].DefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
+            }
+            if (dgv.Columns.Contains("TableId"))
+            {
+                dgv.Columns["TableId"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgv.Columns["TableId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Columns["TableId"].DefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
+            }
+            if (dgv.Columns.Contains("NumberOfGuests"))
+            {
+                dgv.Columns["NumberOfGuests"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgv.Columns["NumberOfGuests"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Columns["NumberOfGuests"].DefaultCellStyle.Padding = new Padding(50, 0, 0, 0);
+            }
+            if (dgv.Columns.Contains("Id"))
+            {
+                dgv.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgv.Columns["Id"].DefaultCellStyle.Padding = new Padding(20, 0, 0, 0);
+            }
+        }
+        private void dgvReservations_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                if (dgvReservations.Columns[e.ColumnIndex].Name == "btnEdit")
+                {
+                    if (!dgvReservations.Columns.Contains("btnDelete")) return;
+                    Rectangle rect = e.CellBounds;
+                    rect.Width += dgvReservations.Columns["btnDelete"].Width;
+                    var oldClip = e.Graphics.Clip;
+                    e.Graphics.SetClip(e.CellBounds.IntersectsWith(new Rectangle(0, 0, dgvReservations.Width, dgvReservations.Height))
+                        ? new Rectangle(0, 0, dgvReservations.Width, dgvReservations.Height) : e.CellBounds);
+                    using (Brush brush = new SolidBrush(Color.AntiqueWhite))
+                    {
+                        e.Graphics.FillRectangle(brush, rect);
+                    }
+                    using (Brush textBrush = new SolidBrush(Color.Maroon))
+                    {
+                        StringFormat sf = new StringFormat();
+                        sf.Alignment = StringAlignment.Center;
+                        sf.LineAlignment = StringAlignment.Center;
+                        e.Graphics.DrawString("Thao tác", new Font("Segoe UI", 12F, FontStyle.Bold), textBrush, rect, sf);
+                    }
+                    e.Graphics.Clip = oldClip;
+                    e.Handled = true;
+                }
+                else if (dgvReservations.Columns[e.ColumnIndex].Name == "btnDelete")
+                {
+                    e.Handled = true;
+                }
             }
         }
     }

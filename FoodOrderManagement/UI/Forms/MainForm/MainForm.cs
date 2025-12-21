@@ -79,12 +79,8 @@ namespace FoodOrderManagement
             {
                 MainPanel.Controls.Add(childForm);
             }
-
             childForm.BringToFront();
             childForm.Show();
-
-            // Nếu bạn có Interface IRefreshable, có thể gọi cập nhật dữ liệu ở đây:
-            // if (childForm is IRefreshable f) f.RefreshData();
         }
 
         public void NavigationButton_Click(object sender, EventArgs e)
@@ -138,7 +134,6 @@ namespace FoodOrderManagement
 
         public void ResetAllButton()
         {
-            // Hàm này giữ nguyên logic của bạn hoặc tối ưu bằng cách dùng List<Guna2Button>
             DashboardButton.FillColor = Color.White;
             DashboardButton.FillColor2 = Color.White;
             DashboardButton.ForeColor = Color.Black;
@@ -179,7 +174,6 @@ namespace FoodOrderManagement
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            // Resolve FormLogin vì thường Login không cần Singleton (để reset trạng thái mỗi lần đăng xuất)
             var formLogin = _scope.Resolve<FormLogin>();
             formLogin.Show();
         }

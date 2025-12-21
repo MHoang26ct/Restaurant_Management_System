@@ -30,6 +30,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             InitializeComponent();
             _foodsRepository = foodsRepository;
         }
+
         //
         // TAB INDEX 
         //
@@ -38,8 +39,6 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
         protected override void OnVisibleChanged(EventArgs e)
         {
             base.OnVisibleChanged(e);
-
-            // Kiểm tra: Nếu nó vừa được hiện lên (Visible = true)
             if (this.Visible)
             {
                 // Ép Focus vào ô nhập liệu đầu tiên ngay lập tức
@@ -69,6 +68,10 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        //
+        // Sự kiện chọn hay rời nút thêm món ăn, textbox tên món, textbox giá món  
+        //
+
         private void AddFoodButton_Enter(object sender, EventArgs e)
         {
             AddFoodButton.FillColor = Color.Chocolate;
@@ -80,9 +83,6 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             AddFoodButton.FillColor = Color.FromArgb(255, 128, 0);
             AddFoodButton.FillColor2 = Color.Chocolate;
         }
-        //
-        //
-        //
         private void NameFoodTBox_Enter(object sender, EventArgs e)
         {
             if (NameFoodTBox.Text == "Nhập tên món ăn...")

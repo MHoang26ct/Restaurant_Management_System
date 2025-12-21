@@ -26,12 +26,13 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             _customersRepository = customersRepository;
         }
 
-
+        //Sự kiện thêm món ăn vào orderItem
         private void AddFoodInOrderItem_Click(object sender, EventArgs e)
         {
             OnAddFoodClicked?.Invoke(this, _currentOrderData);
         }
 
+       //Sự kiện thay đổi trạng thái thanh toán
         private void PaymentStatusCBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (PaymentStatusCBox.SelectedIndex == 0)
@@ -46,17 +47,29 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                     _currentOrderData.CheckoutTime = DateTime.Now;
                 }
             }
-
-            // Cập nhật màu sắc giao diện ngay lập tức
             UpdateUIStyle(PaymentStatusCBox.SelectedIndex);
-
-            // Bắn sự kiện ra Form cha để lưu xuống DB
             OnStatusChanged?.Invoke(this, _currentOrderData);
         }
 
-        private void TotalItemsLabel_Click(object sender, EventArgs e)
+        //Sự kiện nhấn vào nút thêm món ăn
+        private void AddFoodButton_Click(object sender, EventArgs e)
         {
-
+            if (_currentOrderData != null)
+            {
+                OnAddFoodClicked?.Invoke(this, _currentOrderData);
+            }
+        }
+        //Sự kiện nhấn nút xem chi tiết
+        private void ViewDetailsButton_Click(object sender, EventArgs e)
+        {
+            if (_currentOrderData != null)
+            {
+                OnViewDetailsClicked?.Invoke(this, _currentOrderData);
+            }
+            else
+            {
+                MessageBox.Show("Lỗi: Không tìm thấy dữ liệu đơn hàng!");
+            }
         }
     }
 }

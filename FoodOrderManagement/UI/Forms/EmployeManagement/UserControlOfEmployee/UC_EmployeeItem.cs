@@ -31,10 +31,11 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
                 this.Width = this.Parent.ClientSize.Width - 20;
             }
         }
+
+        //Hiển thị thông tin lên UI
         public void SetData(Employee emp)
         {
             _currentEmp = emp; // Lưu lại để dùng sau
-
             NameLabel.Text = emp.FullName;
             PhoneNumberLabel.Text = emp.PhoneNumber;
             EmailLabel.Text = emp.Email;
@@ -43,11 +44,14 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
 
         }
 
+        //Sự kiện chỉnh sửa
         private void EditButton_Click(object sender, EventArgs e)
         {
             OnEditClicked?.Invoke(this, _currentEmp);
         }
 
+
+        //Sự kiện xóa
         private void DeleteButton_Click(object sender, EventArgs e)
         {
                 OnDeleteClicked?.Invoke(this, _currentEmp);

@@ -39,6 +39,8 @@ namespace FoodOrderManagement.AdminControl
             _overlayBackground = new OverlayBackground();
             _reservationsRepository = reservationsRepository;
         }
+
+        //Sự kiện nhấn nút đơn mới
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
             _overlayBackground.Show(this);
@@ -60,22 +62,8 @@ namespace FoodOrderManagement.AdminControl
             );
             _ucCreateOrder.BringToFront();
         }
-        private void HandleOrderCreated(object sender, Orders orderData)
-        {
-            UC_OrderItem orderItem = _scope.Resolve<UC_OrderItem>();
-            orderItem.SetOrderData(orderData); 
-            orderItem.OnViewDetailsClicked += HandleViewDetailsClicked;
 
-            FlowLayoutOrder.Controls.Add(orderItem);
-
-            Control ctrl = sender as Control;
-
-            if (ctrl != null)
-            {
-                this.Controls.Remove(ctrl);   
-                ctrl.Dispose(); 
-            }
-        }
+        //Xử lý sự kiện nhấn nút xem chi tiết
         private async void HandleViewDetailsClicked(object sender, Orders orderData)
         {
             _overlayBackground.Show(this);
@@ -97,6 +85,8 @@ namespace FoodOrderManagement.AdminControl
                 LoadAllOrders();
             };
         }
+
+        //Xử lý sự kiện thêm món mới
         private async void HandleAddFoodClicked(object sender, Orders orderData)
         {
             foreach (Control ctrl in this.Controls.OfType<UC_CreateOrder>().ToList())
@@ -128,7 +118,8 @@ namespace FoodOrderManagement.AdminControl
             );
 
         }
-
+        
+        //Xử lý sự kiện đóng Pop up
         private void HandleClosePopup(Control popup)
         {
             this.Controls.Remove(popup);
@@ -136,6 +127,7 @@ namespace FoodOrderManagement.AdminControl
             _overlayBackground.Hide(this);
         }
 
+        //Xử lý sự kiện chọn hay rời thanh tìm kiếm
         private void SearchOrderTBox1_Enter(object sender, EventArgs e)
         {
             if (SearchOrderTBox1.PlaceholderText == "Số bàn...")
@@ -143,7 +135,6 @@ namespace FoodOrderManagement.AdminControl
                 SearchOrderTBox1.Text = "";
             }
         }
-
         private void SearchOrderTBox1_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(SearchOrderTBox1.Text))
@@ -152,6 +143,7 @@ namespace FoodOrderManagement.AdminControl
             }
         }
 
+        //Xử lý sự kiện lọc, tìm kiếm đơn
         private void SearchOrderTBox1_TextChanged(object sender, EventArgs e)
         {
             ApplyFilters();

@@ -10,14 +10,9 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 {
     public partial class UC_AddTable : UserControl
     {
-        private ITablesRepository _tablesRepository;
-
         public event EventHandler OnTableAdded;
-        public void SetRepository(ITablesRepository repo)
-        {
-            _tablesRepository = repo;
-        }
-
+        
+        //Sự kiện lưu thông tin bàn
         private async void BtnSave_Click(object sender, EventArgs e)
         {
             try
@@ -39,12 +34,6 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
-
-        private void BtnCancel_Click(object sender, EventArgs e)
-        {
-            this.Parent.Controls.Remove(this);
-            this.Dispose();
-        }
     }
 }
 
@@ -56,12 +45,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
     {
         public TableData CurrentData { get; private set; }
         public event EventHandler<TableData> OnTableClicked;
-
-        private void TriggerClick(object sender, EventArgs e)
-        {
-            OnTableClicked?.Invoke(this, CurrentData);
-        }
-
+        //Gán thông tin vào table item
         public void SetData(TableData data)
         {
             CurrentData = data;
@@ -71,7 +55,14 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
             CapacityLabel.Text = data.Capacity.ToString();
             UpdateUIByStatus(data.Status);
         }
-
+        public void SetData(int TableID, int Capacity, string Status)
+        {
+            NumberCircleLabel.Text = TableID.ToString();
+            NumberTableLabel.Text = "Bàn " + TableID.ToString();
+            CapacityLabel.Text = Capacity.ToString();
+            UpdateUIByStatus(Status);
+        }
+        //Cập nhập UI dựa vào trạng thái bàn
         public void UpdateUIByStatus(string status)
         {
             switch (status)
@@ -123,8 +114,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
     }
 }
 
-
-
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
 {
@@ -134,6 +124,7 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
         private readonly ITablesRepository _tablesRepository;
         public event EventHandler OnStatusChanged;
 
+        //Cập nhật trạng thái bàn
         private async void UpdateStatus(string newStatus, DateTime? openTime)
         {
             if (_tablesRepository == null) return;
@@ -152,7 +143,9 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
-    private void UpdateStatusUI(string status)
+
+        //Cập nhật UI dựa vào trạng thái bàn
+        private void UpdateStatusUI(string status)
         {
             switch (status)
             {
@@ -185,15 +178,56 @@ namespace FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable
                     break;
             }
         }
+        //Load thông tin của bàn
+        public async void LoadTableData(TableData data)
+        {
+            _currentTableId = data.TableId;
+            TableIdLabel.Text = data.TableName;
+            CustomerNameLabel.Text = "Khách hàng: Chưa có";
+            OrderIdLabel.Text = "Đơn hàng: Chưa có";
+            TimeReservedLabel.Text = "Thời gian: --";
+            try
+            {
+                if (data.Status == "Occupied")
+                {
+                    var order = await _ordersRepository.GetOrdersByTableIdAsync(_currentTableId);
+
+                    if (order != null)
+                    {
+                        var cus = await _customersRepository.GetCustomerByIdAsync(order.CustomerId);
+                        CustomerNameLabel.Text = "Khách hàng: " + (cus != null ? cus.FullName : "Khách vãng lai");
+                        OrderIdLabel.Text = "Đơn hàng: #" + order.Id;
+                        TimeReservedLabel.Text = "Giờ vào: " + order.OrderTime.ToString("HH:mm");
+                    }
+                }
+                else if (data.Status == "Reserved")
+                {
+                    var booking = await _reservationsRepository.GetUpcomingReservationByTableIdAsync(_currentTableId);
+
+                    if (booking != null)
+                    {
+                        var cus = await _customersRepository.GetCustomerByIdAsync(booking.customerId);
+                        CustomerNameLabel.Text = "Khách hàng: " + (cus != null ? cus.FullName : "Unknown");
+                        OrderIdLabel.Text = "Mã đặt: #" + booking.Id;
+                        TimeReservedLabel.Text = "Giờ hẹn: " + booking.ReservationTime.ToString("HH:mm dd/MM");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải thông tin chi tiết: " + ex.Message);
+            }
+            UpdateStatusUI(data.Status);
+        }
     }
 }
 
-
-
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
 namespace FoodOrderManagement.AdminControl
 {
     public partial class FormTable : Form
     {
+        //Load danh sách các bàn
         public async Task LoadTableList()
         {
             try
@@ -226,14 +260,12 @@ namespace FoodOrderManagement.AdminControl
             }
         }
 
-
+        //Hiển thị popup
         private void ShowAddTablePopup()
         {
             _overlayBackground.Show(this);
 
             var ucAdd = _scope.Resolve<UC_AddTable>();
-            ucAdd.SetRepository(_tablesRepository); 
-
             ucAdd.OnTableAdded += (s, args) =>
             {
                 LoadTableList(); 
@@ -248,6 +280,7 @@ namespace FoodOrderManagement.AdminControl
             ucAdd.BringToFront();
         }
 
+        //Hiển thị cập nhật trạng thái
         private void ShowUpdateStatusPopup(TableData data)
         {
             _overlayBackground.Show(this);
@@ -270,6 +303,8 @@ namespace FoodOrderManagement.AdminControl
             );
             ucUpdate.BringToFront();
         }
+
+        //Cập nhập thông tin
         private void UpdateStatisticsUI(List<Tables> tables)
         {
             if (tables == null) return;

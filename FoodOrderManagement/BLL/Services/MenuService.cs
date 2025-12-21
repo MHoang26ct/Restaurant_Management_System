@@ -20,6 +20,8 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
     {
 
         private OverlayBackground _overlayBackground;
+
+        //Hiện thị các món ăn đã chọn lên UI
         private void RenderFoodList(List<Foods> listToRender)
         {
             FlowLayoutFood.Controls.Clear();
@@ -44,6 +46,8 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             }
             FlowLayoutFood.ResumeLayout();
         }
+
+        //Lọc các món ăn
         public void ApplyFilter()
         {
             string keyword = SearchFoodTBox1.Text.ToLower().Trim();
@@ -53,7 +57,6 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
 
                 bool matchName = string.IsNullOrEmpty(keyword) || food.Name.ToLower().Contains(keyword);
                 bool matchCategory = false;
-
                 if (selectedCategory == "Tất cả")
                 {
                     matchCategory = true;
@@ -68,9 +71,10 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
 
                 return matchName && matchCategory;
             }).ToList();
-
             RenderFoodList(filteredList);
         }
+
+        //Tải các món ăn lên UI
         public async Task LoadFoodAsync()
         {
             try
@@ -85,15 +89,13 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             }
 
         }
+
+        //Sự kiện xóa món ăn
         private async void FoodItem_OnDeleteClicked(object sender, EventArgs e)
         {
             if (sender is UC_FoodItem foodItem)
             {
-                var result = MessageBox.Show("Bạn có chắc muốn xóa món này không?",
-                                             "Xác nhận xóa",
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
-
+                var result = MessageBox.Show("Bạn có chắc muốn xóa món này không?","Xác nhận xóa",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     try
@@ -114,6 +116,8 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 }
             }
         }
+
+        //Sự kiện Load FormMenu
         private async void FormMenu_Load(object sender, EventArgs e)
         {
             _overlayBackground = new OverlayBackground();
@@ -160,6 +164,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
     public partial class UC_AddFood : UserControl
     {
        
+        //Sự kiện chọn ảnh của món ăn
         private void ChoosePictureButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog op = new OpenFileDialog();
@@ -181,16 +186,17 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 }
             }
         }
-        // Lưu món ăn
+        // Sự kiện nhấn nút thêm món ăn 
         private async void AddFoodButton_Click(object sender, EventArgs e)
         {
+
+            //Kiểm tra thông tin món ăn có đầy đủ chưa 
             if (string.IsNullOrEmpty(NameFoodTBox.Text) || string.IsNullOrEmpty(PriceTBox.Text))
             {
                 MessageBox.Show("Vui lòng nhập tên món và giá tiền!", "Lỗi Thông Tin",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             if ( CatagorieFoodsCBox.SelectedItem.ToString() == "Tất cả")
             {
                 MessageBox.Show("Vui lòng chọn danh mục cụ thể (Ví dụ: Món chính/Món phụ...)" +
@@ -205,6 +211,8 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 MessageBox.Show("Vui lòng chọn ảnh!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            //Copy ảnh và lấy đường dẫn của ảnh
             string FinalImagePath = OldImagePath;
             if (!string.IsNullOrEmpty(CurrentImagePath) && !string.IsNullOrEmpty(TempImageName))
             {
@@ -228,6 +236,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 FinalImagePath = Path.Combine("Images", TempImageName);
             }
 
+            //Lưu thông tin món ăn vào database
             Foods NewFood = new Foods();
             {
                 NewFood.Name = NameFoodTBox.Text;
@@ -264,6 +273,8 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 MessageBox.Show("Lỗi khi thêm món ăn vào CSDL: " + ex.Message);
             }
         }
+
+        //Chỉnh UC thành UC chỉnh sửa thông tin
         public void SetEditData(Foods food)
         {
             EditingFoodId = food.Id;
@@ -308,6 +319,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
 {
     public partial class UC_FoodItem : UserControl
     {
+        //Lấy thông tin của món ăn từ và hiển thị lên UI
         public void SetData(int Id, string name, string price, string Catagories, string PicturePath, string Description)
         {
             FoodNameLabel.Text = name;
@@ -326,16 +338,22 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 PictureFood.BackgroundImage = null;
             }
         }
+
+        //Sự kiện xóa món ăn
         public event EventHandler OnDeleteClicked; 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             OnDeleteClicked?.Invoke(this, EventArgs.Empty);
         }
+
+        //Sự kiện chỉnh sửa món ăn
         public event EventHandler OnEditClicked;
         private void EditButton_Click(object sender, EventArgs e)
         {
             OnEditClicked?.Invoke(this, EventArgs.Empty);
         }
+
+        //Sự kiện hiển thị hình ảnh của món ăn
         private Image LoadImageSafe(string relativePath)
         {
             if (string.IsNullOrEmpty(relativePath)) return null;

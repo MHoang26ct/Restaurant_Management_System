@@ -14,7 +14,6 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
     {
         public event EventHandler<Employee> OnSaveClicked;
         public event EventHandler OnCancelClicked;
-        // public event OnAddEmployeeHandler OnAddClicked; // Sự kiện xác nhận
         private Employee _editingEmp = null;
 
         public UC_AddEmployee()
@@ -22,23 +21,7 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
             InitializeComponent();
         }
 
-        private void ConfirmButton_Click(object sender, EventArgs e)
-        {
-            Employee newEmp = new Employee
-            {
-                FullName = NameTbox.Text,
-                PhoneNumber = PhoneNumberTBox.Text,
-                Email = EmailTbox.Text,
-                Position = PositionTBox.Text,
-                HireDate = HireDateDTP.Value
-            };
-
-            OnSaveClicked?.Invoke(_editingEmp, newEmp);
-        }
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            OnCancelClicked?.Invoke(this, EventArgs.Empty);
-        }
+        //Đổi UC thành chế độ chỉnh sửa 
         public void SetModeEdit(Employee emp)
         {
             _editingEmp = emp;
@@ -49,8 +32,6 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
             EmailTbox.Text = emp.Email;
             PositionTBox.Text = emp.Position;
             HireDateDTP.Value = emp.HireDate;
-            // Tùy bạn có muốn khóa Tên hay Ngày không, thường thì cho sửa hết trừ ID
-            // NameTbox.Enabled = false;
             NameTbox.Enabled = false;
             PhoneNumberTBox.Enabled = false;
         }
@@ -84,16 +65,39 @@ namespace FoodOrderManagement.UI.Forms.EmployeManagement.UserControlOfEmployee
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        //Xử lý sự kiện chuột chọn nút xác nhận
         private void ConfirmButton_Enter(object sender, EventArgs e)
         {
             ConfirmButton.FillColor = Color.Chocolate;
             ConfirmButton.FillColor2 = Color.FromArgb(255, 128, 0);
         }
 
+        //Xử lý sự kiện chuột rời nút xác nhận
         private void ConfirmButton_Leave(object sender, EventArgs e)
         {
             ConfirmButton.FillColor = Color.FromArgb(255, 128, 0);
             ConfirmButton.FillColor2 = Color.Chocolate;
+        }
+
+        //Xử lý sự kiện nhấn nút xác nhận
+        private void ConfirmButton_Click(object sender, EventArgs e)
+        {
+            Employee newEmp = new Employee
+            {
+                FullName = NameTbox.Text,
+                PhoneNumber = PhoneNumberTBox.Text,
+                Email = EmailTbox.Text,
+                Position = PositionTBox.Text,
+                HireDate = HireDateDTP.Value
+            };
+
+            OnSaveClicked?.Invoke(_editingEmp, newEmp);
+        }
+
+        //Xử lý sự kiện nhấn nút thoát
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            OnCancelClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

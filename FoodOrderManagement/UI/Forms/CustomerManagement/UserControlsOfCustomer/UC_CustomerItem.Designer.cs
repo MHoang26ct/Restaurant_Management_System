@@ -237,7 +237,6 @@
             CustomerRank.TabIndex = 2;
             CustomerRank.TabStop = false;
             CustomerRank.Text = "PLATINUM";
-            CustomerRank.Click += CustomerRank_Click;
             // 
             // EditButton
             // 

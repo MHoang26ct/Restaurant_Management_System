@@ -24,7 +24,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         private readonly IOrdersRepository _ordersRepository;
         private readonly IOrderDetailsRepository _orderDetailsRepository;
         private readonly ICustomersRepository _customersRepository;
-        public event EventHandler<Orders> OnOrderCreated; // Thông báo cho cha khi có order được tạo
+        public event EventHandler<Orders> OnOrderCreated; 
         public UC_CreateOrder(ILifetimeScope scope, IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository, ICustomersRepository customersRepository)
         {
             InitializeComponent();
@@ -41,8 +41,6 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         //
         // TAB INDEX 
         //
-
-        // Sự kiện khi load UC_CreateOrder sẽ focus vào UC này
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -53,8 +51,7 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
         {
             // Kiểm tra nếu phím bấm là ESC
             if (keyData == Keys.Escape)
-            {
-                // Gọi hàm đóng 
+            { 
                 ExitButton_Click(null, null);
                 return true;
             }
@@ -64,15 +61,25 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                 // Ép nhảy về ô đầu tiên (TableID)
                 TableID_NBox.Focus();
                 TableID_NBox.Select();
-
-                // Trả về true để chặn Windows không tự nhảy đi lung tung nữa
                 return true;
             }
-
-            // Nếu không phải các phím trên thì hành xử như bình thường
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        //Sư kiện thêm món ăn
+        private void AddFoodButton_Click(object sender, EventArgs e)
+        {
+            ThemDongMonAn();
+        }
+        
+        //Sự kiện thóat
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Parent.Controls.Remove(this);
+            this.Dispose();
+        }
+
+        //Xử lý sự kiện chọn, rời nút thêm món ăn, tạo đơn
         private void AddFoodButton_Enter(object sender, EventArgs e)
         {
             AddFoodButton.BorderColor = Color.DarkOrange;

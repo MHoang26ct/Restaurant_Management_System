@@ -263,7 +263,6 @@
             TotalItemsLabel.Size = new Size(95, 42);
             TotalItemsLabel.TabIndex = 0;
             TotalItemsLabel.Text = "Tổng tiền:";
-            TotalItemsLabel.Click += TotalItemsLabel_Click;
             // 
             // InfomationLabel
             // 

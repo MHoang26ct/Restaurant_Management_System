@@ -27,5 +27,9 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
             LoadFoodToComboBox();
 
         }
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            OnDeleteRequest?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

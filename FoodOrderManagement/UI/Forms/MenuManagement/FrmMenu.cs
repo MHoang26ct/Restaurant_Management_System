@@ -32,6 +32,7 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             _uc_AddFood = _scope.Resolve<UC_AddFood>();
         }
 
+        //Sự kiện nhấn nút thêm món ăn
         private void AddFoodButton_Click(object sender, EventArgs e)
         {
             _uc_AddFood.ResetForm();
@@ -43,6 +44,8 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
             _uc_AddFood.BringToFront();
         }
 
+
+        //Sự kiện chọn và rời thanh tìm kiếm
         private void SearchFoodTBox1_Enter(object sender, EventArgs e)
         {
             if (SearchFoodTBox1.PlaceholderText == "Tìm kiếm món ăn...")
@@ -50,7 +53,6 @@ namespace FoodOrderManagement.UI.Forms.MenuManagement
                 SearchFoodTBox1.Text = "";
             }
         }
-
         private void SearchFoodTBox1_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(SearchFoodTBox1.Text))

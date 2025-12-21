@@ -33,15 +33,5 @@ namespace FoodOrderManagement.AdminControl
 
             LoadTableList();
         }
-        private void ShowAddTable()
-        {
-            uc_AddTable.ResetData();
-            uc_AddTable.Location = new Point(
-                (this.Width - uc_AddTable.Width) / 2,
-                (this.Height - uc_AddTable.Height) / 2
-            );
-            uc_AddTable.Visible = true;
-            uc_AddTable.BringToFront();
-        }
     }
 }

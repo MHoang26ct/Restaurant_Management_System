@@ -29,6 +29,7 @@ namespace FoodOrderManagement.AdminControl
             _overlayBackground = new OverlayBackground();
         }
 
+        //Thay đổi kích thước để đồng bộ
         private void FlowLayoutEmployee_Resize(object sender, EventArgs e)
         {
             foreach (Control item in FlowLayoutEmployee.Controls)

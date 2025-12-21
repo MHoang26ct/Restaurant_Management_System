@@ -7,6 +7,7 @@
             await LoadDashboardData();
         }
 
+        //Load thông tin thông số bán hàng lên UI
         private async Task LoadDashboardData()
         {
             try
@@ -32,6 +33,7 @@
             }
         }
 
+        //Cập nhập thông số bán hàng 
         private void UpdateGrowthLabel(Label lblPercent, PictureBox picTrend, decimal current, decimal past)
         {
             picTrend.SizeMode = PictureBoxSizeMode.Zoom;

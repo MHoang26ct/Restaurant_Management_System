@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Autofac;
+using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,30 +26,35 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
             // Kiểm tra nếu phím bấm là ESC
             if (keyData == Keys.Escape)
             {
-                // Gọi hàm đóng 
                 ExitButton_Click(null, null);
                 return true;
             }
             // Tạo vòng lặp tab không cho tab nhảy lung tung ra ngoài form cha
             if (keyData == Keys.Tab && CreateReservationButton.Focused)
             {
-                // Ép nhảy về ô đầu tiên (TableID)
                 TableID_NBox.Focus();
                 TableID_NBox.Select();
-
-                // Trả về true để chặn Windows không tự nhảy đi lung tung nữa
                 return true;
             }
-
-            // Nếu không phải các phím trên thì hành xử như bình thường
             return base.ProcessCmdKey(ref msg, keyData);
         }
+        
+        //Sự kiện nhán nút thêm nón ăn
+        private void btnAddFood_Click(object sender, EventArgs e)
+        {
+            if (ListFoodFlowLayout == null) { MessageBox.Show("Thiếu FlowLayoutPanel 'pnlFoodList' trên giao diện!"); return; }
+
+            var row = _scope.Resolve<UC_AddFoodOrder>();
+            row.Width = ListFoodFlowLayout.Width - 25;
+            ListFoodFlowLayout.Controls.Add(row);
+        }
+
+        //Sự kiện chọn hoặc rời nút thêm món ăn, đặt bàn
         private void AddFoodButton_Enter(object sender, EventArgs e)
         {
             AddFoodButton.BorderColor = Color.DarkOrange;
             AddFoodButton.FillColor = Color.DarkGray;
         }
-
         private void AddFoodButton_Leave(object sender, EventArgs e)
         {
             AddFoodButton.BorderColor = Color.Silver;
@@ -64,34 +71,17 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
             CreateReservationButton.FillColor2 = Color.Chocolate;
         }
 
-        //public event EventHandler OnExitClicked;
-        //public UC_CreateReservation()
-        //{
-        //    InitializeComponent();
-        //    this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-        //}
+        //Sự kiện nhấn nút thoát
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            OnExitClicked?.Invoke(this, EventArgs.Empty);
+            this.Dispose();
+        }
 
-        //private void ExitButton_Click(object sender, EventArgs e)
-        //{
-        //    OnExitClicked?.Invoke(this, EventArgs.Empty);
-        //    this.Dispose();
-        //}
-
-        //private void PhoneNumberTBox_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); // chỉ cho nhập số
-        //}
-
-        //private void CreateOrderButton_Click(object sender, EventArgs e)
-        //{
-        //    if (TimeReservationCBox.SelectedIndex == -1)
-        //    {
-        //        MessageBox.Show("Vui lòng chọn khung giờ đặt bàn",
-        //                        "Thông báo",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Warning);
-        //        return;
-        //    }
-        //}
+        //Chỉ cho nhập số ở SĐT
+        private void PhoneNumberTBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }

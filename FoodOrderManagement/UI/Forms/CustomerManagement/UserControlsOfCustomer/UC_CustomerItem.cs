@@ -13,27 +13,23 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
 {
     public partial class UC_CustomerItem : UserControl
     {
-        private Customers _currentCustomer; // khai báo lưu biến toàn cục
+        private Customers _currentCustomer;
         public event EventHandler<Customers> OnEditClicked;
         public event EventHandler<Customers> OnDeleteClicked;
         public UC_CustomerItem()
         {
             InitializeComponent();
         }
+
+        //Gán thông tin của khách hàng vào UI
         public void SetCustomerData(Customers customer)
         {
             _currentCustomer = customer;
-
-            // 1. Gán dữ liệu cơ bản
             CustomerNameLabel.Text = customer.FullName;
             PhoneNumber.Text = customer.PhoneNumber;
             Email.Text = customer.Email;
-
-            // Format tiền tệ
             TotalSpent.Text = customer.TotalSpent.ToString("#,##0") + " VNĐ";
             TotalVisit.Text = customer.TotalVisits.ToString();
-
-            // Xử lý ngày ghé gần nhất
             if (customer.LastVisitDate == DateTime.MinValue)
             {
                 LastVisitDate.Text = "Chưa đến";
@@ -43,33 +39,24 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
                 LastVisitDate.Text = customer.LastVisitDate.ToString("dd/MM/yyyy");
             }
 
-            this.Tag = customer.Id; // Lưu ID để dùng sau này
-
-            // ==========================================================
-            // 2. LOGIC TÍNH RANK (Dựa trên số tiền chi tiêu)
-            // ==========================================================
-            string rank = "Regular"; // Mặc định
+            //Phần rank của khách hàng
+            this.Tag = customer.Id; 
+            string rank = "Regular";
             decimal spent = customer.TotalSpent;
 
-            if (spent >= 50000000) // 50 triệu
+            if (spent >= 50000000) 
             {
                 rank = "Platinum";
             }
-            else if (spent >= 10000000) // 10 triệu
+            else if (spent >= 10000000) 
             {
                 rank = "Gold";
             }
-            else if (spent >= 2000000) // 2 triệu
+            else if (spent >= 2000000)
             {
                 rank = "Silver";
             }
-
-            // Gán text hiển thị rank
             CustomerRank.Text = rank.ToUpper();
-
-            // ==========================================================
-            // 3. LOGIC ĐỔI MÀU GIAO DIỆN THEO RANK
-            // ==========================================================
             switch (rank.ToLower())
             {
                 case "silver": // Hạng Bạc (>= 2tr)
@@ -89,11 +76,11 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
                 case "gold": // Hạng Vàng (>= 10tr)
                     RankBackground.CustomBorderColor = Color.Gold;
                     RankCirclePanel.FillColor = Color.Gold;
-                    RankCirclePanel.FillColor2 = Color.FromArgb(255, 128, 0); // Cam đậm
+                    RankCirclePanel.FillColor2 = Color.FromArgb(255, 128, 0); 
 
                     CustomerRank.BorderColor = Color.Gold;
-                    CustomerRank.ForeColor = Color.Chocolate; // Màu chữ nâu vàng
-                    CustomerRank.FillColor = Color.FromArgb(255, 255, 192); // Vàng nhạt
+                    CustomerRank.ForeColor = Color.Chocolate; 
+                    CustomerRank.FillColor = Color.FromArgb(255, 255, 192); 
                     CustomerRank.FillColor2 = Color.FromArgb(255, 255, 192);
 
                     PhoneNumber.BorderColor = Color.Gold;
@@ -107,7 +94,6 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
 
                     CustomerRank.BorderColor = Color.Firebrick;
                     CustomerRank.ForeColor = Color.Firebrick;
-                    // Sửa cú pháp màu lỗi của bạn: Color.255, 192, 192 -> Color.FromArgb(...)
                     CustomerRank.FillColor = Color.FromArgb(255, 192, 192);
                     CustomerRank.FillColor2 = Color.FromArgb(255, 192, 192);
 
@@ -131,11 +117,7 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
             }
         }
 
-        private void CustomerRank_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //Sự kiện nhấn nút chỉnh sửa 
         private void EditButton_Click(object sender, EventArgs e)
         {
             if (_currentCustomer != null)
@@ -144,6 +126,8 @@ namespace FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer
             }
         }
 
+
+        //Sự kiện nhấn nút xóa
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             OnDeleteClicked?.Invoke(this, _currentCustomer);

@@ -40,8 +40,7 @@ namespace FoodOrderManagement.UI
             }
             catch (Exception)
             {
-                // [QUAN TRỌNG]
-                // Nếu chụp thất bại (do máy lag, form lỗi...), ta bỏ qua bước chụp ảnh.
+                // Nếu chụp thất bại (do máy lag, form lỗi...), bỏ qua bước chụp ảnh.
                 // Giải phóng biến ảnh nếu lỡ tạo ra rồi mà lỗi
                 if (_screenshot != null)
                 {
@@ -65,9 +64,7 @@ namespace FoodOrderManagement.UI
             else
             {
                 // Nếu chụp thất bại -> Dùng màu đen thuần (Fallback an toàn)
-                // Tuy không nhìn xuyên thấu đẹp bằng, nhưng đảm bảo KHÔNG CRASH
                 _overlay.BackColor = Color.Black;
-                // Mẹo: Dùng BackColor thay vì FillColor để tránh lỗi trong suốt của WinForms
             }
 
             // --- BƯỚC 3: HIỂN THỊ ---
