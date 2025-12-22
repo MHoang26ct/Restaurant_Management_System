@@ -155,5 +155,5 @@ GO
 
 -- Kiểm tra Trạng thái Đặt bàn
 ALTER TABLE Reservations ADD CONSTRAINT CHK_ReservationStatus
-    CHECK (status IN ('Pending', 'Cancelled', 'Completed'))
+    CHECK (status IN ('Pending', 'Cancelled', 'Completed', 'Upcoming'))
 GO

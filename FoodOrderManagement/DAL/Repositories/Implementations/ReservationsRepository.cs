@@ -139,12 +139,6 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
             return rowsAffected > 0;
         }
 
-        // Lấy danh sách tất cả đặt bàn dưới dạng entity
-        public async Task<List<Reservations>> GetAllReservationsEntityAsync()
-        {
-            return await _db.GetListAsync("GetAllReservations", Mapper);
-        }
-
         // Lấy đặt bàn sắp tới theo TableId
         public async Task<Reservations> GetUpcomingReservationByTableIdAsync(int tableId)
         {

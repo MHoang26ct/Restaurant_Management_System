@@ -60,12 +60,6 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         public Task<List<ReservationViewModel>> GetAllReservationsAsync();
 
         /// <summary>
-        /// Lấy danh sách tất cả đặt bàn dưới dạng entity
-        /// </summary>
-        /// <returns></returns>
-        public Task<List<Reservations>> GetAllReservationsEntityAsync();
-
-        /// <summary>
         /// Xóa đặt bàn
         /// </summary>
         /// <param name="reservationId"></param>

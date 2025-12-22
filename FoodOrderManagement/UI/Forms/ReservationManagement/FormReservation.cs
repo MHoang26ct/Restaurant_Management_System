@@ -65,7 +65,7 @@ namespace FoodOrderManagement.AdminControl
             timer1.Stop();
             try
             {
-                var reservationList = await _reservationsRepository.GetAllReservationsEntityAsync();
+                var reservationList = await _reservationsRepository.GetAllUpcomingReservationsAsync();
                 var currentTime = DateTime.Now;
                 bool ifChanged = false;
                 List<int> upcomingIds = new List<int>();

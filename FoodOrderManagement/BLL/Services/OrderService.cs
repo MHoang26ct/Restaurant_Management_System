@@ -111,9 +111,15 @@ namespace FoodOrderManagement.AdminControl
 
                         // Lưu xuống database
                         await _reservationsRepository.UpdateReservationAsync(reservation);
+
+                        // Tải lại danh sách đặt bàn trong FormReservation
+                        await _formReservation.LoadReservationList();
                     }
                 }
+                // Tải lại danh sách khách hàng
+                _formCustomer.LoadCustomerList();
                 ApplyFilters();
+
             }
             catch (Exception ex)
             {
@@ -387,14 +393,13 @@ namespace FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder
                          $"--------------------------\n" +
                          $"THÀNH TIỀN: {finalTotal:N0} VND";
 
-                    MessageBox.Show(msg, "Xác nhận thay đổi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(msg, "Xác nhận đơn hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await _orderDetailsRepository.AddListOrderDetailAsync(details);
                     if (_existingOrderData != null)
                     {
                         _existingOrderData.TotalAmount = finalTotal;
                     }
                     OnOrderCreated?.Invoke(this, _existingOrderData);
-                    MessageBox.Show("Cập nhật đơn hàng thành công!");
 
                     this.Parent?.Controls.Remove(this);
                     this.Dispose();

@@ -24,11 +24,13 @@ namespace FoodOrderManagement.AdminControl
         private readonly IOrdersRepository _ordersRepository;
         private readonly IOrderDetailsRepository _orderDetailsRepository;
         private readonly IReservationsRepository _reservationsRepository;
+        private readonly FormReservation _formReservation;
+        private readonly FormCustomer _formCustomer;
         UC_CreateOrder _ucCreateOrder;
         UC_ViewDetails _ucViewDetails;
         public UC_OrderItem _uc_OrderItem;
         OverlayBackground _overlayBackground;
-        public FormOrder(ILifetimeScope scope, IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository, IReservationsRepository reservationsRepository)
+        public FormOrder(ILifetimeScope scope, IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository, IReservationsRepository reservationsRepository, FormReservation formReservation, FormCustomer formCustomer)
         {
             InitializeComponent();
             _scope = scope;
@@ -38,6 +40,8 @@ namespace FoodOrderManagement.AdminControl
             _orderDetailsRepository = orderDetailsRepository;
             _overlayBackground = new OverlayBackground();
             _reservationsRepository = reservationsRepository;
+            _formCustomer = formCustomer;
+            _formReservation = formReservation;
         }
 
         //Sự kiện nhấn nút đơn mới
