@@ -9,10 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO; // Thêm ảnh món ăn
-using static FoodOrderManagement.UI.Forms.MenuManagement.FrmMenu;
+using FoodOrderManagement.UI.Forms.MenuManagement;
 
-
-namespace FoodOrderManagement.AdminControl.FormMenu
+namespace FoodOrderManagement.UI.Forms.MenuManagement
 {
     public partial class UC_FoodItem : UserControl
     {

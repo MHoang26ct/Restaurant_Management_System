@@ -19,11 +19,11 @@ GO
 
 -- 3. Tạo Bảng Employees (Thông tin nhân viên)
 CREATE TABLE Employees (
-    FullName varchar(50) NOT NULL,
+    FullName nvarchar(100) NOT NULL,
     PhoneNumber varchar(15) NOT NULL UNIQUE,
-    Email varchar(100) NOT NULL UNIQUE,
+    Email varchar(100) NULL,
     HireDate datetime,
-    Position varchar(50),
+    Position nvarchar(100),
     PRIMARY KEY (FullName, PhoneNumber) -- Khóa chính kết hợp
 )
 GO
@@ -31,9 +31,9 @@ GO
 -- 4. Tạo Bảng Customers (Thông tin khách hàng)
 CREATE TABLE Customers (
     CustomerID int IDENTITY(1,1) PRIMARY KEY,  
-    FullName varchar(50) NOT NULL,
-    Email varchar(100) NOT NULL UNIQUE,
-    PhoneNumber varchar(15),
+    FullName nvarchar(100) NOT NULL,
+    Email varchar(100) NULL,
+    PhoneNumber varchar(15) NOT NULL,
     LastVisitDate datetime NULL, -- Ngày ghé thăm gần nhất
     TotalVisits int DEFAULT 0,   -- Tổng số lần ghé
     TotalSpent decimal(15, 2) DEFAULT 0, -- Tổng chi tiêu
@@ -53,7 +53,7 @@ GO
 -- 6. Tạo Bảng Foods (Thực đơn món ăn)
 CREATE TABLE Foods (
     FoodID int IDENTITY(1,1) PRIMARY KEY,  
-    FoodName varchar(100) NOT NULL,
+    FoodName nvarchar(200) NOT NULL,
     Price decimal(10, 2) NOT NULL,
     Category varchar(50),
     ImagePath varchar(500) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE Orders (
     TableID int NOT NULL,
     CustomerID int NOT NULL,
     OrderTime datetime NOT NULL,
-    TotalAmount decimal(10, 2) NOT NULL, -- Tổng tiền (sẽ được Trigger tự động tính toán)
+    TotalAmount decimal(10, 2) NOT NULL DEFAULT 0, -- Tổng tiền (sẽ được Trigger tự động tính toán)
     NumberOfGuests int NOT NULL,
     TimeCheckout datetime NULL,          -- Thời điểm thanh toán
     FOREIGN KEY (TableID) REFERENCES Tables(TableID),
@@ -97,8 +97,7 @@ CREATE TABLE OrderDetails (
     OrderID int NOT NULL,
     FoodID int NOT NULL,
     Quantity int NOT NULL,
-    Notes varchar(255),
-    OrderStatus varchar(20) NOT NULL, -- Trạng thái món (Pending, In Progress, Completed, Cancelled)
+    Notes varchar(255)
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
     FOREIGN KEY (FoodID) REFERENCES Foods(FoodID)
 )
@@ -113,10 +112,6 @@ ALTER TABLE Tables ADD CONSTRAINT CHK_TableStatus
     CHECK (TableStatus IN ('Available', 'Occupied', 'Reserved'))
 GO
 
--- Kiểm tra Trạng thái Chi tiết Đơn hàng
-ALTER TABLE OrderDetails ADD CONSTRAINT CHK_OrderStatus
-    CHECK (OrderStatus IN ('Pending', 'In Progress', 'Completed', 'Cancelled'))
-GO
 
 -- Kiểm tra Vai trò Người dùng (0 hoặc 1)
 ALTER TABLE Users ADD CONSTRAINT CHK_UserRole
@@ -160,4 +155,5 @@ GO
 
 -- Kiểm tra Trạng thái Đặt bàn
 ALTER TABLE Reservations ADD CONSTRAINT CHK_ReservationStatus
-    CHECK (status IN ('Pending', 'Cancelled', 'Completed'))
+    CHECK (status IN ('Pending', 'Cancelled', 'Completed', 'Upcoming'))
+GO

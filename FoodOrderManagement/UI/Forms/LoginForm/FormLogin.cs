@@ -5,6 +5,7 @@ using FoodOrderManagement.DAL.Repositories.Implementations;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
 using FoodOrderManagement.Properties;
 using System.Drawing.Imaging;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
@@ -23,10 +24,6 @@ namespace FoodOrderManagement
             _scope = scope;
         }
 
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         //PlaceholderText Username
         private void TextUsername_Enter(object sender, EventArgs e)
         {
@@ -60,6 +57,7 @@ namespace FoodOrderManagement
             }
         }
 
+        //Sự kiện nhấn nút tiếp tục (nút đăng nhập)
         private async void ContinueButton_Click(object sender, EventArgs e)
         {
 
@@ -84,16 +82,19 @@ namespace FoodOrderManagement
                     Properties.Settings.Default.Password = string.Empty;
                     Properties.Settings.Default.Save();
                 }
-                frmMain frmMain = _scope.Resolve<frmMain>();
-                frmMain.Show();
+
+                FormMain FormMain = _scope.Resolve<FormMain>();
+                FormMain.Show();
                 this.Hide();
             }
             else
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng, vui lòng nhập lại", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                UsernameLabel.Focus();
             }
         }
 
+        //Sự kiện hiện mật khẩu
         private void ShowPWBox_CheckedChanged(object sender, EventArgs e)
         {
             if (PasswordTextbox.PasswordChar == '*')
@@ -107,11 +108,13 @@ namespace FoodOrderManagement
 
         }
 
+        //Sự kiện đóng form ( đóng ứng dụng)
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-
+        
+        //Sự kiện Load 
         private void FormLogin_FormLoad(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.RememberMe)
@@ -127,10 +130,36 @@ namespace FoodOrderManagement
                 RememberBox.CheckState = CheckState.Unchecked;
             }
         }
+        
 
-        private void UsernameTextbox_TextChanged(object sender, EventArgs e)
+        //Sự kiện nhập tên đăng nhập, mật khẩu 
+        private void UsernameTextbox_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                PasswordTextbox.Focus();
+            }
+        }
+        private void PasswordTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                ContinueButton.PerformClick();
+            }
+        }
+        private void FormLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+               DialogResult result =  MessageBox.Show("Bạn có chắc muốn đóng ứng dụng?", "Thông báo", 
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK) 
+                {
+                    Application.Exit();
+                }
+            }
         }
     }
 }

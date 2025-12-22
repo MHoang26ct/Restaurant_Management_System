@@ -1,8 +1,11 @@
 using Autofac;
-using FoodOrderManagement.AdminControl.FormMenu;
 using FoodOrderManagement.DAL.Repositories.Implementations;
 using FoodOrderManagement.DAL.Repositories.Interfaces;
+using FoodOrderManagement.UI.Forms;
+using FoodOrderManagement.UI.Forms.CustomerManagement.UserControlsOfCustomer;
 using FoodOrderManagement.UI.Forms.MenuManagement;
+using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
+using FoodOrderManagement.UI.Forms.TableManagement.UserControlOfTable;
 
 namespace FoodOrderManagement.AdminControl {
     internal static class Program {
@@ -29,16 +32,27 @@ namespace FoodOrderManagement.AdminControl {
             // 2. Đăng ký Form chính (Rất quan trọng)
             // Autofac cần biết cách tạo MainForm
             builder.RegisterType<FormLogin>();
-            builder.RegisterType<frmMain>();
-            builder.RegisterType<FormDashboard>();
-            builder.RegisterType<FrmMenu>();
-            builder.RegisterType<FormOrder>();
-            builder.RegisterType<FormTable>();
-            builder.RegisterType<FormCustomer>();
-            builder.RegisterType<FormReport>();
-            builder.RegisterType<FormEmployee>();
+            builder.RegisterType<FormMain>().SingleInstance();
+            builder.RegisterType<FormDashboard>().SingleInstance();
+            builder.RegisterType<FrmMenu>().SingleInstance();
+            builder.RegisterType<FormOrder>().SingleInstance();
+            builder.RegisterType<FormTable>().SingleInstance();
+            builder.RegisterType<FormCustomer>().SingleInstance();
+            builder.RegisterType<FormReservation>().SingleInstance();
+            builder.RegisterType<FormEmployee>().SingleInstance();
+            builder.RegisterType<FormCustomer>().SingleInstance();
             builder.RegisterType<UC_AddFood>();
             builder.RegisterType<UC_FoodItem>();
+            builder.RegisterType<UC_CreateOrder>();
+            builder.RegisterType<UC_AddFoodOrder>();
+            builder.RegisterType<UC_OrderItem>();
+            builder.RegisterType<UC_ViewDetails>();
+            builder.RegisterType<UC_TableItem>();
+            builder.RegisterType<UC_AddTable>();
+            builder.RegisterType<UC_UpdateStatus>();
+            builder.RegisterType<UC_AddTableCard>();
+            builder.RegisterType<UC_AddCustomer>();
+            builder.RegisterType<UC_CustomerItem>();
 
             // 3. Xây dựng Container
             var container = builder.Build();
