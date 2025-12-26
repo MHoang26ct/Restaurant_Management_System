@@ -198,7 +198,7 @@ namespace FoodOrderManagement
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Escape)
             {
                 DialogResult result = MessageBox.Show("Bạn có chắc muốn đóng ứng dụng?", "Thông báo",
                      MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -207,6 +207,30 @@ namespace FoodOrderManagement
                     Application.Exit();
                 }
             }
+        }
+
+        // Lock all the buttons in the navigation panel except the current one
+        public void LockNavigationButtons(Form currentForm)
+        {
+            DashboardButton.Enabled = currentForm == _formDashboard;
+            MenuButton.Enabled = currentForm == _formMenu;
+            OrderButton.Enabled = currentForm == _formOrder;
+            TableButton.Enabled = currentForm == _formTable;
+            CustomerButton.Enabled = currentForm == _formCustomer;
+            ReservationButton.Enabled = currentForm == _formReservation;
+            EmployeesButton.Enabled = currentForm == _formEmployee;
+        }
+
+        // Unlock all the buttons in the navigation panel
+        public void UnlockNavigationButtons()
+        {
+            DashboardButton.Enabled = true;
+            MenuButton.Enabled = true;
+            OrderButton.Enabled = true;
+            TableButton.Enabled = true;
+            CustomerButton.Enabled = true;
+            ReservationButton.Enabled = true;
+            EmployeesButton.Enabled = true;
         }
     }
 }
