@@ -27,11 +27,12 @@ namespace FoodOrderManagement.AdminControl
         private readonly IOrderDetailsRepository _orderDetailsRepository;
         private readonly ITablesRepository _tablesRepository;
         private readonly FormTable _formTable;
+        private readonly Lazy<FormOrder> _formOrder;
         private OverlayBackground _overlayBackground;
         private UC_CreateReservation uc_CreateReservation;
         private List<ReservationViewModel> _originalList = new List<ReservationViewModel>();
         public FormReservation(ILifetimeScope scope, IReservationsRepository reservationsRepository, ICustomersRepository customersRepository,
-                               IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository, ITablesRepository tablesRepository, FormTable formTable)
+                               IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository, ITablesRepository tablesRepository, FormTable formTable, Lazy<FormOrder> formOrder)
         {
             InitializeComponent();
             _scope = scope;
@@ -42,6 +43,7 @@ namespace FoodOrderManagement.AdminControl
             _tablesRepository = tablesRepository;
 
             _formTable = formTable;
+            _formOrder = formOrder;
 
             _overlayBackground = new OverlayBackground();
             AddActionButtons();

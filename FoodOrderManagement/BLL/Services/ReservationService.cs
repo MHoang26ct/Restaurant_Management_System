@@ -213,6 +213,7 @@ namespace FoodOrderManagement.AdminControl
                             item.OrderId = newOrderId;
                         }
                         await _orderDetailsRepository.AddListOrderDetailAsync(foodList);
+                        _formOrder.Value.LoadAllOrders();
                     }
 
                     MessageBox.Show("Đặt bàn thành công!");

@@ -118,6 +118,13 @@ namespace FoodOrderManagement.AdminControl
                 }
                 // Tải lại danh sách khách hàng
                 _formCustomer.LoadCustomerList();
+
+                // Cap nhat lai trang thai ban
+                await _tablesRepository.UpdateTableStatusAndOpenTimeAsync(updatedOrder.TableId, "Available", null);
+
+                // Tai lai danh sach ban trong FormTable
+                await _formTable.LoadTableList();
+
                 ApplyFilters();
 
             }
