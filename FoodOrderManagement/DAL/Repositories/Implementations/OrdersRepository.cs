@@ -99,6 +99,18 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
         public async Task<List<Orders>> GetAllOrdersAsync() {
             return await _db.GetListAsync("GetAllOrders", Mapper);
         }
+
+        // Xóa các order theo mã đặt bàn (khi hủy đặt bàn)
+        public async Task DeleteOrdersByReservationIdAsync(int reservationId)
+        {
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ReservationID", reservationId)
+            };
+            await _db.ExecuteNonQueryAsync("DeleteOrderByReservation", parameters);
+        }
+
+        // Cập nhật tổng tiền cho order
         public async Task UpdateOrderTotalAsync(int orderId, decimal total)
         {
             var parameters = new SqlParameter[]

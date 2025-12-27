@@ -7,7 +7,9 @@ using FoodOrderManagement.UI.Forms.MenuManagement;
 using FoodOrderManagement.UI.Forms.OrderManagement.UserControlOfOrder;
 using FoodOrderManagement.UI.Forms.ReservationManagement;
 using FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReservation;
+using System.Runtime.InteropServices.Marshalling;
 using static System.Formats.Asn1.AsnWriter;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReservation
 {
     public partial class UC_CreateReservation : UserControl
@@ -16,7 +18,7 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
         public event EventHandler OnExitClicked;
 
         private readonly ILifetimeScope _scope;
-        public event Action<int, string, string, Reservations> OnUpdateClicked;
+        public event Action<int, string, string, Reservations, List<orderDetail>> OnUpdateClicked;
         private int _editingReservationId = 0;
         public UC_CreateReservation(ILifetimeScope scope)
         {
@@ -59,47 +61,59 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
                 Status = "Pending",
                 customerId = 0
             };
-            if (_editingReservationId == 0)
+            List<orderDetail> foodList = new List<orderDetail>();
+            if (ListFoodFlowLayout != null)
             {
-                List<orderDetail> foodList = new List<orderDetail>();
-                if (ListFoodFlowLayout != null)
+                foreach (Control c in ListFoodFlowLayout.Controls)
                 {
-                    foreach (Control c in ListFoodFlowLayout.Controls)
+                    if (c is UC_AddFoodOrder row && row.SelectedFoodId > 0 && row.Quantity > 0)
                     {
-                        if (c is UC_AddFoodOrder row && row.SelectedFoodId > 0 && row.Quantity > 0)
+                        foodList.Add(new orderDetail
                         {
-                            foodList.Add(new orderDetail
-                            {
-                                FoodId = row.SelectedFoodId,
-                                Quantity = row.Quantity
-                            });
-                        }
+                            FoodId = row.SelectedFoodId,
+                            Quantity = row.Quantity
+                        });
                     }
                 }
+            }
+
+            if (_editingReservationId == 0)
+            {
                 OnCreateClicked?.Invoke(name, phone, res, foodList);
             }
             else
             {
-                OnUpdateClicked?.Invoke(_editingReservationId, name, phone, res);
+                OnUpdateClicked?.Invoke(_editingReservationId, name, phone, res, foodList);
             }
         }
 
         //Gán thông tin đặt bàn
-        public void SetReservationData(Reservations res, string cusName, string cusPhone)
+        public void SetReservationData(Reservations res, string cusName, string cusPhone, List<orderDetail> details)
         {
-            _editingReservationId = res.Id; 
+            _editingReservationId = res.Id;
             CustomerNameTBox.Text = cusName;
             PhoneNumberTBox.Text = cusPhone;
             TableID_NBox.Value = res.TableId;
             NumberOfGuest.Value = res.NumberOfGuests;
             DateReservation.Value = res.ReservationTime;
+
             string timeString = res.ReservationTime.ToString("H:mm");
             int index = TimeReservationCBox.FindStringExact(timeString);
-            if (index != -1)
-            {
-                TimeReservationCBox.SelectedIndex = index;
-            }
+            if (index != -1) TimeReservationCBox.SelectedIndex = index;
+
             CreateReservationButton.Text = "Cập Nhật Đặt Bàn";
+
+            // Xóa danh sách cũ và load danh sách món ăn đã đặt
+            ListFoodFlowLayout.Controls.Clear();
+            if (details != null && details.Count > 0)
+            {
+                ListFoodFlowLayout.SuspendLayout();
+                foreach (var item in details)
+                {
+                    AddFoodRowToUI(item.FoodId, item.Quantity);
+                }
+                ListFoodFlowLayout.ResumeLayout();
+            }
         }
     }
 }
@@ -249,14 +263,29 @@ namespace FoodOrderManagement.AdminControl
 
             if (dgvReservations.Columns[e.ColumnIndex].Name == "btnDelete")
             {
-                if (MessageBox.Show("Bạn có chắc chắn muốn xóa đơn đặt bàn này?", "Xác nhận",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show("Bạn có chắc chắn muốn xóa đơn đặt bàn này?\n(Cảnh báo: Đơn hàng và món ăn liên quan cũng sẽ bị xóa)",
+                        "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     try
                     {
+                        var booking = await _reservationsRepository.GetReservationByReservationIdAsync(reservationId);
+                        await _ordersRepository.DeleteOrdersByReservationIdAsync(reservationId);
                         await _reservationsRepository.DeleteReservationAsync(reservationId);
-                        LoadReservationList();
+                        if (booking != null)
+                        {
+                            await _tablesRepository.UpdateTableStatusAndOpenTimeAsync(booking.TableId, "Available", null);
+                        }
+
                         MessageBox.Show("Xóa thành công!");
+                        LoadReservationList();
+                        if (_formOrder != null && _formOrder.IsValueCreated && !_formOrder.Value.IsDisposed)
+                        {
+                            _formOrder.Value.LoadAllOrders();
+                        }
+                        if (_formTable != null && !_formTable.IsDisposed)
+                        {
+                            await _formTable.LoadTableList();
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -269,6 +298,13 @@ namespace FoodOrderManagement.AdminControl
         //Xử lý sự kiện chỉnh sửa
         private async void HandleEditBooking(int reservationId)
         {
+            List<orderDetail> details = new List<orderDetail>();
+            var orders = await _ordersRepository.GetOrdersByReservationIdAsync(reservationId);
+            var order = orders.FirstOrDefault();
+            if (order != null)
+            {
+                details = await _orderDetailsRepository.GetOrderDetailsByOrderIdAsync(order.Id);
+            }
             var booking = await _reservationsRepository.GetReservationByReservationIdAsync(reservationId);
             if (booking == null) return;
 
@@ -279,9 +315,9 @@ namespace FoodOrderManagement.AdminControl
             _overlayBackground.Show(this);
             uc_CreateReservation = new UC_CreateReservation(_scope);
 
-            uc_CreateReservation.SetReservationData(booking, cusName, cusPhone);
+            uc_CreateReservation.SetReservationData(booking, cusName, cusPhone, details);
 
-            uc_CreateReservation.OnUpdateClicked += async (id, name, phone, updatedRes) =>
+            uc_CreateReservation.OnUpdateClicked += async (id, name, phone, updatedRes, foodList) =>
             {
                 try
                 {
@@ -293,7 +329,19 @@ namespace FoodOrderManagement.AdminControl
                     }
 
                     await _reservationsRepository.UpdateReservationAsync(updatedRes);
-
+                    var linkedOrders = await _ordersRepository.GetOrdersByReservationIdAsync(id);
+                    var orderToUpdate = linkedOrders.FirstOrDefault();
+                    if (orderToUpdate != null)
+                    {
+                        orderToUpdate.TableId = updatedRes.TableId;
+                        orderToUpdate.NumberOfGuests = updatedRes.NumberOfGuests;
+                        await _orderDetailsRepository.DeleteAllDetailsByOrderIdAsync(orderToUpdate.Id);
+                        foreach (var item in foodList)
+                        {
+                            item.OrderId = orderToUpdate.Id; 
+                        }
+                        await _orderDetailsRepository.AddListOrderDetailAsync(foodList);
+                    }
                     MessageBox.Show("Cập nhật thành công!");
                     ClosePopup();
                     LoadReservationList(); 
@@ -303,7 +351,6 @@ namespace FoodOrderManagement.AdminControl
                     MessageBox.Show("Lỗi cập nhật: " + ex.Message);
                 }
             };
-
             uc_CreateReservation.OnExitClicked += (s, args) => ClosePopup();
             ShowPopupUC(uc_CreateReservation);
         }
