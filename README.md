@@ -21,7 +21,6 @@ The Restaurant Management System is a comprehensive desktop application designed
 ## Features
 
 ### Core Functionality
-- **Multi-Role Authentication System** — Secure login with role-based access control
 - **Complete CRUD Operations** — Manage customers, tables, dishes, orders, and more
 - **Business Analytics Dashboard** — Track total visits, revenue, reservations, and key performance metrics
 - **Order Management** — Streamlined order creation, modification, and tracking
