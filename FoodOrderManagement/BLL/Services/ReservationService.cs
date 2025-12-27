@@ -203,8 +203,9 @@ namespace FoodOrderManagement.AdminControl
                     }
                     else
                     {
-                        var newCus = new Customers { FullName = name, PhoneNumber = phone, Email = phone + "@res.com" };
+                        var newCus = new Customers { FullName = name, PhoneNumber = phone, Email = string.Empty };
                         cusId = await _customersRepository.AddCustomerAsync(newCus);
+                        _formCustomer.Value.LoadCustomerList();
                     }
                     resData.customerId = cusId;
 
@@ -344,7 +345,8 @@ namespace FoodOrderManagement.AdminControl
                     }
                     MessageBox.Show("Cập nhật thành công!");
                     ClosePopup();
-                    LoadReservationList(); 
+                    LoadReservationList();
+                    _formOrder.Value.LoadAllOrders();
                 }
                 catch (Exception ex)
                 {
