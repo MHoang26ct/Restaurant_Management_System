@@ -61,23 +61,21 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
                 Status = "Pending",
                 customerId = 0
             };
-            if (_editingReservationId == 0)
+            List<orderDetail> foodList = new List<orderDetail>();
+            if (ListFoodFlowLayout != null)
             {
-                List<orderDetail> foodList = new List<orderDetail>();
-                if (ListFoodFlowLayout != null)
+                foreach (Control c in ListFoodFlowLayout.Controls)
                 {
-                    foreach (Control c in ListFoodFlowLayout.Controls)
+                    if (c is UC_AddFoodOrder row && row.SelectedFoodId > 0 && row.Quantity > 0)
                     {
-                        if (c is UC_AddFoodOrder row && row.SelectedFoodId > 0 && row.Quantity > 0)
+                        foodList.Add(new orderDetail
                         {
-                            foodList.Add(new orderDetail
-                            {
-                                FoodId = row.SelectedFoodId,
-                                Quantity = row.Quantity
-                            });
-                        }
+                            FoodId = row.SelectedFoodId,
+                            Quantity = row.Quantity
+                        });
                     }
                 }
+            }
 
             if (_editingReservationId == 0)
             {
@@ -92,7 +90,7 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
         //Gán thông tin đặt bàn
         public void SetReservationData(Reservations res, string cusName, string cusPhone, List<orderDetail> details)
         {
-            _editingReservationId = res.Id; 
+            _editingReservationId = res.Id;
             CustomerNameTBox.Text = cusName;
             PhoneNumberTBox.Text = cusPhone;
             TableID_NBox.Value = res.TableId;
@@ -113,11 +111,11 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
                 foreach (var item in details)
                 {
                     AddFoodRowToUI(item.FoodId, item.Quantity);
-            }
+                }
                 ListFoodFlowLayout.ResumeLayout();
+            }
         }
     }
-}
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -152,13 +150,13 @@ namespace FoodOrderManagement.AdminControl
             var filteredList = _originalList.Where(r =>
             {
                 bool matchDate = r.ReservationTime.Date == selectedDate;
-                bool matchKeyword = true; 
-                if (!string.IsNullOrEmpty(keyword) && keyword != "tìm kiếm...") 
+                bool matchKeyword = true;
+                if (!string.IsNullOrEmpty(keyword) && keyword != "tìm kiếm...")
                 {
-                    matchKeyword = r.PhoneNumber.Contains(keyword) ||       
-                                   r.TableId.ToString().Contains(keyword) || 
-                                   r.Id.ToString().Contains(keyword) ||     
-                                   r.CustomerName.ToLower().Contains(keyword); 
+                    matchKeyword = r.PhoneNumber.Contains(keyword) ||
+                                   r.TableId.ToString().Contains(keyword) ||
+                                   r.Id.ToString().Contains(keyword) ||
+                                   r.CustomerName.ToLower().Contains(keyword);
                 }
                 return matchDate && matchKeyword;
 
@@ -219,7 +217,7 @@ namespace FoodOrderManagement.AdminControl
                         {
                             CustomerId = cusId,
                             TableId = resData.TableId,
-                            ReservationId = newResId, 
+                            ReservationId = newResId,
                             OrderTime = DateTime.Now,
                             TotalAmount = 0,
                             NumberOfGuests = resData.NumberOfGuests
@@ -341,13 +339,13 @@ namespace FoodOrderManagement.AdminControl
                         await _orderDetailsRepository.DeleteAllDetailsByOrderIdAsync(orderToUpdate.Id);
                         foreach (var item in foodList)
                         {
-                            item.OrderId = orderToUpdate.Id; 
+                            item.OrderId = orderToUpdate.Id;
                         }
                         await _orderDetailsRepository.AddListOrderDetailAsync(foodList);
                     }
                     MessageBox.Show("Cập nhật thành công!");
                     ClosePopup();
-                    LoadReservationList(); 
+                    LoadReservationList();
                     _formOrder.Value.LoadAllOrders();
                 }
                 catch (Exception ex)
@@ -355,11 +353,10 @@ namespace FoodOrderManagement.AdminControl
                     MessageBox.Show("Lỗi cập nhật: " + ex.Message);
                 }
             };
-
             uc_CreateReservation.OnExitClicked += (s, args) => ClosePopup();
             ShowPopupUC(uc_CreateReservation);
         }
-        
+
         //Hiển thị popup
         private void ShowPopupUC(UserControl uc)
         {
