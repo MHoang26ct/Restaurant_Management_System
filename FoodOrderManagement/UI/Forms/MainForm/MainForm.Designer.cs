@@ -429,7 +429,6 @@
             Margin = new Padding(1);
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormMain";
             WindowState = FormWindowState.Maximized;
             FormClosed += FormMain_FormClosed;
             Load += FormMain_Load;
