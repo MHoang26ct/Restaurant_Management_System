@@ -24,13 +24,22 @@ namespace FoodOrderManagement.AdminControl
         private readonly IOrdersRepository _ordersRepository;
         private readonly IOrderDetailsRepository _orderDetailsRepository;
         private readonly IReservationsRepository _reservationsRepository;
+        private readonly ITablesRepository _tablesRepository;
         private readonly FormReservation _formReservation;
         private readonly FormCustomer _formCustomer;
+        private readonly FormTable _formTable;
         UC_CreateOrder _ucCreateOrder;
         UC_ViewDetails _ucViewDetails;
         public UC_OrderItem _uc_OrderItem;
         OverlayBackground _overlayBackground;
-        public FormOrder(ILifetimeScope scope, IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository, IReservationsRepository reservationsRepository, FormReservation formReservation, FormCustomer formCustomer)
+        public FormOrder(ILifetimeScope scope, 
+            IOrdersRepository ordersRepository, 
+            IOrderDetailsRepository orderDetailsRepository, 
+            IReservationsRepository reservationsRepository,
+            ITablesRepository tablesRepository,
+            FormReservation formReservation, 
+            FormCustomer formCustomer,
+            FormTable formTable)
         {
             InitializeComponent();
             _scope = scope;
@@ -38,10 +47,12 @@ namespace FoodOrderManagement.AdminControl
             SetupFilterControls();
             LoadAllOrders();
             _orderDetailsRepository = orderDetailsRepository;
-            _overlayBackground = new OverlayBackground();
             _reservationsRepository = reservationsRepository;
+            _tablesRepository = tablesRepository;
             _formCustomer = formCustomer;
             _formReservation = formReservation;
+            _formTable = formTable;
+            _overlayBackground = new OverlayBackground();
         }
 
         //Sự kiện nhấn nút đơn mới

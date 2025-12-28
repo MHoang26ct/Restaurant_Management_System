@@ -12,6 +12,7 @@ namespace FoodOrderManagement.UI
 
         public void Show(Form parent)
         {
+            FormMain.instance.LockNavigationButtons(parent);
             // Nếu đang hiện rồi thì thôi
             if (_overlay != null) return;
             if (parent == null || parent.IsDisposed) return;
@@ -90,6 +91,7 @@ namespace FoodOrderManagement.UI
                 _screenshot.Dispose();
                 _screenshot = null;
             }
+            FormMain.instance.UnlockNavigationButtons();
         }
     }
 }

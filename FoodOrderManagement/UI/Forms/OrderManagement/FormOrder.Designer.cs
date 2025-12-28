@@ -183,10 +183,9 @@
             CreateOrderButton.Dock = DockStyle.Fill;
             CreateOrderButton.FillColor = Color.FromArgb(255, 128, 0);
             CreateOrderButton.FillColor2 = Color.Chocolate;
-            CreateOrderButton.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CreateOrderButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CreateOrderButton.ForeColor = Color.White;
             CreateOrderButton.Image = Properties.Resources.add__2_;
-            CreateOrderButton.ImageAlign = HorizontalAlignment.Left;
             CreateOrderButton.ImageSize = new Size(15, 15);
             CreateOrderButton.Location = new Point(1087, 13);
             CreateOrderButton.Name = "CreateOrderButton";

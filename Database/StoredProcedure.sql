@@ -290,7 +290,7 @@ GO
 CREATE PROCEDURE GetAllUpcomingReservations
 AS
 BEGIN
-    SELECT ReservationID, CustomerID, TableID, ReservationTime, ComingTime, NumberOfGuests
+    SELECT ReservationID, CustomerID, TableID, ReservationTime, ComingTime, NumberOfGuests, Status
     FROM Reservations
     WHERE ComingTime >= GETDATE()
     ORDER BY ComingTime
@@ -507,6 +507,35 @@ BEGIN
     DELETE FROM OrderDetails
     WHERE OrderID = @OrderID
 END
+
+-- Xóa order kèm theo chi tiết order bằng ReservationID
+GO
+CREATE PROCEDURE DeleteOrderByReservation
+    @ReservationID int
+AS
+BEGIN
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        DELETE FROM OrderDetails
+        WHERE OrderID IN (
+            SELECT OrderID 
+            FROM Orders 
+            WHERE ReservationID = @ReservationID
+        );
+
+        DELETE FROM Orders
+        WHERE ReservationID = @ReservationID;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+        RAISERROR(@ErrorMessage, 16, 1);
+    END CATCH
+END
+GO
 
 -- =============================================
 -- NHÓM 6: QUẢN LÝ NHÂN VIÊN (EMPLOYEES)

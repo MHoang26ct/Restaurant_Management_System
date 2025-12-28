@@ -64,5 +64,11 @@ namespace FoodOrderManagement.DAL.Repositories.Interfaces {
         /// </summary>
         /// <returns></returns>
         public Task<List<Orders>> GetAllOrdersAsync();
+
+        /// <summary>
+        /// Xóa tất cả order theo mã đặt bàn
+        /// </summary>
+        /// <returns></returns>
+        public Task DeleteOrdersByReservationIdAsync(int reservationId);
     }
 }

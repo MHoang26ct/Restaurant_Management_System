@@ -198,10 +198,9 @@
             AddEmployeeButton.Dock = DockStyle.Fill;
             AddEmployeeButton.FillColor = Color.FromArgb(255, 128, 0);
             AddEmployeeButton.FillColor2 = Color.Chocolate;
-            AddEmployeeButton.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AddEmployeeButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AddEmployeeButton.ForeColor = Color.White;
             AddEmployeeButton.Image = Properties.Resources.add__2_;
-            AddEmployeeButton.ImageAlign = HorizontalAlignment.Left;
             AddEmployeeButton.ImageSize = new Size(15, 15);
             AddEmployeeButton.Location = new Point(1087, 13);
             AddEmployeeButton.Name = "AddEmployeeButton";

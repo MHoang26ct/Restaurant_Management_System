@@ -27,7 +27,8 @@ namespace FoodOrderManagement.DAL.Repositories.Implementations {
                 TableId = reader.GetInt32(2),
                 ReservationTime = reader.GetDateTime(3),
                 ComingTime = reader.GetDateTime(4),
-                NumberOfGuests = reader.GetInt32(5)
+                NumberOfGuests = reader.GetInt32(5),
+                Status = reader.GetString(6)
             };
         }
 

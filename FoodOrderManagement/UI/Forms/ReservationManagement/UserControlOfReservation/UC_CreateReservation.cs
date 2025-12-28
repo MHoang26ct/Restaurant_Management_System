@@ -38,15 +38,32 @@ namespace FoodOrderManagement.UI.Forms.ReservationManagement.UserControlOfReserv
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-        
+
+        //Sự kiện thêm dòng món ăn vào giao diện
+        private void AddFoodRowToUI(int foodId = 0, int quantity = 1)
+        {
+            if (ListFoodFlowLayout == null) return;
+
+            var row = _scope.Resolve<UC_AddFoodOrder>();
+            row.Width = ListFoodFlowLayout.Width - 25;
+            row.OnDeleteRequest += (sender, e) =>
+            {
+                ListFoodFlowLayout.Controls.Remove(row);
+                row.Dispose();
+            };
+            if (foodId > 0)
+            {
+                row.SetData(foodId, quantity);
+            }
+
+            ListFoodFlowLayout.Controls.Add(row);
+        }
+
         //Sự kiện nhán nút thêm nón ăn
         private void btnAddFood_Click(object sender, EventArgs e)
         {
             if (ListFoodFlowLayout == null) { MessageBox.Show("Thiếu FlowLayoutPanel 'pnlFoodList' trên giao diện!"); return; }
-
-            var row = _scope.Resolve<UC_AddFoodOrder>();
-            row.Width = ListFoodFlowLayout.Width - 25;
-            ListFoodFlowLayout.Controls.Add(row);
+            AddFoodRowToUI();
         }
 
         //Sự kiện chọn hoặc rời nút thêm món ăn, đặt bàn

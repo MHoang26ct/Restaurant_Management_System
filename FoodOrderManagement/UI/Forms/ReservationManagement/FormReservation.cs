@@ -27,11 +27,13 @@ namespace FoodOrderManagement.AdminControl
         private readonly IOrderDetailsRepository _orderDetailsRepository;
         private readonly ITablesRepository _tablesRepository;
         private readonly FormTable _formTable;
+        private readonly Lazy<FormOrder> _formOrder;
+        private readonly Lazy<FormCustomer> _formCustomer;
         private OverlayBackground _overlayBackground;
         private UC_CreateReservation uc_CreateReservation;
         private List<ReservationViewModel> _originalList = new List<ReservationViewModel>();
         public FormReservation(ILifetimeScope scope, IReservationsRepository reservationsRepository, ICustomersRepository customersRepository,
-                               IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository, ITablesRepository tablesRepository, FormTable formTable)
+                               IOrdersRepository ordersRepository, IOrderDetailsRepository orderDetailsRepository, ITablesRepository tablesRepository, FormTable formTable, Lazy<FormOrder> formOrder, Lazy<FormCustomer> formCustomer)
         {
             InitializeComponent();
             _scope = scope;
@@ -42,6 +44,7 @@ namespace FoodOrderManagement.AdminControl
             _tablesRepository = tablesRepository;
 
             _formTable = formTable;
+            _formOrder = formOrder;
 
             _overlayBackground = new OverlayBackground();
             AddActionButtons();
@@ -51,6 +54,7 @@ namespace FoodOrderManagement.AdminControl
             SearchReservationTBox1.TextChanged += (s, e) => ApplyFilter();
             DateTimePickerSearch.ValueChanged += (s, e) => ApplyFilter();
             LoadReservationList();
+            _formCustomer = formCustomer;
         }
         private void FormReservation_Load(object sender, EventArgs e)
         {
