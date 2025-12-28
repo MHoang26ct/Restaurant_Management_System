@@ -195,7 +195,6 @@
             AddCustomerButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AddCustomerButton.ForeColor = Color.White;
             AddCustomerButton.Image = Properties.Resources.add__2_;
-            AddCustomerButton.ImageAlign = HorizontalAlignment.Left;
             AddCustomerButton.ImageSize = new Size(15, 15);
             AddCustomerButton.Location = new Point(1145, 17);
             AddCustomerButton.Name = "AddCustomerButton";

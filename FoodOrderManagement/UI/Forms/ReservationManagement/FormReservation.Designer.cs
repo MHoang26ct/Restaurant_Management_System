@@ -192,7 +192,6 @@
             CreateReservationButton.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CreateReservationButton.ForeColor = Color.White;
             CreateReservationButton.Image = Properties.Resources.add__2_;
-            CreateReservationButton.ImageAlign = HorizontalAlignment.Left;
             CreateReservationButton.ImageSize = new Size(15, 15);
             CreateReservationButton.Location = new Point(1075, 13);
             CreateReservationButton.Name = "CreateReservationButton";

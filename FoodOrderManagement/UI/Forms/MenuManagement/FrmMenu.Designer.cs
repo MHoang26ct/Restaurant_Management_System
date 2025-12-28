@@ -183,10 +183,9 @@
             AddFoodButton.Dock = DockStyle.Fill;
             AddFoodButton.FillColor = Color.FromArgb(255, 128, 0);
             AddFoodButton.FillColor2 = Color.Chocolate;
-            AddFoodButton.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AddFoodButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AddFoodButton.ForeColor = Color.White;
             AddFoodButton.Image = Properties.Resources.add__2_;
-            AddFoodButton.ImageAlign = HorizontalAlignment.Left;
             AddFoodButton.ImageSize = new Size(15, 15);
             AddFoodButton.Location = new Point(1099, 14);
             AddFoodButton.Name = "AddFoodButton";
