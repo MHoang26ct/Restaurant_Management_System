@@ -290,7 +290,7 @@ GO
 CREATE PROCEDURE GetAllUpcomingReservations
 AS
 BEGIN
-    SELECT ReservationID, CustomerID, TableID, ReservationTime, ComingTime, NumberOfGuests
+    SELECT ReservationID, CustomerID, TableID, ReservationTime, ComingTime, NumberOfGuests, Status
     FROM Reservations
     WHERE ComingTime >= GETDATE()
     ORDER BY ComingTime
